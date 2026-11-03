@@ -1,0 +1,13 @@
+# Original download; its contents are extracted in data/participant-pack
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
