@@ -1,4 +1,4 @@
-"""FarmerChat MEL Survey Agent: demo app.
+"""JAAKS, the MEL survey agent for FarmerChat: demo app.
 
   streamlit run app/streamlit_app.py
 """
@@ -15,7 +15,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from mel_agent import config, data, pipeline, rules, season  # noqa: E402
 from mel_agent.rules import IST  # noqa: E402
 
-st.set_page_config(page_title="MEL Survey Agent", page_icon="🌾", layout="wide")
+# Logo: put the image at app/assets/jaaks-logo.png. Until then the app falls back to an emoji.
+LOGO = Path(__file__).resolve().parent / "assets" / "jaaks-logo.png"
+HAS_LOGO = LOGO.exists()
+st.set_page_config(page_title="JAAKS · MEL Survey Agent", page_icon=str(LOGO) if HAS_LOGO else "🌱", layout="wide")
+if HAS_LOGO:
+    st.logo(str(LOGO), size="large")
 st.markdown("""
 <style>
 .phone{max-width:340px;margin:auto;border:10px solid #111;border-radius:34px;background:#eef7f1;overflow:hidden;
@@ -138,7 +143,13 @@ def show_result(r):
 
 
 # ------------------------------------------------------------------ pages
-st.title("🌾 FarmerChat MEL Survey Agent")
+head_logo, head_text = st.columns([1, 12], vertical_alignment="center")
+if HAS_LOGO:
+    head_logo.image(str(LOGO), width=72)
+else:
+    head_logo.markdown("<div style='font-size:52px'>🌱</div>", unsafe_allow_html=True)
+head_text.title("JAAKS")
+head_text.markdown("**MEL Survey Agent** for FarmerChat")
 st.caption(f"Writer {config.WRITER_MODEL} · Checker {config.CHECKER_MODEL} · {config.AWS_REGION} · synthetic data only")
 page = st.sidebar.radio("Page", ["Agent", "Season simulation", "Evaluation", "Dataset"])
 
