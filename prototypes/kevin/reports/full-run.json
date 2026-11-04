@@ -1,0 +1,142 @@
+{
+ "name": "full-run",
+ "at": "2026-11-04T23:08:29+05:30",
+ "settings": {
+  "policy": "calibrated",
+  "language": null,
+  "writer_model": "us.anthropic.claude-sonnet-5-5",
+  "checker_model": "us.anthropic.claude-haiku-5-5",
+  "min_relevance": 0.8,
+  "prompt_version": "v2"
+ },
+ "results_file": "out/results.jsonl",
+ "insights_processed": 6999,
+ "status": {
+  "scheduled": 2565,
+  "rejected": 147,
+  "writer_skipped": 0,
+  "no_survey": 4287,
+  "error": 0
+ },
+ "batch_wall_seconds": 2063.38,
+ "sessions": [
+  {
+   "at": "2026-11-04T21:19:49+05:30",
+   "ran": 300,
+   "workers": 16,
+   "wall_seconds": 93.24,
+   "limit": 300,
+   "seed": 7
+  },
+  {
+   "at": "2026-11-04T23:08:07+05:30",
+   "ran": 6699,
+   "workers": 16,
+   "wall_seconds": 1970.14,
+   "limit": null,
+   "seed": 7
+  }
+ ],
+ "seconds_per_survey_avg": 12.01,
+ "seconds_per_survey_p95": 23.06,
+ "surveyed_insights": 2712,
+ "rejected_by_language": {
+  "en-IN": 17,
+  "hi-IN": 130
+ },
+ "surveyed_by_language": {
+  "en-IN": 275,
+  "hi-IN": 2437
+ },
+ "self_check_relevance_avg": 0.9815,
+ "self_check_judged": 2712,
+ "tokens_per_survey": 9968,
+ "tokens_by_model": {
+  "us.anthropic.claude-sonnet-5-5": {
+   "calls": 3104,
+   "input_tokens": 17541929,
+   "output_tokens": 2620925
+  },
+  "us.anthropic.claude-haiku-5-5": {
+   "calls": 3104,
+   "input_tokens": 4281599,
+   "output_tokens": 2589876
+  }
+ },
+ "tokens_total": {
+  "input": 21823528,
+  "output": 5210801
+ },
+ "bedrock_retries": 0,
+ "cost_usd": null,
+ "cost_note": "Not estimated: set MEL_WRITER_PRICE and MEL_CHECKER_PRICE (USD per 1M tokens, 'input,output').",
+ "errors": [],
+ "cost_by_model": {
+  "us.anthropic.claude-sonnet-5-5": null,
+  "us.anthropic.claude-haiku-5-5": null
+ },
+ "rejections_by_resolution_type": {
+  "direct_action": {
+   "surveyed": 2093,
+   "rejected": 36,
+   "rejected_rate": 0.0172
+  },
+  "do_not_act": {
+   "surveyed": 59,
+   "rejected": 2,
+   "rejected_rate": 0.0339
+  },
+  "escalate_to_expert": {
+   "surveyed": 31,
+   "rejected": 0,
+   "rejected_rate": 0.0
+  },
+  "plan_created": {
+   "surveyed": 408,
+   "rejected": 5,
+   "rejected_rate": 0.0123
+  },
+  "wait_and_monitor": {
+   "surveyed": 121,
+   "rejected": 104,
+   "rejected_rate": 0.8595
+  }
+ },
+ "rejections_by_language": {
+  "en-IN": {
+   "surveyed": 275,
+   "rejected": 17,
+   "rejected_rate": 0.0618
+  },
+  "hi-IN": {
+   "surveyed": 2437,
+   "rejected": 130,
+   "rejected_rate": 0.0533
+  }
+ },
+ "season": {
+  "now": "2027-04-10T00:00:00+05:30",
+  "surveys": 2565,
+  "states": {
+   "declined": 169,
+   "completed": 1220,
+   "negative_outcome": 313,
+   "partial": 173,
+   "expired": 158,
+   "dropped_capped": 344,
+   "dropped_opted_out": 173,
+   "delivery_failed": 14,
+   "dropped_expired": 1
+  },
+  "responses": 2210,
+  "follow_ups": 313,
+  "opted_out": 35,
+  "simulation_seconds": 4.28,
+  "handoffs": 2565,
+  "response_records_failing_schema": 0
+ },
+ "cap_violations": {
+  "count": 0,
+  "items": []
+ }
+}

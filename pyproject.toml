@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mel-survey-agent"
+version = "0.1.0"
+description = "FarmerChat Contextual MEL Survey Agent (Digital Green hackathon MVP)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.8",
+    "pydantic-settings>=2.4",
+    "jsonschema>=4.23",
+    "referencing>=0.35",
+    # Needed by jsonschema's FormatChecker to actually enforce "date-time".
+    "rfc3339-validator>=0.1.4",
+    "boto3>=1.35",
+    "strands-agents>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "httpx>=0.27",
+]
+demo = [
+    "streamlit>=1.38",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mel_agent = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -m 'not bedrock'"
+markers = [
+    "bedrock: makes a real, paid Amazon Bedrock call. Opt in with: pytest -m bedrock (also needs MEL_RUN_BEDROCK_SMOKE=1)",
+]

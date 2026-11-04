@@ -1,0 +1,22 @@
+# Allow-list: the build context is ONLY what the Dockerfile copies.
+# Everything else (env files, credentials, venvs, caches, data, tests) is excluded by default.
+*
+
+!pyproject.toml
+!README.md
+!requirements/runtime.lock
+!requirements/build.lock
+!src/
+!config/
+
+# Re-exclude junk and anything secret-looking that could sit inside allowed directories.
+**/__pycache__
+**/*.py[cod]
+**/*.egg-info
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/*credentials*
+**/.aws
+**/.DS_Store

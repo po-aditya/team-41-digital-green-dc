@@ -1,0 +1,6 @@
+{
+  "file": "VISION.md",
+  "tracked": false,
+  "sha256_before_and_after": "119ad3bb2763f38e8bc93587160093a1c4141e4767c8e114fae18d2cdb3cafd7",
+  "verification": "Pre-consolidation regression captured a fixed hash and passed after import. Final hash matches. This one-time local evidence does not constrain future edits and is not part of the tracked test suite."
+}

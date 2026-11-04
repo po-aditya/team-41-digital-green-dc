@@ -1,0 +1,199 @@
+{
+  "ingest": {
+    "insights_lines": 6999,
+    "insights_stored_valid": 6949,
+    "insights_quarantined": 50,
+    "quarantine_by_reason": {
+      "schema_invalid": 50
+    },
+    "quality_flag_counts": {
+      "clean": 6276,
+      "junk": 723
+    },
+    "schema_valid_by_quality_flag": {
+      "clean": 6276,
+      "junk": 673
+    },
+    "duplicates": 0,
+    "unknown_farmers": 0,
+    "csv_rows": 6999,
+    "csv_reconciliation": {
+      "status": "ok",
+      "csv_rows": 6999,
+      "jsonl_objects": 6999,
+      "csv_ids_missing_in_jsonl": 0,
+      "jsonl_ids_missing_in_csv": 0,
+      "malformed_rows": 0,
+      "mismatched_fields": {}
+    },
+    "farmers": 300,
+    "farmer_rows_rejected": 0,
+    "crop_calendar_rows": 86,
+    "crop_calendar_rejected": 0,
+    "golden_cases": 150,
+    "golden_missing_from_dataset": 0,
+    "content_fingerprint": "5628b1d32c93b9aa"
+  },
+  "decide": {
+    "decided": 6999,
+    "by_internal_reason": {
+      "nothing_to_verify": 1287,
+      "survey": 2628,
+      "no_check_needed": 1312,
+      "junk_insight": 673,
+      "waiting_for_details": 875,
+      "schema_invalid": 50,
+      "critical_needs_human_call": 25,
+      "window_truncated_by_season_end": 36,
+      "window_after_season": 111,
+      "crop_already_harvested": 2
+    },
+    "elapsed_s": 0.288
+  },
+  "generate": {
+    "processed": 2628,
+    "surveys_accepted": 2628,
+    "surveys_rejected": 0,
+    "handoffs_created": 2628,
+    "skipped_existing": 0,
+    "skipped_not_eligible": 0,
+    "skipped_busy": 0,
+    "id_collisions": 0,
+    "pending_approval": 0,
+    "lost_claims": 0,
+    "generation_sources": {
+      "template": 2628
+    },
+    "rejection_problems": {},
+    "elapsed_s": 8.251,
+    "usage": {},
+    "estimated_cost_usd": 0.0,
+    "failed_attempt_cost_usd": 0.0,
+    "generation_latency_ms": {
+      "count": 2628,
+      "mean": 1.215,
+      "p50": 1.239,
+      "p95": 1.418,
+      "max": 2.913
+    }
+  },
+  "broadcast": {
+    "ticks": 1241,
+    "from": "2026-11-01T00:00:00+05:30",
+    "to": "2027-04-05T00:00:00+05:30",
+    "totals": {
+      "sent": 2643,
+      "answered": 1436,
+      "failed": 819,
+      "moved_on": 304,
+      "expired": 153,
+      "cap_deferred_ticks": 14794,
+      "cap_suppressed": 571,
+      "opt_out_suppressed": 0,
+      "blocked_unsafe": 0,
+      "claims_lost": 0,
+      "duplicates_ignored": 0,
+      "schema_invalid_records": 0
+    },
+    "notes": []
+  },
+  "summary": {
+    "ingestion": {
+      "status": "complete",
+      "content_fingerprint": "5628b1d32c93b9aa",
+      "crop_calendar_rejected": 0,
+      "crop_calendar_rows": 86,
+      "csv_reconciliation": {
+        "csv_ids_missing_in_jsonl": 0,
+        "csv_rows": 6999,
+        "jsonl_ids_missing_in_csv": 0,
+        "jsonl_objects": 6999,
+        "malformed_rows": 0,
+        "mismatched_fields": {},
+        "status": "ok"
+      },
+      "csv_rows": 6999,
+      "duplicates": 0,
+      "farmer_rows_rejected": 0,
+      "farmers": 300,
+      "golden_cases": 150,
+      "golden_missing_from_dataset": 0,
+      "insights_lines": 6999,
+      "insights_quarantined": 50,
+      "insights_stored_valid": 6949,
+      "quality_flag_counts": {
+        "clean": 6276,
+        "junk": 723
+      },
+      "quarantine_by_reason": {
+        "schema_invalid": 50
+      },
+      "schema_valid_by_quality_flag": {
+        "clean": 6276,
+        "junk": 673
+      },
+      "unknown_farmers": 0
+    },
+    "decisions": {
+      "by_decision": {
+        "no_survey": 4321,
+        "quarantined": 50,
+        "survey": 2628
+      },
+      "by_rule": {
+        "R0": 50,
+        "R1": 673,
+        "R2": 25,
+        "R3": 1287,
+        "R4": 875,
+        "R5": 1312,
+        "R6": 147,
+        "R7": 2,
+        "R8": 2628
+      },
+      "by_internal_reason": {
+        "critical_needs_human_call": 25,
+        "crop_already_harvested": 2,
+        "junk_insight": 673,
+        "no_check_needed": 1312,
+        "nothing_to_verify": 1287,
+        "schema_invalid": 50,
+        "survey": 2628,
+        "waiting_for_details": 875,
+        "window_after_season": 111,
+        "window_truncated_by_season_end": 36
+      }
+    },
+    "surveys": {
+      "validated": 2628
+    },
+    "handoffs": {
+      "answered": 1436,
+      "cap_suppressed": 571,
+      "declined": 266,
+      "expired": 291,
+      "undeliverable": 64
+    },
+    "delivery_attempts": {
+      "answered": 1436,
+      "closed": 69,
+      "expired": 181,
+      "failed": 755,
+      "moved_on": 271,
+      "superseded": 586
+    },
+    "responses": {
+      "by_status": {
+        "completed": 656,
+        "declined": 239,
+        "delivery_failed": 264,
+        "expired": 319,
+        "invalid_input": 114,
+        "negative_outcome": 527,
+        "partial": 253
+      },
+      "needs_follow_up": 527
+    },
+    "clock": "2027-04-05T03:00:00+05:30"
+  }
+}

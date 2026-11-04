@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+build/
+dist/
+
+# Local config and secrets
+.env
+.env.*
+!.env.example
+
+# Runtime data (SQLite, ledgers, outputs)
+var/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Consolidated prototypes and local Word lock artifacts
+out/
+*.zip
+~$*

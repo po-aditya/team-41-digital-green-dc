@@ -1,0 +1,3155 @@
+{
+  "sources": [
+    {
+      "ref": "origin/main",
+      "commit": "eab1f10a53ddb5b5f59dce5c83a0bb211fbd9c9d",
+      "files": [
+        {
+          "source": "docs/Digital Green Foundation/Technical Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+          "destination": "docs/Digital Green Foundation/Technical Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+          "sha256": "4b654011eb51546cb44d287074de9d4b766b4bcb395aeeac4a4f087c6bd0d7f0",
+          "modified": false
+        },
+        {
+          "source": "docs/Digital Green Foundation/Vision Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+          "destination": "docs/Digital Green Foundation/Vision Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+          "sha256": "1a8e990737ea57223fd98ee1f54c324e6d6a87cbbec6ea3bf05bdec67086b058",
+          "modified": false
+        },
+        {
+          "source": "docs/Digital Green Foundation/~$chnical Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+          "destination": "docs/Digital Green Foundation/~$chnical Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+          "sha256": "ea90d2f96cc4606f63b155cd366fa0422373bd1198ea432b0afe58f476c69f99",
+          "modified": false
+        },
+        {
+          "source": "docs/Digital Green Foundation/~$sion Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+          "destination": "docs/Digital Green Foundation/~$sion Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+          "sha256": "ea90d2f96cc4606f63b155cd366fa0422373bd1198ea432b0afe58f476c69f99",
+          "modified": false
+        },
+        {
+          "source": "docs/dynamichtml-diagram.html",
+          "destination": "docs/dynamichtml-diagram.html",
+          "sha256": "a3d96c42deecce535d2060613b4aeb54b08b5bad3b101a4d1cf2f5a665318d2c",
+          "modified": false
+        },
+        {
+          "source": "nothing.txt",
+          "destination": "nothing.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "modified": false
+        }
+      ]
+    },
+    {
+      "ref": "origin/mvp-in-phases/aditya",
+      "commit": "8872117463b9362ac020107a936369df2498fb0c",
+      "files": [
+        {
+          "source": ".dockerignore",
+          "destination": ".dockerignore",
+          "sha256": "357fd86a10e8eeec8c65d7fdc41b7069428992b128ccca114a9817980178aac1",
+          "modified": false
+        },
+        {
+          "source": ".env.example",
+          "destination": ".env.example",
+          "sha256": "f0ddfb1adb656bd3520b1241a608d27c706ccab9199fef24f8d51ad3ac170cc3",
+          "modified": false
+        },
+        {
+          "source": ".gitignore",
+          "destination": ".gitignore",
+          "sha256": "9a816a2791eab7b5d240d63c8d5d494eca7e5b08a14bb2e8f3507ad72fa0e2d7",
+          "modified": true,
+          "reason": "Ignore generated prototype outputs and new Word lock artifacts while preserving existing tracked documents."
+        },
+        {
+          "source": "Dockerfile",
+          "destination": "Dockerfile",
+          "sha256": "6cce24e09b84895b0ccec277d683612c52edbab81120b65381e0a573dfcb5247",
+          "modified": false
+        },
+        {
+          "source": "README.md",
+          "destination": "docs/source-readmes/aditya.md",
+          "sha256": "a2b7aa8749e8263e8f45c5731a0829361f9c3fafeabb30f84fce74d9fb0d5a04",
+          "modified": false
+        },
+        {
+          "source": "config/bedrock_pricing.json",
+          "destination": "config/bedrock_pricing.json",
+          "sha256": "39e76e76ca0040e82398062a74e450d1c3e8dc5d51d6add2f2a73b2d3a2c278f",
+          "modified": false
+        },
+        {
+          "source": "docker-compose.yml",
+          "destination": "docker-compose.yml",
+          "sha256": "45d3697dcdd7ff92c7890944e1908d16190b16efcb9bf1447e5c88128a9d4609",
+          "modified": true,
+          "reason": "Mount the included pack read-only and expose the sandbox API only on localhost."
+        },
+        {
+          "source": "docs/CONTRACT_QUESTIONS.md",
+          "destination": "docs/CONTRACT_QUESTIONS.md",
+          "sha256": "fc982322835b9fc85d0ebc31922e82dad9d90eb3322029febcd1e649886ef544",
+          "modified": false
+        },
+        {
+          "source": "docs/IMPLEMENTATION_PLAN.md",
+          "destination": "docs/IMPLEMENTATION_PLAN.md",
+          "sha256": "483c6db022bb6c84b829a88d9073134a2010f129aba8b98f16ee9837852c512e",
+          "modified": false
+        },
+        {
+          "source": "docs/REVIEW_HANDOFF.md",
+          "destination": "docs/REVIEW_HANDOFF.md",
+          "sha256": "2f7770028ad64aa8ec010b6f7116041863fa611040c057623ecc3fa80046cedc",
+          "modified": false
+        },
+        {
+          "source": "docs/reports/golden_evaluation.json",
+          "destination": "docs/reports/golden_evaluation.json",
+          "sha256": "34b5bb9d242b58f0d3d5517345e86a78e9eda0606efeaf25acf6475a31585005",
+          "modified": false
+        },
+        {
+          "source": "docs/reports/golden_evaluation.md",
+          "destination": "docs/reports/golden_evaluation.md",
+          "sha256": "107858cf6c56eac628be5848cc3dc221f2df981a61a4cdc96ae07f6f35323afd",
+          "modified": false
+        },
+        {
+          "source": "pyproject.toml",
+          "destination": "pyproject.toml",
+          "sha256": "9bc7795f74047412c2ca6fdd87895e65bf3eea655e99ac56c851fd1ab80b73c9",
+          "modified": false
+        },
+        {
+          "source": "requirements/build.lock",
+          "destination": "requirements/build.lock",
+          "sha256": "4c93afc69adc353f57e47e6ce48d752547f31945d8a977dd27b14fc5739be4d6",
+          "modified": false
+        },
+        {
+          "source": "requirements/dev.lock",
+          "destination": "requirements/dev.lock",
+          "sha256": "f186ddb4a4e97a872aa4e0287f1670d55e819f7fc7e5f19879f5292f7d05fe84",
+          "modified": false
+        },
+        {
+          "source": "requirements/runtime.lock",
+          "destination": "requirements/runtime.lock",
+          "sha256": "595f7c0410aee9a24944dfcbd9eaf4c2e3148e8f962d4c0fd31ac1eac124a763",
+          "modified": false
+        },
+        {
+          "source": "requirements/tested-py314.txt",
+          "destination": "requirements/tested-py314.txt",
+          "sha256": "56246136ba5ad10c33c7a45801f203605c3a9af5af68487b60a36ee78631b7fe",
+          "modified": false
+        },
+        {
+          "source": "scripts/bedrock_smoke.py",
+          "destination": "scripts/bedrock_smoke.py",
+          "sha256": "f4b3c6fb1c8f17f2f8295f2912c4f19f884a6f130a4d7ab7123c9417c1bf4179",
+          "modified": false
+        },
+        {
+          "source": "scripts/discover_bedrock.py",
+          "destination": "scripts/discover_bedrock.py",
+          "sha256": "f068c919d2f29b34c1c8c2e85027ee93ae2bf246a9be604fb90dafdcbab28965",
+          "modified": false
+        },
+        {
+          "source": "scripts/fetch_bedrock_pricing.py",
+          "destination": "scripts/fetch_bedrock_pricing.py",
+          "sha256": "04fcfb33157d7fde7116cf1190b0928a9fa8826d6ac13d7eaf4cd6d05a328dcd",
+          "modified": false
+        },
+        {
+          "source": "scripts/lock_dependencies.sh",
+          "destination": "scripts/lock_dependencies.sh",
+          "sha256": "ec4a6aa59620c1cc0879de5971acba522c12672486c70d46c2b401e3c4b0833d",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/__init__.py",
+          "destination": "src/mel_agent/__init__.py",
+          "sha256": "128a8d656e45bf6b8df1dec8c5ecef0247c7338da3d7980733078f9262ab367e",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/__main__.py",
+          "destination": "src/mel_agent/__main__.py",
+          "sha256": "316b104640e06178b038e1c4420d7fe502a1e9c96ab5d75287e35944829a7213",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/api/__init__.py",
+          "destination": "src/mel_agent/api/__init__.py",
+          "sha256": "5323279183dcabc63413303be1dc76b4cb2d7dcc736a54c92cc8b4452e3e2ae9",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/api/deps.py",
+          "destination": "src/mel_agent/api/deps.py",
+          "sha256": "33343ea013ee9a06858fbfd51168ca2d73d06cb512da9bcc830fba3a8d7f9ac4",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/api/read.py",
+          "destination": "src/mel_agent/api/read.py",
+          "sha256": "13b17c320edf50450ba7231d3612932e2b19ffc497616a650c4426795fb0a689",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/api/runs.py",
+          "destination": "src/mel_agent/api/runs.py",
+          "sha256": "daee0901a7c537e71417d236b0f583cbb9150c893962b3fdf15149c826f5c6bd",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/budget/__init__.py",
+          "destination": "src/mel_agent/budget/__init__.py",
+          "sha256": "cd4b48b3759b1f700d5ad802b7e9f11be8312273b0100e2ad88d5f2299f0553d",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/budget/controller.py",
+          "destination": "src/mel_agent/budget/controller.py",
+          "sha256": "fc5f6440270879d28f11392425a22cf06ce8855afc09ba2de24cf192d171bff9",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/cli.py",
+          "destination": "src/mel_agent/cli.py",
+          "sha256": "8514ce44a784c41d9a53f6e3a5e0d79a2487536e0e4c5e1e200fd8cc24a7d9a1",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/config.py",
+          "destination": "src/mel_agent/config.py",
+          "sha256": "888610ffc25b184e6154d344b607d4112cce77b8341c60d1195063d3c02c783d",
+          "modified": true,
+          "reason": "Use the included shared participant pack by default rather than an absent sibling checkout."
+        },
+        {
+          "source": "src/mel_agent/contracts/__init__.py",
+          "destination": "src/mel_agent/contracts/__init__.py",
+          "sha256": "ab2d0fde81bf42c37c938e784646afdd6ba341cc528aa318fc36fc3bea1c027c",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/contracts/schemas.py",
+          "destination": "src/mel_agent/contracts/schemas.py",
+          "sha256": "2424cc437a7f780722655ee93736110e509b300a21e4719178a548ff2fc5eeef",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/data/__init__.py",
+          "destination": "src/mel_agent/data/__init__.py",
+          "sha256": "69740f842bfce8cd7ef3bc1c762412492b1694b35580d0aa71f692aef9f3cac9",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/data/ingest.py",
+          "destination": "src/mel_agent/data/ingest.py",
+          "sha256": "1fae5611b7ff3e693c197110faa26623be5d65c2894ca8339f5418a9715e35aa",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/data/pack.py",
+          "destination": "src/mel_agent/data/pack.py",
+          "sha256": "516585049f490d5fcba31609b2154bd2baa7ce03a336418fd3e001637bd41390",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/delivery/__init__.py",
+          "destination": "src/mel_agent/delivery/__init__.py",
+          "sha256": "4a62643a97711f9d903c0aaa1aca35d5a6c7bd7a9f3fef27a59875fa24704174",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/delivery/bottom_sheet.py",
+          "destination": "src/mel_agent/delivery/bottom_sheet.py",
+          "sha256": "0fd0352e362df135f1808310f788f5470f6c842e964e0757f558400b7ab4cd63",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/delivery/broadcaster.py",
+          "destination": "src/mel_agent/delivery/broadcaster.py",
+          "sha256": "243aeefc3be46307f0ecec3f879a02390e7b876812707fa9126ca738791d075d",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/delivery/clock.py",
+          "destination": "src/mel_agent/delivery/clock.py",
+          "sha256": "d38e425018930f4664955dc88b629a76ab4d3b0240dd0d4624ef9f3d255795fd",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/delivery/simulator.py",
+          "destination": "src/mel_agent/delivery/simulator.py",
+          "sha256": "39e5d28a928fa49c56cd0a55c5a9a767cef63e84d1a90c975443fd06fc122ad7",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/demo.py",
+          "destination": "src/mel_agent/demo.py",
+          "sha256": "bd67e7497720675ae5f2decad7acd44c70e8ec5533c022c254fdfae9d915172f",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/evaluation/__init__.py",
+          "destination": "src/mel_agent/evaluation/__init__.py",
+          "sha256": "a77598ee405c0f8631eb6bcd221e106a0168ba2739ca83cc5786145f9a5342f8",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/evaluation/golden.py",
+          "destination": "src/mel_agent/evaluation/golden.py",
+          "sha256": "f651df652921fcad7820c62d1ac4f70261e2c46e022b066c02ee12ec3f07ed6c",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/generation/__init__.py",
+          "destination": "src/mel_agent/generation/__init__.py",
+          "sha256": "4eb8c946c1a4a90c5b28ee4e22e1181ad9e31ec408c497e5889c7ac0e8bbf744",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/generation/catalog.py",
+          "destination": "src/mel_agent/generation/catalog.py",
+          "sha256": "727cc53f864dda9885a06d54c9a53d9edb9751e0366efe1ee2c76f865d1a2f0a",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/generation/generator.py",
+          "destination": "src/mel_agent/generation/generator.py",
+          "sha256": "d7e01c5b7e7203be87699c1c8429723836c4d340fcf52cf448db9c980d9ef129",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/generation/models.py",
+          "destination": "src/mel_agent/generation/models.py",
+          "sha256": "24edb16190c0b65def37151dcbca419cbad483cee27edc9f2c70aee464bad05c",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/generation/providers.py",
+          "destination": "src/mel_agent/generation/providers.py",
+          "sha256": "a3c369d19db935716eb14dbc45c896769773b5854dd252d9f1372e97e9b840cc",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/generation/safety.py",
+          "destination": "src/mel_agent/generation/safety.py",
+          "sha256": "771cee03d0e2c89ba570245cde627341831893039b6b701684e490b15a861f90",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/generation/templates.py",
+          "destination": "src/mel_agent/generation/templates.py",
+          "sha256": "262117e1a7f3f5f76b15059cba76a695c95d22e664fe6f96792ab86334daa594",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/llm/__init__.py",
+          "destination": "src/mel_agent/llm/__init__.py",
+          "sha256": "78ef66aca07583a1d73d9e2643e40388ea304b58673f71350f6ec6de7709eccf",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/llm/bedrock.py",
+          "destination": "src/mel_agent/llm/bedrock.py",
+          "sha256": "3301e1f479ef981fb079c97e2db71039eda565bd8f0483c20343e9681fc05c3f",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/llm/budgeted.py",
+          "destination": "src/mel_agent/llm/budgeted.py",
+          "sha256": "0a58acc75293a82425e2030865c85911af2b64447f293c0664dd98afb3f9ca8c",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/llm/pricing.py",
+          "destination": "src/mel_agent/llm/pricing.py",
+          "sha256": "ff430423c91a62d60cfbe81c76ddf3cbeaaddfadc25731498f43ba268e02c8fe",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/main.py",
+          "destination": "src/mel_agent/main.py",
+          "sha256": "da6e07ee70bd702748d78c95bf4d29d3599f2c04af62e3d12a58e4bdb8badcd2",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/pipeline.py",
+          "destination": "src/mel_agent/pipeline.py",
+          "sha256": "f2bbb08766b2d0cd0bc251431fec13a60b8ac80d015ff86eef032cb5d0a30f88",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/py.typed",
+          "destination": "src/mel_agent/py.typed",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/rules/__init__.py",
+          "destination": "src/mel_agent/rules/__init__.py",
+          "sha256": "7272548b4b29e89845e51b4626a4e6d6344aa679fda5aeb974b94d730412e4dc",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/rules/eligibility.py",
+          "destination": "src/mel_agent/rules/eligibility.py",
+          "sha256": "705731b0c588fcb002d609b782f97157dd5197b284f0e3f602248b295e167a7e",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/rules/scheduling.py",
+          "destination": "src/mel_agent/rules/scheduling.py",
+          "sha256": "087be6ba449b8869827c45c8e49278e336c03324ebeab80d800933657187f676",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/rules/timing.py",
+          "destination": "src/mel_agent/rules/timing.py",
+          "sha256": "b0e886aba87e64e4c567f12ef31fd1e24fab65257b280a0bc83b93415d90ac27",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/store/__init__.py",
+          "destination": "src/mel_agent/store/__init__.py",
+          "sha256": "e1f1b23955a378e38eefc9d1eca42dfaf8de3db60add0b14538fd7c7feae9fe0",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/store/db.py",
+          "destination": "src/mel_agent/store/db.py",
+          "sha256": "46cee6a904940cc2c2678801428e9e1f315e82b616f5f96d650563923cb1d5d3",
+          "modified": false
+        },
+        {
+          "source": "src/mel_agent/time_utils.py",
+          "destination": "src/mel_agent/time_utils.py",
+          "sha256": "a89b4b4980f1fff7baabb260d101005b4615b9ee9dc994f8926b20c8c1046cb7",
+          "modified": false
+        },
+        {
+          "source": "tests/concurrency_workers.py",
+          "destination": "tests/concurrency_workers.py",
+          "sha256": "09706dd2364396d085a93cad97977bd79c0f199489ff94016c3866c28e3cd1fb",
+          "modified": false
+        },
+        {
+          "source": "tests/conftest.py",
+          "destination": "tests/conftest.py",
+          "sha256": "5a9721ee0bd5a887d9ce1bc294ec0a2345d41def7f66f8d63df24aff04efd29f",
+          "modified": false
+        },
+        {
+          "source": "tests/test_api.py",
+          "destination": "tests/test_api.py",
+          "sha256": "92ae414ece6f2366f0015740aeedddb2dbe222f98a72f15f81ba58dd5d436431",
+          "modified": false
+        },
+        {
+          "source": "tests/test_app.py",
+          "destination": "tests/test_app.py",
+          "sha256": "a9574a4d76213aa2dfa8c9a5e377b3a00706b833dece742f15f41033b3fcbe7b",
+          "modified": false
+        },
+        {
+          "source": "tests/test_bedrock.py",
+          "destination": "tests/test_bedrock.py",
+          "sha256": "2539c21575e815a7f4e6e53c1d6d99f40bc95acf34d1a30909964f2641421f60",
+          "modified": false
+        },
+        {
+          "source": "tests/test_budget.py",
+          "destination": "tests/test_budget.py",
+          "sha256": "cac1e5db8c74fc4f96fdebad419828529dc13a79676d95fccd72c435f9d1834c",
+          "modified": false
+        },
+        {
+          "source": "tests/test_compose.py",
+          "destination": "tests/test_compose.py",
+          "sha256": "4a574bb1166a03503d201317cfc4cf4e1037c80f9d95d41b67a3aad39d997e45",
+          "modified": false
+        },
+        {
+          "source": "tests/test_config.py",
+          "destination": "tests/test_config.py",
+          "sha256": "e9941feff49769cb6efa8daf3bdb25f75e8c7b7df0e9f54fc755fbd887956bd1",
+          "modified": false
+        },
+        {
+          "source": "tests/test_delivery.py",
+          "destination": "tests/test_delivery.py",
+          "sha256": "3a1249447195dae914a33959ec208c7b3e881764d12fbf6bd6151dbadbf1548d",
+          "modified": false
+        },
+        {
+          "source": "tests/test_demo_and_cli.py",
+          "destination": "tests/test_demo_and_cli.py",
+          "sha256": "2ed6e896d7ad05ca69221a338f7735d715ebe268016c0481528f3aee2b9d1b40",
+          "modified": false
+        },
+        {
+          "source": "tests/test_eligibility.py",
+          "destination": "tests/test_eligibility.py",
+          "sha256": "509da6a6861f84ca4d57ef11c7be2f592e37782315b87fa7d278eb555923e51b",
+          "modified": false
+        },
+        {
+          "source": "tests/test_evaluation.py",
+          "destination": "tests/test_evaluation.py",
+          "sha256": "b208a00f6d0e36fab46a51465fe2cea68fe35ccab27a5a10589b5a71eaad14d2",
+          "modified": false
+        },
+        {
+          "source": "tests/test_generation.py",
+          "destination": "tests/test_generation.py",
+          "sha256": "91e5652afc5430b052cb04a6893fd6e9cc397f08bdf052ef4c46e2f33e0b888e",
+          "modified": false
+        },
+        {
+          "source": "tests/test_ingest.py",
+          "destination": "tests/test_ingest.py",
+          "sha256": "dbf3ffe86222c773e2ab64d067fa9b3458900afe89ea21b5381698505a2f99fc",
+          "modified": false
+        },
+        {
+          "source": "tests/test_model_key_disclosure.py",
+          "destination": "tests/test_model_key_disclosure.py",
+          "sha256": "0c4c92fc4ae5992279462b0e8f3aecc1af34b8faf3de88f30bca7369295ee671",
+          "modified": false
+        },
+        {
+          "source": "tests/test_pack.py",
+          "destination": "tests/test_pack.py",
+          "sha256": "6abc027672e36f3e3fdf5998b222d6aabb6d6483b13c265ee71ec4925280e17a",
+          "modified": false
+        },
+        {
+          "source": "tests/test_packaging.py",
+          "destination": "tests/test_packaging.py",
+          "sha256": "a9ca2e2fb857c26fb916da6afa661f24d8353beff5a13e23ad36fda7ae75e7ae",
+          "modified": false
+        },
+        {
+          "source": "tests/test_pipeline_e2e.py",
+          "destination": "tests/test_pipeline_e2e.py",
+          "sha256": "97d166b3c52ce4c72f8d70b7a29612d606f21203a426667dbd9b424e923576bb",
+          "modified": false
+        },
+        {
+          "source": "tests/test_pricing_errors.py",
+          "destination": "tests/test_pricing_errors.py",
+          "sha256": "436bb2dfadac2119aa51a87a4600a53c2fdec088c5d4cc43fd5b06bcc56b64ae",
+          "modified": false
+        },
+        {
+          "source": "tests/test_pricing_refresh.py",
+          "destination": "tests/test_pricing_refresh.py",
+          "sha256": "597334bf686a2ee20ab5f2256ecc49217933d5f8f77cafae7be0964231348497",
+          "modified": false
+        },
+        {
+          "source": "tests/test_regressions_codex.py",
+          "destination": "tests/test_regressions_codex.py",
+          "sha256": "af7cd0d252f71e282ade9b3f8f9aee7649fa99ff4520ba8a65973fca4cfaad6e",
+          "modified": false
+        },
+        {
+          "source": "tests/test_regressions_codex2.py",
+          "destination": "tests/test_regressions_codex2.py",
+          "sha256": "e95faa01d87f2f7977ca9272514759c18ecd1f466d227624fb1e8f6c2388228d",
+          "modified": false
+        },
+        {
+          "source": "tests/test_regressions_codex3.py",
+          "destination": "tests/test_regressions_codex3.py",
+          "sha256": "ee62793162e3d208482c0b163d33e0086756aeb8a288aa8d5180a5016c75d20b",
+          "modified": false
+        },
+        {
+          "source": "tests/test_regressions_codex4.py",
+          "destination": "tests/test_regressions_codex4.py",
+          "sha256": "fbb1b7b6aa7383b179ee78495e0e9e312b5d947e85d7a83f055c3a01a1d19edb",
+          "modified": false
+        },
+        {
+          "source": "tests/test_retries.py",
+          "destination": "tests/test_retries.py",
+          "sha256": "0b7bb6afc6ef61f78eb564915bf25b410b7cf51411fd5438e0d65363ec9b28b1",
+          "modified": false
+        },
+        {
+          "source": "tests/test_scheduling.py",
+          "destination": "tests/test_scheduling.py",
+          "sha256": "5112782a34d608d3713c2c7e94bb7874f1e9b88592ae94e11be0758536020706",
+          "modified": false
+        },
+        {
+          "source": "tests/test_schemas.py",
+          "destination": "tests/test_schemas.py",
+          "sha256": "8af571fcd6a43b0177e533519012beb72368c4906263b8aa6d30fd7e2259596d",
+          "modified": false
+        },
+        {
+          "source": "tests/test_security_mvp.py",
+          "destination": "tests/test_security_mvp.py",
+          "sha256": "c109b1094064339b9cf7a5663943e5fa707dd54fbee34e0a280eafccae1dc956",
+          "modified": false
+        },
+        {
+          "source": "tests/test_smoke_cli.py",
+          "destination": "tests/test_smoke_cli.py",
+          "sha256": "508e1e45a6b47d212a933fb4119e40868bdb68ae5023803bf08e633eac062d70",
+          "modified": false
+        },
+        {
+          "source": "tests/test_store.py",
+          "destination": "tests/test_store.py",
+          "sha256": "8b6a871eef3b352b3c978ddc0b88a1da061031b6a87092ff966d667d3a877cd8",
+          "modified": false
+        },
+        {
+          "source": "tests/test_time_utils.py",
+          "destination": "tests/test_time_utils.py",
+          "sha256": "845862c7e5b61f14acc4d260df146c01e5470761a7eeeb4daeccf96700fca227",
+          "modified": false
+        },
+        {
+          "source": "tests/test_timing.py",
+          "destination": "tests/test_timing.py",
+          "sha256": "a5e0c7d14b64d0e3f8484914fc3749d4e933a6d09c08eb4118a37b903858e2da",
+          "modified": false
+        }
+      ]
+    },
+    {
+      "ref": "origin/kevin/mockup",
+      "commit": "892b667bf975cf9892b62ed5e91302ab3f75eeec",
+      "files": [
+        {
+          "source": ".gitignore",
+          "destination": "prototypes/kevin/.gitignore",
+          "sha256": "ea6ca929b184732efa9c7a8548a8d1f1b564bedb1b463c230a0baf5cd40d10c9",
+          "modified": false
+        },
+        {
+          "source": "README.md",
+          "destination": "prototypes/kevin/README.md",
+          "sha256": "2e9304b40b1f72383aff3f7951a6a4e348032b70ebcd40d7e328d089fb0fdca0",
+          "modified": false
+        },
+        {
+          "source": "app/assets/jaaks-logo.png",
+          "destination": "prototypes/kevin/app/assets/jaaks-logo.png",
+          "sha256": "24555a04ba66e0dfaa4bdd444bcc93d845cc4254ddb3e55c9d8d05ea0ea24da8",
+          "modified": false
+        },
+        {
+          "source": "app/streamlit_app.py",
+          "destination": "prototypes/kevin/app/streamlit_app.py",
+          "sha256": "11b61be914c56a3273d18be9d43f29976f4b95c06e765baa82e3e11c82e00659",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/README.txt",
+          "destination": "data/participant-pack/README.txt",
+          "sha256": "72494bf48a82e4b8fa47cce8d23d3f1ef38f25cc71d53874fb93653f669a8a8b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/data/crop_calendar_bihar_rabi.csv",
+          "destination": "data/participant-pack/data/crop_calendar_bihar_rabi.csv",
+          "sha256": "81dcd1d31f053d3eaedd6ddf31bdeee4d91773176b11c3e31ba6c7ed0259b034",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/data/farmers.csv",
+          "destination": "data/participant-pack/data/farmers.csv",
+          "sha256": "6713571c982463d0dc2c9743e5889eaaa0f6b9ce62dbba7a93234af21bc6052a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/data/golden_set.jsonl",
+          "destination": "data/participant-pack/data/golden_set.jsonl",
+          "sha256": "2a3b29d92d966d72d1f01c357c23a5ed009d6b57a51d326400d4b58b9f6230d7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/data/insights.csv",
+          "destination": "data/participant-pack/data/insights.csv",
+          "sha256": "566b03a202d51718393d7753949848f9816ea4df40d05b022a181709970d99fe",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/data/insights.jsonl",
+          "destination": "data/participant-pack/data/insights.jsonl",
+          "sha256": "30b01b7a741770379732bc943f2006ac6fd2e88117fd6551013b7b448f289350",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/index.html",
+          "destination": "data/participant-pack/index.html",
+          "sha256": "e0d20af1bd2f59ea3366a729e3faa7a3d34aff05784a07f2e30310b5dc6e3624",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/client_cannot_render.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/client_cannot_render.json",
+          "sha256": "a37d2fcc572b425f8698ddd94ea7f066801334423b2e17e248bdde0375d0521e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/completed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/completed.json",
+          "sha256": "a9a9ecde5f17891f69d544ac26fe6c4ac16774d787dccee32c71b4a44793c9a9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/duplicate_answer.json",
+          "sha256": "16c80d84b06bfe98bd7765f47f1aa4a5ca872c747d376753b400dc778112f607",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/farmer_opted_out.json",
+          "sha256": "0c50aa9bcfac4c09a8741406b1df78509431b3d012dc324ae339360608afa513",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/identity_mismatch.json",
+          "sha256": "7f9f4798da38a883edfdd8ac9587565be4689bc8909ecb124fc103fa5755c9e9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/negative_outcome.json",
+          "sha256": "a24eab97aa6bcc27a7d28c04c17686d628afe6881ea19fd960cee0cd85bb3ec1",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/push_not_opened.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/push_not_opened.json",
+          "sha256": "19d047a17c785fbebbccab80fafef5217a81cbf7e22b7315a65e62629b1e7b65",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/push_token_invalid.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/push_token_invalid.json",
+          "sha256": "7618e18bd7bfc2a11c903e7f707262f6212a8320a82cc33a9b1cbb17f17e5a9c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/sheet_closed_partway.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/sheet_closed_partway.json",
+          "sha256": "a89c0cef02e2afb868d203010da4dd841414027cb49aa3f7e725a74c888ab98b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/sheet_dismissed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/sheet_dismissed.json",
+          "sha256": "03b449b8327963284a256b085c73e3352017702003056e6590181f5d96b86368",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/sheet_interrupted.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/sheet_interrupted.json",
+          "sha256": "7d79c91874bbeb9094cb057b4e4328e34ce6ee22a5b02a96c45d7cd273b4ee03",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/survey_closed.json",
+          "sha256": "5e7de47320e5c15c299ec74e9b04162a0e6ecb9897b129a73f0afdd276d21e3f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-confirm/survey_replaced.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-confirm/survey_replaced.json",
+          "sha256": "b0cbecf6f1887407a32f2f70ae77c25bec3ea01304858ce6948acccbcd7bc16d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/client_cannot_render.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/client_cannot_render.json",
+          "sha256": "4f0d7a229a6ab380b6fb1bb4178f26dc9d6f96251e09ba9986594106e5356f7b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/completed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/completed.json",
+          "sha256": "6f05694248472224302d7883338f139ddde8e9e470e9f36d558c40b40e780711",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/duplicate_answer.json",
+          "sha256": "3641a63994a7151a758302fd7b1badd43bfdf480d951242e0fb4253cb93665f8",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/farmer_opted_out.json",
+          "sha256": "5918d30d2bddb057fbf8b30958a71fbe09b112b8c72db19385566492717ab919",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/identity_mismatch.json",
+          "sha256": "c3a42e45f7a32225c1328f1abc0ad84bb30fea53d0e4ecb1452c3910e5ece8c0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/negative_outcome.json",
+          "sha256": "f1bbcb52fffadc0db58df8f84a4954a62866d181e0cc3cb7099af137620c907a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/push_not_opened.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/push_not_opened.json",
+          "sha256": "5b940fdad29ab680512c9b595416381fb29931680698c2cd1f9332096bfb2d0b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/push_token_invalid.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/push_token_invalid.json",
+          "sha256": "0cf09952e5844d5a0ef05dbcb5e7cd438cffe7a066de76d615041d03854f8528",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/sheet_closed_partway.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/sheet_closed_partway.json",
+          "sha256": "f06e68bfcb1f32b8abd58855031c197bee45c5a0aee6a155c5bb0168ff8788d0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/sheet_dismissed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/sheet_dismissed.json",
+          "sha256": "8c0bf6f91a30af33f7d4e38f7aff2631803fa3933a424ae5351fe05642d4e755",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/sheet_interrupted.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/sheet_interrupted.json",
+          "sha256": "7ab64890a9dc616e96ab5080dd22e0da6996ff1f9b904a7404ddb1ddf31c8ab3",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/survey_closed.json",
+          "sha256": "c4d4e8d049e948ace8018e4438aa9e7d22cf9182abfbb422d1e8a560abb0ca98",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-scale/survey_replaced.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-scale/survey_replaced.json",
+          "sha256": "a500a24f099d1fa980b8fe5cb3019a498a595a904907c23cdc35f2a9513d87ff",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/client_cannot_render.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/client_cannot_render.json",
+          "sha256": "d74fa456e6353cb3da11e0dc65d74baa714f66291d7941121d6e26a4946e4cfb",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/completed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/completed.json",
+          "sha256": "a7d2b9670e57e7372e6fa893d8976a1d712ae2bc167870bc0b38c4ee753ea07a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/duplicate_answer.json",
+          "sha256": "d5d878d4504e2c042b1cdfe01c034b168b0375aeebf8ae59a3ccc5d13a25db36",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/farmer_opted_out.json",
+          "sha256": "41fa89c98648dba2a5fdeaa27c5dd77b702fde8c46c6f2ed1022f9d786fc3f20",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/identity_mismatch.json",
+          "sha256": "08a9dd7b2467072e414183ed0b4a127779e7eda9b1b18314e5688871f3e86b1d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/negative_outcome.json",
+          "sha256": "fe9986200deeebf9c145dc721ded1b3b5b892fe59b135c6cda38335f5822c557",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/push_not_opened.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/push_not_opened.json",
+          "sha256": "599dbf1b8e491e604e22edd749923ee7dc477de27dfd128a4bf1e0a6a190b035",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/push_token_invalid.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/push_token_invalid.json",
+          "sha256": "079dfbb9d53f4325e72ef1bc4bfae4f7003f954ba29036ba732d6d429ae795c4",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/sheet_closed_partway.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/sheet_closed_partway.json",
+          "sha256": "4b382459896af2d896c47202b5dd1a3d86571dde4259441960e3a570ffb252d9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/sheet_dismissed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/sheet_dismissed.json",
+          "sha256": "46d7d31429e24aabcab1ebe15e87c51613c52ae77455bd82c999786e68c29a23",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/sheet_interrupted.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/sheet_interrupted.json",
+          "sha256": "f459068d8273c56d0c6fd87ee32b513d11c2442a470428486fb13b1979eedd25",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/survey_closed.json",
+          "sha256": "211c41421faa9ccd05f39c139c8547dcd20dfd9a72773df74c9dfd8afcc2bbe2",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/app/survey-single-select/survey_replaced.json",
+          "destination": "data/participant-pack/json/outcomes/app/survey-single-select/survey_replaced.json",
+          "sha256": "00ae1e3e7095b576906e659b739cb40a6f04482555cb8be833f52bc117b9e1ce",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/completed.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/completed.json",
+          "sha256": "67df95952be836070667e70be3835f6e18c0a2642d9171eea1b4ae8b75a6c66b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/duplicate_answer.json",
+          "sha256": "3ec2bae91f8959faa5fcbdde5159d9b9f6ff07b81de201cacc5a0275a06f17d7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/farmer_declined.json",
+          "sha256": "c1803a5ceb93c40aca81aec592468cf95d0d9471ceb70983e96b5822796e7df5",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/farmer_opted_out.json",
+          "sha256": "c4c76f21096f20a13e92809c90c428ac87e42b78d4fe1dedc0908e6858991497",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/free_text_instead_of_choice.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/free_text_instead_of_choice.json",
+          "sha256": "27d65126e6525b81a41176b0cd6bfd063fc87f5d0fbbd61c0bd1d652cbfd5c9f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/identity_mismatch.json",
+          "sha256": "533a3d1b69afebf60648f3fdda4425218fc101add18c842b00e0b5aeae6e404b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/negative_outcome.json",
+          "sha256": "cb4ba696b4d16404a24044f78b7e2f663a479e71bd873f6ef52cee5d6d3da1ce",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/partial.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/partial.json",
+          "sha256": "c796feea9b22a571221a8abda906d03f198cf57e0263fc72a8fc650cab5f1515",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/survey_closed.json",
+          "sha256": "71afdd14ebe3d8adfc5675ec7e3e18e9e9b74a050f2f450e815b926554803f0a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/tg_bot_blocked.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/tg_bot_blocked.json",
+          "sha256": "a58598f9a0eac028e0b5f62e40551fdd0a68e103867486ed9d5ce6066a950972",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-confirm/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-confirm/window_expired.json",
+          "sha256": "3146bb85fa23998e88afdc2ab0b8b183efd46c74e9ed147af16e50328f13ad82",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/completed.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/completed.json",
+          "sha256": "bc644114c5f2065cd13e13de9d5bdbfe76b6df927067598fda134b4ad5f4a87e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/duplicate_answer.json",
+          "sha256": "53b48196654cc0b593497820bc6d2a1eb156c8103e50b39ea541978594b1d3e9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/farmer_declined.json",
+          "sha256": "77ae8db18fa7dd2a8455c684fa06bdf5580344f3e7a661f80a1b35180adb8716",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/farmer_opted_out.json",
+          "sha256": "9f9a87b5fe05ba910375c1f7997d7fec83aee5265f9806b3b76454213958266c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/free_text_instead_of_choice.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/free_text_instead_of_choice.json",
+          "sha256": "7010b4f80f6f7d977759ff34c92b2606b1af49db5f0c5947697f2938ba342450",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/identity_mismatch.json",
+          "sha256": "8b05517683ac5828d86a684cd3d32cdcd22faa7a0ba4087eebed6447af6ab100",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/negative_outcome.json",
+          "sha256": "b01ae9fb7f232d39ed50fefbe1eb8f759ecdb75f7d79dfd27780e2f7a1126572",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/partial.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/partial.json",
+          "sha256": "267539da647daaec55d2510294becb4af0ad1d302f1d4d674183e167eea4305d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/survey_closed.json",
+          "sha256": "a7b5469ce09a18a0be27e5c1a0ac4dfdd015117db369c4e7826d7c7a1e7810fa",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/tg_bot_blocked.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/tg_bot_blocked.json",
+          "sha256": "f4c74761670399a24368234acc86a69e345f93485945a8d8f5690be48e80c22f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-scale/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-scale/window_expired.json",
+          "sha256": "201e85ad0d32fc0a47a175093f0e455745d096b64f2380efd8a6ddb46561e042",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/completed.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/completed.json",
+          "sha256": "7fdff238891551e79fa87d332d07dc716bad7efdb85fd88ecd90f6cc5a9b0b25",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/duplicate_answer.json",
+          "sha256": "8a4c05807bc94d3f70cb37a5f5fe9e055bdada2bf73342b85d45f51ce2a554a8",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/farmer_declined.json",
+          "sha256": "a5b24773363dc1705661ff0c27d49f8a154cebac585dd5fb0a9661c66556d09d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/farmer_opted_out.json",
+          "sha256": "abed39b8534c71f22c9c05e98ed7c2606335151b89881a996f17708a62d66348",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/free_text_instead_of_choice.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/free_text_instead_of_choice.json",
+          "sha256": "672ac407d949ed46b9f1abd7177dfcb5b06472cd2d695f18c2d8e0af8b9ce24f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/identity_mismatch.json",
+          "sha256": "9c8b2ccc3197a54eb8f8a4d7a370964cc37e6df035c7c6da1d1c9dd3197a47f5",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/negative_outcome.json",
+          "sha256": "5381945854e838a1ffc004d5e60eda4a170fe7182c6a706ad83184d8d64b07ad",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/partial.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/partial.json",
+          "sha256": "f3444a5bbd8d574d5b80ef8c898dc09e31446c20c38e1ece022fd2007fbc5006",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/survey_closed.json",
+          "sha256": "5e2ebf1ac50fb86e33433992d5242a035e3b26ca800bd79ac99f6e89fdc515ec",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/tg_bot_blocked.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/tg_bot_blocked.json",
+          "sha256": "955a23469ac04156202ac7bdf68487f22de180c843aeb8e1cd8107f16cc08e78",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/telegram/survey-single-select/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/telegram/survey-single-select/window_expired.json",
+          "sha256": "fa61b7cd546be9a99394225b8b0e5f0380a1f02a1749706b00567bfa6144ee48",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/completed.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/completed.json",
+          "sha256": "c8aee5a083e25340a109a6c70429a0b1483e9e46098a77ef5baf4cdec3aa23d0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/duplicate_answer.json",
+          "sha256": "88a8d3a30716985bce6429f183a34a511e6483d85cb93125aa6a12bd5d5a829a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/farmer_declined.json",
+          "sha256": "615d6c4307dac8a0ed1bf271ce4bda064bc659d79f24e984e334c76a4c2c76a3",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/farmer_opted_out.json",
+          "sha256": "99de7ae9ba0141a3b5ca96f1681bbd26da71a74f3840320a4c2f188315437089",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/identity_mismatch.json",
+          "sha256": "6d42642c9ba1703e98aefb552d5807e77702d45bec1ad069c8db278a4f185b81",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/keypad_out_of_range.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/keypad_out_of_range.json",
+          "sha256": "0bfc1d7e60546f0685327166ba12c3ef40bd39bd79b452a3b4a997cafdc05d7d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/negative_outcome.json",
+          "sha256": "857e7b27892a8447b4dff2eab71524e900ca5b58658026dc88d097d9d5da783b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/partial.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/partial.json",
+          "sha256": "bd53b4dbc7ae3047b82a501298ae7441a79fbf34c8f54cc193fa8de486de1097",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/speech_not_understood.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/speech_not_understood.json",
+          "sha256": "110c16b87f87daa4e18c6270e4df6f3c43bfccee1e1980364dfd5664bf916a04",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/voice_busy.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/voice_busy.json",
+          "sha256": "74f8f25d07ebc0578f7da02d0ca13014ff70481e251f770b76251113e234f060",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/voice_call_dropped.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/voice_call_dropped.json",
+          "sha256": "487e76c0145f29651ce809d7704f9eac7bda3b3c8401a15a51d1a5978c4051cb",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/voice_no_answer.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/voice_no_answer.json",
+          "sha256": "3a20f1ffd8a7bf6659a9446fc33814bd705649308190a459acce9aa4e75aedf3",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-confirm/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-confirm/window_expired.json",
+          "sha256": "3966248b52718fd42d0305057a88d47f3f1cca82df9008da00bf919c72323e9c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/completed.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/completed.json",
+          "sha256": "0388843dbab1467a3ea92bfdc5905decff1a643c516992b2042db2c9daeb6ebb",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/duplicate_answer.json",
+          "sha256": "5e6df2390ba8d25efd030a7deaacac72559692989345dfc09b6efdb0ac97ec24",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/farmer_declined.json",
+          "sha256": "20dd0d01f696c3c2623564e8961a67416fa2f4bd91c138731ab74ccaa963bf2c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/farmer_opted_out.json",
+          "sha256": "17213596afacc1d4399435d48bf64969106d5d65ea8e151a1e48bc9813f71358",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/identity_mismatch.json",
+          "sha256": "ca07a33e2879af18680063fe830cd8d40eb87e5bf58de8fd2dd3e79a360d12c2",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/keypad_out_of_range.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/keypad_out_of_range.json",
+          "sha256": "c0d5c5d32bc4acdeeb1093a2195af79582aa2f6c6caab77ab4194785ad5dc300",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/negative_outcome.json",
+          "sha256": "8c4f696f774498d72b7ca27717c3af3d090211c54ebfd13d721eec2059b34185",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/partial.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/partial.json",
+          "sha256": "159c913ed92bf33ab619fda8d95f3e6d3c04b7f840ea7aada91bf6ca9bcc118c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/speech_not_understood.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/speech_not_understood.json",
+          "sha256": "5203f96aaab4e60d9d51c5405b784178dfaef571af3a1d19df2640510e2952fa",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/voice_busy.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/voice_busy.json",
+          "sha256": "4aac52e57970e98156c115bbaa83ece22278bcdfdfefece5261f3e4b87608e23",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/voice_call_dropped.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/voice_call_dropped.json",
+          "sha256": "e394f67bd63b01a24f4af37d467f4da44600067e3ffe2c4927f6227b8d628e06",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/voice_no_answer.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/voice_no_answer.json",
+          "sha256": "51c0f0c62f014683aff199966db04368b58d621d799e088c94120c4f8d37c4b2",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-scale/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-scale/window_expired.json",
+          "sha256": "fb8cdaee2b259a0bd6d9f96ccc1551133a2a91d83ae5508ff345c1d08c91882d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/completed.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/completed.json",
+          "sha256": "22a6781c7050a24d9661c79be0f9e4337be0697604a6e2dac57044fb4bd1e1cf",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/duplicate_answer.json",
+          "sha256": "f32336e3c6114eacad19869939f2b6031dd265e0d0b24ecfdbe36cee754d40ab",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/farmer_declined.json",
+          "sha256": "cff4fd02cf037575ebf6886eb0277847146199c0ca8e435841d37e98661c891f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/farmer_opted_out.json",
+          "sha256": "5cf7986b87c9b1189ea5f1144d9073c71650ff21f1d6512f5e84260ce5095c06",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/identity_mismatch.json",
+          "sha256": "46e90474d0ecc2bc8ba23281bb7df00b6ed76e0cfc79f1dc37f964214f7d475b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/keypad_out_of_range.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/keypad_out_of_range.json",
+          "sha256": "18b2238f671f5a9e20f5c50f9be2ede30ef640958d2b769968dcb0feb63948e9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/negative_outcome.json",
+          "sha256": "7d004a6d8c13e447d6641720ad2361171ccaee86097820a929a6ab5328b2d18f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/partial.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/partial.json",
+          "sha256": "742708f897895a6b960adcb57aabe4d4a28d982f213fba9dad4c5d205bc52bca",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/speech_not_understood.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/speech_not_understood.json",
+          "sha256": "6b1c04187eb4515cb5df55f6175379fe54b6026ff300984d0011867f954f97fc",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/voice_busy.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/voice_busy.json",
+          "sha256": "73248a5868bcb849c3a6f3accaa42e92f64eee9f14102c38dacd3d6577fe56ac",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/voice_call_dropped.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/voice_call_dropped.json",
+          "sha256": "2d7f54d8f0fe37cfa21310df0f3755ddf3035a7f9950ffc1ec3b5c65313090b0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/voice_no_answer.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/voice_no_answer.json",
+          "sha256": "6e309ea74acc0e372270dcc2b466f393e1add8b2fc7c2c286d404b2f3135cc7b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/voice/survey-single-select/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/voice/survey-single-select/window_expired.json",
+          "sha256": "d828b646473627b6daabbd14dc24803b8e73d33fb976f8b46f34e0293bd5686e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/client_cannot_render.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/client_cannot_render.json",
+          "sha256": "19add12910dbb8168e7479a7f1ac1b5ae93ef62dff98f6dcc64546888dc30cf6",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/completed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/completed.json",
+          "sha256": "5c200a5f8c8dbc50023ed26ea23713d319b1b658bc9b0c09958959dfe67027f8",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/duplicate_answer.json",
+          "sha256": "781ae79971e092b4f478359c83d00eb290c2662918b98325927858a2580fe629",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/farmer_opted_out.json",
+          "sha256": "7e00bd7bf74a4245cea78bdd7b6e79378ab9cf607556f7f90f8c9baaace8e37d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/identity_mismatch.json",
+          "sha256": "30b87fd7079daf3498b379925acbc58e2e56a07039a43cb31adb9b1cb4637b7f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/negative_outcome.json",
+          "sha256": "f9254c192d342354da313d4ab5eaf1bef553d13f1b598cca7f418f5eec24b9b2",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/sheet_closed_partway.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/sheet_closed_partway.json",
+          "sha256": "f47f211c50e39ae40119984decf397984c979218c26bd6d8073c667aabba6bdf",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/sheet_dismissed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/sheet_dismissed.json",
+          "sha256": "8f28bd9caec6795908e05e38016957aa6836e929e3894906b5c4afc5fedd0376",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/sheet_interrupted.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/sheet_interrupted.json",
+          "sha256": "299ac9cb43ad18abbb600bec4e749506bac375760c9b79cd438fd91d07f7c991",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/survey_closed.json",
+          "sha256": "cfda51ba1985e5029fa1dedb4a23938242e5254f5ebe2b1ef3fab3daee65ab13",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/survey_replaced.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/survey_replaced.json",
+          "sha256": "3ca6ec7340e4167e53992683f3b7e45e747520b770a2d902dce8019988443fe8",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-confirm/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-confirm/window_expired.json",
+          "sha256": "bafa0d852cd2f96d27d76de3024872ef7e9e987d25fa1adc6deb32e0d5e79678",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/client_cannot_render.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/client_cannot_render.json",
+          "sha256": "60eed7de44749900a9aba3090f693fb2494f6f2b12981cccfbc0fb313c1b63d2",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/completed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/completed.json",
+          "sha256": "e6aebc9f7597c4092179fdc96d15dbf26e69199ddadd02aa2fb05cf03bd554f7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/duplicate_answer.json",
+          "sha256": "b6fbe8d36992875364532934a6dc06f4c809eb04de9cc44fa4e4f608a4520385",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/farmer_opted_out.json",
+          "sha256": "d98697f8e1915fbfa3806d9ec6194b8ed21ba00230336320fd7e1f67da977cfd",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/identity_mismatch.json",
+          "sha256": "bb8b6a3f3147c43b9c7772831dbfa5f74d5e3fd5c84bbda8d5fe88ce41d85fb3",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/negative_outcome.json",
+          "sha256": "0e4b74be001db3b2039377c19ad543c731007041f70d7566085eb2e5e6f49332",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/sheet_closed_partway.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/sheet_closed_partway.json",
+          "sha256": "d349081c76338857e9d964fb6109c8616c69f98edcd125b5f18e739bef7973c7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/sheet_dismissed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/sheet_dismissed.json",
+          "sha256": "00765db777c14180889af46a8bddd3dd7ed5bc88f6ed7915e504b57792fc6e9c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/sheet_interrupted.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/sheet_interrupted.json",
+          "sha256": "b71433eab0023e77bddbc54cb9f449caebe6f5b37bce54e1343578ed457fe56b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/survey_closed.json",
+          "sha256": "d7f4c02313fc44c0970b1ba8d61becf01b10c8468fadf1c557786ec0b86029ce",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/survey_replaced.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/survey_replaced.json",
+          "sha256": "2b3ae10a7fae393a5352c92193d57dfe9a29c81c289f384873701d6e1fcf6e23",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-scale/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-scale/window_expired.json",
+          "sha256": "ee95580e03caf49133f3409976f56b17f97c2d3abf456e732ae995f84d358efb",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/client_cannot_render.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/client_cannot_render.json",
+          "sha256": "04ecc654a6469902d2012975af1e99d47ff951c76608ce8cca7b3a24fd3c1b23",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/completed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/completed.json",
+          "sha256": "c6c8096e4a7921fa57fe6f9faa7f4ce3d69cad5714e0299f19c751bd7b3633eb",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/duplicate_answer.json",
+          "sha256": "011e8f9d2665d3cf3c00fcedf4ff8c6ac1b4f92343c9a2f644e8cbe03a79f141",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/farmer_opted_out.json",
+          "sha256": "63faaf8cb7f420e02f3022218569a3bba0b4f937b8fb86ad87640bfd3fd91ebe",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/identity_mismatch.json",
+          "sha256": "b52e668e8c8e0c1f364a1abdb5c7b4f5d56332bcb1ae4f11bfdf9665108fb2c0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/negative_outcome.json",
+          "sha256": "64987388ed173771feff0b37a0c00d8d128caa53d1fcb2a2c0ce60aa1eec4b19",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/sheet_closed_partway.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/sheet_closed_partway.json",
+          "sha256": "7357011bf70cf143b8a5f7da623873844d973e89ac3b7c18c7b8175f661d81d6",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/sheet_dismissed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/sheet_dismissed.json",
+          "sha256": "ea036c9985ab2bb15564575cb7f83709ca5a810e2b687f40a6a1ac3e41108d02",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/sheet_interrupted.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/sheet_interrupted.json",
+          "sha256": "a58db9f3bfef2dc7445ad487deddb2c1e2a929211d91c66fe9096dcde7aae52d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/survey_closed.json",
+          "sha256": "69860cb479ecd300d68f38499c7d3d0b29cf3c0053e00872116b987e02dabdf6",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/survey_replaced.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/survey_replaced.json",
+          "sha256": "f821adf17a860cc7c721b852494a5723df42544423240b99474bfa4515dfa51c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/web/survey-single-select/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/web/survey-single-select/window_expired.json",
+          "sha256": "37a8db12635475a060d76224a00b26f4efe72b341b6af2250d7dc4aac1769aec",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/completed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/completed.json",
+          "sha256": "63933971ce11a34e6a5848ca6946ce9d4aa38108919d144fdbeb5daff97cfd69",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/duplicate_answer.json",
+          "sha256": "7bda060ae597def9c737a0e638ea0295fe89fde246df84e58218bdde7ffa072e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/farmer_declined.json",
+          "sha256": "43f54ed85753035d0904776bd6d105af38615ac2c524dc62e16592ab2a1a40da",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/farmer_opted_out.json",
+          "sha256": "36dfaf9033d6cdcdcb89d80b363eff711f8ac09f442e4f6da5b3803df4f949f6",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/free_text_instead_of_choice.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/free_text_instead_of_choice.json",
+          "sha256": "46a7933c8b840b283ef28cf88041f1fe80ca54345c25cb7fbf392172b3a9b02d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/identity_mismatch.json",
+          "sha256": "945bbb75d68d7025b6392b11f3f3a83e260355c87d197edf81e7ada0100f391c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/negative_outcome.json",
+          "sha256": "e0a377c39a4e75724e4cc255d836fba9d77e0578564d66aa69a59df387cde6a9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/partial.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/partial.json",
+          "sha256": "81a56cda953460c33e19ec77c0c801cae8e62b51f671f2df77eb65fddb029ee3",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/survey_closed.json",
+          "sha256": "15af246ce086b3278859d0224035171f1a283a61fc9a514394c1f8c296ed5279",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/wa_session_window_closed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/wa_session_window_closed.json",
+          "sha256": "9ced772b76a8afc2f3b0ce2013b2895aace8c2fc09dcabf15b2ec8452eafc613",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/wa_undelivered.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/wa_undelivered.json",
+          "sha256": "ea9fa83f50c1cc9ffa5920ddf0cfd18d02cd72de4be13f72d336e8fdcc5fae3e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-confirm/window_expired.json",
+          "sha256": "a72ed263d29af317496010e355bc69b6048655c139db7bb42b154f12b52943ec",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/completed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/completed.json",
+          "sha256": "1f1f5d4001b1c7849caeca975ca20f37b651da2268032b29a06e157f101fed1b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/duplicate_answer.json",
+          "sha256": "957624dddcf47e33ee62cd41a4573f9dcd1abf19e1a7341f04032d4ffb51877a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/farmer_declined.json",
+          "sha256": "0bf2a06ef939e7075a457e804731d3aa9131096b8117157574a7546cef470455",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/farmer_opted_out.json",
+          "sha256": "e9633bc4c16c34c1d580ffe8a20100dfdfefecae32bc155cc255d671040d7925",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/free_text_instead_of_choice.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/free_text_instead_of_choice.json",
+          "sha256": "789574f37fed1554cb3b36a2e005cbe58bbd4222a2e86c6c00f2ac2f79cdd125",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/identity_mismatch.json",
+          "sha256": "7f353de174a471741c67cbbcb487788e08d14390cc989b69834f9e05f856e00d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/negative_outcome.json",
+          "sha256": "cddf2f3c608f4cbfef0cf8bc9ae611ced1a021c3b13ae65a2f5c7015f5ea7426",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/partial.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/partial.json",
+          "sha256": "2c951fb44d07c10bfe40aa0e3b9e411d30241b492219df7ba594a2941965475b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/survey_closed.json",
+          "sha256": "a795342d7c76a094da58cd39d85bb1937b0f52b7dea7b3b1cf24dc052cbae373",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/wa_session_window_closed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/wa_session_window_closed.json",
+          "sha256": "b9518da9656dee1cd86e13f6008b7cf1169b54e328afb8cc9d6364ff7fac6527",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/wa_undelivered.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/wa_undelivered.json",
+          "sha256": "6b221fc7120cc00d4eed6469d27f547040bd817af782d30859585d9728369f65",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-scale/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-scale/window_expired.json",
+          "sha256": "66089a8965c36b3f5d018f82d3c2e8f235de77330ee29e8a87ea5b63bb3bab7e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/completed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/completed.json",
+          "sha256": "4b2b7b7e4415efd81f5759368b3c8cdbb5cbc27885a0d4312972f80482b2d0ec",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/duplicate_answer.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/duplicate_answer.json",
+          "sha256": "cba06690c80307b5ae5317a3e80fcd80c8a5848e13c31fecacaf02b20ff7c9bd",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/farmer_declined.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/farmer_declined.json",
+          "sha256": "0f437b5c7e2821a21dfedaac55534879603d5dbcad27af23ff05a15ee58dff80",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/farmer_opted_out.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/farmer_opted_out.json",
+          "sha256": "a582387170fcdda55317fb7a06d132ff92c903473b6e5393414e6f6dccf9d4b6",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/free_text_instead_of_choice.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/free_text_instead_of_choice.json",
+          "sha256": "9096b6c9b1633bd5cafdbcbad6ce9cb0520d91d944237a6d3c2e98b54e2ff537",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/identity_mismatch.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/identity_mismatch.json",
+          "sha256": "3e834cc8263ee80d4a86c9970a8e467266a97c245c3e9b0c704f0e7a698802d7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/negative_outcome.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/negative_outcome.json",
+          "sha256": "2afd8e4238645c5ad67c2762a22e842c6283f6196a2d800351a90ff8eb92df73",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/partial.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/partial.json",
+          "sha256": "042233c93cbc058d55afe8cf717c847b8e206500b28b63b8474ab55cfa782ad4",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/survey_closed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/survey_closed.json",
+          "sha256": "9c29191b0aeeaa2261ab9211e6c561a6670e8b9547770c01a7cdcab42bd927e9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/wa_session_window_closed.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/wa_session_window_closed.json",
+          "sha256": "f2694f425de696d47d3366ba8c9bde1bd95285bd89febcfc7649fcfa660bae0a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/wa_undelivered.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/wa_undelivered.json",
+          "sha256": "7112d3dedd581bfb0729e6ad62c3fa3646f57628848f448b04bfb40ee03195a1",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/window_expired.json",
+          "destination": "data/participant-pack/json/outcomes/whatsapp/survey-single-select/window_expired.json",
+          "sha256": "c47f4b807661d8e9468fa293f62e100ccc8268576e19e334ef2e643a52beaaa0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/rules/outcome_codes.json",
+          "destination": "data/participant-pack/json/rules/outcome_codes.json",
+          "sha256": "7ce06695288d8209d38f96489ba8365e9ae752e1a5057a1fadc7d9f3395371a0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/rules/rules.json",
+          "destination": "data/participant-pack/json/rules/rules.json",
+          "sha256": "f5fcca7e5c58d07998a8292aec96aafbcf26957fa7f145c75a1ee7480fd0b453",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/insight.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/insight.json",
+          "sha256": "436daa5013a41b0650e221ea924e2e5bc4f5339cabfb9880a21d55eba3678313",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/app.json",
+          "sha256": "2368ba144e830dc7fa76d3471b8df9067c559a3a307654b857b772f09127d1ad",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/telegram.json",
+          "sha256": "89965770dd34cb500fe9cf55ba9a26770784eab232010575dbeba00a6582699d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/voice.json",
+          "sha256": "64e1c802957cad32378822fd54d99ed9ea5c6abaef9d83e4aa4eb2c253e58ef3",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/web.json",
+          "sha256": "4b5a4e7572f481f89e74e6a814f67ea9fe04d69f8c13aac792536ff296084a3f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/en-IN/whatsapp.json",
+          "sha256": "cb9084dbc286a0d19ee839d75cc9c1f2cd1b2810883ad6cfe1b865c6394a68ea",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/app.json",
+          "sha256": "5570411054dbd68c7c048c46ba589225881e86538511effc4f9b90affb9f909e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/telegram.json",
+          "sha256": "941e68bcd2d113599ae2ffae5cdf79dd1b94aaec79b064de984f86a791c5ff50",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/voice.json",
+          "sha256": "337ca0747432d099ae07c71389c5f481fb14e2acd9cd88158a92d61524e23ce3",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/web.json",
+          "sha256": "02ba0cb6209c926e95c34fa285887e9243190fb20264014e60ff872ddbf62295",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/render/hi-IN/whatsapp.json",
+          "sha256": "eccf6321c2db648053e3cbfdb44ce54251c2f5d354b3bb79bb752bb5ef83925f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/app.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/app.json",
+          "sha256": "d71fd7f1b9c320adbec9be76808cb6a09623284781e33d8c564ca3d90c7dc0f0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/telegram.json",
+          "sha256": "b0728b4a7f6a03334000bb73088990226de2bbd017595224d947fce96250a24c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/voice.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/voice.json",
+          "sha256": "01ffe96a12109d5158dcaa7071452fb0e593888e6c9614271fa4286f7449866b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/web.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/web.json",
+          "sha256": "e41334830cf4119ec3384c2b64b089ab1c91beb62087131977055692848d8644",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/responses/whatsapp.json",
+          "sha256": "43a3d83b4f9930874fdaab7df8040b6fbeabe92bcb0e2e0869b87a23385d3c20",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/schedule_handoff.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/schedule_handoff.json",
+          "sha256": "c00363c8e0fc7daa491d3d52e44e62cc1d60d9afdb678c494c5cb8a337dd3ced",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/survey.en-IN.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/survey.en-IN.json",
+          "sha256": "e59821ca6eeb79fa8471cf2e5e8102871add8b3dfb2381bb8af6c73caa182abd",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/survey.hi-IN.json",
+          "destination": "data/participant-pack/json/scenarios/1-mustard-aphid-spray/survey.hi-IN.json",
+          "sha256": "59fe332c778cf21844122e6f7bd0a7bc6a886a4f5d4c03375d83fdb0c7223058",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/insight.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/insight.json",
+          "sha256": "d139f27ae69496ebba7f28460a89365e69eb9624d0675ef39fba8e7798cababf",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/app.json",
+          "sha256": "bfa7933443ff28d2fae20640515a7b2d6f27da9679dbd4c8a206d7cdf07b7b43",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/telegram.json",
+          "sha256": "11631e86e8170e26f8510c743c078a1d8a7eac7080b1c8dbf66b10e1c326b622",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/voice.json",
+          "sha256": "59c72a3bb99e5eb0375002b811a28c4528517155dc04bd899ea07c89a7e369dd",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/web.json",
+          "sha256": "2f7a466455756414f77e90b914c5fc11e60742933a2a19eee50869e380653ff5",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/en-IN/whatsapp.json",
+          "sha256": "b91675bc971f3c64b2eb3a82404ae4de613b416fe293a2c0f181d6ae1cd443b7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/app.json",
+          "sha256": "06dd6ef91e0264b3d78fca7e8fdcf7cd3eb1f45d4fb683b60f6c20a035016915",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/telegram.json",
+          "sha256": "660aa661d29cf5140033d1901771b312eef7f4dc73d280e6a14a7d1da2b5d9a1",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/voice.json",
+          "sha256": "0c1f4a7b7106273db10d3fa59ec998a9d39c4d67a94fccfc49c29a0fd906ded7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/web.json",
+          "sha256": "137aa3be1096ae744043a8b4c2ecf5b2ca92d4d5931b5e0fbf6a83cc7c2bfb6d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/render/hi-IN/whatsapp.json",
+          "sha256": "374267bcef48db73241a977b26505421b04ec8597f9c1963c034c348a954f2e4",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/app.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/app.json",
+          "sha256": "d262e0f019fdf8c1417becc19ec5dbe3a993a58bed660cb8d8e7615e5ac4c88c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/telegram.json",
+          "sha256": "e37dca382df7bf21fd8e32be74c34ac0ed7b22d7402f24d26eabe381af46275c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/voice.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/voice.json",
+          "sha256": "2a848eec1132956fdde4363ea9e7b5cc29aa9aaca42383069057697345a75249",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/web.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/web.json",
+          "sha256": "41b475cc23c7ec22cf7ab46a2bfe3932e9f99842f6220f4f18efb1058e6a48ee",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/responses/whatsapp.json",
+          "sha256": "c4e4eea01b104512d18ac1cb0b2b088c8a802ab179f64806b5811b180c89c080",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/schedule_handoff.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/schedule_handoff.json",
+          "sha256": "0b66f28261fda0a768fd9c3379db55a2ab71d4a6b9a3bc80672ce16a65ad5685",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/survey.en-IN.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/survey.en-IN.json",
+          "sha256": "ab4ed8fc1be6fcfa7288743b39012b59fa3183e8566a585e3ab13dbab07ac3f2",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/survey.hi-IN.json",
+          "destination": "data/participant-pack/json/scenarios/2-wheat-irrigation-timing/survey.hi-IN.json",
+          "sha256": "8338ce490299ecb5e90bb705126a400768eab17492793f223225ef963b2a757d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/insight.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/insight.json",
+          "sha256": "9ec430c2b87e7656d66f6cd3be04e6e36b4e3c2ae8cc0e0fb2ebf052f5be2a18",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/app.json",
+          "sha256": "5540572a9410c08b7c8d21dec2791716c67a7d708b0d87fd475f310829c28047",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/telegram.json",
+          "sha256": "5b1a66b52afc1d56734c0eeeda2316cdfbf004c5b01a69a1102633744af08818",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/voice.json",
+          "sha256": "1fc5dbb7f310562e1632c2c100fae43d684e3e105f9071d54bab60a401f8b363",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/web.json",
+          "sha256": "dac39e3c0650dcb2cd4d5bac13b32dcb98865fda0de4c881e38cc74c3384ab6c",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/en-IN/whatsapp.json",
+          "sha256": "1a4310885021f608b4af247c7e42d161991f70d7bc826970e68f97e3ca4510b9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/app.json",
+          "sha256": "01b4e9afe2028c6e5b6fa077dc14a40e3cb73d3e4739484346866ea475d53395",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/telegram.json",
+          "sha256": "267c53e16aa734851ce2f44e08bef9875f033c19e5255f099def6265017af3a9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/voice.json",
+          "sha256": "fdd310a11572d1e694d70bcac59ae33283786f41a38f9d836cdfc8b6e3032c9a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/web.json",
+          "sha256": "802f653b2e79ca961c14a906015a8d10070ae022a69a63075c03097c1d9519e2",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/render/hi-IN/whatsapp.json",
+          "sha256": "8fd9d0cbdd80d916d5cf6afd266f50fe763d988ad5ce93f6395c9d340052881d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/app.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/app.json",
+          "sha256": "e61ba3ac064bcf1600eeeb5a84033defa2a46cdcaf02de7635adb978068c2203",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/telegram.json",
+          "sha256": "068058b98d2f4f1c2728de79630b025bc209bb128159978198c46ec079fd8c14",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/voice.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/voice.json",
+          "sha256": "7c6e705ca0c7d1c48b2eff21561e931b324711ea2a837366c2f4d0ca568e0841",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/web.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/web.json",
+          "sha256": "50144f4a8d6d4488f69c96ffb807843f81c5b6ec9cd5ea5f7a836d0ab5b9da9d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/responses/whatsapp.json",
+          "sha256": "3ef1a2ec7fd6657808c8d10a15e10a7d463d615161bc4c888494e30c8d0b1af1",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/schedule_handoff.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/schedule_handoff.json",
+          "sha256": "42fabc8cb4a5179a89f0fda9575c6e50d647ba35d8ee8894bc53286823d33d7b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/survey.en-IN.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/survey.en-IN.json",
+          "sha256": "da9d1228b092d849c1336d234704410dc34eabf2396b1cda485ef794f04f7dd0",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/3-potato-blight-wait/survey.hi-IN.json",
+          "destination": "data/participant-pack/json/scenarios/3-potato-blight-wait/survey.hi-IN.json",
+          "sha256": "94cf6656289650b1c51f77e4066d649dd7c144797c2dfcd467baeab43a4b7f65",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/insight.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/insight.json",
+          "sha256": "8ac2320918a1be502a613ef3ab07f527e25a2e6235442675aaabc917d08c292a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/app.json",
+          "sha256": "da84ccee319db790d9b00989596e11b0ad093103f4d3338da3d6ec5fa0954693",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/telegram.json",
+          "sha256": "94c0719f89d9b8e15dd25a6508c8d75925f6b4ac12fd181881681672959663d7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/voice.json",
+          "sha256": "a14d891bd4c64c9acbd1a35882bf610a4e68138594e19fc0f3dc76e873867b02",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/web.json",
+          "sha256": "96ed0ee01c777b1a31a29afa9d386c2679453000c838d6aa9cdb862c0296816a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/en-IN/whatsapp.json",
+          "sha256": "cb1c901c8b18298894f061214849133d33b06b25e45877c63e59b0364eedecd5",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/app.json",
+          "sha256": "c73505736e1a0f2b93fdf93700ba8305f3a7fe77ba41c0898856c7d13faeb1ea",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/telegram.json",
+          "sha256": "756a183cfa27466712028d90fc3e2deed78fa9ad8d5a24ed27f48b6686d35e5f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/voice.json",
+          "sha256": "e4e4b58c11393b67feee912da5722c03cc670415405e728b4d81d35b8b0ffc47",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/web.json",
+          "sha256": "34ab6aa40c7c2a9878ba8bfd7761204b6c52b90f35cb4d8a0fa0fc24574cfa31",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/render/hi-IN/whatsapp.json",
+          "sha256": "6a73f2fa31a717d3d1e6881ea38f53cc1c76bb95df9ef7bacb71da6ebd33e41d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/app.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/app.json",
+          "sha256": "a22560cce1fbf6d84e375bf733a57499b56554c03045f7228a0960e46cc028c1",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/telegram.json",
+          "sha256": "97ba672c6910700a13fc4f5b42936c5eb11532dec69a226518e26d43f9d6282e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/voice.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/voice.json",
+          "sha256": "8f0859829d14946cd69b53a166b72e85f1ff0bab25906bff506203c25b745008",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/web.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/web.json",
+          "sha256": "956059217de253d2b6a2c6ca48b43cfc1969976436dcd2e5cda3601f81dadefe",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/responses/whatsapp.json",
+          "sha256": "99d773684db2294863891bc6957431a3681d8663e1f2247e6b98f287d00c3768",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/schedule_handoff.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/schedule_handoff.json",
+          "sha256": "f28929d913ea363f7b2ec1a3e14b6080887e256b3cd793c67e020769f19fa9c9",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/survey.en-IN.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/survey.en-IN.json",
+          "sha256": "bfc964a16e8ac8a3117366a5c3874a5af6aa29894dcd6f5ca4cdd908159c2232",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/4-cow-vet-escalation/survey.hi-IN.json",
+          "destination": "data/participant-pack/json/scenarios/4-cow-vet-escalation/survey.hi-IN.json",
+          "sha256": "33f6ed17f42312478a2989873639a90c8646c7b1e60e9d66463cd47024db37dc",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/insight.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/insight.json",
+          "sha256": "e757f92e858d3eaf696d9f7dc1fb0f88da5d239f4d0122f44b91ac774a9a178e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/app.json",
+          "sha256": "84139953cf4277608e34f7e1a52c88cca0ce36c2cbdd3dd1b1ea224d4c16a67a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/telegram.json",
+          "sha256": "7fba045a1fb1c5d1ee9be93589f5bd05eb2b790fb4b431779a6db1c6db4a786a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/voice.json",
+          "sha256": "65275e2adbe86e79b5d50c28b343984e3e556ba0f336324227b6661c8442602e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/web.json",
+          "sha256": "757a35f40302ce2475c3739624dc8be68e9c7a6ada2af3e72d17cf3440e61b7a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/en-IN/whatsapp.json",
+          "sha256": "ceae702c53b4002346d88460cf339e5335d36e0bb8ae316f726de57dfff8fa1d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/app.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/app.json",
+          "sha256": "58ce5d60d65dafdb4e74cd5613fbfa93b4bf931d33842dd6e487730c7b459823",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/telegram.json",
+          "sha256": "567e02b46bc4ebd99c2c22b4eee5b0b0fcc412a6da1aff22f46d819b7030d1bf",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/voice.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/voice.json",
+          "sha256": "3035460d7223dddbcbea062115281bfdc8431cd21d118bbe5f3ec85864589b85",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/web.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/web.json",
+          "sha256": "4fbb5a7b981f3f350f1b7bf7690af433962214253a9533388f5ce15c2a8a728f",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/render/hi-IN/whatsapp.json",
+          "sha256": "e8fabbfba77da976f70e318d49afc29f9b1fc7d996e0ba82f46fd641215d1024",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/app.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/app.json",
+          "sha256": "a3b2a9f33eea66fdb745aa0cbe07cd66f17fc2a67b41a62baec93bfc534929eb",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/telegram.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/telegram.json",
+          "sha256": "449ad6685793e82ed91388311fe7f2fbca7b260053a16c4113c209de465bf840",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/voice.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/voice.json",
+          "sha256": "d9449ecd4067953dd5b05e15cc782a926613facb70b3be6612510b6ff71bca73",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/web.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/web.json",
+          "sha256": "38aae87f8add5589d7c0f2a98a79834af845d03b196067a0918276a9a086c32e",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/whatsapp.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/responses/whatsapp.json",
+          "sha256": "74253d8817a9373a56c3b4c08d9905216e6a36a8b5e24a07435d6e3ce932da0b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/schedule_handoff.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/schedule_handoff.json",
+          "sha256": "ba3f1264a19100cdcd1b2285945db79da18d5f62f1cd75e8be82b598e6ca1a39",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/survey.en-IN.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/survey.en-IN.json",
+          "sha256": "56956a26d52241e9ff96a0bbae2f56e54051a08d6b3c1336d2ca304f68dba272",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/5-wheat-variety-plan/survey.hi-IN.json",
+          "destination": "data/participant-pack/json/scenarios/5-wheat-variety-plan/survey.hi-IN.json",
+          "sha256": "fa22e8f902b41701bebab72f63d6df476732754e501cbb89f5413da353156410",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/6-zero-tillage-info-no-survey/insight.json",
+          "destination": "data/participant-pack/json/scenarios/6-zero-tillage-info-no-survey/insight.json",
+          "sha256": "09673438c6e4fd955f2f5d7acac79dd54aac5641643be4bd0f09a978cc08cbbb",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/scenarios/6-zero-tillage-info-no-survey/no_survey.json",
+          "destination": "data/participant-pack/json/scenarios/6-zero-tillage-info-no-survey/no_survey.json",
+          "sha256": "05bce12b82037fddb3bd4656c699be49a36bf8b2b8d2aa487ea68558d6488506",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/schemas/bottom_sheet.schema.json",
+          "destination": "data/participant-pack/json/schemas/bottom_sheet.schema.json",
+          "sha256": "fc980eb3fff24ce2bd4f1d74195b046799ade622c705ac45b48ae18ae3e5f80b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/schemas/insight.schema.json",
+          "destination": "data/participant-pack/json/schemas/insight.schema.json",
+          "sha256": "d1fd48001675d8c865e675ea122e6a308c4b7fbdea83cddcacbd8a8cd0b05aa4",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/schemas/no_survey.schema.json",
+          "destination": "data/participant-pack/json/schemas/no_survey.schema.json",
+          "sha256": "f640105d5469af132baf3b45935ba0c60aa2025845b4d27acf27e09cf5e1c0dd",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/schemas/response.schema.json",
+          "destination": "data/participant-pack/json/schemas/response.schema.json",
+          "sha256": "e034cd996145c20322cde3cf1f082a7d6bbbfde618798eef594efcbc7b3e5c9a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/schemas/schedule_handoff.schema.json",
+          "destination": "data/participant-pack/json/schemas/schedule_handoff.schema.json",
+          "sha256": "7570b15c1c27fe79136390a1418a7271d69e5b9a109dbd60499dba3fad68e6c7",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/json/schemas/survey.schema.json",
+          "destination": "data/participant-pack/json/schemas/survey.schema.json",
+          "sha256": "7dce2bfc5cf084512257aba2b11dd1546e2024857151e2729e596efe2b0ab02b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/spreadsheets/answer_records.xlsx",
+          "destination": "data/participant-pack/spreadsheets/answer_records.xlsx",
+          "sha256": "5018398351431bb2a0d458d0aafc39fb03a875f4b3a18ed171192b1805e9f44b",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/spreadsheets/channel_renderings.xlsx",
+          "destination": "data/participant-pack/spreadsheets/channel_renderings.xlsx",
+          "sha256": "53bbeeeca014ba5d8f397a463c04f197e52a64c52ef6a5ca63531f5ab74f3c77",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/spreadsheets/crop_calendar.xlsx",
+          "destination": "data/participant-pack/spreadsheets/crop_calendar.xlsx",
+          "sha256": "bf152b6c0a8cc8cc36c6feeb0ada5e2e8fda14c495343add603d80540041e88a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/spreadsheets/farmers.xlsx",
+          "destination": "data/participant-pack/spreadsheets/farmers.xlsx",
+          "sha256": "909709bbf8bc36e3ebc6024c0a306e94a35b4a7bd89e4d7912be1c5bef49a31a",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/spreadsheets/golden_set.xlsx",
+          "destination": "data/participant-pack/spreadsheets/golden_set.xlsx",
+          "sha256": "60e4a47fab4c45227cf71ffdb5085257578791ef1989460b54419af7506b6e0d",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/spreadsheets/insights.xlsx",
+          "destination": "data/participant-pack/spreadsheets/insights.xlsx",
+          "sha256": "78d19ed7acc2cb57977cd9cf64e630f93556ceed765b704c80a48c5d02fd12dd",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/spreadsheets/insights_and_surveys.xlsx",
+          "destination": "data/participant-pack/spreadsheets/insights_and_surveys.xlsx",
+          "sha256": "a0f5cee121d8e6be4d5b5a899a66b3e0406e694ba38f93f5212adeb784e75fbe",
+          "modified": false
+        },
+        {
+          "source": "data/participant-pack/spreadsheets/scheduler_handoffs.xlsx",
+          "destination": "data/participant-pack/spreadsheets/scheduler_handoffs.xlsx",
+          "sha256": "37d56cb346ecff52da233cc130296e4657f02473a3c02cac2b5ee35831be58bb",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/__init__.py",
+          "destination": "prototypes/kevin/mel_agent/__init__.py",
+          "sha256": "d6adde36a0dc7185d0e535870cb87b09de60d6cd4c32cba73c245db6cc997844",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/api.py",
+          "destination": "prototypes/kevin/mel_agent/api.py",
+          "sha256": "a815d739771154f13654505798f5350bf98b4f140865e8f93a6b4ac92958a0d6",
+          "modified": true,
+          "reason": "Require operator auth and verify response provenance; avoid reflecting invalid response values."
+        },
+        {
+          "source": "mel_agent/batch.py",
+          "destination": "prototypes/kevin/mel_agent/batch.py",
+          "sha256": "5adaa26c83cac9b30de922d585ccf1d15166d659ac94ef46cc93e208442403eb",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/checker.py",
+          "destination": "prototypes/kevin/mel_agent/checker.py",
+          "sha256": "b8c845f5a2fca16d4f607fac34403d3953092b0d22360385196912e462b19b33",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/cli.py",
+          "destination": "prototypes/kevin/mel_agent/cli.py",
+          "sha256": "45795c6a0e6be64138dd0d9733d3dffda2c4dbd6151fdc924e139cf8b891b79b",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/config.py",
+          "destination": "prototypes/kevin/mel_agent/config.py",
+          "sha256": "16f57b9c45c12da43e85b00623870705677bac34a4e9628f3201e6a5e487c9e7",
+          "modified": true,
+          "reason": "Resolve the unchanged shared participant pack after relocating the prototype."
+        },
+        {
+          "source": "mel_agent/data.py",
+          "destination": "prototypes/kevin/mel_agent/data.py",
+          "sha256": "25063c6f625536716cb0e00569e568eff82519ea8656df1708dace4573c18f0d",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/evaluate.py",
+          "destination": "prototypes/kevin/mel_agent/evaluate.py",
+          "sha256": "ee76e1a63763fb4e791f5d85c1e7888420c46526d2c15f38832e3478151ba81c",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/llm.py",
+          "destination": "prototypes/kevin/mel_agent/llm.py",
+          "sha256": "d9ff081f2d6ab68a53c6f0ceba1b2cb6b4eadc7c319f42fdaa9f538d8cf00385",
+          "modified": true,
+          "reason": "Require explicit paid-inference opt-in before constructing an AWS client."
+        },
+        {
+          "source": "mel_agent/pipeline.py",
+          "destination": "prototypes/kevin/mel_agent/pipeline.py",
+          "sha256": "28e9dc7beff905f8b1ea2be4cc8f78e1711c9f838cae6efba7555567506c6314",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/responses.py",
+          "destination": "prototypes/kevin/mel_agent/responses.py",
+          "sha256": "1e8a13ae6eee494da6a595d5b6dc133d50fa4b7958ac7334e66a00d9ae1c4505",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/rules.py",
+          "destination": "prototypes/kevin/mel_agent/rules.py",
+          "sha256": "45210012d7dbc66daea6e873b034eab367b95e2207fa17dcc34eaa91ced604d1",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/season.py",
+          "destination": "prototypes/kevin/mel_agent/season.py",
+          "sha256": "54da0d10cbd85b359fa79aa072ccc1f7bc4d28d36aca562c48ebdef137b1f60a",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/writer.py",
+          "destination": "prototypes/kevin/mel_agent/writer.py",
+          "sha256": "1d0a48b88a59c9880655f5a8a7a0a2330e18f69d48d73768cd428d3e7c05163b",
+          "modified": false
+        },
+        {
+          "source": "mockup/index.html",
+          "destination": "prototypes/kevin/mockup/index.html",
+          "sha256": "edd2211d147382cc688008c3efb4d45691cf7f6653620a507f04d00680749c1d",
+          "modified": false
+        },
+        {
+          "source": "reports/full-run.json",
+          "destination": "prototypes/kevin/reports/full-run.json",
+          "sha256": "614cb1f1467394b910a9b4d905dbfe4908b79b69aa6de1ba25587c171205b4f7",
+          "modified": false
+        },
+        {
+          "source": "reports/history.jsonl",
+          "destination": "prototypes/kevin/reports/history.jsonl",
+          "sha256": "2c7c29858cfe02ee5f8f17d4209537c8095c334660556c80b3d47f9e4572770c",
+          "modified": false
+        },
+        {
+          "source": "reports/sample-run-prompt3.json",
+          "destination": "prototypes/kevin/reports/sample-run-prompt3.json",
+          "sha256": "dace0d8eb8f9f57e9eda13c46b4d3a4f8b722553ce45f707ab947e30776796f2",
+          "modified": false
+        },
+        {
+          "source": "reports/sample-run-prompt4.json",
+          "destination": "prototypes/kevin/reports/sample-run-prompt4.json",
+          "sha256": "7241b1b54d2df31672307b3b65e64660010100c4911594ee0263423aedbf4366",
+          "modified": false
+        },
+        {
+          "source": "reports/sample-run.json",
+          "destination": "prototypes/kevin/reports/sample-run.json",
+          "sha256": "4993880f320045942ff7f5ea25e95dd3b0d1040b180d8ec862133802c101fbcb",
+          "modified": false
+        },
+        {
+          "source": "reports/v0-baseline-rules.json",
+          "destination": "prototypes/kevin/reports/v0-baseline-rules.json",
+          "sha256": "59c237175785b3cb531c171ddc30f6c338f5999bf8683384a8a238f36ab03b51",
+          "modified": false
+        },
+        {
+          "source": "reports/v1-calibrated-rules.json",
+          "destination": "prototypes/kevin/reports/v1-calibrated-rules.json",
+          "sha256": "f67982179934f7c3b01c5e98caf1ba645ef40d8a005f56d4dbf193c222448821",
+          "modified": false
+        },
+        {
+          "source": "reports/v2-llm-prompt1-en.json",
+          "destination": "prototypes/kevin/reports/v2-llm-prompt1-en.json",
+          "sha256": "f8bdac0c628117f02a3732c0723af402de449ab5b68b9e689fe74c0ea4c13e79",
+          "modified": false
+        },
+        {
+          "source": "reports/v3-llm-prompt2-en.json",
+          "destination": "prototypes/kevin/reports/v3-llm-prompt2-en.json",
+          "sha256": "c06be6deb2f03e2b4265d2153d6a7d2e0a2356fa9a4bf60d6d274c28a2499d75",
+          "modified": false
+        },
+        {
+          "source": "reports/v4-llm-prompt2-hi.json",
+          "destination": "prototypes/kevin/reports/v4-llm-prompt2-hi.json",
+          "sha256": "2c5a856785e9b18aa5737276f1b51f12f9451f60ea97c885f53f633f02d95bc0",
+          "modified": false
+        },
+        {
+          "source": "reports/v5-threshold-0.8.json",
+          "destination": "prototypes/kevin/reports/v5-threshold-0.8.json",
+          "sha256": "b75ecea36e93416a9690c3d555b60f9940b8ca756c9871ba5f7231b12800b945",
+          "modified": false
+        },
+        {
+          "source": "reports/v6-prompt3.json",
+          "destination": "prototypes/kevin/reports/v6-prompt3.json",
+          "sha256": "3cf32523c058d045e0a9b27350de71464796bb4f2bb86051d6ace8ac9e29de6d",
+          "modified": false
+        },
+        {
+          "source": "reports/v7-prompt4.json",
+          "destination": "prototypes/kevin/reports/v7-prompt4.json",
+          "sha256": "ec2faef8d89502cdd08e93bfe51a44ee142af2acfbe1a4b82073fa8faf52deb6",
+          "modified": false
+        },
+        {
+          "source": "requirements.txt",
+          "destination": "prototypes/kevin/requirements.txt",
+          "sha256": "65e1520daf158fc8f3e8827352a9983d7d0a5dc909755a4dedb07c40f11da7ae",
+          "modified": false
+        },
+        {
+          "source": "tests/conftest.py",
+          "destination": "prototypes/kevin/tests/conftest.py",
+          "sha256": "e88397f60648038adcec05ed09da065046481a400e262505fbc1199b8b9875c4",
+          "modified": false
+        },
+        {
+          "source": "tests/test_api.py",
+          "destination": "prototypes/kevin/tests/test_api.py",
+          "sha256": "ebd14ceef10f9cab0ea79d5cdfe271c74be72ebcfa93a7074c0becd663082bce",
+          "modified": true,
+          "reason": "Authenticate existing offline API tests and regress cross-context response rejection."
+        },
+        {
+          "source": "tests/test_checker_pipeline.py",
+          "destination": "prototypes/kevin/tests/test_checker_pipeline.py",
+          "sha256": "9efc6e23128f55d3567e12d07dabb8a3568baed3b202d78a42abda139cde6d9f",
+          "modified": false
+        },
+        {
+          "source": "tests/test_season.py",
+          "destination": "prototypes/kevin/tests/test_season.py",
+          "sha256": "f92e6cc2ab6a3fa03bf372a1fab9a7892a6c0f8266e30cfef55fda24c5ebd559",
+          "modified": false
+        }
+      ]
+    },
+    {
+      "ref": "origin/feature/jeremiah-farmerloop",
+      "commit": "cd30a6e61c3d645e3d1dc7730ee0f949b635fd0c",
+      "files": [
+        {
+          "source": "farmerloop/.gitignore",
+          "destination": "farmerloop/.gitignore",
+          "sha256": "5fdcbd517a8b578ed5be665312d5b2299e8303641c476ec2eda7123f2461c630",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/README.md",
+          "destination": "farmerloop/README.md",
+          "sha256": "61d71254337e761e5fa04cd7429430141f1f2c3ef35281e3f1726432f958fb4f",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/docs/REGIONAL_LEARNING_RADAR_IDEAS.md",
+          "destination": "farmerloop/docs/REGIONAL_LEARNING_RADAR_IDEAS.md",
+          "sha256": "fb9f4e5ea25cb0833aee72495a02caecd7333e2faca3fa84c2fbedf9c18533a6",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/pyproject.toml",
+          "destination": "farmerloop/pyproject.toml",
+          "sha256": "c299ad19e87bae7190d10d8dea7facb2afe6549369758efaf2baa2654054da3e",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/scripts/smoke_load.py",
+          "destination": "farmerloop/scripts/smoke_load.py",
+          "sha256": "6f45801a831ef4fa92d08d075adb3dfae36539f177974376da4c1a7a84393fab",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/scripts/verify_ids.py",
+          "destination": "farmerloop/scripts/verify_ids.py",
+          "sha256": "a799088374138c82a7b51d7921ec41339c5a99fdb84a4eea2efaccefd8a3a04f",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/__init__.py",
+          "destination": "farmerloop/src/farmerloop/__init__.py",
+          "sha256": "bfd35a981038464dd3510bbf03b4f9c46f01f6ed64aaa1489492c465f2ef187b",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/config.py",
+          "destination": "farmerloop/src/farmerloop/config.py",
+          "sha256": "9e3bd7d4df8ca04bb25d7f8fb9817dfe174f2ccd2e6646976075ba799cf31d9a",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/dataio.py",
+          "destination": "farmerloop/src/farmerloop/dataio.py",
+          "sha256": "d649ff412f862db47416ec228e70c4c2a25fd60f37e61ce3ba93f501775df784",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/decide.py",
+          "destination": "farmerloop/src/farmerloop/decide.py",
+          "sha256": "4afd300c77baa9fa4bfcc9f495552fdfd2ad3a9b1c78ba57522fa561fd063efe",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/demo.py",
+          "destination": "farmerloop/src/farmerloop/demo.py",
+          "sha256": "ae130dd26899f52357698379040f8e4f529ee0a88df42b764f68015dc1935d59",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/emit.py",
+          "destination": "farmerloop/src/farmerloop/emit.py",
+          "sha256": "21e99fca5e643b5bd53e95d9285ba6963d08385aabadd444034ad6632d78f2d8",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/evaluate.py",
+          "destination": "farmerloop/src/farmerloop/evaluate.py",
+          "sha256": "2dbfc5f1e573e76f2f4ba62b9cafc9f7496a16968734b9128b00ba8644145bc9",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/feedback_demo.py",
+          "destination": "farmerloop/src/farmerloop/feedback_demo.py",
+          "sha256": "1d00b94cb6a556fdc70ec0a2df00d6bf9944f419d993e3155b259d135b618d70",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/generate_base.py",
+          "destination": "farmerloop/src/farmerloop/generate_base.py",
+          "sha256": "915b33e296f127fbc6b3be4ec3395346d9eb8849db7e5c2f184aa4a96c4c350e",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/generate_bedrock.py",
+          "destination": "farmerloop/src/farmerloop/generate_bedrock.py",
+          "sha256": "4df8e4647ccb85b17a65a8f187354ea178b3edd6da32cd3f126a1ec46c5cbfdb",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/generate_fake.py",
+          "destination": "farmerloop/src/farmerloop/generate_fake.py",
+          "sha256": "76e677321d3b78f3a8790fb28d5486425e923a57819789b9a516d4bf6bce9353",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/ids.py",
+          "destination": "farmerloop/src/farmerloop/ids.py",
+          "sha256": "ec7dbf53655f8fab8b91d6eb5c6376b0f07d48c8e04535a0beb8c9a757e7e882",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/models.py",
+          "destination": "farmerloop/src/farmerloop/models.py",
+          "sha256": "64124041e94f6a2fe9b4ea5525c9a2f399d847adaaf6dfd88bbd7e355486d0f9",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/outcomes.py",
+          "destination": "farmerloop/src/farmerloop/outcomes.py",
+          "sha256": "db3993b85c1fae7fe4a3a109cf764e52572ed504e647d289df2f97e65f71fed6",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/respond.py",
+          "destination": "farmerloop/src/farmerloop/respond.py",
+          "sha256": "a2a18b7c0049a1a1f955519855ea33ac3e878cf9fec8d2163d2b2f457c5184dc",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/schedule.py",
+          "destination": "farmerloop/src/farmerloop/schedule.py",
+          "sha256": "a00c2a7f251a854280ecd1c64a7747c2aed8c1206d275d37bd88a3bd1c9e33a8",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/simulate.py",
+          "destination": "farmerloop/src/farmerloop/simulate.py",
+          "sha256": "32517bf76c18e92a88a4df17f90120331fef140dfb42c306c9ab8fb5a1c76cc7",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/timing.py",
+          "destination": "farmerloop/src/farmerloop/timing.py",
+          "sha256": "023f53d9c11021aa799fff2178cf5c649239df17ba999c424f429aa75352962a",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/src/farmerloop/validate.py",
+          "destination": "farmerloop/src/farmerloop/validate.py",
+          "sha256": "550d10892689f52d872691c6ef3cd62f2de3447707024eea5d1555594a451977",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/__init__.py",
+          "destination": "farmerloop/tests/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/helpers.py",
+          "destination": "farmerloop/tests/helpers.py",
+          "sha256": "1e7a4a01b5767c8af9a3ca481ed77b73f80d09a4628c3677075edf05ac48f1f3",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_decide_golden.py",
+          "destination": "farmerloop/tests/test_decide_golden.py",
+          "sha256": "2a550ea911a3c8ac8bce77ace0f078fb533e1ca51bb25fce4d1ed2c765a8d68b",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_emit.py",
+          "destination": "farmerloop/tests/test_emit.py",
+          "sha256": "84cd9305c7e05b85687265270ba52ab82f9f25a0d997c415643c3e6c038adfd8",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_generate_bedrock.py",
+          "destination": "farmerloop/tests/test_generate_bedrock.py",
+          "sha256": "35188958e9e978e0e9e2f05090cc687208b8157200232e7c19b34f0045c7b6b2",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_generate_fake.py",
+          "destination": "farmerloop/tests/test_generate_fake.py",
+          "sha256": "9bccf205da20667f79a902ad4116f920d7fcfc10cf4beb632497a3345ebab18d",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_ids.py",
+          "destination": "farmerloop/tests/test_ids.py",
+          "sha256": "e5f26b9eac48cfa52244c2a4b3fec4ffcc430834fd7058e894a4e69f2b106f51",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_outcomes_conformance.py",
+          "destination": "farmerloop/tests/test_outcomes_conformance.py",
+          "sha256": "ca62ff4afe242252a01fc04149362c1a739806bcee949e788cf53bc1a4a52a8b",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_respond.py",
+          "destination": "farmerloop/tests/test_respond.py",
+          "sha256": "17a42d7c818b20c9acc00027a037e818847ff3e1b39f3fed1c5e9cbba0f86b24",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_schedule.py",
+          "destination": "farmerloop/tests/test_schedule.py",
+          "sha256": "5641b3a236c78d43051f9511963d8811c79c52143e9d805e4d1fd0d365299052",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_timing.py",
+          "destination": "farmerloop/tests/test_timing.py",
+          "sha256": "57f2b7013a23c59ca77547d42ec4fbd6db5a73b86ac72518a5c3574c8a6ea0c8",
+          "modified": false
+        },
+        {
+          "source": "farmerloop/tests/test_validate.py",
+          "destination": "farmerloop/tests/test_validate.py",
+          "sha256": "f37f917c0ebac048dafaaad342070cc1c6803342dce3af3805b8912f85136c08",
+          "modified": false
+        },
+        {
+          "source": "README.md",
+          "destination": "docs/source-snapshots/farmerloop-branch/README.md",
+          "sha256": "a153e15f96f50485856839ade9e9de510f2496b0f41bf4adc0f03bdcb9ab4230",
+          "modified": false
+        },
+        {
+          "source": "app/streamlit_app.py",
+          "destination": "docs/source-snapshots/farmerloop-branch/app/streamlit_app.py",
+          "sha256": "2f0f0efa1c1a534367cd60402d5ceae7fd286b2196fecff872aa73bf5aaed2ae",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/checker.py",
+          "destination": "docs/source-snapshots/farmerloop-branch/mel_agent/checker.py",
+          "sha256": "d85ec6f3a44d4d48aeaec5481e23c7f7c549eb5c411baff04a7a4af032a2805d",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/cli.py",
+          "destination": "docs/source-snapshots/farmerloop-branch/mel_agent/cli.py",
+          "sha256": "f3b191339befa67783e3b851e8f4a7d29c59010c612352512c032ca83773cb5e",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/config.py",
+          "destination": "docs/source-snapshots/farmerloop-branch/mel_agent/config.py",
+          "sha256": "df12bfce2c15ce55e6b6c81d851d60788bb8d248a65a824663131e889f3bd3f6",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/llm.py",
+          "destination": "docs/source-snapshots/farmerloop-branch/mel_agent/llm.py",
+          "sha256": "afdff97740ca3a4209200101595f15b85f2a154d694101d303caef6e7e322e66",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/pipeline.py",
+          "destination": "docs/source-snapshots/farmerloop-branch/mel_agent/pipeline.py",
+          "sha256": "ce83a655b254c7a8a362cdd8b53d9f163a82d769f22268421e1c9fd43a32edab",
+          "modified": false
+        },
+        {
+          "source": "mel_agent/writer.py",
+          "destination": "docs/source-snapshots/farmerloop-branch/mel_agent/writer.py",
+          "sha256": "061ea085417dd552bd800f76f461e83e2c9ca7d6f804a0ea59f8c24d0c75ae06",
+          "modified": false
+        },
+        {
+          "source": "reports/history.jsonl",
+          "destination": "docs/source-snapshots/farmerloop-branch/reports/history.jsonl",
+          "sha256": "79c49cb968a6c97fe8437597f888c9ec01d6a5f08d45773adf828d004554fa3f",
+          "modified": false
+        },
+        {
+          "source": "requirements.txt",
+          "destination": "docs/source-snapshots/farmerloop-branch/requirements.txt",
+          "sha256": "16cee7040a2372233fb0a9aee9cca6e7ae8df26b4cb3e33faa21d3b14c9036c6",
+          "modified": false
+        }
+      ]
+    },
+    {
+      "ref": "codex/farmerchat-independent-evidence",
+      "commit": "3568001763d1d433e5b2fb4920e3dfc36b45b647",
+      "files": [
+        {
+          "source": "docs/farmerchat-briefing/README.md",
+          "destination": "docs/farmerchat-briefing/README.md",
+          "sha256": "3aa00dada3998f4aa6aa5b6563ce948a2b2b6d3d14d06041dba7e6c778cff251",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-diagrams-output.md",
+          "destination": "docs/farmerchat-briefing/claude-diagrams-output.md",
+          "sha256": "5465bf3bdd736a2f6f7aa433b4406c01b17002428e69515d4b2a74d7d321b5c1",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-diagrams.json",
+          "destination": "docs/farmerchat-briefing/claude-diagrams.json",
+          "sha256": "469784299d4711c8ab4e6490d669c9397f9fa09d90620e5f7df1ca060e7b462e",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-independent-a-output.txt",
+          "destination": "docs/farmerchat-briefing/claude-independent-a-output.txt",
+          "sha256": "14a80a9936ef5a72e4306bd9fbf82e156cbaf92bf051349aa0e24aefadfb4cee",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-independent-a.json",
+          "destination": "docs/farmerchat-briefing/claude-independent-a.json",
+          "sha256": "53a030bac546ab88e0994d54235cf15af3384f857c632dd81e786a760338af25",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-independent-b-output.txt",
+          "destination": "docs/farmerchat-briefing/claude-independent-b-output.txt",
+          "sha256": "ac50679df4717d108629bfeaa12c6167f9f1ed45d895877da179d1f9e1b35efe",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-independent-b.json",
+          "destination": "docs/farmerchat-briefing/claude-independent-b.json",
+          "sha256": "fc81336a6faf1f51d9793743c3bf788d079846710777253fcb9f694bf346bbcd",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-summary.md",
+          "destination": "docs/farmerchat-briefing/claude-summary.md",
+          "sha256": "fc6d455a412d087a539334e1d42c030ce2f2acaad21cb73b1753bab92b1204c6",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/gemini-review.md",
+          "destination": "docs/farmerchat-briefing/gemini-review.md",
+          "sha256": "ede716c8499784a324985de2258262e65b78418dc4484ceac8043d086ac1382a",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/index.html",
+          "destination": "docs/farmerchat-briefing/index.html",
+          "sha256": "b92d232553fbe8c7ba21b4abc8c1da26831f9f610ce2ac3dfec1b4cf7f9adb48",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/provenance.json",
+          "destination": "docs/farmerchat-briefing/provenance.json",
+          "sha256": "979303d057ddedc44e50de55ce94182cdced9fcd29b2366850f143116b9a0610",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/security-independent.md",
+          "destination": "docs/farmerchat-briefing/security-independent.md",
+          "sha256": "ddce45e80b7428eba7bc439bf31f7e59bec8a2fc35eb3db86f5dda2d4bef4d3a",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/security-review.md",
+          "destination": "docs/farmerchat-briefing/security-review.md",
+          "sha256": "d25932963d81c7e73829dc5c1270f7ef1ed0c494c74d4ba93b4335734f62fc58",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/verification-independent.md",
+          "destination": "docs/farmerchat-briefing/verification-independent.md",
+          "sha256": "871298f91bb6f037bc18296d076dc3abb3442bb3835c6d152766077122b5d5b2",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/verification.md",
+          "destination": "docs/farmerchat-briefing/verification.md",
+          "sha256": "cc97e20fcfba9067d3132ec6dbef6ba50d75607fb6ea1dfc58d5ccee33d83b69",
+          "modified": false
+        },
+        {
+          "source": "tests/briefing.acceptance.mjs",
+          "destination": "tests/briefing.acceptance.mjs",
+          "sha256": "e1e374c3e3e6783e3d78b3fe415524298f01b31dcfcd006241f5b40c608252b1",
+          "modified": false
+        }
+      ]
+    },
+    {
+      "ref": "codex/farmerchat-briefing-local-validation",
+      "commit": "c1576bc1c051a1db996c4860d1cad75b9e53ff17",
+      "files": [
+        {
+          "source": "docs/farmerchat-briefing/README.md",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/README.md",
+          "sha256": "3035e2a6b88e1a7bfcb9befd79995b323deddec5accc2bdc0eee778dafd46bde",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-diagrams-output.md",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/claude-diagrams-output.md",
+          "sha256": "5465bf3bdd736a2f6f7aa433b4406c01b17002428e69515d4b2a74d7d321b5c1",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-diagrams.json",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/claude-diagrams.json",
+          "sha256": "469784299d4711c8ab4e6490d669c9397f9fa09d90620e5f7df1ca060e7b462e",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/claude-summary.md",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/claude-summary.md",
+          "sha256": "fc6d455a412d087a539334e1d42c030ce2f2acaad21cb73b1753bab92b1204c6",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/gemini-review.md",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/gemini-review.md",
+          "sha256": "ede716c8499784a324985de2258262e65b78418dc4484ceac8043d086ac1382a",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/index.html",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/index.html",
+          "sha256": "2e38990b4493bfe09c1e679a936fb6b028d306699d9889815ff8c6db2d740555",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/provenance.json",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/provenance.json",
+          "sha256": "a165d5615d6acf07a9b74514e64759bd06cd8335546e99743cf42c956413b1cf",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/security-review.md",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/security-review.md",
+          "sha256": "d25932963d81c7e73829dc5c1270f7ef1ed0c494c74d4ba93b4335734f62fc58",
+          "modified": false
+        },
+        {
+          "source": "docs/farmerchat-briefing/verification.md",
+          "destination": "docs/source-snapshots/local-validation/docs/farmerchat-briefing/verification.md",
+          "sha256": "cc97e20fcfba9067d3132ec6dbef6ba50d75607fb6ea1dfc58d5ccee33d83b69",
+          "modified": false
+        },
+        {
+          "source": "tests/briefing.acceptance.mjs",
+          "destination": "docs/source-snapshots/local-validation/tests/briefing.acceptance.mjs",
+          "sha256": "b05a9d9c5396a8a8aa13492a0db5e5a4bf93e41300bc866c38722f0a85241e93",
+          "modified": false
+        }
+      ]
+    },
+    {
+      "ref": "origin/codex/farmerchat-plan-briefing",
+      "commit": "c327f7e0fe58561742775f563f2b173c4431eb22",
+      "files": [
+        {
+          "source": "docs/farmerchat-briefing/index.html",
+          "destination": "docs/source-snapshots/remote-briefing/docs/farmerchat-briefing/index.html",
+          "sha256": "b92d232553fbe8c7ba21b4abc8c1da26831f9f610ce2ac3dfec1b4cf7f9adb48",
+          "modified": false
+        }
+      ]
+    }
+  ]
+}

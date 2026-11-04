@@ -1,0 +1,23 @@
+# EXAMPLE ONLY. Set these from the authorized target account owner, never a personal profile by default.
+target_account_id = "123456789012"
+aws_region        = "us-east-1"
+availability_zone = "us-east-1a"
+second_availability_zone = "us-east-1b"
+enable_https = false # HTTP synthetic demo now; APIs are SSM-only.
+# domain_name = "mel.example.org" # Optional future HTTPS upgrade.
+# route53_zone_id = "ZREPLACEWITHPUBLICZONEID"
+name              = "team41-mel"
+deploy_host       = false
+# Once repositories exist and all three images have been pushed by an authorized operator:
+# deploy_host = true
+# image_digests = {
+#   api        = "sha256:<64 lowercase hex characters>"
+#   kevin      = "sha256:<64 lowercase hex characters>"
+#   farmerloop = "sha256:<64 lowercase hex characters>"
+# }
+# Existing secret JSON: primary_token and kevin_token (separate random tokens >=16 characters).
+# operator_secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:team41/operators-xxxxxx"
+# Paid inference remains disabled. The primary API alone can opt in after target owner authorization.
+allow_paid_inference = false
+bedrock_resource_arns = []
+bedrock_model_id      = ""

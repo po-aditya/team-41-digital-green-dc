@@ -1,0 +1,8 @@
+# Optional existing backend, provisioned separately by target account administrators.
+# Add terraform { backend "s3" {} } to a local backend.tf before using this file.
+# Never include secret access keys here. S3 state encryption/permissions are the administrator's responsibility.
+bucket       = "REPLACE-WITH-AUTHORIZED-TARGET-STATE-BUCKET"
+key          = "team41/sandbox.tfstate"
+region       = "REPLACE-WITH-TARGET-REGION"
+encrypt      = true
+use_lockfile = true

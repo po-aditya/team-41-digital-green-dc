@@ -1,0 +1,133 @@
+#!/bin/bash
+set -euo pipefail
+# Do not enable shell tracing: secrets are retrieved only at service start.
+dnf install -y docker python3
+systemctl enable --now amazon-ssm-agent
+install -d -m 0755 /opt/team41 /srv/team41
+cat > /opt/team41/mount-data.sh <<'STORAGE'
+#!/bin/bash
+set -euo pipefail
+# Nitro EBS names contain the volume ID without its hyphen. Never select an arbitrary disk.
+device="/dev/disk/by-id/nvme-Amazon_Elastic_Block_Store_${replace(volume_id, "-", "")}"
+for _ in $(seq 1 120); do
+  [ -b "$device" ] && break
+  sleep 5
+done
+[ -b "$device" ] || { echo 'Expected persistent EBS device did not appear'; exit 1; }
+filesystem=$(blkid -o value -s TYPE "$device" || true)
+if [ -z "$filesystem" ]; then
+  # Refuse any unknown signature/partitioned disk rather than erase existing content.
+  [ -z "$(wipefs -n --noheadings -o TYPE "$device")" ] || { echo 'Unrecognized disk signatures'; exit 1; }
+  mkfs.ext4 "$device"
+elif [ "$filesystem" != ext4 ]; then
+  echo 'Expected ext4 persistent volume; refusing to format existing filesystem'
+  exit 1
+fi
+mountpoint -q /srv/team41 || mount -o defaults,nodev,nosuid "$device" /srv/team41
+[ "$(readlink -f "$(findmnt -n -o SOURCE /srv/team41)")" = "$(readlink -f "$device")" ] || exit 1
+install -d -o 10001 -g 10001 -m 0700 /srv/team41/api /srv/team41/kevin
+STORAGE
+chmod 0700 /opt/team41/mount-data.sh
+cat > /etc/systemd/system/team41-storage.service <<'STORAGEUNIT'
+[Unit]
+Description=Mount persistent Team41 data before any Docker restart
+Before=docker.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/team41/mount-data.sh
+TimeoutStartSec=660
+[Install]
+WantedBy=multi-user.target
+STORAGEUNIT
+install -d -m 0755 /etc/systemd/system/docker.service.d
+cat > /etc/systemd/system/docker.service.d/team41-storage.conf <<'ORDER'
+[Unit]
+Requires=team41-storage.service
+After=team41-storage.service
+ORDER
+cat > /opt/team41/start.sh <<'START'
+#!/bin/bash
+set -euo pipefail
+umask 077
+/opt/team41/mount-data.sh
+install -d -m 0700 /run/team41
+# Fetch only at runtime. Terraform/state/user_data contain the ARN, never token values.
+aws --region '${region}' secretsmanager get-secret-value --secret-id '${secret_arn}' --query SecretString --output text |
+python3 -c 'import json,sys,os
+v=json.load(sys.stdin)
+for key in ("primary_token","kevin_token"):
+    token=v.get(key)
+    if not isinstance(token,str) or len(token)<16 or not token.isascii() or any(c.isspace() for c in token):
+        raise SystemExit("operator secret must contain two ASCII tokens of at least 16 characters without whitespace")
+for name,key,env in (("primary","primary_token","MEL_OPERATOR_TOKEN"),("kevin","kevin_token","KEVIN_OPERATOR_TOKEN")):
+    path="/run/team41/"+name+".env"
+    with open(path,"w") as f: f.write(env+"="+v[key]+"\n")
+    os.chmod(path,0o600)'
+chmod 600 /run/team41/*.env
+trap 'docker logout '"'"'${registry}'"'"' >/dev/null 2>&1 || true' EXIT
+aws --region '${region}' ecr get-login-password | docker login --username AWS --password-stdin '${registry}'
+for image in '${api_image}' '${kevin_image}' '${farmerloop_image}'; do docker pull "$image"; done
+# Reject metadata access from ordinary bridge containers. Only trusted primary uses host networking.
+iptables -C DOCKER-USER -d 169.254.169.254/32 -j REJECT 2>/dev/null || iptables -I DOCKER-USER -d 169.254.169.254/32 -j REJECT
+# One primary writer on one encrypted local EBS filesystem. No EFS/network SQLite.
+for name in team41-api team41-kevin-api team41-kevin-ui; do docker rm -f "$name" 2>/dev/null || true; done
+docker run -d --name team41-api --restart unless-stopped --network host \
+  --read-only --tmpfs /tmp:rw,noexec,nosuid,size=64m --cap-drop ALL --security-opt no-new-privileges \
+  --log-driver json-file --log-opt max-size=10m --log-opt max-file=3 \
+  --env-file /run/team41/primary.env -e MEL_APP_ENV=prod -e MEL_LOG_LEVEL=INFO \
+  -e MEL_ALLOW_PAID_INFERENCE='${paid}' -e MEL_GENERATION_PROVIDER='%{ if paid == "true" }bedrock%{ else }template%{ endif }' \
+  -e MEL_BEDROCK_REGION='${region}' -e MEL_BEDROCK_MODEL_ID='${model_id}' \
+  -v /srv/team41/api:/app/var '${api_image}' \
+  uvicorn mel_agent.main:app --host 0.0.0.0 --port 8000
+for runtime in api ui; do
+  if [ "$runtime" = api ]; then
+    command=(uvicorn mel_agent.api:app --host 0.0.0.0 --port 8001)
+    port=8001
+    env_args=(--env-file /run/team41/kevin.env)
+  else
+    command=(streamlit run app/streamlit_app.py --server.address 0.0.0.0 --server.port 8501 --browser.gatherUsageStats false)
+    port=8501
+    env_args=()
+  fi
+  docker run -d --name "team41-kevin-$runtime" --restart unless-stopped \
+    --read-only --tmpfs /tmp:rw,noexec,nosuid,size=128m --cap-drop ALL --security-opt no-new-privileges \
+    --log-driver json-file --log-opt max-size=10m --log-opt max-file=3 \
+    "$${env_args[@]}" -e AWS_EC2_METADATA_DISABLED=true -e MEL_ALLOW_PAID_INFERENCE=false \
+    -e MEL_OUT_DIR=/app/var/out -v /srv/team41/kevin:/app/var \
+    -p "$port:$port" '${kevin_image}' "$${command[@]}"
+done
+# FarmerLoop is deliberately an on-demand offline job, never an automatic paid call.
+cat > /opt/team41/farmerloop-demo <<'JOB'
+#!/bin/bash
+set -euo pipefail
+exec docker run --rm --read-only --tmpfs /tmp:rw,noexec,nosuid,size=64m \
+  --cap-drop ALL --security-opt no-new-privileges --network none \
+  -e AWS_EC2_METADATA_DISABLED=true -e MEL_ALLOW_PAID_INFERENCE=false \
+  '${farmerloop_image}' python -m farmerloop.feedback_demo
+JOB
+chmod 0750 /opt/team41/farmerloop-demo
+# Do not keep Docker's short-lived ECR auth token on disk after pulls.
+docker logout '${registry}'
+START
+chmod 0700 /opt/team41/start.sh
+cat > /etc/systemd/system/team41.service <<'UNIT'
+[Unit]
+Description=Team41 isolated sandbox application runtimes
+Requires=docker.service
+After=network-online.target docker.service
+Wants=network-online.target
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/team41/start.sh
+ExecStop=-/usr/bin/docker stop team41-api team41-kevin-api team41-kevin-ui
+Restart=on-failure
+RestartSec=30
+TimeoutStartSec=900
+[Install]
+WantedBy=multi-user.target
+UNIT
+systemctl daemon-reload
+systemctl enable --now team41-storage.service docker.service
+systemctl enable --now team41.service
