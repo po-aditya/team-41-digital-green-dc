@@ -80,6 +80,52 @@ def cmd_generate(a):
     print(f"report: {_rel(report)}")
 
 
+def cmd_full_report(a):
+    """reports/full-run.json: the generate results for every insight, plus the season simulation."""
+    population = data.insights()
+    path = config.OUT / (a.results or "results.jsonl")
+    run_settings = batch.settings(a.policy, a.language)
+    all_results = batch.load_results(path)
+    missing = [i["insight_id"] for i in population if i["insight_id"] not in all_results]
+    other = [k for k, r in all_results.items() if r.get("run_settings") != run_settings]
+    if missing or other:
+        raise SystemExit(f"not a complete run under {run_settings}: {len(missing)} insights missing, "
+                         f"{len(other)} results made with other settings. Run generate first.")
+    results = [all_results[i["insight_id"]] for i in population]
+    by_id = data.insights_by_id()
+    sessions = data.read_jsonl(path.with_suffix(".sessions.jsonl"))
+    summary = batch.summarize(results, sum(s["wall_seconds"] for s in sessions), sessions)
+
+    handoffs = [r["handoff"] for r in results if r.get("handoff")]
+    t0 = time.time()
+    s = season.Season(handoffs)
+    s.advance(datetime(2027, 4, 10, tzinfo=rules.IST))
+    violations = s.cap_violations()
+    response_errors = sum(1 for r in s.responses if data.schema_errors("response", r))
+    payload = {
+        "settings": run_settings, "results_file": _rel(path), **summary,
+        "cost_by_model": batch.cost_by_model(summary["tokens_by_model"]),
+        "rejections_by_resolution_type": batch.rejections_by(results, lambda r: by_id[r["insight_id"]].get("resolution_type")),
+        "rejections_by_language": batch.rejections_by(results, lambda r: (r.get("survey") or {}).get("language")),
+        "season": {**s.summary(), "simulation_seconds": round(time.time() - t0, 2), "handoffs": len(handoffs),
+                   "response_records_failing_schema": response_errors},
+        "cap_violations": {"count": len(violations), "items": violations},
+    }
+    report = batch.write_report("full-run", payload)
+    line = {"name": "full-run", "at": rules.fmt_ts(datetime.now(rules.IST)), "kind": "full-run",
+            "policy": a.policy, "language": a.language, "prompt_version": run_settings["prompt_version"],
+            "min_relevance": run_settings["min_relevance"], "insights_processed": summary["insights_processed"],
+            "status": summary["status"], "batch_wall_seconds": summary["batch_wall_seconds"],
+            "seconds_per_survey_avg": summary["seconds_per_survey_avg"],
+            "seconds_per_survey_p95": summary["seconds_per_survey_p95"], "tokens_by_model": summary["tokens_by_model"],
+            "cost_by_model": payload["cost_by_model"], "season": payload["season"],
+            "cap_violations": len(violations), "errors": len(summary["errors"])}
+    with open(config.REPORTS / "history.jsonl", "a", encoding="utf-8") as f:
+        f.write(json.dumps(line, ensure_ascii=False) + "\n")
+    print(json.dumps({k: v for k, v in payload.items() if k != "sessions"}, indent=1, ensure_ascii=False))
+    print(f"report: {_rel(report)} (and a line in reports/history.jsonl)")
+
+
 def _rel(p):
     try:
         return str(p.relative_to(config.ROOT))
@@ -120,6 +166,11 @@ def main(argv=None):
     s = sub.add_parser("season")
     s.add_argument("--results")
     s.set_defaults(fn=cmd_season)
+    fr = sub.add_parser("full-report", help="reports/full-run.json from a complete generate run plus the season")
+    fr.add_argument("--results")
+    fr.add_argument("--language", default=None)
+    fr.add_argument("--policy", default=rules.DEFAULT_POLICY, choices=rules.POLICIES)
+    fr.set_defaults(fn=cmd_full_report)
     a = p.parse_args(argv)
     a.fn(a)
 

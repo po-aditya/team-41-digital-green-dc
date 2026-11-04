@@ -425,7 +425,13 @@ elif page == "Evaluation":
                            "reference_intent", "safety"] if c in tdf]
     st.markdown("**Hill-climb across runs**")
     st.line_chart(tdf.set_index("run")[metrics])
-    reports = sorted(config.REPORTS.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True)
+    # Golden-set reports only; batch and full-run reports in the same folder have no scores or cases.
+    golden_names = {r["name"] for r in runs}
+    reports = sorted((p for p in config.REPORTS.glob("*.json") if p.stem in golden_names),
+                     key=lambda p: p.stat().st_mtime, reverse=True)
+    if not reports:
+        st.info("No golden-set report files found in reports/.")
+        st.stop()
     rep = json.loads(st.selectbox("Report", reports, format_func=lambda p: p.stem).read_text(encoding="utf-8"))
     st.json({"scores": rep["scores"], "speed": rep["speed"], "status": rep.get("status_counts")}, expanded=False)
     cases = pd.DataFrame([{k: c.get(k) for k in ("golden_id", "expected_rule", "agent_rule", "window_exact",

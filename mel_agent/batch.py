@@ -242,3 +242,28 @@ def write_report(name, payload):
     path = config.REPORTS / f"{name}.json"
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
     return path
+
+
+# ---------------------------------------------------------------- full-dataset report
+
+def cost_by_model(tokens_by_model):
+    """USD per model from MEL_WRITER_PRICE / MEL_CHECKER_PRICE, or None when prices are not set."""
+    from . import llm
+    out = {}
+    for model, t in tokens_by_model.items():
+        p = llm._price(model)
+        out[model] = None if p is None else round(t["input_tokens"] / 1e6 * p[0] + t["output_tokens"] / 1e6 * p[1], 4)
+    return out
+
+
+def rejections_by(results, key):
+    surveyed = [r for r in results if r["decision"]["survey"]]
+    out = {}
+    for r in surveyed:
+        k = str(key(r))
+        row = out.setdefault(k, {"surveyed": 0, "rejected": 0})
+        row["surveyed"] += 1
+        row["rejected"] += r["status"] == "rejected"
+    for row in out.values():
+        row["rejected_rate"] = round(row["rejected"] / row["surveyed"], 4)
+    return dict(sorted(out.items()))
