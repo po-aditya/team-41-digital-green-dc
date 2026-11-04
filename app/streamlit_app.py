@@ -14,7 +14,7 @@ import pandas as pd
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from mel_agent import config, data, pipeline, rules, season  # noqa: E402
+from mel_agent import batch, config, data, pipeline, rules, season  # noqa: E402
 from mel_agent.rules import IST  # noqa: E402
 
 # Logo: put the image at app/assets/jaaks-logo.png. Until then the app falls back to an emoji.
@@ -316,16 +316,17 @@ elif page == "Season simulation":
     sources = {}
     full = config.OUT / "results.jsonl"
     if full.exists():
-        sources["Full dataset run (out/results.jsonl)"] = full
+        sources["Generated run (out/results.jsonl)"] = full
     for p in sorted(config.REPORTS.glob("*.json"), reverse=True):
-        sources[f"Golden-set run: {p.stem}"] = p
+        if '"cases"' in p.read_text(encoding="utf-8")[:2_000_000]:  # golden-set reports only
+            sources[f"Golden-set run: {p.stem}"] = p
     if not sources:
         st.warning("No generated surveys yet. Run `python -m mel_agent.cli generate` or an evaluation first.")
         st.stop()
     src = st.selectbox("Surveys to schedule", list(sources))
     path = sources[src]
     if path.suffix == ".jsonl":
-        results = data.read_jsonl(path)
+        results = list(batch.load_results(path).values())  # last line per insight wins
         handoffs = [r["handoff"] for r in results if r.get("handoff")]
         rejected = sum(1 for r in results if r.get("status") in ("rejected", "error", "writer_skipped"))
     else:
@@ -415,7 +416,7 @@ elif page == "Evaluation":
     if not hist.exists():
         st.warning("No evaluation runs yet. Run `python -m mel_agent.cli eval --name v1`.")
         st.stop()
-    runs = data.read_jsonl(hist)
+    runs = [r for r in data.read_jsonl(hist) if "scores" in r]  # golden-set runs; batch runs have kind="batch"
     rows = [{"run": r["name"], "policy": r["policy"], "language": r["language"], **r["scores"],
              "sec/survey": r.get("seconds_per_survey_avg")} for r in runs]
     tdf = pd.DataFrame(rows)

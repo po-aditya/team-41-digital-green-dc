@@ -1,6 +1,6 @@
 """The agent: insight -> decision -> survey -> self-check -> scheduler hand-off."""
 import time
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from . import checker, config, data, llm, rules, writer
 
@@ -94,7 +94,9 @@ def run_batch(insights, language=LANGUAGE_DEFAULT, policy=rules.DEFAULT_POLICY, 
     results = [None] * len(insights)
     with ThreadPoolExecutor(max_workers=workers or config.WORKERS) as pool:
         futures = {pool.submit(process, ins, language, policy, **kw): n for n, ins in enumerate(insights)}
-        for fut, n in futures.items():
+        # as_completed: on_result sees each result as soon as it finishes, so callers can save it.
+        for fut in as_completed(futures):
+            n = futures[fut]
             results[n] = fut.result()
             if on_result:
                 on_result(results[n])
