@@ -1,0 +1,59 @@
+{
+  "label": "SYNTHETIC offline scheduler demonstration — no real messages sent",
+  "run_id": "demo-protections",
+  "steps": [
+    {
+      "step": "First normal survey",
+      "decision": "claimed",
+      "reason": "attempt_reserved"
+    },
+    {
+      "step": "Repeated claim for the same survey",
+      "decision": "in_flight",
+      "reason": "awaiting_attempt_outcome"
+    },
+    {
+      "step": "Second survey while delivery is unresolved",
+      "decision": "deferred",
+      "reason": "unresolved_attempt_reservation"
+    },
+    {
+      "step": "Second normal survey after first was answered",
+      "decision": "deferred",
+      "reason": "weekly_cap"
+    },
+    {
+      "step": "High priority bypasses weekly cap",
+      "decision": "claimed",
+      "reason": "attempt_reserved"
+    },
+    {
+      "step": "Even high priority respects opt-out",
+      "decision": "done",
+      "reason": "farmer_opted_out"
+    },
+    {
+      "step": "Different farmer: delivery attempt",
+      "decision": "claimed",
+      "reason": "attempt_reserved"
+    },
+    {
+      "step": "Failed delivery did not consume cap",
+      "decision": "claimed",
+      "reason": "attempt_reserved"
+    },
+    {
+      "step": "Opt-out survives restart",
+      "decision": "done",
+      "reason": "farmer_opted_out"
+    },
+    {
+      "step": "Pending attempt is not resent after restart",
+      "decision": "in_flight",
+      "reason": "awaiting_attempt_outcome"
+    }
+  ],
+  "counted_surveys": 3,
+  "opted_out_farmers": 1,
+  "attempts": 4
+}

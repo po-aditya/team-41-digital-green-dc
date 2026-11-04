@@ -54,6 +54,19 @@ export FARMERLOOP_PACK=/path/to/participant-pack
 
 ## Run
 
+### Persistent scheduling demo (offline)
+
+```bash
+python -m farmerloop.scheduler_demo
+python -m farmerloop.scheduler_demo --db state/demo.sqlite3
+```
+
+Demonstrates weekly limits, opt-outs, failed delivery and restart protection.
+The optional SQLite file preserves the synthetic run; use `--reset` explicitly
+to rerun that demo from scratch. See [scheduler behavior and limits](docs/SCHEDULER_CHECKPOINT.md).
+The temporary browser viewer below is still the fixed Radar scenario; connecting
+it to this persistent service is the next checkpoint.
+
 ### Temporary browser demo (offline)
 
 From `farmerloop/`:
@@ -98,6 +111,7 @@ for port 8501 to view the page from your own computer.
 | `outcomes` | Read-only lookup of `outcome_codes.json`: status, retry, cap and allowed channels per outcome |
 | `respond` | Builds and validates response records from observations; derives everything else |
 | `simulate`, `feedback_demo` | Deterministic simulated farmer attempts and the offline feedback demo |
+| `scheduler`, `scheduler_demo` | Persistent cap/opt-out enforcement, atomic attempt reservations, replay protection and offline restart demo |
 
 ## Design decisions
 
@@ -161,8 +175,8 @@ Rules not stated in `outcome_codes.json` were inferred from the outcome definiti
 - Feedback processing:
   - All response examples are Hindi (`hi-IN`), so English response records are tested only through unit tests and the simulator.
   - Not covered by any official example, so implemented from the rule definitions only: a negative answer inside a sheet closed part way, partial on app or web without a sheet event, and a flagged answer kept alongside an `invalid_input` status. In the last case the status stays `invalid_input` with `needs_follow_up` set.
-  - Opt-outs are recorded but not yet enforced on future surveys. The weekly cap across several surveys is not tracked yet.
-  - Duplicate, closed and replaced survey taps are passed in as events; there is no store of earlier answers that would detect them automatically.
+  - Stateless response construction alone does not enforce history. The new `Scheduler` persists and enforces weekly limits, opt-outs and attempt replay protection. The fixed Radar UI is not yet connected to it.
+  - Duplicate, closed and replaced survey taps are passed in as events to the stateless builder. The persistent scheduler separately detects exact attempt replays and rejects conflicting final records; it is not a full channel-event reconciliation service.
   - Simulated records are marked by a `sim-` response key. Placeholder free text, unclear speech and the `F-SIMULATED-OTHER` identity are simulated, not real farmer data.
 - R7 (`crop_already_harvested`) is not implemented. The one golden case (G-0136) cannot be told apart from valid post-harvest surveys using structured fields.
 - Practice data: 50 of 6,999 insights fail the insight schema (all junk, with malformed `verification` or `advice_summary`). They are quarantined as ingestion failures, not counted as no-survey decisions.
@@ -172,6 +186,6 @@ Rules not stated in `outcome_codes.json` were inferred from the outcome definiti
   - q2 used a yes/no-style question ("has it improved?") with better/same/worse options.
   - Minor spelling variant: "हां" instead of "हाँ" used in the worked examples.
 - The safety audit is a keyword heuristic. Passing it does not prove a survey is safe or well written.
-- Send windows follow the documented 07:00 start. A full window-by-window comparison with the golden set (mostly 09:00 starts) is not built yet.
+- Send windows follow the documented 07:00 start. `evaluate_timing` reports full comparisons and known rule/reference conflicts; see `docs/DECISIONS.md`.
 - `/workshop/farmerloop` is an older backup and is not kept in sync; this team-repo copy is authoritative.
-- Not built yet: Streamlit UI, Intelligence Radar, voice/TTS.
+- Still outstanding: interactive stateful UI integration, production delivery/authentication, voice/TTS, and independently reviewed semantic/agronomic quality.

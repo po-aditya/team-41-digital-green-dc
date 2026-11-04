@@ -4,6 +4,11 @@ Planning snapshot: 2026-11-04. Branch: `feature/jeremiah-farmerloop`.
 This is a proposed implementation sequence, not authorization to execute every
 phase, use paid services, publish, merge, or modify teammate-owned code.
 
+Progress update: the user authorized saving the current baseline and implementing
+backlog chunks 1–2. The baseline was pushed as `c066bdf`. The persistent scheduling
+increment is documented in [SCHEDULER_CHECKPOINT.md](SCHEDULER_CHECKPOINT.md).
+The original starting-point measurements below describe the earlier snapshot.
+
 ## 1. Outcome and scope
 
 Deliver a complete demonstrable loop: relevant advice follow-up, respectful
@@ -357,6 +362,6 @@ applicable session authorization; do not infer blanket authorization from this
 planning request. Review concrete prepared changes before requesting any
 additional approval.
 
-Next proposed implementation: **Checkpoint B — persistent weekly limits and
-opt-out enforcement**, after reviewing the local baseline and the teammate
-interfaces needed to avoid inconsistent rules.
+Next proposed implementation after the scheduling increment: **Checkpoint C —
+interactive end-to-end demo**, connecting the temporary UI and Radar to the
+tested persistent scheduling/response service.

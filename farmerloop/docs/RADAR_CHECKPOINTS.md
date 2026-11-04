@@ -12,8 +12,8 @@ and paid AWS calls remain outside this scope.
 Starting branch: `feature/jeremiah-farmerloop`.
 Starting commit: `cd30a6e61c3d645e3d1dc7730ee0f949b635fd0c`.
 Checkpoints 1–3 and the quality increment were committed and pushed with user
-approval as `7de9d2b7a256e16626127eefc08a1dc9a778c343`. The temporary UI is a
-subsequent local change.
+approval as `7de9d2b7a256e16626127eefc08a1dc9a778c343`. The temporary UI,
+timing guards and development plan were subsequently saved as `c066bdf`.
 
 The broader product context remains in [REGIONAL_LEARNING_RADAR_IDEAS.md](REGIONAL_LEARNING_RADAR_IDEAS.md).
 Official schemas and rules remain authoritative in `../../data/participant-pack`.
@@ -294,7 +294,10 @@ files unless the caller explicitly redirects stdout.
 
 Following the requirements review, survey quality was prioritized before UI
 work. That offline increment is documented in SURVEY_QUALITY.md. Remaining core
-requirements include semantic evaluation, calendar checks and cap enforcement.
+requirements include semantic evaluation and calendar checks. Persistent cap
+and opt-out enforcement is now implemented in the separate scheduler service;
+see [SCHEDULER_CHECKPOINT.md](SCHEDULER_CHECKPOINT.md). Wiring it to the interactive
+UI is the next checkpoint.
 The subsequent eligibility/timing investigation is documented in
 [DECISIONS.md](DECISIONS.md), including stricter scheduling-boundary checks and
 a separate audit of contradictory reference windows. G-0136 remains unresolved.
@@ -313,9 +316,10 @@ functional verification, not a manual visual review in a browser.
 Checkpoint 5 packages and rehearses the end-to-end presentation.
 
 Known limits: scripted observations, fictional districts, no causal inference,
-no production messaging or persistent history, no full cross-question semantic
+no production messaging, no persistent history in the fixed Radar viewer, no full cross-question semantic
 checking, and Hindi wording still benefits from human review. The scenario
-assumes one survey per farmer; cap/opt-out enforcement is still unimplemented.
+assumes one survey per farmer; cap/opt-out enforcement is tested through the
+separate persistent scheduler rather than this scripted Radar scenario.
 The analysis handles whole attempt records, not an event-sourced stream of
 incremental updates: conflicting updates are quarantined, not reconciled.
 Missing a delivery timestamp does not prove a failure. Schema validity and
