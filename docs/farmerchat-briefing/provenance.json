@@ -1,0 +1,107 @@
+{
+  "review_date": "2026-11-04",
+  "timezone": "America/New_York",
+  "sources": [
+    {
+      "label": "Vision",
+      "path": "docs/Digital Green Foundation/Vision Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+      "sha256": "1a8e990737ea57223fd98ee1f54c324e6d6a87cbbec6ea3bf05bdec67086b058",
+      "extracted_characters": 16915
+    },
+    {
+      "label": "Technical",
+      "path": "docs/Digital Green Foundation/Technical Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+      "sha256": "4b654011eb51546cb44d287074de9d4b766b4bcb395aeeac4a4f087c6bd0d7f0",
+      "extracted_characters": 7393
+    }
+  ],
+  "method": "Read-only textutil extraction, DOCX XML relationship/comment/tracked-change inspection, embedded technical PNG inspected. No document page-layout audit.",
+  "scope": "Offline briefing only. No app implementation, AWS invocation or deployment, real farmer data, delivery or pilot.",
+  "claude_summary": {
+    "cli": "/opt/homebrew/bin/claude",
+    "cli_version": "2.1.316",
+    "requested_model": "configured default; exact model not independently identified",
+    "flags": [
+      "-p",
+      "--safe-mode",
+      "--tools",
+      "",
+      "--strict-mcp-config",
+      "--no-session-persistence",
+      "--output-format",
+      "text"
+    ],
+    "exit_code": 0,
+    "output_file": "claude-summary.md",
+    "output_sha256": "fc6d455a412d087a539334e1d42c030ce2f2acaad21cb73b1753bab92b1204c6",
+    "input_sha256": "c7e8a3c6b1da9f1e6b0dc26d78cf1f57fee0bbd4c5a364025664b3ec98e80184",
+    "input_scope": "Both complete extracted plan texts. No image or repo evidence."
+  },
+  "claude_diagrams": {
+    "cli_version": "2.1.316",
+    "exit_code": 0,
+    "flags_same_as_summary": true,
+    "output_file": "claude-diagrams-output.md",
+    "output_sha256": "5465bf3bdd736a2f6f7aa433b4406c01b17002428e69515d4b2a74d7d321b5c1",
+    "parsed_json_file": "claude-diagrams.json",
+    "input_sha256": "fd4e16c5528b94a28395e0f2740ecf031cdc2b607920331670cf91d82a1e9eeb",
+    "input_scope": "Both complete extracted plan texts plus five user-proposed enhancements and one-day constraint.",
+    "rendering": "Claude Mermaid nodes and edges parsed to DOT and locally rendered with bundled @viz-js/viz. No remote diagram runtime.",
+    "caveats": "Raw response includes an illustrative 62 percent figure and rough time estimate. Neither is a measured result; neither is used as briefing data. Codex notes narrow schema and scope claims."
+  },
+  "gemini": {
+    "cli": "/opt/homebrew/bin/agy",
+    "requested_model": "gemini-4-argon-high",
+    "model_list_confirmed": true,
+    "status": "SUCCESS",
+    "exit_code": 0,
+    "num_turns": 1,
+    "duration_seconds": 89.452115,
+    "flags": [
+      "--mode",
+      "plan",
+      "--sandbox",
+      "--disable-slash-commands",
+      "--model",
+      "gemini-4-argon-high",
+      "--output-format",
+      "json",
+      "--print=<explicit supplied text>"
+    ],
+    "warning": "CLI warned --mode plan has no effect while slash command expansion is disabled. Sandbox flag enabled; prompt explicitly requested no tools, inspection, code execution, browsing or edits.",
+    "input_scope": "Both complete extracted plan texts and selected verified public DG_Open code excerpts. No independent Gemini browsing.",
+    "input_sha256": "64ba1245d57f22910f405fbf0b3a7724949c46d04fdfb9319419dd27d28e7856",
+    "output_file": "gemini-review.md",
+    "output_sha256": "ede716c8499784a324985de2258262e65b78418dc4484ceac8043d086ac1382a",
+    "authorization": "Initial full-text transfer rejected by automatic approval review. Retried only after user explicitly answered Yes, share both plans with Gemini.",
+    "review_corrections": "Branching is proposed, not source Must Have. No organizer judging rubric was supplied. Full dataset is required unless Digital Green agrees otherwise. Recommended feature combination narrowed by Codex for one-day feasibility."
+  },
+  "public_repository": {
+    "url": "https://github.com/digitalgreenorg/DG_Open",
+    "commit": "5064d65700e03d413cd283dbafc12386f6b92f75",
+    "commit_date": "2025-11-23T14:45:38+05:30",
+    "provenance": "Explicit hyperlink in Technical DOCX main/footnote relationships.",
+    "target_status": "Document-linked legacy repository; user has not confirmed it as intended current application source.",
+    "inspection": "Read-only static farmer-chat subtree review. No installation, runtime test, full audit or current production verification."
+  },
+  "scoping_repository": "https://github.com/12turnbullb/us-breaking-barriers-2026",
+  "aws_sources_checked": [
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html",
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html",
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-prereq.html",
+    "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html",
+    "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingObjects.html",
+    "https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html",
+    "https://docs.aws.amazon.com/lambda/latest/dg/urls-invocation.html"
+  ],
+  "style": "Short technical English, not certified ASD-STE100 compliance.",
+  "publication": {
+    "published_branch": "codex/farmerchat-plan-briefing",
+    "html_commit": "f80958a8c043af1db1ad56aeca7d348d4321d2c8",
+    "published_files": [
+      "docs/farmerchat-briefing/index.html"
+    ],
+    "local_evidence_branch": "codex/farmerchat-briefing-local-validation",
+    "evidence_pushed": false
+  }
+}
