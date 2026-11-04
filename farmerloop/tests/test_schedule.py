@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from farmerloop.generate_fake import FakeSurveyGenerator
+from farmerloop.generate_contextual import ContextualSurveyGenerator
 from farmerloop.models import Insight
 from farmerloop.schedule import build_handoff, compute_priority, _format_ist
 from farmerloop.timing import compute_window
@@ -22,7 +22,7 @@ def _insight(**over):
         "asset": {"name": "wheat", "category": "crop", "growth_stage": None},
         "concern": "pest_disease", "behavioral_intent": "procedural_guidance",
         "decision_episode_type": "decision", "severity": "medium",
-        "query_summary": "q", "advice_summary": "a", "resolution_type": "direct_action",
+        "query_summary": "Farmer asks about insects on wheat.", "advice_summary": "Advised to spray a recommended insecticide as per the label.", "resolution_type": "direct_action",
         "action_window_days": 2,
         "verification": {"needed": True, "timing": "two_to_five_days", "method": "push"},
         "preferred_channel": "app", "quality_flag": "clean",
@@ -33,7 +33,7 @@ def _insight(**over):
 
 def _survey_window(ins):
     w = compute_window(ins.created_at, ins.verification.timing, ins.action_window_days)
-    s = FakeSurveyGenerator().generate(ins, w)
+    s = ContextualSurveyGenerator().generate(ins, w)
     return s, w
 
 

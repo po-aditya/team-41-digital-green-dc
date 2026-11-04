@@ -122,6 +122,11 @@ def build_handoff(
     allowed - the rules only forbid SENDING outside the window, not creating
     the handoff then.
     """
+    # Validate at the handoff boundary, including callers that bypass generators.
+    from .quality import require_quality
+    require_quality(insight, survey)
+    if survey.send_window.dump() != {"not_before": window.not_before_iso(), "not_after": window.not_after_iso()}:
+        raise ValueError("Survey and handoff windows differ")
     priority = compute_priority(insight)
     sid = survey.survey_id
     cap_exempt = priority == "high"

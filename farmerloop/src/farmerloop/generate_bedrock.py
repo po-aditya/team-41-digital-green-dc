@@ -36,7 +36,11 @@ _SYSTEM = (
     "- Ask ONLY about the advice already given. NEVER give new advice.\n"
     "- NEVER ask for personal information.\n"
     "- Write 1 to 2 questions. Each answerable with a single tap.\n"
-    "- Write entirely in the requested language.\n"
+    "- Write farmer-facing prompts and labels in the requested language; rationale in English.\n"
+    "- Name the crop/animal and the specific action or symptom from the insight.\n"
+    "- One action per question; do not combine actions into a single yes/no answer.\n"
+    "- Match answer choices to the question. Better/same/worse requires How, not Is/Did.\n"
+    "- Include not-yet/not-tried/not-checked when needed; do not assume advice was followed.\n"
     "- Answer labels must be at most 20 characters.\n"
     "- Respond with JSON only, no prose, no code fences."
 )
@@ -131,7 +135,9 @@ class BedrockSurveyGenerator:
         if not isinstance(raw_items, list) or not raw_items:
             raise SurveyValidationError("model returned no items")
         items: list[Item] = []
-        for raw_item in raw_items[:3]:
+        if len(raw_items) > 3:
+            raise SurveyValidationError("Too many questions; refusing to silently truncate")
+        for raw_item in raw_items:
             itype = raw_item.get("type")
             prompt = raw_item.get("prompt")
             if not prompt:

@@ -4,9 +4,9 @@ Runs the deterministic pipeline on two hand-picked insights:
   * one ELIGIBLE  -> decision -> survey -> schedule_handoff (schema-valid)
   * one INELIGIBLE -> decision -> no_survey (schema-valid) or ContractGap
 
-By default the survey is written by the offline FakeSurveyGenerator. Pass
+By default the survey is written by the offline ContextualSurveyGenerator. Pass
 --bedrock to make a single live Amazon Bedrock inference call for the eligible
-insight; on any API/access error (or invalid output) we fall back to the fake
+insight; on any API/access error (or invalid output) we fall back to the contextual
 generator and clearly label which generator produced the output.
 
 Schema-validation failures raise DemoError so the demo exits non-zero.
@@ -28,7 +28,7 @@ from . import dataio
 from .decide import decide
 from .emit import ContractGap, emit_no_survey, now_ist
 from .generate_base import SurveyGenerator, SurveyValidationError
-from .generate_fake import FakeSurveyGenerator
+from .generate_contextual import ContextualSurveyGenerator
 from .models import Insight, Survey
 from .schedule import build_handoff
 from .timing import Window, compute_window
@@ -75,18 +75,21 @@ def _pick_examples() -> tuple[Insight, Insight]:
 def _generate_with_fallback(
     insight: Insight, window: Window, generator: SurveyGenerator
 ) -> tuple[Survey, str]:
-    """Generate a survey; on any error fall back to fake. Returns (survey,
+    """Generate a survey; on any error fall back to contextual templates. Returns (survey,
     generator_name_that_produced_it)."""
-    if generator.name == "fake":
-        return generator.generate(insight, window), "fake"
-    try:
+    if generator.name == "contextual-offline-v2":
         return generator.generate(insight, window), generator.name
+    try:
+        survey = generator.generate(insight, window)
+        from .quality import require_quality
+        require_quality(insight, survey)
+        return survey, generator.name
     except SurveyValidationError as exc:
-        print(f"[{generator.name}] output rejected ({exc}); falling back to fake")
+        print(f"[{generator.name}] output rejected ({exc}); falling back to contextual offline templates")
     except Exception as exc:  # boto ClientError, access/endpoint errors, etc.
         print(f"[{generator.name}] inference failed ({type(exc).__name__}: {exc}); "
-              "falling back to fake")
-    return FakeSurveyGenerator().generate(insight, window), "fake (fallback)"
+              "falling back to contextual offline templates")
+    return ContextualSurveyGenerator().generate(insight, window), "contextual-offline-v2 (fallback)"
 
 
 def run_eligible(insight: Insight, generator: SurveyGenerator) -> None:
@@ -157,7 +160,7 @@ def main() -> None:
                         help="use a single live Bedrock call for the eligible survey")
     args = parser.parse_args()
 
-    generator: SurveyGenerator = FakeSurveyGenerator()
+    generator: SurveyGenerator = ContextualSurveyGenerator()
     if args.bedrock:
         from .generate_bedrock import BedrockSurveyGenerator
         generator = BedrockSurveyGenerator()

@@ -1,6 +1,25 @@
 # FarmerLoop Intelligence: Milestone 1
 
+Regional Learning Radar extension: **Checkpoints 1–3 are implemented** as an offline,
+synthetic two-district scenario using the existing pipeline. Run
+`python -m farmerloop.radar_demo` with the installed environment; add `--json`
+for all source records. See [checkpoint status, commands, and limitations](docs/RADAR_CHECKPOINTS.md).
+Add `--analyze` for computed regional metrics and detection signals, or
+`--analyze --json` for the analysis contract. Add `--findings` for evidence-backed observations and human-review suggestions;
+`--findings --json` includes the full source archive for drill-down. The Radar UI
+is not implemented yet.
+
 Deterministic foundation for a multilingual MEL survey agent for Digital Green's FarmerChat. It reads farmer insights, decides whether each one gets a follow-up survey, computes a send window, writes a short tap-answer survey (Hindi or English), and builds a scheduler hand-off. All emitted artifacts are checked against the supplied JSON Schemas.
+
+## Survey quality update
+
+The default demos now use contextual bilingual offline templates, with a fresh
+quality screen before any scheduling handoff. Unsupported advice is held for
+review. The original fake generator remains a comparison baseline.
+Run `python -m farmerloop.evaluate_quality` for before/after screening results,
+or add `--practice --json` for the full practice-run summary and reference pairs.
+See [quality checks, measured results and limitations](docs/SURVEY_QUALITY.md).
+These checks do not certify semantic relevance or agricultural safety.
 
 ## Setup (Python 3.12+)
 
@@ -113,7 +132,7 @@ Rules not stated in `outcome_codes.json` were inferred from the outcome definiti
   - Simulated records are marked by a `sim-` response key. Placeholder free text, unclear speech and the `F-SIMULATED-OTHER` identity are simulated, not real farmer data.
 - R7 (`crop_already_harvested`) is not implemented. The one golden case (G-0136) cannot be told apart from valid post-harvest surveys using structured fields.
 - Practice data: 50 of 6,999 insights fail the insight schema (all junk, with malformed `verification` or `advice_summary`). They are quarantined as ingestion failures, not counted as no-survey decisions.
-- Question quality is not checked. The live Bedrock survey passed every automated check, but review found:
+- Historical Checkpoint 1 question-quality gaps (the new offline screen addresses some, but semantic review remains necessary): the live Bedrock survey passed the original automated checks, but review found:
   - q1 asked about two actions in one yes/no question (choosing a variety and raising the seed rate).
   - The `rationale` came back in Hindi. The schema says it should be English, but this is not enforced.
   - q2 used a yes/no-style question ("has it improved?") with better/same/worse options.
