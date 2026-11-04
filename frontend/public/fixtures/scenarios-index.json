@@ -1,0 +1,59 @@
+[
+  {
+    "scenario": "1-mustard-aphid-spray",
+    "survey_id": "S-004512",
+    "farmer_id": "F-000123",
+    "languages": [
+      "en-IN",
+      "hi-IN"
+    ],
+    "decision": "survey"
+  },
+  {
+    "scenario": "2-wheat-irrigation-timing",
+    "survey_id": "S-004871",
+    "farmer_id": "F-000187",
+    "languages": [
+      "en-IN",
+      "hi-IN"
+    ],
+    "decision": "survey"
+  },
+  {
+    "scenario": "3-potato-blight-wait",
+    "survey_id": "S-005330",
+    "farmer_id": "F-000245",
+    "languages": [
+      "en-IN",
+      "hi-IN"
+    ],
+    "decision": "survey"
+  },
+  {
+    "scenario": "4-cow-vet-escalation",
+    "survey_id": "S-004990",
+    "farmer_id": "F-000311",
+    "languages": [
+      "en-IN",
+      "hi-IN"
+    ],
+    "decision": "survey"
+  },
+  {
+    "scenario": "5-wheat-variety-plan",
+    "survey_id": "S-004420",
+    "farmer_id": "F-000402",
+    "languages": [
+      "en-IN",
+      "hi-IN"
+    ],
+    "decision": "survey"
+  },
+  {
+    "scenario": "6-zero-tillage-info-no-survey",
+    "survey_id": null,
+    "farmer_id": "F-000519",
+    "languages": [],
+    "decision": "no_survey"
+  }
+]

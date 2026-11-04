@@ -1,0 +1,13 @@
+.app{min-height:100%;display:flex;flex-direction:column;gap:12px;padding:14px 18px 22px;max-width:1680px;margin:0 auto;}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;flex-direction:column;}
+.logo{font-weight:700;font-size:20px;color:var(--green-deep);}
+.sub{font-size:12px;color:var(--muted);}
+.chips{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.split{display:grid;grid-template-columns:62% 38%;gap:18px;align-items:start;}
+.stacked{display:block;}
+.console{min-width:0;}
+.phone{display:flex;justify-content:center;}
+.tabs{display:flex;gap:8px;}
+.tabs button{flex:1;border:1px solid var(--line);background:var(--white);border-radius:999px;padding:8px;cursor:pointer;font:inherit;}
+.tabs button[aria-selected="true"]{background:var(--green-brand);color:var(--white);border-color:var(--green-brand);}

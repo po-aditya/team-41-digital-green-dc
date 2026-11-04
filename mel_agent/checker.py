@@ -1,6 +1,5 @@
 """Self-evaluation before scheduling: deterministic checks plus an LLM judge."""
 import json
-import math
 import re
 
 from . import config, data, llm
@@ -68,29 +67,15 @@ def judge(insight, survey, usage):
             f"Survey items: {json.dumps(survey['items'], ensure_ascii=False)}\n\nCall review_survey.")
     out = llm.call_tool(config.CHECKER_MODEL, JUDGE_SYSTEM, user, "review_survey",
                         "Return your review of the survey.", JUDGE_SCHEMA, usage, max_tokens=2000)
-    out["relevance_score"] = _clamp_score(out.get("relevance_score"))
+    out["relevance_score"] = max(0.0, min(1.0, float(out.get("relevance_score", 0))))
     return out
-
-
-def _clamp_score(value):
-    """Clamps the judge's score to 0-1. Anything that is not a finite number becomes 0.0,
-    so a garbled score can never pass the threshold (min/max would turn NaN into 1.0)."""
-    try:
-        score = float(value)
-    except (TypeError, ValueError):
-        return 0.0
-    if not math.isfinite(score):
-        return 0.0
-    return max(0.0, min(1.0, score))
 
 
 def passes(det_problems, verdict):
     reasons = list(det_problems)
     if verdict:
-        # The rule: relevance below MIN_RELEVANCE is rejected. A score equal to it passes.
-        score = _clamp_score(verdict.get("relevance_score"))
-        if score < config.MIN_RELEVANCE:
-            reasons.append(f"relevance {score:.2f} below {config.MIN_RELEVANCE}")
+        if verdict["relevance_score"] < config.MIN_RELEVANCE:
+            reasons.append(f"relevance {verdict['relevance_score']:.2f} below {config.MIN_RELEVANCE}")
         for flag, msg in (("gives_new_advice", "gives new advice"), ("contradicts_advice", "contradicts the advice"),
                           ("asks_personal_info", "asks for personal information")):
             if verdict.get(flag):

@@ -1,0 +1,12 @@
+.card{background:var(--white);border-radius:20px;box-shadow:var(--shadow-card);padding:16px;display:flex;flex-direction:column;gap:10px;}
+.head{display:flex;align-items:center;gap:8px;}
+.title{font-weight:700;}
+.count{font-size:12px;color:var(--muted);margin-left:auto;}
+.filters{display:flex;gap:8px;flex-wrap:wrap;}
+.filters select{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;background:var(--white);}
+.scroll{height:320px;overflow:auto;border:1px solid var(--line);border-radius:14px;}
+.row{display:flex;align-items:center;gap:12px;padding:0 14px;border:none;border-bottom:1px solid var(--line);background:var(--white);cursor:pointer;text-align:left;width:100%;}
+.row:hover{background:var(--page-tint);}
+.selected{background:var(--green-light);}
+.sid{font-weight:600;font-size:13px;min-width:92px;}
+.meta{flex:1;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}

@@ -23,6 +23,6 @@ WRITER_PRICE = os.getenv("MEL_WRITER_PRICE")
 CHECKER_PRICE = os.getenv("MEL_CHECKER_PRICE")
 
 # A survey is scheduled only if the checker scores relevance at least this high.
-MIN_RELEVANCE = float(os.getenv("MEL_MIN_RELEVANCE", "0.8"))
+MIN_RELEVANCE = float(os.getenv("MEL_MIN_RELEVANCE", "0.7"))
 # How many insights are processed at once in a batch.
 WORKERS = int(os.getenv("MEL_WORKERS", "8"))

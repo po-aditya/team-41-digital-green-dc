@@ -1,0 +1,35 @@
+{
+  "generated": [
+    {
+      "scenario": "1-mustard-aphid-spray",
+      "status": "scheduled",
+      "survey_id": "S-004512"
+    },
+    {
+      "scenario": "2-wheat-irrigation-timing",
+      "status": "scheduled",
+      "survey_id": "S-004871"
+    },
+    {
+      "scenario": "3-potato-blight-wait",
+      "status": "scheduled",
+      "survey_id": "S-005330"
+    },
+    {
+      "scenario": "4-cow-vet-escalation",
+      "status": "scheduled",
+      "survey_id": "S-004990"
+    },
+    {
+      "scenario": "5-wheat-variety-plan",
+      "status": "scheduled",
+      "survey_id": "S-004420"
+    },
+    {
+      "scenario": "6-zero-tillage-info-no-survey",
+      "status": "no_survey",
+      "survey_id": null
+    }
+  ],
+  "provider": "template (offline)"
+}

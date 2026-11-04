@@ -1,0 +1,9 @@
+.strip{background:var(--white);border-radius:20px;box-shadow:var(--shadow-card);padding:16px;display:flex;flex-direction:column;gap:10px;}
+.header{display:flex;align-items:center;gap:8px;}
+.title{font-weight:700;}
+.sim{font-size:11px;color:var(--muted);margin-left:auto;}
+.stages{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);}
+.counts{display:flex;gap:22px;margin:4px 0 0;flex-wrap:wrap;}
+.counts div{display:flex;flex-direction:column;}
+.counts dt{font-size:11px;color:var(--muted);}
+.counts dd{margin:0;font-size:18px;font-weight:700;color:var(--green-deep);}

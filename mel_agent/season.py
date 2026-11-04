@@ -182,16 +182,6 @@ class Season:
         self._event(survey_id, f"answered in app: {rec['status']}")
         return rec
 
-    def dismiss(self, survey_id):
-        """The farmer closed the sheet before answering anything."""
-        it = self.items[survey_id]
-        rec = responses.failure_record(it["handoff"]["survey"], it["channel"], it["attempt"], it["sent_at"],
-                                       "sheet_dismissed" if it["channel"] in responses.SHEET_CHANNELS else "farmer_declined")
-        self.responses.append(rec)
-        it["state"] = rec["status"]
-        self._event(survey_id, f"closed without answering: {rec['status']}")
-        return rec
-
     def summary(self):
         states = {}
         for it in self.items.values():

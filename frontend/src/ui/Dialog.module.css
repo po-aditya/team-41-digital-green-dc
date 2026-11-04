@@ -1,0 +1,6 @@
+.scrim{position:absolute;inset:0;background:rgba(29,35,28,.28);display:flex;align-items:flex-end;justify-content:center;z-index:20;}
+.panel{background:var(--white);width:100%;outline:none;}
+.sheet{border-radius:26px 26px 0 0;padding:16px 16px 22px;max-height:86%;overflow:auto;animation:rise .32s cubic-bezier(.2,.9,.3,1.1);}
+.center{border-radius:22px;margin:auto;max-width:300px;padding:22px;}
+@keyframes rise{from{transform:translateY(100%);}to{transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){.sheet{animation:none;}}

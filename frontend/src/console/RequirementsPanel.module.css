@@ -1,0 +1,13 @@
+.panel{display:flex;flex-direction:column;gap:8px;}
+.h{margin:0;font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--green-deep);}
+.table{width:100%;border-collapse:collapse;font-size:12px;}
+.table th{text-align:left;color:var(--muted);font-weight:600;padding:6px 8px;border-bottom:1px solid var(--line);}
+.table td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top;}
+.item{font-weight:600;}
+.cat{color:var(--muted);white-space:nowrap;}
+.how{color:var(--ink);}
+.status{white-space:nowrap;}
+.status svg{vertical-align:-2px;}
+.evidenced{color:var(--green-brand);}
+.partly{color:var(--amber-ink);}
+.notShown{color:var(--muted);}

@@ -1,0 +1,12 @@
+.chat{padding:14px;display:flex;flex-direction:column;gap:12px;height:100%;overflow:auto;}
+.caption{font-size:11px;color:var(--muted);margin:0;}
+.bubble{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:10px;}
+.wa{align-self:flex-start;border-top-left-radius:4px;}
+.tg{align-self:flex-start;background:var(--green-light);border-color:var(--green-light-2);}
+.text{margin:0;font-size:14px;line-height:1.4;}
+.buttons{display:flex;gap:8px;flex-wrap:wrap;}
+.buttonsStack{display:flex;flex-direction:column;gap:6px;}
+.replyBtn,.callbackBtn{border:1px solid var(--green-brand);color:var(--green-brand);background:var(--white);border-radius:12px;padding:8px 12px;font:inherit;font-size:13px;cursor:pointer;}
+.replyBtn:hover,.callbackBtn:hover{background:var(--green-light);}
+.replyBtn:disabled,.callbackBtn:disabled{opacity:.5;cursor:not-allowed;}
+.kind{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}

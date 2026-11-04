@@ -1,0 +1,5 @@
+.wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.piece{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;animation:fall 1100ms ease-in forwards;}
+@keyframes fall{to{transform:translateY(420px) rotate(540deg);opacity:0;}}
+.staticWrap{display:grid;place-items:center;padding:12px;}
+@media (prefers-reduced-motion: reduce){.piece{display:none;}}

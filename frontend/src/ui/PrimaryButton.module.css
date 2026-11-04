@@ -1,0 +1,5 @@
+.btn{width:100%;min-height:56px;border:none;border-radius:999px;background:var(--green-brand);color:var(--white);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:15px;cursor:pointer;box-shadow:0 8px 20px rgba(46,125,50,.28);transition:background .18s ease,transform .18s ease;}
+.btn:hover:not(:disabled){background:var(--green-deep);}
+.btn:active:not(:disabled){transform:translateY(1px);}
+.btn:disabled{background:var(--green-light-2);color:var(--muted);cursor:not-allowed;box-shadow:none;}
+@media (prefers-reduced-motion: reduce){.btn{transition:none;}}

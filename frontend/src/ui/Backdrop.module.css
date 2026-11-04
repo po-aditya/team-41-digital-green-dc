@@ -1,0 +1,5 @@
+.backdrop{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(160deg,var(--blob-3),var(--white) 60%);}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.7;}
+.b1{width:520px;height:520px;background:var(--blob-1);top:-120px;left:-80px;}
+.b2{width:460px;height:460px;background:var(--blob-2);bottom:-140px;right:-60px;}
+.b3{width:360px;height:360px;background:var(--blob-1);top:40%;left:55%;}

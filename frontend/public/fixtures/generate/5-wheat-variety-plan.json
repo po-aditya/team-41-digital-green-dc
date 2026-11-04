@@ -1,0 +1,226 @@
+{
+  "insight_id": "I-004420",
+  "farmer_id": "F-000402",
+  "decision": {
+    "insight_id": "I-004420",
+    "farmer_id": "F-000402",
+    "survey": true,
+    "rule": "R8",
+    "reason_code": null,
+    "reason": null,
+    "send_window": {
+      "not_before": "2026-12-09T09:00:00+05:30",
+      "not_after": "2026-12-16T19:00:00+05:30"
+    },
+    "priority": "low",
+    "channel_order": [
+      {
+        "channel": "telegram",
+        "wait_hours": 48
+      },
+      {
+        "channel": "app",
+        "wait_hours": 48
+      },
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ]
+  },
+  "survey": {
+    "survey_id": "S-004420",
+    "farmer_id": "F-000402",
+    "source_insight_ids": [
+      "I-004420"
+    ],
+    "language": "hi-IN",
+    "send_window": {
+      "not_before": "2026-12-09T09:00:00+05:30",
+      "not_after": "2026-12-16T19:00:00+05:30"
+    },
+    "items": [
+      {
+        "item_id": "q1",
+        "type": "survey-single-select",
+        "prompt": "देर से बोने वाले गेहूँ की योजना में आपने कितना काम किया?",
+        "options": [
+          {
+            "value": "all_steps",
+            "label": "सभी कदम किए"
+          },
+          {
+            "value": "some_steps",
+            "label": "कुछ कदम किए"
+          },
+          {
+            "value": "not_started",
+            "label": "शुरू नहीं किया"
+          }
+        ]
+      },
+      {
+        "item_id": "q2",
+        "type": "survey-single-select",
+        "prompt": "क्या गेहूँ की यह योजना अब तक ठीक चल रही है?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "हाँ"
+          },
+          {
+            "value": "too_early",
+            "label": "अभी जल्दी है"
+          },
+          {
+            "value": "no",
+            "label": "नहीं",
+            "follow_up": "advice_did_not_work"
+          }
+        ]
+      }
+    ],
+    "rationale": "Plan for late-sown wheat (certified late-sowing seed, sow by 25 Dec, higher seed rate). Uses the standard plan_created questions: progress on the plan, then whether it is working. Ask on or after the 25 December deadline.",
+    "self_eval": {
+      "schema_valid": true,
+      "relevance_score": 1.0,
+      "gives_new_advice": false,
+      "asks_personal_info": false
+    }
+  },
+  "handoff": {
+    "handoff_id": "H-004420",
+    "created_at": "2026-12-02T16:50:00+05:30",
+    "survey": {
+      "survey_id": "S-004420",
+      "farmer_id": "F-000402",
+      "source_insight_ids": [
+        "I-004420"
+      ],
+      "language": "hi-IN",
+      "send_window": {
+        "not_before": "2026-12-09T09:00:00+05:30",
+        "not_after": "2026-12-16T19:00:00+05:30"
+      },
+      "items": [
+        {
+          "item_id": "q1",
+          "type": "survey-single-select",
+          "prompt": "देर से बोने वाले गेहूँ की योजना में आपने कितना काम किया?",
+          "options": [
+            {
+              "value": "all_steps",
+              "label": "सभी कदम किए"
+            },
+            {
+              "value": "some_steps",
+              "label": "कुछ कदम किए"
+            },
+            {
+              "value": "not_started",
+              "label": "शुरू नहीं किया"
+            }
+          ]
+        },
+        {
+          "item_id": "q2",
+          "type": "survey-single-select",
+          "prompt": "क्या गेहूँ की यह योजना अब तक ठीक चल रही है?",
+          "options": [
+            {
+              "value": "yes",
+              "label": "हाँ"
+            },
+            {
+              "value": "too_early",
+              "label": "अभी जल्दी है"
+            },
+            {
+              "value": "no",
+              "label": "नहीं",
+              "follow_up": "advice_did_not_work"
+            }
+          ]
+        }
+      ],
+      "rationale": "Plan for late-sown wheat (certified late-sowing seed, sow by 25 Dec, higher seed rate). Uses the standard plan_created questions: progress on the plan, then whether it is working. Ask on or after the 25 December deadline.",
+      "self_eval": {
+        "schema_valid": true,
+        "relevance_score": 1.0,
+        "gives_new_advice": false,
+        "asks_personal_info": false
+      }
+    },
+    "send_window": {
+      "not_before": "2026-12-09T09:00:00+05:30",
+      "not_after": "2026-12-16T19:00:00+05:30"
+    },
+    "send_hours": {
+      "from": "07:00",
+      "to": "19:00"
+    },
+    "channel_order": [
+      {
+        "channel": "telegram",
+        "wait_hours": 48
+      },
+      {
+        "channel": "app",
+        "wait_hours": 48
+      },
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ],
+    "frequency_cap": {
+      "key": "mel:farmer:F-000402",
+      "max_surveys": 1,
+      "window_days": 7,
+      "exempt": false
+    },
+    "priority": "low",
+    "expires_at": "2026-12-18T19:00:00+05:30",
+    "farmerchat_flow": {
+      "org_id": "org.farmerchat",
+      "flow_key": "mel_s_004420",
+      "version": 1,
+      "campaign_id": "69ce728f-4be9-5df9-b441-486cb9d89103",
+      "flow_id": "2e97c12a-9122-56c2-a66e-15fa2d33bf2e"
+    }
+  },
+  "no_survey": null,
+  "check": {
+    "deterministic": [],
+    "judge": {
+      "relevance_score": 1.0,
+      "gives_new_advice": false,
+      "contradicts_advice": false,
+      "asks_personal_info": false,
+      "language_correct": true,
+      "issues": []
+    },
+    "passed": true,
+    "reasons": []
+  },
+  "status": "scheduled",
+  "attempts": 1,
+  "usage": {
+    "calls": 2,
+    "input_tokens": 7021,
+    "output_tokens": 1678,
+    "cost_usd": null,
+    "by_model": {
+      "us.anthropic.claude-sonnet-5-5": {
+        "calls": 1,
+        "input_tokens": 5710,
+        "output_tokens": 859
+      },
+      "us.anthropic.claude-haiku-5-5": {
+        "calls": 1,
+        "input_tokens": 1311,
+        "output_tokens": 819
+      }
+    }
+  }
+}

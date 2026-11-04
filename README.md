@@ -34,29 +34,6 @@ What changed between runs:
 
 Relevance and the match with Digital Green's questions are LLM-judge scores from 0 to 1. Hindi output still needs review by a Hindi speaker. Full reports are in `reports/`, and `reports/history.jsonl` holds the trend.
 
-## Full dataset run
-
-All 6,999 practice insights, default settings: prompt v2, relevance threshold 0.8, writer Claude Sonnet 5.5, checker Claude Haiku 5.5, 16 workers. Full numbers are in `reports/full-run.json`.
-
-| Status | Insights |
-|---|---|
-| Scheduled | 2,565 |
-| Rejected by the self-check (never scheduled) | 147 |
-| Writer skipped | 0 |
-| No survey (rules R1 to R7) | 4,287 |
-| Error | 0 |
-
-- **Speed:** 2,063 s wall clock over two sessions. 93 s for the 300-insight sample, whose results were reused, and 1,970 s for the other 6,699. Per survey: 12.0 s average, 23.1 s p95. No Bedrock throttling retries.
-- **Tokens:** Sonnet 5.5 used 17.54M input and 2.62M output tokens over 3,104 calls. Haiku 5.5 used 4.28M input and 2.59M output over 3,104 calls. That's about 10,000 tokens per survey. Cost isn't estimated, because `MEL_WRITER_PRICE` and `MEL_CHECKER_PRICE` aren't set.
-- **Rejections by language:** en-IN 17 of 275 (6.2%), hi-IN 130 of 2,437 (5.3%).
-- **Rejections by resolution type:** wait_and_monitor 104 of 121 (86%), do_not_act 2 of 59, direct_action 36 of 2,093, plan_created 5 of 408, escalate_to_expert 0 of 31. Every wait_and_monitor rejection scored relevance 0.70. The judge counts the v2 question "Do you need more help?" as generic. Prompts v3 and v4 fix this, but neither passed the acceptance bar on the golden set (see the commit history).
-- **Season simulation** (1 Nov 2026 to 10 Apr 2027, 2,565 scheduled surveys, simulated farmers):
-  - Outcomes: 1,220 completed, 313 negative outcome (all 313 sent to the follow-up queue), 173 partial, 169 declined, 158 expired and 14 delivery failed.
-  - Not sent: 344 dropped by the weekly cap before their window closed, 173 dropped because the farmer had opted out (35 farmers opted out), and 1 expired.
-  - All 2,210 answer records pass `response.schema.json`, and weekly cap violations are 0.
-
-Regenerate with `python -m mel_agent.cli generate --workers 16` (resumable) and then `python -m mel_agent.cli full-report`.
-
 ## Run it
 
 ```bash

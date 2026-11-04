@@ -1,0 +1,6 @@
+.console{display:flex;flex-direction:column;gap:14px;}
+.tabs{display:flex;gap:8px;}
+.tabs button{border:1px solid var(--line);background:var(--white);border-radius:999px;padding:7px 16px;cursor:pointer;font:inherit;font-size:14px;}
+.tabs button[aria-selected="true"]{background:var(--green-brand);color:var(--white);border-color:var(--green-brand);font-weight:600;}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;}
+@media (min-width:1500px){.grid{grid-template-columns:1fr 1fr;align-items:start;}}

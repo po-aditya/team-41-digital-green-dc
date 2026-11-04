@@ -1,0 +1,4 @@
+.track{display:flex;gap:6px;width:100%;}
+.seg{flex:1;height:8px;border-radius:999px;background:var(--green-light-2);transition:background .25s ease;}
+.on{background:var(--green-brand);}
+@media (prefers-reduced-motion: reduce){.seg{transition:none;}}

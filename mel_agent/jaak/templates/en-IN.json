@@ -1,0 +1,19 @@
+{
+  "language": "en-IN",
+  "templates": {
+    "greeting_plain": {"role": "final", "text": "Hello, this is JAAK, and I have a short survey about the advice you got from FarmerChat. Is now a good time?"},
+    "greeting_named": {"role": "final", "text": "Hello {farmer_name}, this is JAAK, and I have a short survey about the advice you got from FarmerChat. Is now a good time?"},
+    "option_lead_in": {"role": "fragment", "text": "The choices are"},
+    "option_sep": {"role": "glue", "text": ", "},
+    "option_sep_last": {"role": "glue", "text": " or "},
+    "option_close": {"role": "glue", "text": "."},
+    "option_tail": {"role": "final", "text": "Which one is it?"},
+    "scale_tail": {"role": "final", "text": "Which number from {scale_min} to {scale_max} is it?"},
+    "reask_prefix": {"role": "fragment", "text": "Sorry, I did not catch that, so let me ask again."},
+    "advice_decline": {"role": "final", "text": "I cannot give farming advice, but FarmerChat can help you with that. Shall I ask my question again?"},
+    "reprompt": {"role": "final", "text": "Sorry, I did not understand that. Shall I ask my question again?"},
+    "closing_done": {"role": "closing", "text": "Thank you for your time, goodbye."},
+    "closing_declined": {"role": "closing", "text": "That is fine, no problem. Thank you, goodbye."},
+    "closing_opted_out": {"role": "closing", "text": "That is fine, you will not get more surveys. Thank you, goodbye."}
+  }
+}

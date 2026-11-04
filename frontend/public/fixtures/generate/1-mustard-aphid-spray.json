@@ -1,0 +1,270 @@
+{
+  "insight_id": "I-004512",
+  "farmer_id": "F-000123",
+  "decision": {
+    "insight_id": "I-004512",
+    "farmer_id": "F-000123",
+    "survey": true,
+    "rule": "R8",
+    "reason_code": null,
+    "reason": null,
+    "send_window": {
+      "not_before": "2026-12-06T09:00:00+05:30",
+      "not_after": "2026-12-09T19:00:00+05:30"
+    },
+    "priority": "normal",
+    "channel_order": [
+      {
+        "channel": "app",
+        "wait_hours": 24
+      },
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ]
+  },
+  "survey": {
+    "survey_id": "S-004512",
+    "farmer_id": "F-000123",
+    "source_insight_ids": [
+      "I-004512"
+    ],
+    "language": "hi-IN",
+    "send_window": {
+      "not_before": "2026-12-06T09:00:00+05:30",
+      "not_after": "2026-12-09T19:00:00+05:30"
+    },
+    "items": [
+      {
+        "item_id": "q1",
+        "type": "survey-single-select",
+        "prompt": "क्या आपने सरसों पर माहू (छोटे हरे कीड़े) के लिए छिड़काव किया?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "हाँ"
+          },
+          {
+            "value": "not_yet",
+            "label": "अभी नहीं"
+          },
+          {
+            "value": "no",
+            "label": "नहीं"
+          }
+        ]
+      },
+      {
+        "item_id": "q2",
+        "type": "survey-single-select",
+        "prompt": "आपकी सरसों की फसल अब कैसी है?",
+        "options": [
+          {
+            "value": "better",
+            "label": "पहले से बेहतर"
+          },
+          {
+            "value": "same",
+            "label": "पहले जैसी",
+            "follow_up": "advice_did_not_work"
+          },
+          {
+            "value": "worse",
+            "label": "पहले से खराब",
+            "follow_up": "crop_or_animal_damaged"
+          }
+        ]
+      },
+      {
+        "item_id": "q3",
+        "type": "survey-single-select",
+        "prompt": "अगर छिड़काव नहीं किया, तो क्या रुकावट थी?",
+        "options": [
+          {
+            "value": "too_costly",
+            "label": "बहुत महँगा"
+          },
+          {
+            "value": "not_available",
+            "label": "पास में नहीं मिला",
+            "follow_up": "could_not_get_input"
+          },
+          {
+            "value": "no_time",
+            "label": "समय नहीं मिला"
+          },
+          {
+            "value": "did_not_understand",
+            "label": "समझ नहीं आया"
+          }
+        ]
+      }
+    ],
+    "rationale": "Direct-action aphid spray advice with a 2-day window. Ask from day 2: check if the spray was done, how the mustard is now, and what blocked a farmer who did not spray (input needed).",
+    "self_eval": {
+      "schema_valid": true,
+      "relevance_score": 1.0,
+      "gives_new_advice": false,
+      "asks_personal_info": false
+    }
+  },
+  "handoff": {
+    "handoff_id": "H-004512",
+    "created_at": "2026-12-04T09:42:00+05:30",
+    "survey": {
+      "survey_id": "S-004512",
+      "farmer_id": "F-000123",
+      "source_insight_ids": [
+        "I-004512"
+      ],
+      "language": "hi-IN",
+      "send_window": {
+        "not_before": "2026-12-06T09:00:00+05:30",
+        "not_after": "2026-12-09T19:00:00+05:30"
+      },
+      "items": [
+        {
+          "item_id": "q1",
+          "type": "survey-single-select",
+          "prompt": "क्या आपने सरसों पर माहू (छोटे हरे कीड़े) के लिए छिड़काव किया?",
+          "options": [
+            {
+              "value": "yes",
+              "label": "हाँ"
+            },
+            {
+              "value": "not_yet",
+              "label": "अभी नहीं"
+            },
+            {
+              "value": "no",
+              "label": "नहीं"
+            }
+          ]
+        },
+        {
+          "item_id": "q2",
+          "type": "survey-single-select",
+          "prompt": "आपकी सरसों की फसल अब कैसी है?",
+          "options": [
+            {
+              "value": "better",
+              "label": "पहले से बेहतर"
+            },
+            {
+              "value": "same",
+              "label": "पहले जैसी",
+              "follow_up": "advice_did_not_work"
+            },
+            {
+              "value": "worse",
+              "label": "पहले से खराब",
+              "follow_up": "crop_or_animal_damaged"
+            }
+          ]
+        },
+        {
+          "item_id": "q3",
+          "type": "survey-single-select",
+          "prompt": "अगर छिड़काव नहीं किया, तो क्या रुकावट थी?",
+          "options": [
+            {
+              "value": "too_costly",
+              "label": "बहुत महँगा"
+            },
+            {
+              "value": "not_available",
+              "label": "पास में नहीं मिला",
+              "follow_up": "could_not_get_input"
+            },
+            {
+              "value": "no_time",
+              "label": "समय नहीं मिला"
+            },
+            {
+              "value": "did_not_understand",
+              "label": "समझ नहीं आया"
+            }
+          ]
+        }
+      ],
+      "rationale": "Direct-action aphid spray advice with a 2-day window. Ask from day 2: check if the spray was done, how the mustard is now, and what blocked a farmer who did not spray (input needed).",
+      "self_eval": {
+        "schema_valid": true,
+        "relevance_score": 1.0,
+        "gives_new_advice": false,
+        "asks_personal_info": false
+      }
+    },
+    "send_window": {
+      "not_before": "2026-12-06T09:00:00+05:30",
+      "not_after": "2026-12-09T19:00:00+05:30"
+    },
+    "send_hours": {
+      "from": "07:00",
+      "to": "19:00"
+    },
+    "channel_order": [
+      {
+        "channel": "app",
+        "wait_hours": 24
+      },
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ],
+    "frequency_cap": {
+      "key": "mel:farmer:F-000123",
+      "max_surveys": 1,
+      "window_days": 7,
+      "exempt": false
+    },
+    "priority": "normal",
+    "expires_at": "2026-12-11T19:00:00+05:30",
+    "farmerchat_flow": {
+      "org_id": "org.farmerchat",
+      "flow_key": "mel_s_004512",
+      "version": 1,
+      "campaign_id": "69ce728f-4be9-5df9-b441-486cb9d89103",
+      "flow_id": "27ad0099-3f8e-5920-9400-56d700edfd44"
+    }
+  },
+  "no_survey": null,
+  "check": {
+    "deterministic": [],
+    "judge": {
+      "relevance_score": 1.0,
+      "gives_new_advice": false,
+      "contradicts_advice": false,
+      "asks_personal_info": false,
+      "language_correct": true,
+      "issues": [
+        "q3 is conditional on not spraying ('अगर छिड़काव नहीं किया'), but no skip logic from q1 is specified; it should only be shown to farmers who answered 'नहीं' or 'अभी नहीं' in q1."
+      ]
+    },
+    "passed": true,
+    "reasons": []
+  },
+  "status": "scheduled",
+  "attempts": 1,
+  "usage": {
+    "calls": 2,
+    "input_tokens": 7140,
+    "output_tokens": 1794,
+    "cost_usd": null,
+    "by_model": {
+      "us.anthropic.claude-sonnet-5-5": {
+        "calls": 1,
+        "input_tokens": 5673,
+        "output_tokens": 1017
+      },
+      "us.anthropic.claude-haiku-5-5": {
+        "calls": 1,
+        "input_tokens": 1467,
+        "output_tokens": 777
+      }
+    }
+  }
+}

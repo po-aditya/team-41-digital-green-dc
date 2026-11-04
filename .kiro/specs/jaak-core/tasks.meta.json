@@ -1,0 +1,332 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Create dev environment and test scaffolding": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793808625456
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793808686667
+      }
+    ],
+    "1.2 Create package skeleton, errors and null log sink": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793808692386
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793808750278
+      }
+    ],
+    "1. Environment and package skeleton": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793808752369
+      }
+    ],
+    "2.1 Implement Pydantic models": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793808762190
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809108919
+      }
+    ],
+    "3.1 Implement template loader/validator and en-IN templates": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809128776
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809266302
+      }
+    ],
+    "4.1 Implement normaliser and lexicon data": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809129955
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809267568
+      }
+    ],
+    "2.2 Implement boundary validators": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809273490
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809371219
+      }
+    ],
+    "3.2 Add hi-IN templates": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809274611
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809368990
+      }
+    ],
+    "4.2 Implement Answer_Mapper": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809275738
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809370157
+      }
+    ],
+    "2.3 Write unit tests for models and boundary": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809378870
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809530926
+      }
+    ],
+    "3.3 Implement Turn renderer": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809379999
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809532011
+      }
+    ],
+    "4.3 Write unit tests for the mapper": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809381203
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809533206
+      }
+    ],
+    "2. Models and boundary validation": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809534353
+      }
+    ],
+    "4. Answer mapping": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809535532
+      }
+    ],
+    "3.4 Write unit tests for templates and renderer": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809632689
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809738487
+      }
+    ],
+    "5.1 Implement minimal classifier with redaction hook": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809633817
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809739683
+      }
+    ],
+    "6.1 Implement status and follow-up derivation": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809634936
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809740884
+      }
+    ],
+    "3. Fixed templates and Turn rendering": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809742002
+      }
+    ],
+    "5.2 Implement session state and happy-path transitions": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809755416
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809869567
+      }
+    ],
+    "6.2 Implement Response_Record builder": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809756615
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809870688
+      }
+    ],
+    "5.3 Write unit tests for the state machine": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809877730
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810034202
+      }
+    ],
+    "6.3 Write unit tests for outcome and record": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809878855
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810035318
+      }
+    ],
+    "7.1 Implement JaakEngine (happy path)": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793809879981
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810036685
+      }
+    ],
+    "5. Session state machine (happy path plus re-ask)": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810037870
+      }
+    ],
+    "6. Outcome rules and Response_Record builder": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810038999
+      }
+    ],
+    "7.2 Write unit tests for the engine happy path": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810047235
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810161260
+      }
+    ],
+    "8.1 Implement the CLI": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810048433
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810160105
+      }
+    ],
+    "7. JaakEngine with five operations": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810163332
+      }
+    ],
+    "8.2 Write CLI smoke tests": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810168944
+      },
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810245501
+      }
+    ],
+    "8. Developer CLI": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810247594
+      }
+    ],
+    "9. Checkpoint - Working CLI plays a full survey": [
+      {
+        "executionId": "e8d86933-1eaf-4a40-8964-3937cdbc0157",
+        "chatSessionId": "sess_56e87b1f-8239-4f5a-b19a-137e31217267",
+        "timestamp": 1793810267900
+      }
+    ]
+  }
+}

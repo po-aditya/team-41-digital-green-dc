@@ -1,0 +1,6 @@
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:500;line-height:1.4;border:1px solid var(--line);background:var(--white);color:var(--ink);white-space:nowrap;}
+.icon{display:inline-flex;}
+.neutral{background:var(--white);color:var(--muted);}
+.green{background:var(--green-light);color:var(--green-deep);border-color:var(--green-light-2);}
+.amber{background:var(--amber-bg);color:var(--amber-ink);border-color:var(--amber-bg);}
+.critical{background:var(--crit-bg);color:var(--crit-ink);border-color:var(--crit-bg);}

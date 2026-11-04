@@ -1,0 +1,220 @@
+{
+  "insight_id": "I-004990",
+  "farmer_id": "F-000311",
+  "decision": {
+    "insight_id": "I-004990",
+    "farmer_id": "F-000311",
+    "survey": true,
+    "rule": "R8",
+    "reason_code": null,
+    "reason": null,
+    "send_window": {
+      "not_before": "2026-12-16T09:00:00+05:30",
+      "not_after": "2026-12-17T19:00:00+05:30"
+    },
+    "priority": "high",
+    "channel_order": [
+      {
+        "channel": "voice",
+        "wait_hours": 6
+      },
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ]
+  },
+  "survey": {
+    "survey_id": "S-004990",
+    "farmer_id": "F-000311",
+    "source_insight_ids": [
+      "I-004990"
+    ],
+    "language": "hi-IN",
+    "send_window": {
+      "not_before": "2026-12-16T09:00:00+05:30",
+      "not_after": "2026-12-17T19:00:00+05:30"
+    },
+    "items": [
+      {
+        "item_id": "q1",
+        "type": "survey-single-select",
+        "prompt": "क्या आप बीमार गाय के लिए पशु डॉक्टर से मिले या फ़ोन पर बात की?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "हाँ"
+          },
+          {
+            "value": "not_yet",
+            "label": "अभी नहीं"
+          },
+          {
+            "value": "could_not_reach",
+            "label": "संपर्क नहीं हुआ",
+            "follow_up": "could_not_reach_expert"
+          }
+        ]
+      },
+      {
+        "item_id": "q2",
+        "type": "survey-single-select",
+        "prompt": "क्या डॉक्टर की सलाह से आपकी गाय को आराम मिला?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "हाँ"
+          },
+          {
+            "value": "no",
+            "label": "नहीं",
+            "follow_up": "advice_did_not_work"
+          },
+          {
+            "value": "not_met_yet",
+            "label": "अभी मिले नहीं"
+          }
+        ]
+      }
+    ],
+    "rationale": "Emergency vet escalation for a sick cow. Ask next day whether the farmer reached the vet and whether the vet's advice helped the cow. Standard escalate_to_expert answer sets are used.",
+    "self_eval": {
+      "schema_valid": true,
+      "relevance_score": 1.0,
+      "gives_new_advice": false,
+      "asks_personal_info": false
+    }
+  },
+  "handoff": {
+    "handoff_id": "H-004990",
+    "created_at": "2026-12-15T08:00:00+05:30",
+    "survey": {
+      "survey_id": "S-004990",
+      "farmer_id": "F-000311",
+      "source_insight_ids": [
+        "I-004990"
+      ],
+      "language": "hi-IN",
+      "send_window": {
+        "not_before": "2026-12-16T09:00:00+05:30",
+        "not_after": "2026-12-17T19:00:00+05:30"
+      },
+      "items": [
+        {
+          "item_id": "q1",
+          "type": "survey-single-select",
+          "prompt": "क्या आप बीमार गाय के लिए पशु डॉक्टर से मिले या फ़ोन पर बात की?",
+          "options": [
+            {
+              "value": "yes",
+              "label": "हाँ"
+            },
+            {
+              "value": "not_yet",
+              "label": "अभी नहीं"
+            },
+            {
+              "value": "could_not_reach",
+              "label": "संपर्क नहीं हुआ",
+              "follow_up": "could_not_reach_expert"
+            }
+          ]
+        },
+        {
+          "item_id": "q2",
+          "type": "survey-single-select",
+          "prompt": "क्या डॉक्टर की सलाह से आपकी गाय को आराम मिला?",
+          "options": [
+            {
+              "value": "yes",
+              "label": "हाँ"
+            },
+            {
+              "value": "no",
+              "label": "नहीं",
+              "follow_up": "advice_did_not_work"
+            },
+            {
+              "value": "not_met_yet",
+              "label": "अभी मिले नहीं"
+            }
+          ]
+        }
+      ],
+      "rationale": "Emergency vet escalation for a sick cow. Ask next day whether the farmer reached the vet and whether the vet's advice helped the cow. Standard escalate_to_expert answer sets are used.",
+      "self_eval": {
+        "schema_valid": true,
+        "relevance_score": 1.0,
+        "gives_new_advice": false,
+        "asks_personal_info": false
+      }
+    },
+    "send_window": {
+      "not_before": "2026-12-16T09:00:00+05:30",
+      "not_after": "2026-12-17T19:00:00+05:30"
+    },
+    "send_hours": {
+      "from": "07:00",
+      "to": "19:00"
+    },
+    "channel_order": [
+      {
+        "channel": "voice",
+        "wait_hours": 6
+      },
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ],
+    "frequency_cap": {
+      "key": "mel:farmer:F-000311",
+      "max_surveys": 1,
+      "window_days": 7,
+      "exempt": true
+    },
+    "priority": "high",
+    "expires_at": "2026-12-19T19:00:00+05:30",
+    "farmerchat_flow": {
+      "org_id": "org.farmerchat",
+      "flow_key": "mel_s_004990",
+      "version": 1,
+      "campaign_id": "69ce728f-4be9-5df9-b441-486cb9d89103",
+      "flow_id": "80753d8d-c2d6-5be9-a9c9-f0314a2923fd"
+    }
+  },
+  "no_survey": null,
+  "check": {
+    "deterministic": [],
+    "judge": {
+      "relevance_score": 1.0,
+      "gives_new_advice": false,
+      "contradicts_advice": false,
+      "asks_personal_info": false,
+      "language_correct": true,
+      "issues": []
+    },
+    "passed": true,
+    "reasons": []
+  },
+  "status": "scheduled",
+  "attempts": 1,
+  "usage": {
+    "calls": 2,
+    "input_tokens": 7008,
+    "output_tokens": 1706,
+    "cost_usd": null,
+    "by_model": {
+      "us.anthropic.claude-sonnet-5-5": {
+        "calls": 1,
+        "input_tokens": 5685,
+        "output_tokens": 925
+      },
+      "us.anthropic.claude-haiku-5-5": {
+        "calls": 1,
+        "input_tokens": 1323,
+        "output_tokens": 781
+      }
+    }
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "deferred": {
+    "seed_state": "deferred_by_cap",
+    "note": "Derived from scenario 1 handoff; a second survey to the same farmer within the 7-day cap window.",
+    "handoff": {
+      "handoff_id": "H-20931",
+      "created_at": "2026-12-04T23:00:00+05:30",
+      "survey": {
+        "survey_id": "S-20931",
+        "farmer_id": "F-000123",
+        "source_insight_ids": [
+          "I-004512"
+        ],
+        "language": "hi-IN",
+        "send_window": {
+          "not_before": "2026-12-06T07:00:00+05:30",
+          "not_after": "2026-12-09T19:00:00+05:30"
+        },
+        "items": [
+          {
+            "item_id": "q1",
+            "type": "survey-confirm",
+            "prompt": "क्या आपने सरसों पर माहू (छोटे हरे कीड़े) के लिए छिड़काव किया?",
+            "options": [
+              {
+                "value": "yes",
+                "label": "हाँ"
+              },
+              {
+                "value": "no",
+                "label": "नहीं"
+              }
+            ]
+          },
+          {
+            "item_id": "q2",
+            "type": "survey-single-select",
+            "prompt": "क्या छिड़काव की दवा आसानी से मिल गई?",
+            "options": [
+              {
+                "value": "easy",
+                "label": "हाँ, आसानी से"
+              },
+              {
+                "value": "hard",
+                "label": "हाँ, मुश्किल से"
+              },
+              {
+                "value": "not_found",
+                "label": "नहीं मिली",
+                "follow_up": "could_not_get_input"
+              }
+            ]
+          },
+          {
+            "item_id": "q3",
+            "type": "survey-single-select",
+            "prompt": "अब पौधों पर ये कीड़े कितने हैं?",
+            "options": [
+              {
+                "value": "almost_none",
+                "label": "लगभग नहीं"
+              },
+              {
+                "value": "fewer",
+                "label": "पहले से कम"
+              },
+              {
+                "value": "same",
+                "label": "पहले जितने",
+                "follow_up": "advice_did_not_work"
+              },
+              {
+                "value": "more",
+                "label": "पहले से ज़्यादा",
+                "follow_up": "advice_did_not_work"
+              }
+            ]
+          }
+        ],
+        "rationale": "Direct-action pest advice with a 2-day window. Ask from day 2, when the spray is done and the aphid count has had time to change.",
+        "self_eval": {
+          "schema_valid": true,
+          "gives_new_advice": false,
+          "asks_personal_info": false
+        }
+      },
+      "send_window": {
+        "not_before": "2026-12-06T07:00:00+05:30",
+        "not_after": "2026-12-09T19:00:00+05:30"
+      },
+      "send_hours": {
+        "from": "07:00",
+        "to": "19:00"
+      },
+      "channel_order": [
+        {
+          "channel": "app",
+          "wait_hours": 24
+        },
+        {
+          "channel": "whatsapp",
+          "wait_hours": null
+        }
+      ],
+      "frequency_cap": {
+        "key": "mel:farmer:F-000123",
+        "max_surveys": 1,
+        "window_days": 7,
+        "exempt": false
+      },
+      "priority": "normal",
+      "expires_at": "2026-12-11T19:00:00+05:30",
+      "farmerchat_flow": {
+        "org_id": "org.farmerchat",
+        "flow_key": "mel_s_20931",
+        "version": 1,
+        "campaign_id": "283df456-256d-5d97-912f-1a6c4fdde6d0",
+        "flow_id": "eb101082-d576-558b-98a6-8f398a0039ae"
+      }
+    }
+  },
+  "expired": {
+    "seed_state": "expired",
+    "note": "Derived from scenario 2 handoff; window fully in the past relative to the demo clock.",
+    "handoff": {
+      "handoff_id": "H-21044",
+      "created_at": "2026-12-08T23:00:00+05:30",
+      "survey": {
+        "survey_id": "S-21044",
+        "farmer_id": "F-000187",
+        "source_insight_ids": [
+          "I-004871"
+        ],
+        "language": "hi-IN",
+        "send_window": {
+          "not_before": "2026-12-13T07:00:00+05:30",
+          "not_after": "2026-12-18T19:00:00+05:30"
+        },
+        "items": [
+          {
+            "item_id": "q1",
+            "type": "survey-single-select",
+            "prompt": "क्या आपने गेहूँ में पहली सिंचाई कर दी?",
+            "options": [
+              {
+                "value": "on_time",
+                "label": "हाँ, समय पर"
+              },
+              {
+                "value": "late",
+                "label": "हाँ, पर देर से"
+              },
+              {
+                "value": "not_yet",
+                "label": "अभी नहीं"
+              }
+            ]
+          },
+          {
+            "item_id": "q2",
+            "type": "survey-single-select",
+            "prompt": "आपकी गेहूँ की फसल अब कैसी दिख रही है?",
+            "options": [
+              {
+                "value": "healthy",
+                "label": "हरी और स्वस्थ"
+              },
+              {
+                "value": "some_yellow",
+                "label": "कुछ पत्ते पीले"
+              },
+              {
+                "value": "many_yellow",
+                "label": "बहुत पत्ते पीले",
+                "follow_up": "crop_or_animal_damaged"
+              }
+            ]
+          }
+        ],
+        "rationale": "Irrigation timing advice with a 5-day window ending 13 December. Ask after the window closes, while the crop's response is still visible.",
+        "self_eval": {
+          "schema_valid": true,
+          "gives_new_advice": false,
+          "asks_personal_info": false
+        }
+      },
+      "send_window": {
+        "not_before": "2026-12-13T07:00:00+05:30",
+        "not_after": "2026-12-18T19:00:00+05:30"
+      },
+      "send_hours": {
+        "from": "07:00",
+        "to": "19:00"
+      },
+      "channel_order": [
+        {
+          "channel": "whatsapp",
+          "wait_hours": null
+        }
+      ],
+      "frequency_cap": {
+        "key": "mel:farmer:F-000187",
+        "max_surveys": 1,
+        "window_days": 7,
+        "exempt": false
+      },
+      "priority": "normal",
+      "expires_at": "2026-12-20T19:00:00+05:30",
+      "farmerchat_flow": {
+        "org_id": "org.farmerchat",
+        "flow_key": "mel_s_21044",
+        "version": 1,
+        "campaign_id": "283df456-256d-5d97-912f-1a6c4fdde6d0",
+        "flow_id": "e720c971-a22e-5d1b-9e70-f6ec8ecb6874"
+      }
+    }
+  },
+  "season_truncated": {
+    "seed_state": "window_truncated_by_season_end",
+    "note": "Derived from scenario 2 handoff; not_after would fall after 2027-03-31 and is clipped.",
+    "season_end": "2027-03-31",
+    "handoff": {
+      "handoff_id": "H-21044",
+      "created_at": "2026-12-08T23:00:00+05:30",
+      "survey": {
+        "survey_id": "S-21044",
+        "farmer_id": "F-000187",
+        "source_insight_ids": [
+          "I-004871"
+        ],
+        "language": "hi-IN",
+        "send_window": {
+          "not_before": "2026-12-13T07:00:00+05:30",
+          "not_after": "2026-12-18T19:00:00+05:30"
+        },
+        "items": [
+          {
+            "item_id": "q1",
+            "type": "survey-single-select",
+            "prompt": "क्या आपने गेहूँ में पहली सिंचाई कर दी?",
+            "options": [
+              {
+                "value": "on_time",
+                "label": "हाँ, समय पर"
+              },
+              {
+                "value": "late",
+                "label": "हाँ, पर देर से"
+              },
+              {
+                "value": "not_yet",
+                "label": "अभी नहीं"
+              }
+            ]
+          },
+          {
+            "item_id": "q2",
+            "type": "survey-single-select",
+            "prompt": "आपकी गेहूँ की फसल अब कैसी दिख रही है?",
+            "options": [
+              {
+                "value": "healthy",
+                "label": "हरी और स्वस्थ"
+              },
+              {
+                "value": "some_yellow",
+                "label": "कुछ पत्ते पीले"
+              },
+              {
+                "value": "many_yellow",
+                "label": "बहुत पत्ते पीले",
+                "follow_up": "crop_or_animal_damaged"
+              }
+            ]
+          }
+        ],
+        "rationale": "Irrigation timing advice with a 5-day window ending 13 December. Ask after the window closes, while the crop's response is still visible.",
+        "self_eval": {
+          "schema_valid": true,
+          "gives_new_advice": false,
+          "asks_personal_info": false
+        }
+      },
+      "send_window": {
+        "not_before": "2026-12-13T07:00:00+05:30",
+        "not_after": "2026-12-18T19:00:00+05:30"
+      },
+      "send_hours": {
+        "from": "07:00",
+        "to": "19:00"
+      },
+      "channel_order": [
+        {
+          "channel": "whatsapp",
+          "wait_hours": null
+        }
+      ],
+      "frequency_cap": {
+        "key": "mel:farmer:F-000187",
+        "max_surveys": 1,
+        "window_days": 7,
+        "exempt": false
+      },
+      "priority": "normal",
+      "expires_at": "2026-12-20T19:00:00+05:30",
+      "farmerchat_flow": {
+        "org_id": "org.farmerchat",
+        "flow_key": "mel_s_21044",
+        "version": 1,
+        "campaign_id": "283df456-256d-5d97-912f-1a6c4fdde6d0",
+        "flow_id": "e720c971-a22e-5d1b-9e70-f6ec8ecb6874"
+      }
+    }
+  },
+  "human_queue": [
+    {
+      "seed_state": "human_queue_critical",
+      "note": "Real pack insight routed to a human (escalation), surfaced in the simulated reviewer view.",
+      "insight": {
+        "insight_id": "I-004990",
+        "farmer_id": "F-000311",
+        "conversation_id": "C-88655",
+        "created_at": "2026-12-15T07:30:00+05:30",
+        "conversation_language": "hi-IN",
+        "location": {
+          "country": "IN",
+          "state": "Bihar",
+          "district": "Vaishali"
+        },
+        "asset": {
+          "name": "cow",
+          "category": "livestock",
+          "growth_stage": null
+        },
+        "concern": "livestock_health",
+        "behavioral_intent": "emergency",
+        "decision_episode_type": "problem_resolution",
+        "severity": "high",
+        "query_summary": "Cow has not eaten for two days, has a fever and is breathing fast.",
+        "advice_summary": "This needs a vet today. Call the nearest government veterinary hospital or the animal ambulance. Keep the cow in shade with clean water until the vet comes.",
+        "resolution_type": "escalate_to_expert",
+        "action_window_days": 1,
+        "verification": {
+          "needed": true,
+          "timing": "next_day",
+          "method": "ivr_callback"
+        },
+        "preferred_channel": "voice"
+      },
+      "status": "new"
+    }
+  ],
+  "quarantined": {
+    "seed_state": "quarantined",
+    "note": "Real non-clean insights.jsonl row.",
+    "insight": {
+      "insight_id": "I-000010",
+      "farmer_id": "F-000241",
+      "conversation_id": "C-000006",
+      "created_at": "2026-11-01T10:48:00+05:30",
+      "conversation_language": "hi-IN",
+      "location": {
+        "country": "IN",
+        "state": "Bihar",
+        "district": "Nalanda"
+      },
+      "asset": {
+        "name": "lentil",
+        "category": "crop",
+        "growth_stage": null
+      },
+      "concern": null,
+      "behavioral_intent": "following_up",
+      "decision_episode_type": "casual",
+      "severity": "low",
+      "query_summary": "Farmer asked who made the app.",
+      "advice_summary": "Explained what the assistant can help with.",
+      "resolution_type": "generic_information",
+      "action_window_days": null,
+      "verification": {
+        "needed": false,
+        "timing": "none",
+        "method": "none"
+      },
+      "preferred_channel": "whatsapp",
+      "quality_flag": "junk"
+    }
+  }
+}

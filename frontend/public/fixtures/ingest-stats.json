@@ -1,0 +1,6 @@
+{
+  "total": 6999,
+  "valid": 6276,
+  "quarantined": 723,
+  "source": "data/participant-pack/data/insights.jsonl"
+}

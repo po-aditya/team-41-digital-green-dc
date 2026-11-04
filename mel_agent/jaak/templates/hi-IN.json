@@ -1,0 +1,20 @@
+{
+  "language": "hi-IN",
+  "review_note": "Needs native-speaker review before pilot use. JAAK stays in Latin script (pronunciation is an open question); first-person verbs are avoided to stay gender-neutral; farmerchat is a transliteration.",
+  "templates": {
+    "greeting_plain": {"role": "final", "text": "नमस्ते, यह JAAK है, और फार्मरचैट से मिली सलाह पर एक छोटा सर्वे है। क्या अभी बात करने का अच्छा समय है?"},
+    "greeting_named": {"role": "final", "text": "नमस्ते {farmer_name}, यह JAAK है, और फार्मरचैट से मिली सलाह पर एक छोटा सर्वे है। क्या अभी बात करने का अच्छा समय है?"},
+    "option_lead_in": {"role": "fragment", "text": "विकल्प हैं"},
+    "option_sep": {"role": "glue", "text": ", "},
+    "option_sep_last": {"role": "glue", "text": " या "},
+    "option_close": {"role": "glue", "text": "।"},
+    "option_tail": {"role": "final", "text": "आप कौन सा चुनेंगे?"},
+    "scale_tail": {"role": "final", "text": "{scale_min} से {scale_max} तक कौन सा नंबर है?"},
+    "reask_prefix": {"role": "fragment", "text": "माफ़ कीजिए, बात साफ़ नहीं सुनाई दी, इसलिए सवाल दोबारा दोहराया जा रहा है।"},
+    "advice_decline": {"role": "final", "text": "यहाँ खेती की सलाह नहीं दी जा सकती, लेकिन फार्मरचैट इसमें आपकी मदद कर सकता है। क्या सवाल दोबारा दोहराया जाए?"},
+    "reprompt": {"role": "final", "text": "माफ़ कीजिए, बात समझ नहीं आई। क्या सवाल दोबारा दोहराया जाए?"},
+    "closing_done": {"role": "closing", "text": "आपके समय के लिए धन्यवाद, नमस्ते।"},
+    "closing_declined": {"role": "closing", "text": "ठीक है, कोई बात नहीं। आपका धन्यवाद, नमस्ते।"},
+    "closing_opted_out": {"role": "closing", "text": "ठीक है, अब आपको सर्वे नहीं भेजे जाएँगे। आपका धन्यवाद, नमस्ते।"}
+  }
+}

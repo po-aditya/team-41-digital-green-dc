@@ -1,0 +1,6 @@
+.phone{position:relative;width:360px;height:740px;background:var(--white);border-radius:46px;box-shadow:var(--shadow-soft);padding:14px 12px 18px;display:flex;flex-direction:column;overflow:hidden;}
+.statusbar{display:flex;align-items:center;justify-content:space-between;padding:4px 14px 8px;color:var(--ink);}
+.time{font-weight:600;font-size:14px;}
+.icons{display:inline-flex;gap:6px;align-items:center;}
+.screen{flex:1;position:relative;border-radius:30px;overflow:hidden;background:var(--page-tint);}
+.home{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:120px;height:5px;border-radius:999px;background:var(--ink);opacity:.85;}

@@ -37,7 +37,6 @@ class Usage:
     seconds: float = 0.0
     cost_usd: float | None = None
     by_model: dict = field(default_factory=dict)
-    retries: int = 0  # botocore retries (throttling, timeouts) before calls succeeded
 
     def add(self, model, inp, out, secs):
         self.calls += 1
@@ -69,8 +68,7 @@ class Usage:
     def to_dict(self):
         return {"calls": self.calls, "input_tokens": self.input_tokens, "output_tokens": self.output_tokens,
                 "seconds": round(self.seconds, 3),
-                "cost_usd": None if self.cost_usd is None else round(self.cost_usd, 6), "by_model": self.by_model,
-                "retries": self.retries}
+                "cost_usd": None if self.cost_usd is None else round(self.cost_usd, 6), "by_model": self.by_model}
 
 
 def call_tool(model, system, user, tool_name, tool_description, schema, usage, max_tokens=1500, temperature=None):
@@ -94,7 +92,6 @@ def call_tool(model, system, user, tool_name, tool_description, schema, usage, m
         )
         u = resp.get("usage", {})
         usage.add(model, u.get("inputTokens", 0), u.get("outputTokens", 0), time.time() - t0)
-        usage.retries += resp.get("ResponseMetadata", {}).get("RetryAttempts", 0)
         out = _extract(resp["output"]["message"]["content"])
         if out is None:
             problem = f"no {tool_name} call, stopReason={resp.get('stopReason')}"

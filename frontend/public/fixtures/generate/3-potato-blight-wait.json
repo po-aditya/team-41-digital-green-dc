@@ -1,0 +1,224 @@
+{
+  "insight_id": "I-005330",
+  "farmer_id": "F-000245",
+  "decision": {
+    "insight_id": "I-005330",
+    "farmer_id": "F-000245",
+    "survey": true,
+    "rule": "R8",
+    "reason_code": null,
+    "reason": null,
+    "send_window": {
+      "not_before": "2027-01-08T09:00:00+05:30",
+      "not_after": "2027-01-11T19:00:00+05:30"
+    },
+    "priority": "normal",
+    "channel_order": [
+      {
+        "channel": "web",
+        "wait_hours": 24
+      },
+      {
+        "channel": "app",
+        "wait_hours": 24
+      },
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ]
+  },
+  "survey": {
+    "survey_id": "S-005330",
+    "farmer_id": "F-000245",
+    "source_insight_ids": [
+      "I-005330"
+    ],
+    "language": "hi-IN",
+    "send_window": {
+      "not_before": "2027-01-08T09:00:00+05:30",
+      "not_after": "2027-01-11T19:00:00+05:30"
+    },
+    "items": [
+      {
+        "item_id": "q1",
+        "type": "survey-single-select",
+        "prompt": "पिछले 3 दिन में क्या आलू के पत्तों पर धब्बे फैले, या पत्तों के नीचे सफ़ेद फफूंद दिखी?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "हाँ",
+            "follow_up": "advice_did_not_work"
+          },
+          {
+            "value": "no",
+            "label": "नहीं"
+          },
+          {
+            "value": "did_not_check",
+            "label": "जाँच नहीं की"
+          }
+        ]
+      },
+      {
+        "item_id": "q2",
+        "type": "survey-confirm",
+        "prompt": "क्या आपको और मदद चाहिए?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "हाँ",
+            "follow_up": "advice_did_not_work"
+          },
+          {
+            "value": "no",
+            "label": "नहीं"
+          }
+        ]
+      }
+    ],
+    "rationale": "Wait-and-monitor advice for possible late blight with a 3-day watch. Ask after the watch ends whether spots spread or white growth showed, and whether the farmer still needs help.",
+    "self_eval": {
+      "schema_valid": true,
+      "relevance_score": 0.7,
+      "gives_new_advice": false,
+      "asks_personal_info": false
+    }
+  },
+  "handoff": {
+    "handoff_id": "H-005330",
+    "created_at": "2027-01-06T08:35:00+05:30",
+    "survey": {
+      "survey_id": "S-005330",
+      "farmer_id": "F-000245",
+      "source_insight_ids": [
+        "I-005330"
+      ],
+      "language": "hi-IN",
+      "send_window": {
+        "not_before": "2027-01-08T09:00:00+05:30",
+        "not_after": "2027-01-11T19:00:00+05:30"
+      },
+      "items": [
+        {
+          "item_id": "q1",
+          "type": "survey-single-select",
+          "prompt": "पिछले 3 दिन में क्या आलू के पत्तों पर धब्बे फैले, या पत्तों के नीचे सफ़ेद फफूंद दिखी?",
+          "options": [
+            {
+              "value": "yes",
+              "label": "हाँ",
+              "follow_up": "advice_did_not_work"
+            },
+            {
+              "value": "no",
+              "label": "नहीं"
+            },
+            {
+              "value": "did_not_check",
+              "label": "जाँच नहीं की"
+            }
+          ]
+        },
+        {
+          "item_id": "q2",
+          "type": "survey-confirm",
+          "prompt": "क्या आपको और मदद चाहिए?",
+          "options": [
+            {
+              "value": "yes",
+              "label": "हाँ",
+              "follow_up": "advice_did_not_work"
+            },
+            {
+              "value": "no",
+              "label": "नहीं"
+            }
+          ]
+        }
+      ],
+      "rationale": "Wait-and-monitor advice for possible late blight with a 3-day watch. Ask after the watch ends whether spots spread or white growth showed, and whether the farmer still needs help.",
+      "self_eval": {
+        "schema_valid": true,
+        "relevance_score": 0.7,
+        "gives_new_advice": false,
+        "asks_personal_info": false
+      }
+    },
+    "send_window": {
+      "not_before": "2027-01-08T09:00:00+05:30",
+      "not_after": "2027-01-11T19:00:00+05:30"
+    },
+    "send_hours": {
+      "from": "07:00",
+      "to": "19:00"
+    },
+    "channel_order": [
+      {
+        "channel": "web",
+        "wait_hours": 24
+      },
+      {
+        "channel": "app",
+        "wait_hours": 24
+      },
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ],
+    "frequency_cap": {
+      "key": "mel:farmer:F-000245",
+      "max_surveys": 1,
+      "window_days": 7,
+      "exempt": false
+    },
+    "priority": "normal",
+    "expires_at": "2027-01-13T19:00:00+05:30",
+    "farmerchat_flow": {
+      "org_id": "org.farmerchat",
+      "flow_key": "mel_s_005330",
+      "version": 1,
+      "campaign_id": "69ce728f-4be9-5df9-b441-486cb9d89103",
+      "flow_id": "21ace1cc-90b2-5ec1-bd8a-3f39501d6cc1"
+    }
+  },
+  "no_survey": null,
+  "check": {
+    "deterministic": [],
+    "judge": {
+      "relevance_score": 0.7,
+      "gives_new_advice": false,
+      "contradicts_advice": false,
+      "asks_personal_info": false,
+      "language_correct": true,
+      "issues": [
+        "q1 checks whether the brown spots spread or white growth appeared under leaves over the 3 days, which matches the monitoring advice. It combines two conditions in one question, which could be split for clarity.",
+        "q2 ('क्या आपको और मदद चाहिए?') is generic and does not ask about this potato advice or the outcome, so it is vague.",
+        "Options and follow-up keys do not tell the farmer what to do or introduce new product or dose information."
+      ]
+    },
+    "passed": true,
+    "reasons": []
+  },
+  "status": "scheduled",
+  "attempts": 2,
+  "usage": {
+    "calls": 4,
+    "input_tokens": 14108,
+    "output_tokens": 3513,
+    "cost_usd": null,
+    "by_model": {
+      "us.anthropic.claude-sonnet-5-5": {
+        "calls": 2,
+        "input_tokens": 11526,
+        "output_tokens": 1551
+      },
+      "us.anthropic.claude-haiku-5-5": {
+        "calls": 2,
+        "input_tokens": 2582,
+        "output_tokens": 1962
+      }
+    }
+  }
+}

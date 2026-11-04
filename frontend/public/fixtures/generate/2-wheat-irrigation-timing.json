@@ -1,0 +1,217 @@
+{
+  "insight_id": "I-004871",
+  "farmer_id": "F-000187",
+  "decision": {
+    "insight_id": "I-004871",
+    "farmer_id": "F-000187",
+    "survey": true,
+    "rule": "R8",
+    "reason_code": null,
+    "reason": null,
+    "send_window": {
+      "not_before": "2026-12-11T09:00:00+05:30",
+      "not_after": "2026-12-18T19:00:00+05:30"
+    },
+    "priority": "normal",
+    "channel_order": [
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ]
+  },
+  "survey": {
+    "survey_id": "S-004871",
+    "farmer_id": "F-000187",
+    "source_insight_ids": [
+      "I-004871"
+    ],
+    "language": "hi-IN",
+    "send_window": {
+      "not_before": "2026-12-11T09:00:00+05:30",
+      "not_after": "2026-12-18T19:00:00+05:30"
+    },
+    "items": [
+      {
+        "item_id": "q1",
+        "type": "survey-single-select",
+        "prompt": "क्या आपने गेहूँ में पहली हल्की सिंचाई की?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "हाँ"
+          },
+          {
+            "value": "not_yet",
+            "label": "अभी नहीं"
+          },
+          {
+            "value": "no",
+            "label": "नहीं"
+          }
+        ]
+      },
+      {
+        "item_id": "q2",
+        "type": "survey-single-select",
+        "prompt": "आपकी गेहूँ की फसल अब कैसी है?",
+        "options": [
+          {
+            "value": "better",
+            "label": "पहले से बेहतर"
+          },
+          {
+            "value": "same",
+            "label": "पहले जैसी",
+            "follow_up": "advice_did_not_work"
+          },
+          {
+            "value": "worse",
+            "label": "पहले से खराब",
+            "follow_up": "crop_or_animal_damaged"
+          }
+        ]
+      }
+    ],
+    "rationale": "Irrigation timing advice (CRI, 9-13 Dec, light watering). Standard direct_action pattern: did the farmer irrigate, then how is the wheat. Ask after the window closes. No input purchase needed, so no q3.",
+    "self_eval": {
+      "schema_valid": true,
+      "relevance_score": 0.7,
+      "gives_new_advice": false,
+      "asks_personal_info": false
+    }
+  },
+  "handoff": {
+    "handoff_id": "H-004871",
+    "created_at": "2026-12-08T19:10:00+05:30",
+    "survey": {
+      "survey_id": "S-004871",
+      "farmer_id": "F-000187",
+      "source_insight_ids": [
+        "I-004871"
+      ],
+      "language": "hi-IN",
+      "send_window": {
+        "not_before": "2026-12-11T09:00:00+05:30",
+        "not_after": "2026-12-18T19:00:00+05:30"
+      },
+      "items": [
+        {
+          "item_id": "q1",
+          "type": "survey-single-select",
+          "prompt": "क्या आपने गेहूँ में पहली हल्की सिंचाई की?",
+          "options": [
+            {
+              "value": "yes",
+              "label": "हाँ"
+            },
+            {
+              "value": "not_yet",
+              "label": "अभी नहीं"
+            },
+            {
+              "value": "no",
+              "label": "नहीं"
+            }
+          ]
+        },
+        {
+          "item_id": "q2",
+          "type": "survey-single-select",
+          "prompt": "आपकी गेहूँ की फसल अब कैसी है?",
+          "options": [
+            {
+              "value": "better",
+              "label": "पहले से बेहतर"
+            },
+            {
+              "value": "same",
+              "label": "पहले जैसी",
+              "follow_up": "advice_did_not_work"
+            },
+            {
+              "value": "worse",
+              "label": "पहले से खराब",
+              "follow_up": "crop_or_animal_damaged"
+            }
+          ]
+        }
+      ],
+      "rationale": "Irrigation timing advice (CRI, 9-13 Dec, light watering). Standard direct_action pattern: did the farmer irrigate, then how is the wheat. Ask after the window closes. No input purchase needed, so no q3.",
+      "self_eval": {
+        "schema_valid": true,
+        "relevance_score": 0.7,
+        "gives_new_advice": false,
+        "asks_personal_info": false
+      }
+    },
+    "send_window": {
+      "not_before": "2026-12-11T09:00:00+05:30",
+      "not_after": "2026-12-18T19:00:00+05:30"
+    },
+    "send_hours": {
+      "from": "07:00",
+      "to": "19:00"
+    },
+    "channel_order": [
+      {
+        "channel": "whatsapp",
+        "wait_hours": null
+      }
+    ],
+    "frequency_cap": {
+      "key": "mel:farmer:F-000187",
+      "max_surveys": 1,
+      "window_days": 7,
+      "exempt": false
+    },
+    "priority": "normal",
+    "expires_at": "2026-12-20T19:00:00+05:30",
+    "farmerchat_flow": {
+      "org_id": "org.farmerchat",
+      "flow_key": "mel_s_004871",
+      "version": 1,
+      "campaign_id": "69ce728f-4be9-5df9-b441-486cb9d89103",
+      "flow_id": "2b718296-ac12-56c0-921a-3a861707c8fc"
+    }
+  },
+  "no_survey": null,
+  "check": {
+    "deterministic": [],
+    "judge": {
+      "relevance_score": 0.7,
+      "gives_new_advice": false,
+      "contradicts_advice": false,
+      "asks_personal_info": false,
+      "language_correct": true,
+      "issues": [
+        "q1 asks whether the first light irrigation was done but does not check timing against the 9–13 December window, so it cannot show whether the advice was followed correctly.",
+        "q2 asks generally how the crop looks now and does not tie the change to the irrigation advice, so it is vague.",
+        "q2 follow-up keys (advice_did_not_work, crop_or_animal_damaged) are internal; confirm they are not shown to farmers.",
+        "Hindi prompts and labels are natural and correctly translated."
+      ]
+    },
+    "passed": true,
+    "reasons": []
+  },
+  "status": "scheduled",
+  "attempts": 1,
+  "usage": {
+    "calls": 2,
+    "input_tokens": 6985,
+    "output_tokens": 1540,
+    "cost_usd": null,
+    "by_model": {
+      "us.anthropic.claude-sonnet-5-5": {
+        "calls": 1,
+        "input_tokens": 5695,
+        "output_tokens": 784
+      },
+      "us.anthropic.claude-haiku-5-5": {
+        "calls": 1,
+        "input_tokens": 1290,
+        "output_tokens": 756
+      }
+    }
+  }
+}
