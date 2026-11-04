@@ -129,6 +129,8 @@ def smoke_isolated(load_script, monkeypatch, no_aws, clean_mel_env, tmp_path):
     monkeypatch.setattr("mel_agent.llm.bedrock.boto3.Session", forbidden)
     monkeypatch.setattr("mel_agent.llm.bedrock.boto3.client", forbidden)
     monkeypatch.setenv("MEL_BEDROCK_REGION", "us-west-2")
+    monkeypatch.setenv("MEL_ALLOW_PAID_INFERENCE", "true")  # authorised, so the pricing check is what fails
+    monkeypatch.setenv("MEL_DATABASE_URL", f"sqlite:///{tmp_path / 'ledger.db'}")
     pricing = tmp_path / "pricing.json"
     monkeypatch.setenv("MEL_PRICING_FILE", str(pricing))
     return module, pricing
@@ -166,6 +168,8 @@ def _run_smoke_subprocess(tmp_path: Path, pricing_bytes: bytes) -> subprocess.Co
     env = {k: v for k, v in os.environ.items() if not k.startswith(("AWS_", "MEL_"))}
     env.update(
         MEL_BEDROCK_REGION="us-west-2",
+        MEL_ALLOW_PAID_INFERENCE="true",
+        MEL_DATABASE_URL=f"sqlite:///{tmp_path / 'ledger.db'}",
         MEL_PRICING_FILE=str(pricing),
         # No credentials anywhere, so even a regression could not make a paid call.
         AWS_SHARED_CREDENTIALS_FILE="/nonexistent",

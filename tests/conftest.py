@@ -69,6 +69,96 @@ def clean_mel_env(monkeypatch):
     monkeypatch.setitem(Settings.model_config, "env_file", None)
 
 
+@pytest.fixture(autouse=True)
+def no_network(request, monkeypatch):
+    """Fail any test that tries a real HTTP call through botocore (stubs and event hooks still work).
+
+    Tests marked ``bedrock`` (the opt-in paid smoke test) are exempt."""
+    if request.node.get_closest_marker("bedrock"):
+        return
+    import botocore.httpsession
+
+    def forbidden(self, request):  # noqa: ARG001
+        raise AssertionError(f"test attempted a real network call to {getattr(request, 'url', '?')}")
+
+    monkeypatch.setattr(botocore.httpsession.URLLib3Session, "send", forbidden)
+
+
+# ---------- pipeline fixtures (new in the MVP phases) ----------
+
+PACK_START = "2026-11-01T00:00:00+05:30"
+
+
+@pytest.fixture(scope="session")
+def ingested_db_path(tmp_path_factory, settings) -> Path:
+    """One ingestion of the whole pack per session; tests copy the SQLite file."""
+    from mel_agent.pipeline import Pipeline
+    from mel_agent.store import Store
+
+    path = tmp_path_factory.mktemp("db") / "ingested.db"
+    store = Store(path)
+    Pipeline(settings, store).ingest(PACK_START)
+    getattr(store, "checkpoint", lambda: None)()  # fold the WAL into the file so copies are complete
+    return path
+
+
+@pytest.fixture
+def fresh_store(tmp_path, ingested_db_path):
+    """A private copy of the ingested database for one test."""
+    import shutil
+
+    from mel_agent.store import Store
+
+    dst = tmp_path / "mel.db"
+    shutil.copy(ingested_db_path, dst)
+    return Store(dst)
+
+
+@pytest.fixture
+def pipeline(settings, fresh_store, registry):
+    from mel_agent.delivery.clock import SimulatedClock
+    from mel_agent.pipeline import Pipeline
+
+    return Pipeline(settings, fresh_store, registry, clock=SimulatedClock(PACK_START))
+
+
+@pytest.fixture(scope="session")
+def rules(settings):
+    from mel_agent.data.pack import Rules, pack_paths
+
+    return Rules.load(pack_paths(settings))
+
+
+@pytest.fixture(scope="session")
+def outcome_codes(settings):
+    from mel_agent.data.pack import OutcomeCodes, pack_paths
+
+    return OutcomeCodes.load(pack_paths(settings))
+
+
+@pytest.fixture(scope="session")
+def calendar(settings):
+    import csv
+
+    from mel_agent.data.pack import pack_paths
+    from mel_agent.rules.eligibility import CropCalendar
+
+    with pack_paths(settings).crop_calendar_csv.open(encoding="utf-8", newline="") as fh:
+        return CropCalendar.from_rows(list(csv.DictReader(fh)))
+
+
+@pytest.fixture(scope="session")
+def golden_cases(settings):
+    from mel_agent.data.pack import pack_paths
+
+    return [json.loads(l) for l in pack_paths(settings).golden_jsonl.read_text(encoding="utf-8").splitlines() if l.strip()]
+
+
+@pytest.fixture(scope="session")
+def scenario_dirs(pack_json):
+    return sorted(p for p in (pack_json / "scenarios").iterdir() if p.is_dir())
+
+
 @pytest.fixture
 def load_example(pack_json):
     """Return a deep copy of a pack example so tests can mutate it freely."""

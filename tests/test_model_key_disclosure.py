@@ -118,6 +118,8 @@ def smoke(load_script, monkeypatch, clean_mel_env, no_aws_access, tmp_path):
     monkeypatch.setattr(module, "credentials_available", no_aws_access)
     monkeypatch.setattr(module.BedrockInvoker, "converse", no_aws_access)
     monkeypatch.setenv("MEL_BEDROCK_REGION", "us-west-2")
+    monkeypatch.setenv("MEL_ALLOW_PAID_INFERENCE", "true")
+    monkeypatch.setenv("MEL_DATABASE_URL", f"sqlite:///{tmp_path / 'ledger.db'}")
     pricing = tmp_path / "pricing.json"
     monkeypatch.setenv("MEL_PRICING_FILE", str(pricing))
     return module, pricing
@@ -144,6 +146,8 @@ def test_smoke_cli_subprocess_never_echoes_model_key(tmp_path, sentinel_name):
     env = {k: v for k, v in os.environ.items() if not k.startswith(("AWS_", "MEL_"))}
     env.update(
         MEL_BEDROCK_REGION="us-west-2",
+        MEL_ALLOW_PAID_INFERENCE="true",
+        MEL_DATABASE_URL=f"sqlite:///{tmp_path / 'ledger.db'}",
         MEL_PRICING_FILE=str(pricing),
         # No credentials exist for the child process, so even a regression could not spend money.
         AWS_SHARED_CREDENTIALS_FILE="/nonexistent",

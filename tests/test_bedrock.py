@@ -110,9 +110,19 @@ def test_budget_state_thresholds(spent, expected):
 @pytest.mark.bedrock
 @pytest.mark.skipif(os.environ.get("MEL_RUN_BEDROCK_SMOKE") != "1", reason="set MEL_RUN_BEDROCK_SMOKE=1 to allow a paid call")
 def test_bedrock_live_smoke():
+    """Opt-in paid call. Goes through the same gates as the application: it is skipped unless
+    MEL_ALLOW_PAID_INFERENCE is true, and the call is reserved and settled in the ledger."""
+    from mel_agent.budget import BudgetController
+    from mel_agent.llm.budgeted import BudgetedInvoker
+    from mel_agent.store import Store
+
     settings = Settings()
-    result = BedrockInvoker(settings, pricing=PricingTable.load(settings.pricing_file)).converse(
-        "Reply with exactly one word: ok", max_tokens=16
-    )
+    if not settings.allow_paid_inference:
+        pytest.skip("paid inference is disabled (MEL_ALLOW_PAID_INFERENCE); not authorised")
+    pricing = PricingTable.load(settings.pricing_file)
+    controller = BudgetController(Store.from_url(settings.database_url), settings, pricing)
+    before = controller.status()
+    result = BudgetedInvoker(BedrockInvoker(settings, pricing=pricing), controller).converse("Reply with exactly one word: ok", max_tokens=16)
     assert result.text.strip()
-    assert result.usage.input_tokens > 0
+    after = controller.status()
+    assert after.calls_settled + after.unresolved_count == before.calls_settled + before.unresolved_count + 1

@@ -42,13 +42,47 @@ def credentials_available(settings: Settings | None = None) -> bool:
         return False
 
 
-def make_client(settings: Settings, service: str = "bedrock-runtime"):
+def make_client(settings: Settings, service: str = "bedrock-runtime", total_max_attempts: int | None = None):
+    """boto3 client. ``total_max_attempts`` overrides the SDK retry budget (paid clients use 1:
+    every billable attempt must be an explicit, reserved application attempt)."""
+    attempts = int(total_max_attempts if total_max_attempts is not None else settings.bedrock_total_max_attempts)
     cfg = BotoConfig(
         connect_timeout=settings.bedrock_connect_timeout_s,
         read_timeout=settings.bedrock_read_timeout_s,
-        retries={"total_max_attempts": settings.bedrock_total_max_attempts, "mode": "adaptive"},
+        retries={"total_max_attempts": attempts, "mode": "standard" if attempts == 1 else "adaptive"},
     )
     return _session(settings).client(service, config=cfg)
+
+
+def sdk_total_max_attempts(client) -> int | None:
+    """The SDK retry budget a client was built with, or None when it is botocore's implicit default."""
+    retries = getattr(getattr(client, "meta", None), "config", None)
+    retries = getattr(retries, "retries", None) or {}
+    value = retries.get("total_max_attempts")
+    if value is None and "max_attempts" in retries:
+        value = int(retries["max_attempts"]) + 1
+    return None if value is None else int(value)
+
+
+def retry_attempts_in(response_or_error: Any) -> int | None:
+    """Transport retries botocore reports for a call, in three explicit states.
+
+    - a non-negative int: VERIFIED count (0 = verified zero retries, >0 = verified retries);
+    - None: UNKNOWN. The envelope is not a dict, ``ResponseMetadata`` is missing or not a dict,
+      ``RetryAttempts`` is missing, or it is a bool, str, float, negative number or any other
+      non-int value.
+    Unknown never collapses to zero: at the paid-call accounting boundary (llm/budgeted.py) an
+    unknown count means the reservation stays committed as unresolved. botocore sets this field
+    on every real response and ClientError payload, so a missing field is itself a red flag."""
+    if not isinstance(response_or_error, dict):
+        return None
+    meta = response_or_error.get("ResponseMetadata")
+    if not isinstance(meta, dict) or "RetryAttempts" not in meta:
+        return None
+    value = meta["RetryAttempts"]
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        return None
+    return value
 
 
 @dataclass
@@ -103,27 +137,35 @@ class InferenceResult:
     model_id: str
     text: str
     stop_reason: str | None
-    usage: TokenUsage
+    usage: TokenUsage | None  # None = the response did not establish usage (never treated as zero)
     latency_ms: float  # wall clock measured here, includes network
     server_latency_ms: int | None  # Bedrock's own metrics.latencyMs
-    estimated_cost_usd: float | None  # None when the model has no pricing entry
+    estimated_cost_usd: float | None  # None when usage is unknown or the model has no pricing entry
+    retry_attempts: int | None = None  # verified transport retry count; None = unknown/malformed metadata (billing treated as uncertain)
+
+    @property
+    def usage_verified(self) -> bool:
+        return self.usage is not None
 
     def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
-        d["usage"] = asdict(self.usage)
+        d["usage"] = asdict(self.usage) if self.usage is not None else None
+        d["usage_verified"] = self.usage_verified
         return d
 
 
 class BedrockInvoker:
-    def __init__(self, settings: Settings, pricing: PricingTable | None = None, client=None) -> None:
+    def __init__(self, settings: Settings, pricing: PricingTable | None = None, client=None,
+                 sdk_total_max_attempts: int | None = None) -> None:
         self.settings = settings
         self.pricing = pricing
         self._client = client
+        self.sdk_total_max_attempts = sdk_total_max_attempts
 
     @property
     def client(self):
         if self._client is None:
-            self._client = make_client(self.settings)
+            self._client = make_client(self.settings, total_max_attempts=self.sdk_total_max_attempts)
         return self._client
 
     def converse(
@@ -153,16 +195,10 @@ class BedrockInvoker:
         response = self.client.converse(**request)
         latency_ms = (time.perf_counter() - started) * 1000
 
-        raw_usage = response.get("usage", {})
-        usage = TokenUsage(
-            input_tokens=raw_usage.get("inputTokens", 0),
-            output_tokens=raw_usage.get("outputTokens", 0),
-            cache_read_tokens=raw_usage.get("cacheReadInputTokens", 0),
-            cache_write_tokens=raw_usage.get("cacheWriteInputTokens", 0),
-        )
-        blocks = response.get("output", {}).get("message", {}).get("content", [])
-        text = "".join(b.get("text", "") for b in blocks)
-        cost = self.pricing.estimate_cost(model, usage) if self.pricing else None
+        blocks = response.get("output", {}).get("message", {}).get("content", []) if isinstance(response.get("output"), dict) else []
+        text = "".join(b.get("text", "") for b in blocks if isinstance(b, dict) and isinstance(b.get("text"), str))
+        usage = parse_usage(response.get("usage"), text)
+        cost = self.pricing.estimate_cost(model, usage) if (self.pricing and usage is not None) else None
 
         return InferenceResult(
             model_id=model,
@@ -170,6 +206,35 @@ class BedrockInvoker:
             stop_reason=response.get("stopReason"),
             usage=usage,
             latency_ms=round(latency_ms, 1),
-            server_latency_ms=response.get("metrics", {}).get("latencyMs"),
+            server_latency_ms=(response.get("metrics") or {}).get("latencyMs") if isinstance(response.get("metrics"), dict) else None,
             estimated_cost_usd=cost,
+            retry_attempts=retry_attempts_in(response),
         )
+
+
+def parse_usage(raw: Any, text: str) -> TokenUsage | None:
+    """Return verified token usage, or None when the response does not establish it.
+
+    Missing usage, a non-object usage block, non-integer or negative counters, and a
+    reply that carries text while claiming zero output tokens are all "unknown":
+    the caller must then keep its reservation committed (fail closed) rather than
+    settle at $0."""
+    if not isinstance(raw, dict):
+        return None
+    counters: dict[str, int] = {}
+    for key in ("inputTokens", "outputTokens"):
+        value = raw.get(key)
+        if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+            return None
+        counters[key] = value
+    for key in ("cacheReadInputTokens", "cacheWriteInputTokens"):
+        value = raw.get(key, 0)
+        if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+            return None
+        counters[key] = value
+    if text and counters["outputTokens"] == 0:
+        return None  # text came back but was not metered: cannot be a verified zero
+    return TokenUsage(
+        input_tokens=counters["inputTokens"], output_tokens=counters["outputTokens"],
+        cache_read_tokens=counters["cacheReadInputTokens"], cache_write_tokens=counters["cacheWriteInputTokens"],
+    )
