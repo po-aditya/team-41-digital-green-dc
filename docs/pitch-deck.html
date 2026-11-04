@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-DA77Zxcs+Bzg2TGLQVDVhvpB3DseyudxDxHF5aLvCPs='; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>FarmerChat MEL Agent — Team 41</title>
+<style>
+:root{
+  --ink:#1b2a1e; --ink-2:#34453a; --muted:#69735f; --paper:#f4eedd; --card:#fffcf2; --line:#dccfb1;
+  --leaf:#2d6a3b; --leaf-2:#4d8c48; --sprout:#cfe3a8; --mustard:#e2a523; --mustard-deep:#b87d0c; --mustard-soft:#f7e3a4;
+  --rust:#b0452b; --rust-soft:#f4d6c9; --night:#13201a;
+  --net:#7357b2; --compute:#d17a1d; --storage:#3c8a4b; --security:#c13a3a; --ai:#10808f; --mgmt:#c1457e; --people:#5b6b58;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Kohinoor Devanagari","Nirmala UI","Noto Sans Devanagari",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0d1611;overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform-origin:center center;
+  background:var(--paper);color:var(--ink);font:20px/1.45 var(--sans);overflow:hidden;border-radius:6px;
+  box-shadow:0 30px 80px #0008}
+#stage::before{content:"";position:absolute;right:-120px;top:-160px;width:620px;height:620px;border-radius:50%;
+  background:repeating-radial-gradient(circle at center,transparent 0 22px,#d9cba633 22px 24px);pointer-events:none}
+
+/* ---------- chrome ---------- */
+.brand{position:absolute;left:88px;top:30px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:12px;align-items:center;z-index:3}
+.brand b{color:var(--leaf);letter-spacing:.06em}
+.brand i{width:6px;height:6px;border-radius:50%;background:var(--mustard);display:inline-block}
+.bar{position:absolute;left:0;right:0;bottom:0;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 88px;z-index:5;
+  border-top:1px solid var(--line);background:#f4eeddee}
+.dots{display:flex;gap:6px}
+.dots button{border:1px solid transparent;background:none;padding:7px 14px;border-radius:999px;font-size:14px;color:var(--muted)}
+.dots button span{font-family:var(--mono);font-size:12px;margin-right:6px;color:var(--mustard-deep)}
+.dots button[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.dots button[aria-current="true"] span{color:var(--mustard)}
+.dots button:hover{border-color:var(--line)}
+.navr{display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:14px;color:var(--muted)}
+.navr button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:18px}
+.navr button:hover{border-color:var(--ink)}
+.hint{font-size:13px;color:var(--muted)}
+.progress{position:absolute;left:0;bottom:0;height:4px;background:var(--mustard);transition:width .5s ease;z-index:6}
+button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--mustard);outline-offset:2px}
+
+/* ---------- slides ---------- */
+.slide{position:absolute;inset:0;padding:78px 88px 96px;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+.slide.active{opacity:1;visibility:visible}
+.rise{opacity:0;transform:translateY(16px)}
+.slide.active .rise{animation:rise .65s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--d,0) * 90ms + 120ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+.eyebrow{margin:0 0 10px;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf);font-weight:700}
+.eyebrow span{font-family:var(--mono);color:var(--mustard-deep);margin-right:10px}
+h2{font:500 50px/1.08 var(--serif);margin:0;letter-spacing:-.01em;max-width:1300px}
+h2 em{font-style:italic;color:var(--leaf)}
+.sub{margin:12px 0 0;color:var(--muted);font-size:19px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.tag.good{background:var(--sprout);color:#21451f}
+.tag.bad{background:var(--rust-soft);color:var(--rust)}
+.tag.warn{background:var(--mustard-soft);color:#6b4a06}
+.mono{font-family:var(--mono)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--card)}
+.seg button{border:0;background:none;padding:7px 16px;border-radius:999px;font-size:15px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* ---------- 1 · problem ---------- */
+.p-grid{display:grid;grid-template-columns:1fr 640px;gap:56px;margin-top:34px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
+.stat{padding:20px 20px 18px}
+.stat .big{font:500 46px/1 var(--serif);color:var(--ink)}
+.stat .big.small{font-size:34px;line-height:1.1}
+.stat p{margin:10px 0 0;font-size:16px;color:var(--ink-2)}
+.ask{margin-top:22px;padding:22px 26px;border-left:6px solid var(--mustard);background:var(--card);border-radius:0 14px 14px 0;font-size:20px}
+.ask b{color:var(--leaf)}
+.ask ul{margin:10px 0 0;padding-left:22px;font-size:17px;color:var(--ink-2)}
+.ask li{margin:3px 0}
+.compare{padding:22px 24px}
+.compare header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.compare h3{margin:0;font:500 24px var(--serif)}
+.farmer{display:grid;grid-template-columns:54px 1fr;gap:14px;padding:10px 0;border-top:1px dashed var(--line)}
+.farmer .av{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:28px;background:var(--mustard-soft)}
+.farmer .who{font-size:15px;color:var(--muted)}
+.farmer .who b{color:var(--ink);font-weight:650}
+.bubble{margin-top:8px;padding:11px 14px;border-radius:4px 14px 14px 14px;background:#eef3e4;font-size:17px;transition:background .4s}
+.bubble .q{display:block}
+.bubble .tag{margin-top:7px}
+.compare[data-mode="broadcast"] .bubble{background:#f6e6df}
+.illus{font-size:13px;color:var(--muted);margin:10px 0 0}
+
+/* ---------- 2 · architecture ---------- */
+.a-grid{display:grid;grid-template-columns:1000px 1fr;gap:28px;margin-top:20px}
+.diagram{width:1000px;height:600px;display:block}
+.diagram text{pointer-events:none}
+.frame rect{fill:none;stroke:#bdb092;stroke-width:1.3}
+.frame.cloud rect{fill:#fbf7ea;stroke:#c9b98f}
+.frame.vpc rect{fill:#f2f0fa;stroke:var(--net);stroke-dasharray:7 5}
+.frame.host rect{fill:#fdf2e3;stroke:var(--compute)}
+.frame text.fl{font:700 12.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;fill:var(--muted)}
+.frame text.fs{font:12px var(--sans);fill:var(--muted)}
+.frame[data-aws]{cursor:pointer}
+.frame.lit rect{stroke:var(--mustard-deep);stroke-width:3}
+.node{cursor:pointer;transition:opacity .3s}
+.node rect.box{fill:var(--card);stroke:#c8bc9c;stroke-width:1.3;transition:stroke .2s}
+.node rect.cat{fill:var(--c)}
+.node.opt rect.box{stroke-dasharray:5 4;fill:#fffdf7}
+.node:hover rect.box{stroke:var(--ink)}
+.node.sel rect.box{stroke:var(--ink);stroke-width:2.6}
+.node text.nt{font:650 14px var(--sans);fill:var(--ink)}
+.node text.ns{font:11.5px var(--sans);fill:var(--muted)}
+.c-net{--c:var(--net)} .c-compute{--c:var(--compute)} .c-storage{--c:var(--storage)} .c-sec{--c:var(--security)}
+.c-ai{--c:var(--ai)} .c-mgmt{--c:var(--mgmt)} .c-people{--c:var(--people)}
+.edge{fill:none;stroke:#8f8770;stroke-width:1.7;marker-end:url(#arr);transition:opacity .3s}
+.edge.both{marker-start:url(#arr-s)}
+.edge.opt{stroke-dasharray:5 4}
+.elabel{font:600 11.5px var(--sans);fill:var(--ink-2);transition:opacity .3s}
+.diagram.tracing .node:not(.lit),.diagram.tracing .edge:not(.lit),.diagram.tracing .elabel:not(.lit){opacity:.16}
+.edge.lit{stroke:var(--mustard-deep);stroke-width:3;stroke-dasharray:9 6;animation:flow .9s linear infinite;marker-end:url(#arr-lit)}
+.edge.both.lit{marker-start:url(#arr-lit-s)}
+@keyframes flow{to{stroke-dashoffset:-15}}
+.node.lit rect.box{stroke:var(--mustard-deep);stroke-width:2.4}
+.side{display:flex;flex-direction:column;gap:14px}
+.traces{padding:16px 18px}
+.traces h3,.info h3{margin:0 0 10px;font:500 21px var(--serif)}
+.traces .tbtns{display:flex;flex-wrap:wrap;gap:7px}
+.traces button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:14px}
+.traces button[aria-pressed="true"]{background:var(--mustard);border-color:var(--mustard-deep);color:var(--night);font-weight:650}
+.info{padding:18px 20px;flex:1;overflow:auto}
+.info .kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:8px;align-items:center}
+.info .kicker i{width:10px;height:10px;border-radius:3px;background:var(--c,var(--muted));display:inline-block}
+.info ul{margin:8px 0 0;padding-left:20px;font-size:15.5px;line-height:1.45}
+.info li{margin:5px 0}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--muted);margin-top:4px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:3px;background:var(--c)}
+.legend .dash{width:22px;height:0;border-top:2px dashed #8f8770;border-radius:0;background:none}
+
+/* ---------- 3 · flow ---------- */
+.pipe{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-top:30px}
+.pipe::before{content:"";position:absolute;left:40px;right:40px;top:44px;height:3px;background:repeating-linear-gradient(90deg,var(--line) 0 10px,transparent 10px 16px)}
+.stage-btn{position:relative;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:14px;padding:14px 14px 14px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.stage-btn .num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);font:700 14px var(--mono);color:var(--muted)}
+.stage-btn b{display:block;margin-top:10px;font:500 22px var(--serif)}
+.stage-btn small{display:block;font-size:13.5px;color:var(--muted);line-height:1.35;margin-top:3px}
+.stage-btn.done .num{background:var(--sprout);border-color:var(--leaf-2);color:var(--leaf)}
+.stage-btn[aria-pressed="true"]{border-color:var(--ink);transform:translateY(-6px);box-shadow:0 10px 24px #1b2a1e1a}
+.stage-btn[aria-pressed="true"] .num{background:var(--mustard);border-color:var(--mustard-deep);color:var(--night)}
+.f-grid{display:grid;grid-template-columns:600px 1fr;gap:28px;margin-top:24px}
+.detail{padding:22px 26px;min-height:370px;display:flex;flex-direction:column}
+.detail .kicker{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mustard-deep)}
+.detail h3{margin:6px 0 10px;font:500 32px/1.15 var(--serif)}
+.detail p{margin:0 0 12px;font-size:18px;color:var(--ink-2)}
+.detail .guard{margin-top:auto;padding:12px 14px;border-radius:10px;background:#eef3e4;font-size:16px}
+.detail .guard b{color:var(--leaf)}
+.play{display:flex;gap:10px;align-items:center;margin-top:14px}
+.play button{border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:999px;padding:7px 16px;font-size:15px}
+.play button.ghost{background:none;color:var(--ink)}
+.funnel{padding:20px 24px}
+.funnel h3{margin:0;font:500 22px var(--serif)}
+.funnel .note{margin:2px 0 12px;font-size:14px;color:var(--muted)}
+.frow{display:grid;grid-template-columns:270px 1fr 92px;align-items:center;gap:12px;padding:5px 0;transition:opacity .3s}
+.frow .fl{font-size:15.5px;color:var(--ink-2)}
+.frow .track{height:22px;background:#efe7d2;border-radius:6px;overflow:hidden}
+.frow .fill{height:100%;width:0;border-radius:6px;background:var(--leaf-2);transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.frow.neg .fill{background:#b9ab88}
+.frow.flag .fill{background:var(--rust)}
+.frow.human .fill{background:var(--mustard)}
+.frow .fv{font:600 17px var(--mono);text-align:right}
+.funnel.focus .frow:not(.on){opacity:.32}
+
+/* ---------- 4 · demo ---------- */
+.d-grid{display:grid;grid-template-columns:500px 340px 1fr;gap:34px;margin-top:22px;align-items:start}
+.d-grid > div{min-width:0}
+.step{padding:16px 20px;margin-bottom:14px}
+.step .kicker{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mustard-deep)}
+.step h4{margin:4px 0 8px;font:500 21px var(--serif)}
+.kv{display:grid;grid-template-columns:118px 1fr;gap:3px 10px;font-size:14.5px}
+.kv dt{color:var(--muted)} .kv dd{margin:0}
+.quote{font-size:15.5px;margin:8px 0 0;padding-left:12px;border-left:3px solid var(--sprout);color:var(--ink-2)}
+.timeline{position:relative;height:74px;margin-top:6px}
+.timeline .axis{position:absolute;left:0;right:0;top:30px;height:2px;background:var(--line)}
+.timeline .act{position:absolute;top:24px;height:14px;background:#e3ead2;border-radius:4px}
+.timeline .win{position:absolute;top:21px;height:20px;background:var(--mustard);border-radius:5px;transform-origin:left;transform:scaleX(0);transition:transform .9s .5s cubic-bezier(.2,.7,.2,1)}
+.slide.active .timeline .win{transform:scaleX(1)}
+.timeline .tick{position:absolute;top:44px;font-size:12px;color:var(--muted);transform:translateX(-50%);white-space:nowrap}
+.timeline .pin{position:absolute;top:18px;width:3px;height:26px;background:var(--ink);border-radius:2px}
+.timeline .lbl{position:absolute;top:0;font-size:12px;font-weight:650;white-space:nowrap}
+.phone{width:340px;height:580px;border-radius:44px;background:var(--night);padding:14px;box-shadow:0 24px 50px #13201a55}
+.screen{width:100%;height:100%;border-radius:32px;background:#fbfaf5;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.notch{width:110px;height:24px;border-radius:0 0 14px 14px;background:var(--night);margin:0 auto}
+.apphead{display:flex;align-items:center;gap:10px;padding:10px 16px 12px;border-bottom:1px solid #e9e4d6}
+.apphead .logo{width:30px;height:30px;border-radius:9px;background:var(--leaf);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px}
+.apphead b{font-size:15px} .apphead small{display:block;font-size:11.5px;color:var(--muted)}
+.chat{flex:1;padding:14px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.msg{align-self:flex-start;max-width:92%;background:#eef3e4;border-radius:4px 14px 14px 14px;padding:10px 12px;font-size:14px}
+.sheet{margin-top:auto;background:#fff;border:1px solid #e3ddcc;border-radius:18px 18px 12px 12px;padding:14px;box-shadow:0 -6px 18px #0000000d}
+.sheet .prog{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:6px}
+.sheet .prog .pd{display:flex;gap:4px}
+.sheet .prog .pd i{width:18px;height:4px;border-radius:2px;background:#e5dfcf}
+.sheet .prog .pd i.on{background:var(--leaf-2)}
+.sheet .qtext{font-size:16px;font-weight:600;line-height:1.35;margin:4px 0 10px;min-height:44px}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opts button{border:1.5px solid #ddd6c3;background:#fff;border-radius:12px;padding:9px 12px;font-size:15px;text-align:left;transition:all .15s}
+.opts button:hover{border-color:var(--leaf-2);background:#f6faef}
+.opts button.picked{border-color:var(--leaf);background:var(--sprout)}
+.opts button.picked.fu{border-color:var(--rust);background:var(--rust-soft)}
+.thanks{text-align:center;padding:18px 6px}
+.thanks .big{font:500 30px var(--serif);color:var(--leaf)}
+.thanks button{margin-top:12px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px}
+.phonectl{display:flex;justify-content:center;margin-top:12px}
+.record{padding:16px 18px}
+.record h4{margin:0 0 6px;font:500 21px var(--serif)}
+.record pre{margin:0;font:13.5px/1.5 var(--mono);background:var(--night);color:#d9e8cc;border-radius:10px;padding:12px 14px;min-height:190px;white-space:pre-wrap;overflow-wrap:anywhere}
+.record pre .k{color:#f2cf73}
+.alert{margin-top:10px;padding:10px 12px;border-radius:10px;font-size:15px;background:#eef3e4;transition:background .3s}
+.alert.on{background:var(--rust-soft);color:#6d2412}
+.checks{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.run{margin-top:14px;padding:12px 16px;font-size:14px}
+.run code{display:block;font:13.5px var(--mono);background:#efe7d2;border-radius:8px;padding:8px 10px;margin-top:6px}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;margin-top:8px;font-size:13.5px}
+.cases span::before{content:"✓ ";color:var(--leaf);font-weight:800}
+
+/* ---------- 5 · impact ---------- */
+.i-grid{display:grid;grid-template-columns:1fr 560px;gap:34px;margin-top:26px}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pillar{padding:20px 22px}
+.pillar .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--mustard-soft)}
+.pillar h3{margin:12px 0 6px;font:500 24px/1.15 var(--serif)}
+.pillar p{margin:0;font-size:16px;color:var(--ink-2)}
+.pillar .proof{margin-top:12px;font:600 15px var(--mono);color:var(--leaf)}
+.matrix{padding:16px 22px}
+.matrix h3{margin:0 0 2px;font:500 22px var(--serif)}
+.matrix .note{margin:0 0 10px;font-size:14px;color:var(--muted)}
+.cm{display:grid;grid-template-columns:120px 1fr 1fr;gap:6px;font-size:14px}
+.cm .h{color:var(--muted);text-align:center;align-self:end;padding-bottom:2px}
+.cm .r{color:var(--muted);align-self:center}
+.cm .cell{border-radius:10px;padding:8px 10px;text-align:center}
+.cm .cell b{display:block;font:500 32px/1 var(--serif)}
+.cm .cell small{font-size:12.5px}
+.cm .tp{background:var(--sprout)} .cm .tn{background:#e3ead2} .cm .fp{background:#fff;border:2px solid var(--leaf-2)} .cm .fn{background:var(--mustard-soft)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.kpi{padding:10px 14px}
+.kpi b{display:block;font:500 28px/1 var(--serif)}
+.kpi small{font-size:13px;color:var(--muted);line-height:1.3;display:block;margin-top:5px}
+.impact{margin-top:12px;padding:14px 20px;background:var(--ink);color:var(--paper);border-radius:14px}
+.impact h3{margin:0 0 6px;font:500 22px var(--serif);color:var(--mustard)}
+.impact p{margin:0;font-size:16px;line-height:1.45;color:#e7e2cf}
+.limits{position:absolute;left:88px;right:88px;bottom:82px;font-size:13.5px;color:var(--muted);display:flex;gap:10px;align-items:center}
+.limits b{color:var(--ink-2)}
+
+@media (prefers-reduced-motion: reduce){
+  .slide,.rise,.edge.lit,.frow .fill,.timeline .win,.stage-btn{transition:none!important;animation:none!important}
+  .rise{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="stage" role="application" aria-roledescription="slide deck" aria-label="FarmerChat MEL Survey Agent presentation">
+
+  <div class="brand"><b>Team 41</b><i></i>Digital Green · FarmerChat Contextual MEL Survey Agent</div>
+
+  <!-- ================= 1 · PROBLEM ================= -->
+  <section class="slide" data-slide="problem" aria-label="Problem statement">
+    <p class="eyebrow rise"><span>01</span>Problem Statement</p>
+    <h2 class="rise" style="--d:1">FarmerChat advises <em>2.2 million</em> farmers.<br>No one can tell, at that scale, whether the advice worked.</h2>
+    <div class="p-grid">
+      <div>
+        <div class="stats">
+          <div class="card stat rise" style="--d:2"><div class="big">2.2M</div><p>farmers ask FarmerChat by text, voice or photo, and every query ends in a resolution</p></div>
+          <div class="card stat rise" style="--d:3"><div class="big small">Small samples</div><p>Field surveys and RCTs are costly and slow, and results don't extrapolate</p></div>
+          <div class="card stat rise" style="--d:4"><div class="big small">One size fits none</div><p>Broadcast digital surveys ask every farmer the same questions</p></div>
+        </div>
+        <div class="ask rise" style="--d:5">
+          <b>The challenge:</b> read the insights FarmerChat already extracts, and send each farmer a short, tap-to-answer follow-up about <em>their own</em> advice.
+          <ul>
+            <li>Ask at the right moment in the crop calendar, after the farmer could act</li>
+            <li>Don't bombard farmers or collect personal data, and never give new advice</li>
+            <li>Prove the quality against Digital Green's golden dataset before a ~10,000-farmer pilot</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card compare rise" style="--d:3" id="compare" data-mode="broadcast">
+        <header>
+          <h3>Same questions, or their questions?</h3>
+          <div class="seg" role="group" aria-label="Survey style">
+            <button type="button" data-mode="broadcast" aria-pressed="true">Broadcast</button>
+            <button type="button" data-mode="contextual" aria-pressed="false">Contextual</button>
+          </div>
+        </header>
+        <div class="farmer"><div class="av" aria-hidden="true">🌼</div><div>
+          <div class="who"><b>Mustard grower, Samastipur</b> · asked about black and orange bugs on young plants</div>
+          <div class="bubble"><span class="q" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you follow FarmerChat's advice about the pest or disease problem on your mustard?"></span></div>
+        </div></div>
+        <div class="farmer"><div class="av" aria-hidden="true">🌾</div><div>
+          <div class="who"><b>Wheat grower</b> · asked why leaves are turning yellow</div>
+          <div class="bubble"><span class="q" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you follow FarmerChat's advice about the nutrient problem on your wheat?"></span></div>
+        </div></div>
+        <div class="farmer"><div class="av" aria-hidden="true">🐐</div><div>
+          <div class="who"><b>Goat keeper</b> · was referred to a vet for a sick goat</div>
+          <div class="bubble"><span class="q" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you reach the veterinary doctor about your goat?"></span></div>
+        </div></div>
+        <div id="verdict" style="margin-top:12px"></div>
+        <p class="illus">Contextual wording is the agent's real catalogue text. Farmer profiles are synthetic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2 · ARCHITECTURE ================= -->
+  <section class="slide" data-slide="architecture" aria-label="Solution architecture on AWS">
+    <p class="eyebrow rise"><span>02</span>Solution Architecture · AWS</p>
+    <h2 class="rise" style="--d:1">One Terraform package, <em>locked down by default</em>.</h2>
+    <div class="a-grid">
+      <div class="rise" style="--d:2">
+        <svg class="diagram" id="diagram" viewBox="0 0 1000 600" role="img" aria-label="AWS architecture diagram">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8f8770"/></marker>
+            <marker id="arr-s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#8f8770"/></marker>
+            <marker id="arr-lit" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#b87d0c"/></marker>
+            <marker id="arr-lit-s" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M10 0L0 5L10 10z" fill="#b87d0c"/></marker>
+          </defs>
+
+          <!-- frames -->
+          <g class="frame cloud"><rect x="138" y="4" width="858" height="592" rx="14"/><text class="fl" x="156" y="22">AWS Cloud · us-east-1</text></g>
+          <g class="frame vpc" data-aws="vpc" data-t="public operator"><rect x="315" y="100" width="465" height="488" rx="12"/>
+            <text class="fl" x="330" y="576">VPC</text><text class="fs" x="366" y="576">2 public subnets · 2 AZs · internet gateway</text></g>
+          <g class="frame host" data-aws="ec2" data-t="deploy public operator paid"><rect x="515" y="132" width="250" height="280" rx="10"/>
+            <text class="fl" x="528" y="152">EC2 · t3.medium · AL2023</text>
+            <text class="fs" x="528" y="372">Docker · IMDSv2 hop-limit 1</text>
+            <text class="fs" x="528" y="390">no SSH · one SQLite writer</text></g>
+
+          <!-- edges -->
+          <path class="edge" data-t="public" d="M120 187 H332"/>
+          <text class="elabel" data-t="public" x="196" y="180">HTTP :80</text>
+          <path class="edge" data-t="public" d="M497 187 H527"/>
+          <path class="edge" data-t="operator" d="M120 251 H155"/>
+          <path class="edge" data-t="operator" d="M300 251 H527"/>
+          <text class="elabel" data-t="operator" x="368" y="244">port-forward :8000</text>
+          <path class="edge both" data-t="operator" d="M640 412 V440"/>
+          <path class="edge" data-t="deploy" d="M800 168 H765"/>
+          <path class="edge" data-t="deploy" d="M800 242 H765"/>
+          <path class="edge" data-t="deploy" d="M800 316 H765"/>
+          <path class="edge opt" data-t="paid" d="M765 395 H785 V500 H800"/>
+          <path class="edge opt" data-t="https" d="M222 78 V130 H350 V157"/>
+          <path class="edge opt" data-t="https" d="M395 78 V157"/>
+          <path class="edge opt" data-t="https" d="M470 78 V157"/>
+
+          <!-- people -->
+          <g class="node c-people" data-aws="viewer" data-t="public" tabindex="0" role="button" aria-label="Demo viewer">
+            <rect class="box" x="0" y="157" width="120" height="60" rx="9"/><rect class="cat" x="0" y="157" width="5" height="60" rx="2"/>
+            <text class="nt" x="14" y="183">Demo viewer</text><text class="ns" x="14" y="201">browser · synthetic</text></g>
+          <g class="node c-people" data-aws="operator" data-t="operator" tabindex="0" role="button" aria-label="Operator">
+            <rect class="box" x="0" y="221" width="120" height="60" rx="9"/><rect class="cat" x="0" y="221" width="5" height="60" rx="2"/>
+            <text class="nt" x="14" y="247">Operator</text><text class="ns" x="14" y="265">laptop + token</text></g>
+
+          <!-- optional HTTPS -->
+          <g class="node opt c-net" data-aws="route53" data-t="https" tabindex="0" role="button" aria-label="Route 53">
+            <rect class="box" x="160" y="30" width="125" height="48" rx="8"/><rect class="cat" x="160" y="30" width="5" height="48" rx="2"/>
+            <text class="nt" x="173" y="51">Route 53</text><text class="ns" x="173" y="68">DNS alias</text></g>
+          <g class="node opt c-sec" data-aws="acm" data-t="https" tabindex="0" role="button" aria-label="Certificate Manager">
+            <rect class="box" x="300" y="30" width="125" height="48" rx="8"/><rect class="cat" x="300" y="30" width="5" height="48" rx="2"/>
+            <text class="nt" x="313" y="51">ACM</text><text class="ns" x="313" y="68">TLS certificate</text></g>
+          <g class="node opt c-sec" data-aws="cognito" data-t="https" tabindex="0" role="button" aria-label="Cognito">
+            <rect class="box" x="440" y="30" width="125" height="48" rx="8"/><rect class="cat" x="440" y="30" width="5" height="48" rx="2"/>
+            <text class="nt" x="453" y="51">Cognito</text><text class="ns" x="453" y="68">invite-only login</text></g>
+          <text class="elabel" data-t="https" x="582" y="58">optional HTTPS upgrade</text>
+
+          <!-- access -->
+          <g class="node c-mgmt" data-aws="ssm" data-t="operator" tabindex="0" role="button" aria-label="Systems Manager Session Manager">
+            <rect class="box" x="155" y="218" width="145" height="66" rx="9"/><rect class="cat" x="155" y="218" width="5" height="66" rx="2"/>
+            <text class="nt" x="169" y="245">SSM Session</text><text class="nt" x="169" y="262" style="font-weight:650">Manager</text><text class="ns" x="169" y="278">encrypted tunnel</text></g>
+          <g class="node c-net" data-aws="alb" data-t="public https" tabindex="0" role="button" aria-label="Application Load Balancer">
+            <rect class="box" x="332" y="157" width="165" height="60" rx="9"/><rect class="cat" x="332" y="157" width="5" height="60" rx="2"/>
+            <text class="nt" x="346" y="183">Load Balancer</text><text class="ns" x="346" y="201">ALB · 2 AZs · :80 → demo</text></g>
+
+          <!-- containers -->
+          <g class="node c-compute" data-aws="ui" data-t="public" tabindex="0" role="button" aria-label="Prototype Streamlit demo">
+            <rect class="box" x="527" y="162" width="226" height="50" rx="8"/><rect class="cat" x="527" y="162" width="5" height="50" rx="2"/>
+            <text class="nt" x="541" y="183">Prototype UI · Streamlit</text><text class="ns" x="541" y="200">public synthetic demo</text></g>
+          <g class="node c-compute" data-aws="api" data-t="operator paid" tabindex="0" role="button" aria-label="Primary MEL API">
+            <rect class="box" x="527" y="226" width="226" height="50" rx="8"/><rect class="cat" x="527" y="226" width="5" height="50" rx="2"/>
+            <text class="nt" x="541" y="247">MEL Agent API · FastAPI</text><text class="ns" x="541" y="264">:8000 · operator token</text></g>
+          <g class="node c-compute" data-aws="farmerloop" tabindex="0" role="button" aria-label="FarmerLoop job">
+            <rect class="box" x="527" y="290" width="226" height="50" rx="8"/><rect class="cat" x="527" y="290" width="5" height="50" rx="2"/>
+            <text class="nt" x="541" y="311">FarmerLoop job</text><text class="ns" x="541" y="328">on-demand · no network</text></g>
+
+          <g class="node c-storage" data-aws="ebs" data-t="operator" tabindex="0" role="button" aria-label="EBS volume">
+            <rect class="box" x="555" y="440" width="170" height="60" rx="9"/><rect class="cat" x="555" y="440" width="5" height="60" rx="2"/>
+            <text class="nt" x="569" y="466">EBS gp3 volume</text><text class="ns" x="569" y="484">encrypted · SQLite DB</text></g>
+
+          <!-- regional services -->
+          <g class="node c-compute" data-aws="ecr" data-t="deploy" tabindex="0" role="button" aria-label="Elastic Container Registry">
+            <rect class="box" x="800" y="140" width="190" height="56" rx="9"/><rect class="cat" x="800" y="140" width="5" height="56" rx="2"/>
+            <text class="nt" x="814" y="164">ECR · 3 repositories</text><text class="ns" x="814" y="182">immutable · pulled by digest</text></g>
+          <g class="node c-sec" data-aws="secrets" data-t="deploy" tabindex="0" role="button" aria-label="Secrets Manager">
+            <rect class="box" x="800" y="214" width="190" height="56" rx="9"/><rect class="cat" x="800" y="214" width="5" height="56" rx="2"/>
+            <text class="nt" x="814" y="238">Secrets Manager</text><text class="ns" x="814" y="256">operator tokens at boot</text></g>
+          <g class="node c-sec" data-aws="iam" data-t="deploy paid" tabindex="0" role="button" aria-label="IAM instance profile">
+            <rect class="box" x="800" y="288" width="190" height="56" rx="9"/><rect class="cat" x="800" y="288" width="5" height="56" rx="2"/>
+            <text class="nt" x="814" y="312">IAM instance role</text><text class="ns" x="814" y="330">least privilege</text></g>
+          <g class="node opt c-ai" data-aws="bedrock" data-t="paid" tabindex="0" role="button" aria-label="Amazon Bedrock">
+            <rect class="box" x="800" y="470" width="190" height="60" rx="9"/><rect class="cat" x="800" y="470" width="5" height="60" rx="2"/>
+            <text class="nt" x="814" y="496">Amazon Bedrock</text><text class="ns" x="814" y="514">gated · off by default</text></g>
+          <text class="elabel" data-t="paid" x="800" y="552">behind a $225 hard-stop ledger</text>
+        </svg>
+        <div class="legend">
+          <span style="--c:var(--net)"><i></i>Networking</span><span style="--c:var(--compute)"><i></i>Compute</span>
+          <span style="--c:var(--storage)"><i></i>Storage</span><span style="--c:var(--security)"><i></i>Security</span>
+          <span style="--c:var(--mgmt)"><i></i>Management</span><span style="--c:var(--ai)"><i></i>AI</span>
+          <span><i class="dash"></i>optional / gated</span>
+        </div>
+      </div>
+      <div class="side rise" style="--d:3">
+        <div class="card traces">
+          <h3>Trace a path</h3>
+          <div class="tbtns" role="group" aria-label="Trace a path">
+            <button type="button" data-trace="public" aria-pressed="false">Public demo</button>
+            <button type="button" data-trace="operator" aria-pressed="false">Operator</button>
+            <button type="button" data-trace="deploy" aria-pressed="false">Deploy</button>
+            <button type="button" data-trace="paid" aria-pressed="false">Paid-AI gate</button>
+            <button type="button" data-trace="https" aria-pressed="false">HTTPS upgrade</button>
+          </div>
+        </div>
+        <div class="card info" id="info" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3 · FLOW ================= -->
+  <section class="slide" data-slide="flow" aria-label="Application flow">
+    <p class="eyebrow rise"><span>03</span>Application Flow</p>
+    <h2 class="rise" style="--d:1">From insight to tapped answer in <em>seven guarded steps</em>.</h2>
+    <div class="pipe rise" style="--d:2" id="pipe" role="group" aria-label="Pipeline stages"></div>
+    <div class="f-grid">
+      <div class="rise" style="--d:3">
+        <div class="card detail" id="detail" aria-live="polite"></div>
+        <div class="play">
+          <button type="button" id="playBtn">▶ Play the flow</button>
+          <button type="button" class="ghost" id="allBtn">Show all</button>
+        </div>
+      </div>
+      <div class="card funnel rise" style="--d:4" id="funnel">
+        <h3>A full simulated season</h3>
+        <p class="note">Whole synthetic dataset · 1 Nov 2026 → 5 Apr 2027 · template provider, $0 inference</p>
+        <div class="frow" data-stage="0"><span class="fl">Insights ingested</span><div class="track"><div class="fill"></div></div><span class="fv count" data-metric="insights" data-count="6999">6,999</span></div>
+        <div class="frow neg" data-stage="0"><span class="fl">Quarantined (schema-invalid)</span><div class="track"><div class="fill"></div></div><span class="fv count" data-metric="quarantined" data-count="50">50</span></div>
+        <div class="frow neg" data-stage="1"><span class="fl">No survey, by rule</span><div class="track"><div class="fill"></div></div><span class="fv count" data-metric="no_survey" data-count="4321">4,321</span></div>
+        <div class="frow human" data-stage="1"><span class="fl">Critical → human queue</span><div class="track"><div class="fill"></div></div><span class="fv count" data-metric="human_queue" data-count="25">25</span></div>
+        <div class="frow" data-stage="2 3"><span class="fl">Surveys generated and passed</span><div class="track"><div class="fill"></div></div><span class="fv count" data-metric="surveys" data-count="2628">2,628</span></div>
+        <div class="frow" data-stage="4 5"><span class="fl">Delivery attempts (with retries)</span><div class="track"><div class="fill"></div></div><span class="fv count" data-metric="sent" data-count="2643">2,643</span></div>
+        <div class="frow" data-stage="6"><span class="fl">Answered (simulated farmers)</span><div class="track"><div class="fill"></div></div><span class="fv count" data-metric="answered" data-count="1436">1,436</span></div>
+        <div class="frow flag" data-stage="6"><span class="fl">“Didn't work” → follow-up</span><div class="track"><div class="fill"></div></div><span class="fv count" data-metric="follow_up" data-count="527">527</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4 · DEMO ================= -->
+  <section class="slide" data-slide="demo" aria-label="Demo">
+    <p class="eyebrow rise"><span>04</span>Demo · real output from our run</p>
+    <h2 class="rise" style="--d:1">Bugs on mustard today, <em>three taps</em> four days later.</h2>
+    <div class="d-grid">
+      <div>
+        <div class="card step rise" style="--d:2">
+          <div class="kicker">① Insight from FarmerChat · I-000138</div>
+          <dl class="kv">
+            <dt>Where</dt><dd>Samastipur, Bihar · Hindi conversation</dd>
+            <dt>Crop</dt><dd>Mustard · germination · pest/disease · medium</dd>
+            <dt>Resolution</dt><dd><span class="mono">direct_action</span> · 4-day action window</dd>
+          </dl>
+          <p class="quote">“Black and orange bugs sucking young plants.” Advised to shake plants over a cloth, and spray per label if bugs are many.</p>
+        </div>
+        <div class="card step rise" style="--d:3">
+          <div class="kicker">② Decision: rule R8 → survey</div>
+          <p style="margin:0;font-size:15.5px">Advice the farmer could act on, verification needed in 2–5 days, inside the season. It isn't junk, critical, or awaiting details.</p>
+        </div>
+        <div class="card step rise" style="--d:4">
+          <div class="kicker">③ When to ask: day 4 → day 6</div>
+          <div class="timeline" aria-label="Timeline from advice to send window">
+            <div class="axis"></div>
+            <div class="act" style="left:0;width:57%"></div>
+            <div class="pin" style="left:0"></div><div class="lbl" style="left:0">Advice · 3 Nov</div>
+            <div class="win" style="left:57%;width:43%"></div><div class="lbl" style="left:59%;color:var(--mustard-deep)">Send window</div>
+            <div class="tick" style="left:4%">3 Nov</div><div class="tick" style="left:30%">action window</div>
+            <div class="tick" style="left:60%">7 Nov 07:00</div><div class="tick" style="left:93%">9 Nov 19:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="rise" style="--d:3">
+        <div class="phone"><div class="screen">
+          <div class="notch"></div>
+          <div class="apphead"><div class="logo">F</div><div><b>FarmerChat</b><small>Survey S-000138 · app bottom sheet</small></div></div>
+          <div class="chat">
+            <div class="msg" id="chatMsg"></div>
+            <div class="sheet" id="sheet"></div>
+          </div>
+        </div></div>
+        <div class="phonectl"><div class="seg" role="group" aria-label="Survey language">
+          <button type="button" data-lang="hi" aria-pressed="true">हिन्दी (hi-IN)</button>
+          <button type="button" data-lang="en" aria-pressed="false">English (en-IN)</button>
+        </div></div>
+      </div>
+      <div class="rise" style="--d:4">
+        <div class="card record">
+          <h4>④ What the agent records</h4>
+          <pre id="record" aria-live="polite"></pre>
+          <div class="alert" id="alert">Tap an answer on the phone. Try “Worse”.</div>
+          <div class="checks">
+            <span class="tag good">schema valid</span><span class="tag good">catalogue text only</span>
+            <span class="tag good">no personal data</span><span class="tag good">no new advice</span>
+          </div>
+        </div>
+        <div class="card run">
+          <b>Run it yourself.</b> Offline, about 2 seconds, $0:
+          <code>python -m mel_agent demo --out var/demo</code>
+          <div class="cases">
+            <span>Eligible → survey</span><span>Junk suppressed</span><span>Invalid quarantined</span><span>Critical → human</span>
+            <span>Out-of-season rejected</span><span>End-to-end delivery</span><span>Idempotent re-runs</span><span>Budget cutoff holds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5 · IMPACT ================= -->
+  <section class="slide" data-slide="impact" aria-label="Why our solution and the impact">
+    <p class="eyebrow rise"><span>05</span>Why ours · The impact</p>
+    <h2 class="rise" style="--d:1">Quality before volume, <em>with the evidence to back it</em>.</h2>
+    <div class="i-grid">
+      <div class="pillars">
+        <div class="card pillar rise" style="--d:2"><div class="ic" aria-hidden="true">🎯</div>
+          <h3>It only asks when it should</h3>
+          <p>Rules R0–R8 decide before anything is written. A missed survey is better than an irrelevant one, so precision comes first.</p>
+          <div class="proof">0 false positives · 55/55 reason codes</div></div>
+        <div class="card pillar rise" style="--d:3"><div class="ic" aria-hidden="true">🛡️</div>
+          <h3>Safe by construction</h3>
+          <p>Questions come from a closed, vetted catalogue. No model free-text ever reaches a farmer, and content is re-checked before every send.</p>
+          <div class="proof"><span class="count" data-metric="blocked_unsafe" data-count="0">0</span> unsafe sends · no personal-data asks</div></div>
+        <div class="card pillar rise" style="--d:4"><div class="ic" aria-hidden="true">⚡</div>
+          <h3>Fast, and cheap by default</h3>
+          <p>About 1.2 ms per survey, and a full season of 2,628 surveys in 8.3 s for $0. Bedrock is optional, behind a durable spend ledger with a hard stop.</p>
+          <div class="proof">$0 default · $225 hard stop</div></div>
+        <div class="card pillar rise" style="--d:5"><div class="ic" aria-hidden="true">🔌</div>
+          <h3>Plugs straight into Digital Green</h3>
+          <p>All six DG schemas are enforced unchanged, with a REST API, a scheduler hand-off contract, Terraform for AWS, and 400+ automated tests.</p>
+          <div class="proof">6/6 contracts · 8/8 demo cases</div></div>
+      </div>
+      <div>
+        <div class="card matrix rise" style="--d:3">
+          <h3>Golden-set evaluation · 150 cases</h3>
+          <p class="note">98.7% accuracy · precision 1.00 · recall 0.979 · both misses are documented contract disagreements</p>
+          <div class="cm">
+            <div></div><div class="h">Golden: survey</div><div class="h">Golden: no survey</div>
+            <div class="r">Ours: survey</div>
+            <div class="cell tp"><b class="count" data-metric="golden_tp" data-count="93">93</b><small>correct surveys</small></div>
+            <div class="cell fp"><b class="count" data-metric="golden_fp" data-count="0">0</b><small>needless surveys</small></div>
+            <div class="r">Ours: no survey</div>
+            <div class="cell fn"><b class="count" data-metric="golden_fn" data-count="2">2</b><small>held back (policy)</small></div>
+            <div class="cell tn"><b class="count" data-metric="golden_tn" data-count="55">55</b><small>correctly skipped</small></div>
+          </div>
+        </div>
+        <div class="kpis rise" style="--d:4">
+          <div class="card kpi"><b class="count" data-metric="farmers" data-count="300">300</b><small>farmers in one season, each asked only about their own advice</small></div>
+          <div class="card kpi"><b class="count" data-metric="cap_suppressed" data-count="571">571</b><small>sends held by the 1-per-week cap, so no bombarding</small></div>
+          <div class="card kpi"><b>93/93</b><small>first channel matches the golden set</small></div>
+        </div>
+        <div class="impact rise" style="--d:5">
+          <h3>The impact</h3>
+          <p>Every resolved conversation becomes a measurable adoption outcome, not a small sample. Failed advice gets a follow-up instead of silence. The agent is ready for Digital Green's ~10,000-farmer pilot in Bihar, with RCTs as the verifier.</p>
+        </div>
+      </div>
+    </div>
+    <div class="limits rise" style="--d:6"><b>Honest limits:</b> synthetic data only · Hindi wording awaits a native-speaker review · Bedrock output not yet evaluated · AWS stack validated locally, not yet applied to a live account</div>
+  </section>
+
+  <!-- chrome -->
+  <nav class="bar" aria-label="Slide navigation">
+    <div class="hint">← → or Space to move · F for full screen</div>
+    <div class="dots" id="dots"></div>
+    <div class="navr"><button type="button" id="prev" aria-label="Previous slide">‹</button><span id="counter">1 / 5</span><button type="button" id="next" aria-label="Next slide">›</button></div>
+  </nav>
+  <div class="progress" id="progress"></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var stage = document.getElementById("stage");
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+  var NAMES = ["Problem", "Architecture", "Flow", "Demo", "Impact"];
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var current = -1;
+  var enterHooks = {};
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function fmt(n) { return Number(n).toLocaleString("en-US"); }
+
+  /* ---------- fit 1600x900 stage to the window ---------- */
+  function fit() {
+    var s = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
+    stage.style.transform = "translate(-50%,-50%) scale(" + s + ")";
+  }
+  window.addEventListener("resize", fit);
+  fit();
+
+  /* ---------- counters ---------- */
+  function runCounters(slide) {
+    slide.querySelectorAll(".count[data-count]").forEach(function (node) {
+      var target = Number(node.getAttribute("data-count"));
+      if (reduce || target === 0) { node.textContent = fmt(target); return; }
+      var t0 = null, dur = 1100;
+      function step(ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0) / dur);
+        var eased = 1 - Math.pow(1 - p, 3);
+        node.textContent = fmt(Math.round(target * eased));
+        if (p < 1) requestAnimationFrame(step);
+      }
+      node.textContent = "0";
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* ---------- navigation ---------- */
+  var dots = document.getElementById("dots");
+  NAMES.forEach(function (name, i) {
+    var b = el("button");
+    b.type = "button";
+    b.appendChild(el("span", null, "0" + (i + 1)));
+    b.appendChild(document.createTextNode(name));
+    b.addEventListener("click", function () { go(i); });
+    dots.appendChild(b);
+  });
+
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    if (i === current) return;
+    slides.forEach(function (s, k) {
+      s.classList.toggle("active", k === i);
+      s.setAttribute("aria-hidden", k === i ? "false" : "true");
+    });
+    Array.prototype.forEach.call(dots.children, function (b, k) {
+      b.setAttribute("aria-current", k === i ? "true" : "false");
+    });
+    document.getElementById("counter").textContent = (i + 1) + " / " + slides.length;
+    document.getElementById("progress").style.width = ((i + 1) / slides.length * 100) + "%";
+    current = i;
+    if (history.replaceState) history.replaceState(null, "", "#" + (i + 1));
+    runCounters(slides[i]);
+    var hook = enterHooks[slides[i].getAttribute("data-slide")];
+    if (hook) hook();
+  }
+
+  document.getElementById("prev").addEventListener("click", function () { go(current - 1); });
+  document.getElementById("next").addEventListener("click", function () { go(current + 1); });
+
+  document.addEventListener("keydown", function (e) {
+    var t = e.target;
+    var onControl = t && t.closest && t.closest("button,[role=button]");
+    if (e.key === "ArrowRight" || e.key === "PageDown") { go(current + 1); e.preventDefault(); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { go(current - 1); e.preventDefault(); }
+    else if (e.key === " " && !onControl) { go(current + (e.shiftKey ? -1 : 1)); e.preventDefault(); }
+    else if (e.key === "Home") go(0);
+    else if (e.key === "End") go(slides.length - 1);
+    else if (/^[1-5]$/.test(e.key)) go(Number(e.key) - 1);
+    else if (e.key === "f" || e.key === "F") {
+      if (!document.fullscreenElement && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+      else if (document.exitFullscreen) document.exitFullscreen();
+    }
+  });
+
+  var touchX = null;
+  stage.addEventListener("touchstart", function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 60) go(current + (dx < 0 ? 1 : -1));
+    touchX = null;
+  });
+
+  /* ---------- 1 · broadcast vs contextual ---------- */
+  var compare = document.getElementById("compare");
+  var verdict = document.getElementById("verdict");
+  var userPicked = false, flipTimer = null;
+  function setMode(mode) {
+    compare.setAttribute("data-mode", mode);
+    compare.querySelectorAll(".seg button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-mode") === mode ? "true" : "false");
+    });
+    compare.querySelectorAll(".q").forEach(function (q) {
+      q.textContent = q.getAttribute(mode === "broadcast" ? "data-b" : "data-c");
+    });
+    verdict.textContent = "";
+    var tag = el("span", "tag " + (mode === "broadcast" ? "bad" : "good"),
+      mode === "broadcast" ? "Tells Digital Green nothing about the advice · costs trust"
+                           : "Each farmer is asked about the advice they received");
+    verdict.appendChild(tag);
+  }
+  compare.querySelectorAll(".seg button").forEach(function (b) {
+    b.addEventListener("click", function () { userPicked = true; setMode(b.getAttribute("data-mode")); });
+  });
+  setMode("broadcast");
+  enterHooks.problem = function () {
+    if (userPicked) return;
+    setMode("broadcast");
+    clearTimeout(flipTimer);
+    flipTimer = setTimeout(function () { if (!userPicked && current === 0) setMode("contextual"); }, 2600);
+  };
+
+  /* ---------- 2 · architecture ---------- */
+  var INFO = {
+    overview: { t: "How the sandbox is built", c: "--muted", k: "Overview", b: [
+      "Click any box for details, or trace a path above.",
+      "The public internet reaches only the synthetic demo. Operator APIs are reachable only through encrypted SSM tunnels.",
+      "Paid AI is off by default, and prohibited outright in HTTP mode.",
+      "Terraform is validated with formatting, validate and mocked-provider tests. It has not been applied to a live account yet."] },
+    viewer: { t: "Demo viewer", c: "--people", k: "Public", b: [
+      "Opens the ALB's AWS hostname over HTTP.",
+      "Sees only synthetic data: datasets, recorded evaluation reports, and the worked-example season.",
+      "No login, tokens, or personal data ever travel over HTTP."] },
+    operator: { t: "Operator", c: "--people", k: "Trusted", b: [
+      "Runs ingest → decide → generate → broadcast through the primary API.",
+      "Connects through an SSM port-forward and sends the X-Operator-Token header, compared in constant time.",
+      "If the token isn't configured, every protected route fails closed with a 503."] },
+    route53: { t: "Route 53 (optional)", c: "--net", k: "HTTPS upgrade", b: [
+      "Alias records for the app, demo. and prototype-api. hostnames.",
+      "Needs an owned domain and an existing hosted zone, so it isn't required for the HTTP demo."] },
+    acm: { t: "Certificate Manager (optional)", c: "--security", k: "HTTPS upgrade", b: [
+      "DNS-validated TLS certificate for the 443 listener.",
+      "In HTTPS mode, port 80 becomes a redirect."] },
+    cognito: { t: "Cognito (optional)", c: "--security", k: "HTTPS upgrade", b: [
+      "An ALB-authenticated user pool sits in front of every route.",
+      "Self-signup is disabled and administrators invite users. APIs still need the operator header too."] },
+    ssm: { t: "Systems Manager Session Manager", c: "--mgmt", k: "Access", b: [
+      "Encrypted port forwarding to the MEL API (:8000) and the prototype API (:8001), plus a shell.",
+      "Replaces SSH entirely: no port 22, no key pairs."] },
+    alb: { t: "Application Load Balancer", c: "--net", k: "Networking", b: [
+      "Internet-facing, across two Availability Zones.",
+      "Port 80 forwards only to the synthetic Streamlit demo. No public listener reaches either operator API.",
+      "App ports on the host accept only the ALB's security group."] },
+    vpc: { t: "VPC", c: "--net", k: "Networking", b: [
+      "Two public subnets in two AZs, an internet gateway and a route table.",
+      "Security groups: ALB → app ports only. SSH is never opened."] },
+    ec2: { t: "EC2 host · t3.medium", c: "--compute", k: "Compute", b: [
+      "x86 Amazon Linux 2023 running Docker, with encrypted root storage.",
+      "IMDSv2 with hop limit 1. Bridged prototype containers can't reach instance metadata.",
+      "Bootstrap mounts the exact EBS volume, pulls images by digest, fetches tokens, then starts the containers."] },
+    ui: { t: "Prototype UI · Streamlit", c: "--compute", k: "Container", b: [
+      "A teammate's phone-mockup demo, kept as a separate runtime.",
+      "Public and synthetic. Model-generation actions fail closed, and it gets no operator token."] },
+    api: { t: "MEL Agent API · FastAPI", c: "--compute", k: "Container · the agent", b: [
+      "The pipeline: ingest → decide → generate → self-evaluate → schedule → broadcast.",
+      "Every route except /healthz needs the operator token. Errors never echo submitted values.",
+      "Template provider by default, so it runs fully offline at $0."] },
+    farmerloop: { t: "FarmerLoop", c: "--compute", k: "Container", b: [
+      "A teammate's farmer-feedback processor, run as an on-demand job.",
+      "It has no network access and paid calls are always off."] },
+    ebs: { t: "EBS gp3 volume", c: "--storage", k: "Storage", b: [
+      "Encrypted persistent storage holding the SQLite database, with one writer.",
+      "Survives host replacement. prevent_destroy blocks accidental teardown.",
+      "Unknown disk signatures are refused. Only an empty disk is initialised."] },
+    ecr: { t: "Elastic Container Registry", c: "--compute", k: "Deploy", b: [
+      "Three repositories: api, prototype, farmerloop.",
+      "Tags are immutable and the host pulls by sha256 digest, so a release can't drift."] },
+    secrets: { t: "Secrets Manager", c: "--security", k: "Security", b: [
+      "Operator tokens are created outside Terraform. Only the ARN is passed in.",
+      "Fetched at boot into root-only files. Terraform never reads the values."] },
+    iam: { t: "IAM instance role", c: "--security", k: "Security", b: [
+      "SSM core, ECR pull, and read access to exactly one secret (plus KMS decrypt through Secrets Manager).",
+      "bedrock:InvokeModel only for explicitly listed model ARNs, and only when paid inference is enabled."] },
+    bedrock: { t: "Amazon Bedrock · gated", c: "--ai", k: "AI · off by default", b: [
+      "Needs three switches: provider=bedrock, MEL_ALLOW_PAID_INFERENCE, and confirm_paid on the request.",
+      "Every call reserves a conservative cost in a durable Decimal ledger first. Hard stop at $225 of a $250 budget.",
+      "SDK retries are disabled, so one reservation means one request. Unresolved spend blocks new calls.",
+      "The model only picks question intents. It never writes the wording."] }
+  };
+  var TRACE_TEXT = {
+    public: "overview", operator: "operator", deploy: "ecr", paid: "bedrock", https: "cognito"
+  };
+  var diagram = document.getElementById("diagram");
+  var info = document.getElementById("info");
+  function showInfo(key) {
+    var d = INFO[key] || INFO.overview;
+    info.textContent = "";
+    var k = el("div", "kicker");
+    k.style.setProperty("--c", "var(" + d.c + ")");
+    k.appendChild(el("i"));
+    k.appendChild(document.createTextNode(d.k));
+    info.appendChild(k);
+    info.appendChild(el("h3", null, d.t));
+    var ul = el("ul");
+    d.b.forEach(function (line) { ul.appendChild(el("li", null, line)); });
+    info.appendChild(ul);
+    diagram.querySelectorAll(".node").forEach(function (n) {
+      n.classList.toggle("sel", n.getAttribute("data-aws") === key);
+    });
+  }
+  function selectNode(target) {
+    var g = target.closest("[data-aws]");
+    if (g) showInfo(g.getAttribute("data-aws"));
+  }
+  diagram.addEventListener("click", function (e) { selectNode(e.target); });
+  diagram.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") { selectNode(e.target); e.preventDefault(); e.stopPropagation(); }
+  });
+  var traceBtns = document.querySelectorAll("[data-trace]");
+  function setTrace(name) {
+    traceBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-trace") === name ? "true" : "false"); });
+    diagram.classList.toggle("tracing", !!name);
+    diagram.querySelectorAll("[data-t]").forEach(function (n) {
+      var on = !!name && (" " + n.getAttribute("data-t") + " ").indexOf(" " + name + " ") >= 0;
+      n.classList.toggle("lit", on);
+    });
+    if (name) showInfo(name === "public" ? "alb" : TRACE_TEXT[name]);
+  }
+  traceBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var n = b.getAttribute("data-trace");
+      setTrace(b.getAttribute("aria-pressed") === "true" ? null : n);
+      if (b.getAttribute("aria-pressed") !== "true") showInfo("overview");
+    });
+  });
+  showInfo("overview");
+
+  /* ---------- 3 · flow ---------- */
+  var STAGES = [
+    { n: "Ingest", s: "validate · quarantine · reconcile",
+      h: "Load every insight, trust none of them",
+      p: "6,999 JSONL insights are validated against Digital Green's schemas and reconciled with the CSV export. Farmers and the crop calendar are loaded in one atomic transaction.",
+      g: "<b>Guardrail:</b> 50 schema-invalid records are quarantined. A failed import rolls back, so readers never see a half-loaded dataset." },
+    { n: "Decide", s: "rules R0–R8",
+      h: "Should this insight get a survey at all?",
+      p: "Deterministic precedence rules skip junk, small talk, advice that needs no check, missing details and out-of-season windows. The golden labels are never read by the decision code.",
+      g: "<b>Guardrail:</b> critical cases go to a human queue (25) before any junk test. Quality before volume: 4,321 insights get no survey." },
+    { n: "Generate", s: "closed catalogue · en/hi",
+      h: "Write 1–3 tap questions in the farmer's language",
+      p: "A survey is a list of question intents from a vetted catalogue. Slots are filled from the insight's structured fields (crop, concern, expert). The template provider is free. Bedrock may only choose intents.",
+      g: "<b>Guardrail:</b> fixed answer sets always include the negative option, so a model can't narrow choices to only-positive answers." },
+    { n: "Self-check", s: "schema · policy · language",
+      h: "Evaluate before scheduling",
+      p: "Every survey is checked for schema validity, exact catalogue wording, a Unicode allow-list, no URLs or phone numbers, no personal-data requests, no advice or doses, the right language and relevance.",
+      g: "<b>Guardrail:</b> failing surveys are stored as rejected and never reach a hand-off. 2,628 of 2,628 passed." },
+    { n: "Schedule", s: "window · channel · cap",
+      h: "Ask at the right time, through the right channel",
+      p: "The send window comes from the crop calendar plus the advice's action window, inside 07:00–19:00. Channels go preferred → method → WhatsApp → voice. Hand-offs expire 2 days after the window.",
+      g: "<b>Guardrail:</b> at most 1 survey per farmer per 7 days (high priority is exempt). The cap held back 571 sends." },
+    { n: "Broadcast", s: "simulated clock · atomic",
+      h: "Deliver exactly once, even with many workers",
+      p: "On each tick the broadcaster re-reads state, counts the cap, and claims the attempt in a single transaction. Retries and channel fallback are written atomically with the outcome.",
+      g: "<b>Guardrail:</b> content policy re-runs before every send. 0 surveys were blocked as unsafe." },
+    { n: "Follow up", s: "answers → MEL data",
+      h: "Close the loop when advice failed",
+      p: "Simulated farmers answer, decline or don't respond. Every response record validates against the schema. Answers like “same as before”, “worse” or “couldn't get the input” carry a follow-up reason.",
+      g: "<b>Guardrail:</b> 527 negative outcomes were routed to the follow-up queue instead of being silently recorded." }
+  ];
+  var pipe = document.getElementById("pipe");
+  var detail = document.getElementById("detail");
+  var funnel = document.getElementById("funnel");
+  var stageBtns = STAGES.map(function (st, i) {
+    var b = el("button", "stage-btn");
+    b.type = "button";
+    b.setAttribute("aria-pressed", "false");
+    b.appendChild(el("span", "num", String(i + 1)));
+    b.appendChild(el("b", null, st.n));
+    b.appendChild(el("small", null, st.s));
+    b.addEventListener("click", function () { stopPlay(); pickStage(i); });
+    pipe.appendChild(b);
+    return b;
+  });
+  function renderGuard(node, html) {
+    // Static, author-controlled strings: split "<b>X</b> rest" without using innerHTML.
+    var m = /^<b>(.*?)<\/b>\s*(.*)$/.exec(html);
+    if (m) { node.appendChild(el("b", null, m[1])); node.appendChild(document.createTextNode(" " + m[2])); }
+    else node.textContent = html;
+  }
+  function pickStage(i) {
+    stageBtns.forEach(function (b, k) {
+      b.setAttribute("aria-pressed", k === i ? "true" : "false");
+      b.classList.toggle("done", i !== null && k < i);
+    });
+    detail.textContent = "";
+    if (i === null) {
+      detail.appendChild(el("div", "kicker", "Pipeline"));
+      detail.appendChild(el("h3", null, "Idempotent, offline by default, auditable end to end"));
+      detail.appendChild(el("p", null, "Click a stage or press Play. Each stage runs on its own from the CLI or API (ingest, decide, generate, broadcast, evaluate), or all together with run-all. Every step writes to an audit log."));
+      var g0 = el("div", "guard"); renderGuard(g0, "<b>Contract-first:</b> all six organisation-provided schemas are enforced unchanged: insight, survey, hand-off, no-survey, bottom sheet and response.");
+      detail.appendChild(g0);
+      funnel.classList.remove("focus");
+      funnel.querySelectorAll(".frow").forEach(function (r) { r.classList.remove("on"); });
+      return;
+    }
+    var st = STAGES[i];
+    detail.appendChild(el("div", "kicker", "Step " + (i + 1) + " of 7 · " + st.n));
+    detail.appendChild(el("h3", null, st.h));
+    detail.appendChild(el("p", null, st.p));
+    var g = el("div", "guard"); renderGuard(g, st.g); detail.appendChild(g);
+    funnel.classList.add("focus");
+    funnel.querySelectorAll(".frow").forEach(function (r) {
+      var on = r.getAttribute("data-stage").split(" ").indexOf(String(i)) >= 0;
+      r.classList.toggle("on", on);
+    });
+  }
+  function fillFunnel() {
+    var rows = funnel.querySelectorAll(".frow");
+    rows.forEach(function (r) { r.querySelector(".fill").style.width = "0"; });
+    setTimeout(function () {
+      rows.forEach(function (r) {
+        var v = Number(r.querySelector("[data-count]").getAttribute("data-count"));
+        r.querySelector(".fill").style.width = Math.max(0.6, v / 6999 * 100) + "%";
+      });
+    }, reduce ? 0 : 250);
+  }
+  var playTimer = null, playIdx = 0;
+  var playBtn = document.getElementById("playBtn");
+  function stopPlay() { clearInterval(playTimer); playTimer = null; playBtn.textContent = "▶ Play the flow"; }
+  playBtn.addEventListener("click", function () {
+    if (playTimer) { stopPlay(); return; }
+    playIdx = 0; pickStage(0);
+    playBtn.textContent = "❚❚ Pause";
+    playTimer = setInterval(function () {
+      playIdx += 1;
+      if (playIdx >= STAGES.length || current !== 2) { stopPlay(); return; }
+      pickStage(playIdx);
+    }, 2600);
+  });
+  document.getElementById("allBtn").addEventListener("click", function () { stopPlay(); pickStage(null); });
+  pickStage(null);
+  enterHooks.flow = fillFunnel;
+
+  /* ---------- 4 · demo phone ---------- */
+  var SURVEY = {
+    id: "S-000138",
+    intro: { hi: "आपकी सरसों पर कीड़ों के बारे में FarmerChat की सलाह", en: "About FarmerChat's advice on bugs on your mustard" },
+    items: [
+      { id: "q1", hi: "क्या आपने अपनी सरसों पर कीट या रोग की समस्या के बारे में FarmerChat की सलाह पर काम किया?",
+        en: "Did you follow FarmerChat's advice about the pest or disease problem on your mustard?",
+        opts: [{ v: "yes", hi: "हाँ", en: "Yes" }, { v: "no", hi: "नहीं", en: "No" }] },
+      { id: "q2", hi: "अब आपकी सरसों की हालत कैसी है?", en: "How is your mustard now?",
+        opts: [{ v: "better", hi: "पहले से बेहतर", en: "Better" },
+               { v: "same", hi: "पहले जैसी", en: "Same as before", f: "advice_did_not_work" },
+               { v: "worse", hi: "पहले से खराब", en: "Worse", f: "crop_or_animal_damaged" }] },
+      { id: "q3", hi: "अगर नहीं किया, तो क्या रुकावट थी?", en: "If you did not do it, what stopped you?",
+        opts: [{ v: "did_it", hi: "कर लिया", en: "I did it" }, { v: "too_costly", hi: "बहुत महँगा", en: "Too costly" },
+               { v: "not_available", hi: "सामान नहीं मिला", en: "Not available", f: "could_not_get_input" },
+               { v: "no_time", hi: "समय नहीं था", en: "No time" }, { v: "unclear", hi: "समझ नहीं आया", en: "Did not understand" }] }
+    ]
+  };
+  var lang = "hi", qi = 0, answers = [];
+  var sheet = document.getElementById("sheet");
+  var chatMsg = document.getElementById("chatMsg");
+  var record = document.getElementById("record");
+  var alertBox = document.getElementById("alert");
+
+  function line(parent, key, value, last) {
+    parent.appendChild(document.createTextNode("  "));
+    parent.appendChild(el("span", "k", JSON.stringify(key)));
+    parent.appendChild(document.createTextNode(": " + JSON.stringify(value) + (last ? "\n" : ",\n")));
+  }
+  function renderRecord() {
+    record.textContent = "";
+    var fu = answers.filter(function (a) { return a.follow_up; });
+    record.appendChild(document.createTextNode("{\n"));
+    line(record, "survey_id", SURVEY.id);
+    line(record, "insight_id", "I-000138");
+    line(record, "language", lang === "hi" ? "hi-IN" : "en-IN");
+    line(record, "status", qi >= SURVEY.items.length ? (fu.length ? "negative_outcome" : "completed") : (answers.length ? "partial" : "delivered"));
+    record.appendChild(document.createTextNode("  "));
+    record.appendChild(el("span", "k", "\"answers\""));
+    record.appendChild(document.createTextNode(": [" + (answers.length ? "\n" : "],\n")));
+    answers.forEach(function (a, i) {
+      var parts = ["\"item_id\": " + JSON.stringify(a.item_id), "\"value\": " + JSON.stringify(a.value)];
+      if (a.follow_up) parts.push("\n      \"follow_up\": " + JSON.stringify(a.follow_up));
+      record.appendChild(document.createTextNode("    { " + parts.join(", ") + " }" + (i < answers.length - 1 ? ",\n" : "\n")));
+    });
+    if (answers.length) record.appendChild(document.createTextNode("  ],\n"));
+    line(record, "needs_follow_up", fu.length > 0, true);
+    record.appendChild(document.createTextNode("}"));
+    alertBox.classList.toggle("on", fu.length > 0);
+    alertBox.textContent = fu.length
+      ? "⚑ Routed to the follow-up queue: " + fu.map(function (a) { return a.follow_up; }).join(", ")
+      : (answers.length ? "No follow-up needed so far. Try “Worse” or “Not available”." : "Tap an answer on the phone. Try “Worse”.");
+  }
+  function renderSheet() {
+    chatMsg.textContent = SURVEY.intro[lang];
+    sheet.textContent = "";
+    if (qi >= SURVEY.items.length) {
+      var th = el("div", "thanks");
+      th.appendChild(el("div", "big", lang === "hi" ? "धन्यवाद!" : "Thank you!"));
+      th.appendChild(el("div", null, lang === "hi" ? "3 / 3" : "3 of 3 answered"));
+      var again = el("button", null, "↺ Replay");
+      again.type = "button";
+      again.addEventListener("click", function () { qi = 0; answers = []; renderSheet(); renderRecord(); });
+      th.appendChild(again);
+      sheet.appendChild(th);
+      return;
+    }
+    var item = SURVEY.items[qi];
+    var prog = el("div", "prog");
+    prog.appendChild(el("span", null, (qi + 1) + " / " + SURVEY.items.length));
+    var pd = el("span", "pd");
+    SURVEY.items.forEach(function (_, k) { pd.appendChild(el("i", k <= qi ? "on" : "")); });
+    prog.appendChild(pd);
+    sheet.appendChild(prog);
+    sheet.appendChild(el("div", "qtext", item[lang]));
+    var opts = el("div", "opts");
+    item.opts.forEach(function (o) {
+      var b = el("button", null, o[lang]);
+      b.type = "button";
+      b.addEventListener("click", function () {
+        b.classList.add("picked");
+        if (o.f) b.classList.add("fu");
+        answers.push({ item_id: item.id, value: o.v, follow_up: o.f || null });
+        renderRecord();
+        setTimeout(function () { qi += 1; renderSheet(); renderRecord(); }, reduce ? 0 : 420);
+      });
+      opts.appendChild(b);
+    });
+    sheet.appendChild(opts);
+  }
+  document.querySelectorAll("[data-lang]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      lang = b.getAttribute("data-lang");
+      document.querySelectorAll("[data-lang]").forEach(function (x) {
+        x.setAttribute("aria-pressed", x === b ? "true" : "false");
+      });
+      renderSheet(); renderRecord();
+    });
+  });
+  renderSheet(); renderRecord();
+
+  /* ---------- start ---------- */
+  var start = parseInt((location.hash || "#1").slice(1), 10);
+  go(isNaN(start) ? 0 : start - 1);
+})();
+</script>
+</body>
+</html>
