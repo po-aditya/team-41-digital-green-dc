@@ -1,0 +1,192 @@
+"""Generate config/bedrock_pricing.json from the AWS Price List API.
+
+Read-only and free. Prices are copied from AWS, never typed in by hand.
+
+Safety: the new table is fully validated before anything is written, and the
+write is atomic (temp file + rename). On ANY failure (AWS error, empty result,
+a required model missing, a missing/invalid price) the existing file is left
+untouched and the script exits nonzero.
+
+Mapping (an assumption worth re-checking if AWS changes its SKUs):
+  us.<model>      geographic cross-region profile -> "Standard" (regional) price
+  global.<model>  global cross-region profile     -> "Standard, Global" price
+Long-context (>200K input) and 1-hour cache-TTL prices are not recorded.
+
+Exit codes: 0 written, 1 fetch/validation failure (file unchanged), 2 bad usage/config.
+
+Usage:
+  python scripts/fetch_bedrock_pricing.py --region us-west-2 [--out config/bedrock_pricing.json]
+                                          [--require MODEL_ID ...]
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import sys
+import tempfile
+from collections.abc import Callable
+from datetime import date
+from pathlib import Path
+
+import boto3
+from botocore.exceptions import BotoCoreError, ClientError
+
+from mel_agent.llm.pricing import PricingConfigError, parse_pricing
+
+# Price List "model" attribute -> Bedrock profile suffix.
+MODELS = {
+    "Claude Haiku 5.5": "anthropic.claude-haiku-5-5",
+    "Claude Sonnet 5.5": "anthropic.claude-sonnet-5-5",
+    "Claude Opus 5.5": "anthropic.claude-opus-5-5",
+}
+PROFILE_PREFIXES = ("us", "global")
+SERVICE_CODE = "AmazonBedrockFoundationModels"
+DEFAULT_OUT = Path(__file__).resolve().parents[1] / "config" / "bedrock_pricing.json"
+
+_USAGE_RE = re.compile(
+    r"_(?P<kind>input_tokens|output_tokens|cache_read_tokens|cache_write_tokens)(?P<glob>_global)?_standard-Units$"
+)
+_KIND = {
+    "input_tokens": "input",
+    "output_tokens": "output",
+    "cache_read_tokens": "cache_read",
+    "cache_write_tokens": "cache_write",
+}
+
+
+class PricingRefreshError(RuntimeError):
+    pass
+
+
+def fetch(region: str) -> dict:
+    """Query the Price List API. Returns {profile_id: entry}. May be empty."""
+    client = boto3.client("pricing", region_name="us-east-1")  # Price List API endpoint
+    found: dict[str, dict] = {}
+    paginator = client.get_paginator("get_products")
+    for model_name, suffix in MODELS.items():
+        pages = paginator.paginate(
+            ServiceCode=SERVICE_CODE,
+            Filters=[
+                {"Type": "TERM_MATCH", "Field": "regionCode", "Value": region},
+                {"Type": "TERM_MATCH", "Field": "model", "Value": model_name},
+            ],
+        )
+        for page in pages:
+            for raw in page["PriceList"]:
+                product = json.loads(raw)
+                usagetype = product["product"]["attributes"].get("usagetype", "")
+                m = _USAGE_RE.search(usagetype)
+                if not m:
+                    continue  # long-context, 1h-TTL, batch, etc.
+                prefix = "global" if m.group("glob") else "us"
+                profile_id = f"{prefix}.{suffix}"
+                for term in product["terms"].get("OnDemand", {}).values():
+                    for dim in term["priceDimensions"].values():
+                        if dim["unit"] != "1M tokens":
+                            continue
+                        entry = found.setdefault(
+                            profile_id,
+                            {"display_name": model_name, "usd_per_million_tokens": {}, "source_usage_types": []},
+                        )
+                        entry["usd_per_million_tokens"][_KIND[m.group("kind")]] = float(dim["pricePerUnit"]["USD"])
+                        entry["source_usage_types"].append(usagetype)
+    for entry in found.values():
+        entry["source_usage_types"].sort()
+    return dict(sorted(found.items()))
+
+
+def required_model_ids(extra: list[str] | None = None) -> list[str]:
+    ids = {f"{prefix}.{suffix}" for suffix in MODELS.values() for prefix in PROFILE_PREFIXES}
+    ids.update(extra or [])
+    return sorted(ids)
+
+
+def build_document(models: dict, region: str, required: list[str]) -> dict:
+    """Validate the fetched table and wrap it. Raises PricingRefreshError if unusable."""
+    if not models:
+        raise PricingRefreshError(f"Price List API returned no pricing for region {region}")
+    missing = [m for m in required if m not in models]
+    if missing:
+        raise PricingRefreshError(f"pricing missing for required model(s): {', '.join(missing)}")
+    doc = {
+        "_meta": {
+            "source": f"AWS Price List API, service {SERVICE_CODE}, OnDemand terms",
+            "region": region,
+            "retrieved_on": date.today().isoformat(),
+            "currency": "USD",
+            "unit": "per 1,000,000 tokens",
+            "notes": [
+                "Generated by scripts/fetch_bedrock_pricing.py. Do not edit prices by hand.",
+                "us.* profiles use the 'Standard' (regional) SKU; global.* use 'Standard, Global'.",
+                "Long-context and 1-hour cache-TTL prices are excluded.",
+                "Estimates only. The AWS bill is the source of truth.",
+            ],
+        },
+        "models": models,
+    }
+    try:
+        parse_pricing(doc)  # same rules the app uses to load the file
+    except PricingConfigError as exc:
+        raise PricingRefreshError(f"fetched pricing is invalid: {exc}") from None
+    return doc
+
+
+def write_atomic(path: Path, doc: dict) -> None:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump(doc, fh, indent=2)
+            fh.write("\n")
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, path)
+    except BaseException:
+        Path(tmp).unlink(missing_ok=True)
+        raise
+
+
+def main(argv: list[str] | None = None, fetcher: Callable[[str], dict] = fetch) -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--region", required=True, help="AWS region whose prices to fetch, e.g. us-west-2")
+    ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    ap.add_argument("--require", action="append", default=[], metavar="MODEL_ID",
+                    help="extra model/profile id that must be priced (repeatable), e.g. your MEL_BEDROCK_MODEL_ID")
+    args = ap.parse_args(argv)
+
+    try:
+        models = fetcher(args.region)
+        doc = build_document(models, args.region, required_model_ids(args.require))
+        write_atomic(args.out, doc)
+    except PricingRefreshError as exc:
+        print(f"ERROR: {exc}. Existing pricing file left unchanged: {args.out}", file=sys.stderr)
+        return 1
+    except ClientError as exc:
+        err = exc.response.get("Error", {})
+        print(f"ERROR: AWS Price List API: {err.get('Code')}: {err.get('Message')}. "
+              f"Existing pricing file left unchanged: {args.out}", file=sys.stderr)
+        return 1
+    except BotoCoreError as exc:
+        print(f"ERROR: AWS: {type(exc).__name__}: {exc}. Existing pricing file left unchanged: {args.out}",
+              file=sys.stderr)
+        return 1
+    except OSError as exc:
+        print(f"ERROR: cannot write {args.out}: {exc.strerror}", file=sys.stderr)
+        return 1
+    except (KeyError, TypeError, ValueError) as exc:
+        # Unexpected Price List response shape (e.g. a non-numeric price). The offending
+        # value is deliberately not printed.
+        print(f"ERROR: unexpected AWS Price List response format ({type(exc).__name__}). "
+              f"Existing pricing file left unchanged: {args.out}", file=sys.stderr)
+        return 1
+
+    print(f"Wrote {len(doc['models'])} model entries to {args.out}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
