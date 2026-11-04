@@ -1,0 +1,26 @@
+{
+  "schemas": {
+    "surveys": {
+      "count": 2628,
+      "invalid": 0
+    },
+    "handoffs": {
+      "count": 2628,
+      "invalid": 0
+    },
+    "responses": {
+      "count": 2372,
+      "invalid": 0
+    }
+  },
+  "follow_up": {
+    "negative_outcomes": 527,
+    "flagged_responses": 527,
+    "negative_missing_flag": 0
+  },
+  "cap_audit": {
+    "non_exempt_first_sends_checked": 1770,
+    "violations": 0,
+    "method": "For each non-exempt first send, compare prior first-send audit sequence and stored counted_at for same farmer inside inclusive trailing cap window; retries and cap-exempt sends excluded as subjects. Unit tests separately verify in-flight and concurrent cap behavior."
+  }
+}

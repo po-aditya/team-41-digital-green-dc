@@ -1,0 +1,105 @@
+{
+  "cases": 150,
+  "eligibility": {
+    "tp": 93,
+    "fp": 0,
+    "tn": 55,
+    "fn": 2,
+    "precision": 1.0,
+    "recall": 0.9789,
+    "accuracy": 0.9867,
+    "f1": 0.9894,
+    "no_survey_reason_code_agreement": "55/55"
+  },
+  "by_golden_rule": {
+    "R1": {
+      "cases": 14,
+      "agree": 14
+    },
+    "R8": {
+      "cases": 95,
+      "agree": 93
+    },
+    "R3": {
+      "cases": 12,
+      "agree": 12
+    },
+    "R5": {
+      "cases": 10,
+      "agree": 10
+    },
+    "R4": {
+      "cases": 10,
+      "agree": 10
+    },
+    "R2": {
+      "cases": 6,
+      "agree": 6
+    },
+    "R7": {
+      "cases": 1,
+      "agree": 1
+    },
+    "R6": {
+      "cases": 2,
+      "agree": 2
+    }
+  },
+  "mismatches": [
+    {
+      "insight_id": "I-006279",
+      "golden_rule": "R8",
+      "golden_reason": null,
+      "golden_survey": true,
+      "our_rule": "R7",
+      "our_reason": "crop_already_harvested",
+      "our_survey": false,
+      "cause": "rules.json timing (start not before the action window ends) puts the first send date after this crop's calendar end; the golden formula (no action-window clamp) starts earlier and keeps the survey. Contract disagreement, not a code defect."
+    },
+    {
+      "insight_id": "I-006836",
+      "golden_rule": "R8",
+      "golden_reason": null,
+      "golden_survey": true,
+      "our_rule": "R6",
+      "our_reason": "window_truncated_by_season_end",
+      "our_survey": false,
+      "cause": "rules.json requires a window at least min_width_days wide AND nothing after 31 March; both cannot hold for this insight, so it is held back rather than sent with a truncated window. The golden set accepts the truncated (even zero-width) window. Conservative decision pending Digital Green's ruling."
+    }
+  ],
+  "timing": {
+    "surveys_compared": 93,
+    "same_start_date": 18,
+    "same_end_date": 37,
+    "same_both_dates": 14,
+    "windows_overlap": 86,
+    "our_window_within_golden": 22
+  },
+  "channel": {
+    "surveys_compared": 93,
+    "first_channel_matches_golden": 93,
+    "verification_method_matches_golden": 93
+  },
+  "format": {
+    "generated": 93,
+    "generation_failures": 0,
+    "survey_schema_valid": 93,
+    "handoff_schema_valid": 93,
+    "item_count_1_to_3": 93,
+    "item_count_equals_golden": 67,
+    "language": "en-IN"
+  },
+  "relevance": {
+    "lexical_overlap_mean": 0.5397,
+    "lexical_overlap_min": 0.1739,
+    "surveys_naming_the_asset": 93,
+    "of": 93,
+    "method": "Jaccard over content words of prompts+labels vs golden item texts+options (proxy only)"
+  },
+  "elapsed_s": 0.184,
+  "notes": [
+    "Eligibility uses rules.json + the content-based junk signature; the golden labels are never read by the decision code.",
+    "Timing is computed with the rules.json formula (which reproduces the pack's worked scenarios). The golden set uses a different formula (09:00 start, no action-window clamp), so date agreement is reported separately from overlap.",
+    "Relevance is a lexical proxy (token overlap with the golden item texts), not a judgement of language quality."
+  ]
+}

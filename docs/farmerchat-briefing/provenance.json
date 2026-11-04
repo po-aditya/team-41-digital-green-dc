@@ -1,0 +1,164 @@
+{
+  "review_date": "2026-11-04",
+  "timezone": "America/New_York",
+  "sources": [
+    {
+      "label": "Vision",
+      "path": "docs/Digital Green Foundation/Vision Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+      "sha256": "1a8e990737ea57223fd98ee1f54c324e6d6a87cbbec6ea3bf05bdec67086b058",
+      "extracted_characters": 16915
+    },
+    {
+      "label": "Technical",
+      "path": "docs/Digital Green Foundation/Technical Document_ Digital Green FarmerChat Contextual MEL Survey Agent (MVP).docx",
+      "sha256": "4b654011eb51546cb44d287074de9d4b766b4bcb395aeeac4a4f087c6bd0d7f0",
+      "extracted_characters": 7393
+    }
+  ],
+  "method": "Read-only textutil extraction, DOCX XML relationship/comment/tracked-change inspection, embedded technical PNG inspected. No document page-layout audit.",
+  "scope": "Offline briefing only. No app implementation, AWS invocation or deployment, real farmer data, delivery or pilot.",
+  "claude_summary": {
+    "cli": "/opt/homebrew/bin/claude",
+    "cli_version": "2.1.316",
+    "requested_model": "configured default; exact model not independently identified",
+    "flags": [
+      "-p",
+      "--safe-mode",
+      "--tools",
+      "",
+      "--strict-mcp-config",
+      "--no-session-persistence",
+      "--output-format",
+      "text"
+    ],
+    "exit_code": 0,
+    "output_file": "claude-summary.md",
+    "output_sha256": "fc6d455a412d087a539334e1d42c030ce2f2acaad21cb73b1753bab92b1204c6",
+    "input_sha256": "c7e8a3c6b1da9f1e6b0dc26d78cf1f57fee0bbd4c5a364025664b3ec98e80184",
+    "input_scope": "Both complete extracted plan texts. No image or repo evidence."
+  },
+  "claude_diagrams": {
+    "cli_version": "2.1.316",
+    "exit_code": 0,
+    "flags_same_as_summary": true,
+    "output_file": "claude-diagrams-output.md",
+    "output_sha256": "5465bf3bdd736a2f6f7aa433b4406c01b17002428e69515d4b2a74d7d321b5c1",
+    "parsed_json_file": "claude-diagrams.json",
+    "input_sha256": "fd4e16c5528b94a28395e0f2740ecf031cdc2b607920331670cf91d82a1e9eeb",
+    "input_scope": "Both source texts plus five preselected Codex-origin options. Claude authored diagrams and outlines, not independent option generation.",
+    "rendering": "Claude Mermaid nodes and edges parsed to DOT and locally rendered with bundled @viz-js/viz. No remote diagram runtime.",
+    "caveats": "Raw response includes an illustrative 62 percent figure and rough time estimate. Neither is a measured result; neither is used as briefing data. Codex notes narrow schema and scope claims."
+  },
+  "gemini": {
+    "cli": "/opt/homebrew/bin/agy",
+    "requested_model": "gemini-4-argon-high",
+    "model_list_confirmed": true,
+    "status": "SUCCESS",
+    "exit_code": 0,
+    "num_turns": 1,
+    "duration_seconds": 89.452115,
+    "flags": [
+      "--mode",
+      "plan",
+      "--sandbox",
+      "--disable-slash-commands",
+      "--model",
+      "gemini-4-argon-high",
+      "--output-format",
+      "json",
+      "--print=<explicit supplied text>"
+    ],
+    "warning": "CLI warned --mode plan has no effect while slash command expansion is disabled. Sandbox flag enabled; prompt explicitly requested no tools, inspection, code execution, browsing or edits.",
+    "input_scope": "Both complete extracted plan texts and selected verified public DG_Open code excerpts. No independent Gemini browsing.",
+    "input_sha256": "64ba1245d57f22910f405fbf0b3a7724949c46d04fdfb9319419dd27d28e7856",
+    "output_file": "gemini-review.md",
+    "output_sha256": "ede716c8499784a324985de2258262e65b78418dc4484ceac8043d086ac1382a",
+    "authorization": "Initial full-text transfer rejected by automatic approval review. Retried only after user explicitly answered Yes, share both plans with Gemini.",
+    "review_corrections": "Branching is proposed, not source Must Have. No organizer judging rubric was supplied. Full dataset is required unless Digital Green agrees otherwise. Recommended feature combination narrowed by Codex for one-day feasibility."
+  },
+  "public_repository": {
+    "url": "https://github.com/digitalgreenorg/DG_Open",
+    "commit": "5064d65700e03d413cd283dbafc12386f6b92f75",
+    "commit_date": "2025-11-23T14:45:38+05:30",
+    "provenance": "Explicit hyperlink in Technical DOCX main/footnote relationships.",
+    "target_status": "User explicitly says DG_Open is not the intended target. It is retained only as document-linked background; actual application repository unconfirmed.",
+    "inspection": "Read-only static farmer-chat subtree review. No installation, runtime test, full audit or current production verification."
+  },
+  "scoping_repository": "https://github.com/12turnbullb/us-breaking-barriers-2026",
+  "aws_sources_checked": [
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html",
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html",
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-prereq.html",
+    "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html",
+    "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingObjects.html",
+    "https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html",
+    "https://docs.aws.amazon.com/lambda/latest/dg/urls-invocation.html",
+    "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-sensitive-filters.html",
+    "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+    "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-getting-started.html",
+    "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html",
+    "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html",
+    "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-http-protocol-contract.html",
+    "https://docs.aws.amazon.com/cdk/v2/guide/home.html"
+  ],
+  "style": "Short technical English, not certified ASD-STE100 compliance.",
+  "publication": {
+    "published_branch": "codex/farmerchat-plan-briefing",
+    "html_commit": "c327f7e0fe58561742775f563f2b173c4431eb22",
+    "published_files": [
+      "docs/farmerchat-briefing/index.html"
+    ],
+    "local_evidence_branch": "codex/farmerchat-independent-evidence",
+    "evidence_pushed": false,
+    "previous_html_commit": "f80958a8c043af1db1ad56aeca7d348d4321d2c8"
+  },
+  "claude_independent_review": {
+    "date": "2026-11-04",
+    "cli": "/opt/homebrew/bin/claude",
+    "cli_version": "2.1.316",
+    "model": "configured default; exact model not independently identified",
+    "flags": [
+      "-p",
+      "--safe-mode",
+      "--tools",
+      "",
+      "--strict-mcp-config",
+      "--no-session-persistence",
+      "--output-format",
+      "text"
+    ],
+    "stage_a": {
+      "exit_code": 0,
+      "input_scope": "Both complete source text extracts plus one-day AWS context only; no Codex proposals, briefing, or earlier model replies.",
+      "input_file": "/private/tmp/farmerchat-review/claude-independent-a-input.txt",
+      "input_sha256": "a9271f5f62b76fe5f790c1a589f79e9d31e31d68bd5dd5c78c00280066a9e2e4",
+      "output_file": "claude-independent-a-output.txt",
+      "output_sha256": "14a80a9936ef5a72e4306bd9fbf82e156cbaf92bf051349aa0e24aefadfb4cee",
+      "parsed_file": "claude-independent-a.json",
+      "parse_note": "For display parsing only, removed one excess closing brace immediately before independent_options. Raw stdout remains unchanged."
+    },
+    "stage_b": {
+      "exit_code": 0,
+      "input_scope": "Both source texts, actual completed Stage A result, original Codex five, existing briefing snapshot and explicitly attributed AWS facts from Codex checks.",
+      "input_file": "/private/tmp/farmerchat-review/claude-independent-b-input.txt",
+      "input_sha256": "d7513b8e9606a5c94aa30d597ecae1895b35270920a097b0cb0139946908d50f",
+      "output_file": "claude-independent-b-output.txt",
+      "output_sha256": "ac50679df4717d108629bfeaa12c6167f9f1ed45d895877da179d1f9e1b35efe",
+      "parsed_file": "claude-independent-b.json"
+    },
+    "sequencing": "Stage A CLI returned exit 0 and full stdout before Stage B input was constructed and Stage B invoked. Separate no-session-persistence calls.",
+    "origin": "C1-C5 originated with Codex. Earlier Claude diagram pass received that list. A1-A5 are the new independent Claude ideas.",
+    "verification_limits": "Text-only source review. Claude did not inspect architecture image, current implementation/repository, AWS accounts, data, or judging rubric. Official AWS documentation checks were by Codex.",
+    "codex_qualification": "Eligibility was already in the original baseline workflow. Claude elevated it to a separate option, not a newly missing baseline requirement.",
+    "verification": {
+      "acceptance_checks": "22/22 PASS, exit 0",
+      "raw_output_fidelity": "Both embedded PRE.textContent values exactly match actual CLI stdout bytes.",
+      "input_boundary": "Verifier confirmed fresh complete DOCX extraction in Stage A, no Codex/HTML context; Stage B contains full actual A and prior HTML.",
+      "security": "No blocking findings in separate scoped static review.",
+      "html_sha256": "b92d232553fbe8c7ba21b4abc8c1da26831f9f610ce2ac3dfec1b4cf7f9adb48",
+      "functional_report": "verification-independent.md",
+      "security_report": "security-independent.md",
+      "scope": "Briefing only, not app, AWS deployment or pilot."
+    }
+  }
+}

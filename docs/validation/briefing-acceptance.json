@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "name": "Artifact exists and contains required semantic landmarks",
+      "status": "PASS"
+    },
+    {
+      "name": "Briefing loads fully offline without external requests",
+      "status": "PASS"
+    },
+    {
+      "name": "Desktop content fits the viewport",
+      "status": "PASS"
+    },
+    {
+      "name": "Workflow stages change detail with keyboard activation",
+      "status": "PASS"
+    },
+    {
+      "name": "Each scope filter shows only matching entries and updates the count",
+      "status": "PASS"
+    },
+    {
+      "name": "Claude output is separate, attributed, and substantial",
+      "status": "PASS"
+    },
+    {
+      "name": "Hackathon proposal covers frontend, backend and evals with pinned public provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "Model contributions distinguish actual CLI results and independent assessment",
+      "status": "PASS"
+    },
+    {
+      "name": "Claude independent pass separately summarizes the vision and technical document",
+      "status": "PASS"
+    },
+    {
+      "name": "Claude independent five ideas preserve source scope, AWS, minimum demo and dependencies",
+      "status": "PASS"
+    },
+    {
+      "name": "Comparative review filters actual agreements, qualifications and disagreements",
+      "status": "PASS"
+    },
+    {
+      "name": "Both independent-review raw CLI outputs remain substantial text-only evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "Updated recommendation preserves a one-day decision and uncertainty",
+      "status": "PASS"
+    },
+    {
+      "name": "Updated attribution distinguishes Codex originals, blind Stage A, and comparative Stage B",
+      "status": "PASS"
+    },
+    {
+      "name": "Five enhancement choices each explain a workflow and include an accessible offline diagram",
+      "status": "PASS"
+    },
+    {
+      "name": "AWS mapping separates required Bedrock from optional services and plan fits one day",
+      "status": "PASS"
+    },
+    {
+      "name": "Enhancement shortlist starts empty, explains selected tradeoffs, and grants no implementation approval",
+      "status": "PASS"
+    },
+    {
+      "name": "Acceptance checklist records review actions without claiming implementation completion",
+      "status": "PASS"
+    },
+    {
+      "name": "Both original document links resolve locally",
+      "status": "PASS"
+    },
+    {
+      "name": "Print view exposes the raw summary and all scope entries",
+      "status": "PASS"
+    },
+    {
+      "name": "Mobile layout fits at 390px and controls remain usable",
+      "status": "PASS"
+    },
+    {
+      "name": "No JavaScript or browser console errors throughout interactions",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "network": []
+}

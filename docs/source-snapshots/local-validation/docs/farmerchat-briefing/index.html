@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Source review and a proposed AWS hackathon build plan for Digital Green's FarmerChat contextual MEL survey agent.">
+  <title>FarmerChat — Plan review and hackathon briefing</title>
+  <style>
+    :root{--ink:#172622;--muted:#4c6058;--accent:#09634c;--tint:#edf7f2;--line:#d5e1db;--amber:#82500c;--amber-bg:#fff6df}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,select,input{font:inherit}a{color:var(--accent);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}button,select,summary,label{touch-action:manipulation}button,select{cursor:pointer}button{border:1px solid var(--line);border-radius:4px;padding:9px 14px;background:white;color:var(--ink)}button:hover{background:var(--tint)}:focus-visible{outline:3px solid var(--accent);outline-offset:4px}input{accent-color:var(--accent)}[hidden]{display:none!important}p{margin:0 0 14px}h1,h2,h3,h4{line-height:1.18;margin:0;color:var(--ink)}h1{font:500 clamp(36px,4.4vw,58px)/1.07 Georgia,"Times New Roman",serif;max-width:920px;letter-spacing:-.035em;margin:13px 0 20px}h2{font-size:28px;letter-spacing:-.025em}h3{font-size:20px}h4{font-size:16px}ul,ol{padding-left:23px;margin:12px 0}li{margin:7px 0}code{font:.88em ui-monospace,SFMono-Regular,monospace;overflow-wrap:anywhere}small,.small{font-size:13px;line-height:1.55}.muted{color:var(--muted)}.wrap{width:min(1180px,100% - 64px);margin-inline:auto}.reading{max-width:790px}.kicker{font-size:11px;font-weight:750;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}.skip{position:absolute;left:18px;top:-80px;background:white;padding:12px;z-index:20}.skip:focus{top:10px}.masthead{padding:36px 0 25px}.masthead .intro{font-size:19px;max-width:800px;line-height:1.55}.meta{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:22px}.lead-rule{padding-left:18px;border-left:3px solid var(--accent);margin:20px 0 0;max-width:850px}.nav{position:sticky;top:0;background:#fffffff5;z-index:10;border-block:1px solid var(--line)}.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:11px}.nav-links{display:flex;gap:22px;flex-wrap:wrap}.nav a{font-size:13px;text-decoration:none;font-weight:650}.print{font-size:12px;padding:6px 12px;white-space:nowrap}main>section{padding:42px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;gap:14px;align-items:baseline;margin-bottom:23px}.section-number{font:13px ui-monospace,SFMono-Regular,monospace;color:var(--accent)}.takeaway{font-size:24px;line-height:1.35;max-width:930px;margin-bottom:20px}.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:24px 0 30px}.finding{padding-top:12px;border-top:2px solid var(--ink)}.finding h3{font-size:17px;margin-bottom:10px}.finding p{font-size:14px}.tag{display:inline-block;font-size:11px;line-height:1.3;padding:4px 7px;background:var(--tint);color:var(--accent);border-radius:3px;font-weight:650}.tag.decision{background:var(--amber-bg);color:var(--amber)}.source-ref{font-size:12px;font-weight:500}.source-ref a{text-decoration:none;border-bottom:1px dotted var(--accent)}details{margin-top:18px}summary{cursor:pointer;font-weight:650;padding:13px 0;list-style-position:outside;margin-left:19px}details[open]>summary{color:var(--accent)}.raw{font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding:22px;background:#f5f8f6;max-height:650px;overflow:auto;margin:10px 0 0;border-radius:4px}.raw:focus-visible{outline-offset:0}.attribution{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}.workflow{margin-top:22px}.stages{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.stages button{text-align:left;padding:12px;min-height:105px;border:0;border-radius:0;background:#f1f5f3;font-size:13px;line-height:1.4}.stages button span{display:block;font:12px ui-monospace,SFMono-Regular,monospace;margin-bottom:11px;color:var(--muted)}.stages button[aria-selected="true"]{background:var(--accent);color:white}.stages button[aria-selected="true"] span{color:#d4f2e6}.stage-detail{background:var(--tint);padding:24px;margin-top:10px;min-height:235px}.stage-detail h3{margin-bottom:16px}.paired{display:grid;grid-template-columns:1fr 1fr;gap:35px}.paired p{font-size:14px}.paired .tag{margin-bottom:9px}.stage-detail .source-ref{margin-top:9px}.stage-static{display:none}.subhead{margin-top:32px;margin-bottom:12px}.toolbar{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:17px 0 14px}.toolbar label{font-size:13px;font-weight:650}.toolbar select{display:block;min-width:210px;margin-top:5px;padding:9px 35px 9px 10px;border:1px solid #71857b;border-radius:4px;background:white;color:var(--ink)}output{color:var(--muted);font-size:13px}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:14px}th{padding:10px 12px;background:#f1f5f3;font-size:12px;color:var(--muted);font-weight:650}td{padding:12px;vertical-align:top;border-bottom:1px solid #e6ece8}td:first-child{width:18%;font-weight:650}td:nth-child(2){width:28%}.tension{padding:17px 20px;background:var(--amber-bg);font-size:14px;margin-top:18px}.tension p:last-child{margin-bottom:0}.build-tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin-top:24px;flex-wrap:wrap}.build-tabs button{border:0;border-bottom:3px solid transparent;border-radius:0;font-size:14px;padding:12px 21px}.build-tabs button[aria-selected="true"]{border-bottom-color:var(--accent);color:var(--accent);font-weight:700}.build-panel{padding-top:25px}.build-panel>h3{font-size:23px;margin-bottom:15px}.build-steps{counter-reset:build;list-style:none;padding:0;max-width:940px}.build-steps>li{padding:0 0 17px 39px;position:relative}.build-steps>li:before{counter-increment:build;content:counter(build,decimal-leading-zero);position:absolute;left:0;top:2px;color:var(--accent);font:12px ui-monospace,SFMono-Regular,monospace}.build-steps h4{margin-bottom:6px}.build-steps p{font-size:14px;margin:0}.repo-note{margin-top:24px;padding:20px;background:#f1f5f3;font-size:14px}.repo-note h3{margin-bottom:9px}.repo-note code{font-size:12px}.compact{font-size:14px}.decisions{padding-left:24px}.decisions li{padding:8px 0 13px 6px}.decisions strong{display:block}.check-head{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.check-head button{font-size:12px}.checklist{list-style:none;padding:0;margin:0}.checklist li{margin:0;border-bottom:1px solid #e6ece8}.checklist label{display:flex;gap:14px;align-items:start;padding:13px 0;font-size:14px;cursor:pointer}.checklist input{width:19px;height:19px;flex:none;margin:2px 0 0}.checklist input:checked+span{color:var(--muted);text-decoration:line-through}.checklist small{display:block;color:var(--muted);font-size:12px;text-decoration:none}.contributions{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:18px}.contributions h3{font-size:16px;margin-bottom:8px}.contributions p{font-size:13px}.source-list{list-style:none;padding:0}.source-list>li{padding:13px 0}.source-list h3{font-size:17px;margin-bottom:8px}.source-list p{font-size:13px;margin:4px 0}.source-excerpts{font-size:13px}.source-excerpts blockquote{margin:10px 0 16px;padding-left:14px;border-left:2px solid var(--line)}.source-excerpts h4{font-size:14px}.note-line{font-size:12px;color:var(--muted);margin:13px 0}.footer{padding:24px 0 35px;font-size:12px;color:var(--muted)}.noscript{background:var(--amber-bg);padding:15px}.print-title{display:none}
+    @media(max-width:800px){.findings{grid-template-columns:1fr;gap:14px}.finding p{margin-bottom:8px}.stages{grid-template-columns:repeat(3,1fr)}.stages button{min-height:88px}.paired{grid-template-columns:1fr;gap:12px}.stage-detail{min-height:0}.contributions{grid-template-columns:1fr;gap:8px}.nav-links{gap:13px}.nav a{font-size:12px}.takeaway{font-size:22px}h2{font-size:25px}}
+    @media(max-width:500px){.wrap{width:calc(100% - 36px)}.masthead{padding-top:25px}.masthead .intro{font-size:17px}.meta{gap:6px 16px}.nav-inner{gap:8px}.nav-links{gap:5px 14px}.nav-links a{min-height:27px;display:inline-flex;align-items:center}.print{padding:8px;align-self:start}.section-head{gap:10px}main>section{padding:30px 0}.stages{gap:5px}.stages button{font-size:12px;padding:10px}.stage-detail{padding:18px}.toolbar{align-items:center}.toolbar select{min-width:170px;max-width:100%;font-size:13px}.raw{padding:14px;font-size:12px}.build-tabs button{padding:11px 13px;font-size:13px}td{font-size:13px;padding:10px 7px}td:first-child{width:21%}th{padding:9px 7px}.takeaway{font-size:21px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{html{scroll-behavior:auto}body{font-size:10pt;line-height:1.45;color:#000}.wrap{width:100%;max-width:none}.masthead{padding:0 0 15px}h1{font-size:30pt}h2{font-size:19pt}h3{font-size:14pt}.nav,.skip,.toolbar,.stages,.build-tabs,#print-button,#reset-checklist{display:none!important}main>section{padding:18px 0}.section-head{margin-bottom:14px}a{color:#000;text-decoration:underline}.raw{max-height:none;overflow:visible;background:#f6f6f6;font-size:8pt;white-space:pre-wrap}.findings{display:block}.finding{margin-bottom:12px}.paired{display:block}.stage-detail{display:none}.stage-static{display:block}.stage-static article{margin:12px 0;break-inside:avoid}.print-title{display:block;font-weight:700}.build-panel[hidden],[data-scope][hidden]{display:revert!important}.build-panel{padding-top:18px}details{break-inside:auto}summary{font-size:12pt}.table-scroll{overflow:visible}table{font-size:9pt}tr{break-inside:avoid}.takeaway{font-size:17pt}.contributions{display:block}.footer{padding-bottom:0}.tension,.repo-note{padding:10px 13px}.checklist label{padding:8px 0}h2,h3,h4{break-after:avoid}p,li{orphans:3;widows:3}@page{margin:16mm}}
+
+    .shortlist{display:flex;justify-content:space-between;align-items:start;gap:18px;padding:17px 19px;background:var(--tint);margin:20px 0}.shortlist output{font-size:14px;color:var(--ink)}.shortlist button{white-space:nowrap;font-size:12px}.enhancement{padding:26px 0 22px;border-bottom:1px solid var(--line)}.option-heading{display:flex;justify-content:space-between;gap:20px;align-items:center}.option-heading h3{font-size:25px}.option-heading .kicker{margin-bottom:6px}.pick-label{display:flex;align-items:center;gap:9px;font-size:13px;cursor:pointer;padding:8px 0;white-space:nowrap}.pick-label input{width:20px;height:20px}.fit{font-size:13px;color:var(--muted);margin:10px 0 16px}.diagram-scroll{overflow-x:auto;max-width:100%;padding:12px 0}.diagram-scroll svg{display:block;width:100%;height:auto;min-width:760px;max-height:235px}.diagram-caption{font-size:11px;color:var(--muted);margin:2px 0 15px}.implementation{margin-top:8px}.implementation>summary{font-size:14px}.implementation h4{margin-top:17px}.implementation>p,.implementation>ol{max-width:930px}#aws-map{padding-top:15px}#aws-map td:first-child{width:18%}#aws-map td:nth-child(2){width:40%}@media(max-width:500px){.option-heading h3{font-size:22px}.shortlist{flex-direction:column;padding:14px}.diagram-scroll svg{min-width:740px}.pick-label{font-size:12px}}@media print{.shortlist button,.pick-label{display:none}.diagram-scroll{overflow:visible}.diagram-scroll svg{min-width:0;max-height:none;width:100%}.enhancement{break-inside:avoid;padding:15px 0}.implementation{break-inside:auto}.option-heading h3{font-size:16pt}.shortlist{padding:10px;margin:12px 0}.diagram-caption{font-size:8pt}}
+    @media(max-width:800px){html{scroll-padding-top:130px}.diagram-caption::after{content:" · Scroll horizontally to see the full workflow."}}
+    @media print{.diagram-caption::after{content:none}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to briefing</a>
+<header class="masthead wrap">
+  <p class="kicker">Digital Green Foundation · AWS hackathon · Team 41</p>
+  <h1>FarmerChat feature choices</h1>
+  <p class="intro">Five ways to improve your one-day AWS hackathon demo, with diagrams and implementation workflows.</p>
+  <p class="lead-rule"><strong>Evals are the baseline. Choose a distinctive farmer experience.</strong> Compare five small extensions, then combine only the parts your team can finish in one day.</p>
+  <div class="meta"><span>Reviewed 4 November 2026</span><span>Two planning documents + public code</span><span>Proposal · no application implementation verified</span></div>
+</header>
+<nav class="nav" aria-label="Briefing sections"><div class="wrap nav-inner"><div class="nav-links"><a href="#hackathon-plan">Five choices</a><a href="#review">Plan review</a><a href="#workflow">Workflow & scope</a><a href="#acceptance">Decisions & checks</a><a href="#sources">Sources</a></div><button type="button" class="print" id="print-button">Print briefing</button></div></nav>
+<main id="main" class="wrap">
+<section id="hackathon-plan" aria-labelledby="build-heading">
+  <div class="section-head"><span class="section-number" aria-hidden="true">01</span><h2 id="build-heading">A practical hackathon build plan</h2></div>
+  <p class="reading">Compare five proposed features for your <strong>one-day deadline</strong>. No application feature is implemented or selected here. Evals remain mandatory. The event judging rubric is unconfirmed; no feature can guarantee a win.</p>
+<div id="enhancement-comparison">
+<h3 class="subhead">Choose a small combination</h3>
+<p class="reading compact">Select options to make a discussion shortlist. No feature is selected by default. Claude authored the diagrams and workflow outlines. Codex rendered them locally and added AWS integration and completion checks.</p>
+<div class="shortlist"><output id="selection-summary" aria-live="polite">No options shortlisted. This is a discussion shortlist, not implementation approval.</output><button type="button" id="reset-selection">Clear shortlist</button></div>
+<article class="enhancement" data-enhancement="failed_advice">
+<div class="option-heading"><div><p class="kicker">Option 01</p><h3>Failed-advice follow-up</h3></div><label class="pick-label"><input type="checkbox" data-pick="failed_advice"> Shortlist</label></div>
+<p class="fit">Strong farmer-trust story · deterministic extension</p>
+<div class="diagram-scroll" tabindex="0" aria-label="Scrollable workflow for Failed-advice follow-up"><svg role="img" aria-labelledby="failed_advice-svg-title failed_advice-svg-desc" width="1055pt" height="76pt"
+ viewBox="0.00 0.00 1055.00 76.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title id="failed_advice-svg-title">Failed-advice follow-up proposed workflow</title><desc id="failed_advice-svg-desc">Claude-authored workflow:
+  A[&quot;Negative tap: did not work or crop damaged&quot;] --&gt; B[&quot;Response linked to survey and source insight&quot;]
+  B --&gt; C[&quot;Rule creates simulated follow-up case&quot;]
+  C --&gt; D[&quot;Human review queue&quot;]
+  D --&gt; E[&quot;Case status shown in farmer view&quot;]
+  E --&gt; F[&quot;Fixed template only, never new advice&quot;]</desc>
+<g id="failed_advice-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4.32 72)">
+<title>G</title>
+<!-- A -->
+<g id="failed_advice-node1" class="node">
+<title>A</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M148.89,-59.28C148.89,-59.28 12,-59.28 12,-59.28 6,-59.28 0,-53.28 0,-47.28 0,-47.28 0,-20.4 0,-20.4 0,-14.4 6,-8.4 12,-8.4 12,-8.4 148.89,-8.4 148.89,-8.4 154.89,-8.4 160.89,-14.4 160.89,-20.4 160.89,-20.4 160.89,-47.28 160.89,-47.28 160.89,-53.28 154.89,-59.28 148.89,-59.28"/>
+<text xml:space="preserve" text-anchor="middle" x="80.44" y="-38.04" font-family="Arial" font-size="14.00" fill="#172622">Negative tap: did not</text>
+<text xml:space="preserve" text-anchor="middle" x="80.44" y="-21.24" font-family="Arial" font-size="14.00" fill="#172622">work or crop damaged</text>
+</g>
+<!-- B -->
+<g id="failed_advice-node2" class="node">
+<title>B</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M314.56,-67.68C314.56,-67.68 197.89,-67.68 197.89,-67.68 191.89,-67.68 185.89,-61.68 185.89,-55.68 185.89,-55.68 185.89,-12 185.89,-12 185.89,-6 191.89,0 197.89,0 197.89,0 314.56,0 314.56,0 320.56,0 326.56,-6 326.56,-12 326.56,-12 326.56,-55.68 326.56,-55.68 326.56,-61.68 320.56,-67.68 314.56,-67.68"/>
+<text xml:space="preserve" text-anchor="middle" x="256.23" y="-46.44" font-family="Arial" font-size="14.00" fill="#172622">Response linked to</text>
+<text xml:space="preserve" text-anchor="middle" x="256.23" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">survey and source</text>
+<text xml:space="preserve" text-anchor="middle" x="256.23" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">insight</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="failed_advice-edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#527565" d="M161.21,-33.84C166.67,-33.84 172.16,-33.84 177.61,-33.84"/>
+<polygon fill="#527565" stroke="#527565" points="177.52,-36.12 184.02,-33.84 177.52,-31.57 177.52,-36.12"/>
+</g>
+<!-- C -->
+<g id="failed_advice-node3" class="node">
+<title>C</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M503.56,-59.28C503.56,-59.28 363.56,-59.28 363.56,-59.28 357.56,-59.28 351.56,-53.28 351.56,-47.28 351.56,-47.28 351.56,-20.4 351.56,-20.4 351.56,-14.4 357.56,-8.4 363.56,-8.4 363.56,-8.4 503.56,-8.4 503.56,-8.4 509.56,-8.4 515.56,-14.4 515.56,-20.4 515.56,-20.4 515.56,-47.28 515.56,-47.28 515.56,-53.28 509.56,-59.28 503.56,-59.28"/>
+<text xml:space="preserve" text-anchor="middle" x="433.56" y="-38.04" font-family="Arial" font-size="14.00" fill="#172622">Rule creates simulated</text>
+<text xml:space="preserve" text-anchor="middle" x="433.56" y="-21.24" font-family="Arial" font-size="14.00" fill="#172622">follow&#45;up case</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="failed_advice-edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="#527565" d="M327.03,-33.84C332.35,-33.84 337.77,-33.84 343.2,-33.84"/>
+<polygon fill="#527565" stroke="#527565" points="343.13,-36.12 349.63,-33.84 343.13,-31.57 343.13,-36.12"/>
+</g>
+<!-- D -->
+<g id="failed_advice-node4" class="node">
+<title>D</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M682.46,-51.84C682.46,-51.84 552.56,-51.84 552.56,-51.84 546.56,-51.84 540.56,-45.84 540.56,-39.84 540.56,-39.84 540.56,-27.84 540.56,-27.84 540.56,-21.84 546.56,-15.84 552.56,-15.84 552.56,-15.84 682.46,-15.84 682.46,-15.84 688.46,-15.84 694.46,-21.84 694.46,-27.84 694.46,-27.84 694.46,-39.84 694.46,-39.84 694.46,-45.84 688.46,-51.84 682.46,-51.84"/>
+<text xml:space="preserve" text-anchor="middle" x="617.51" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Human review queue</text>
+</g>
+<!-- C&#45;&gt;D -->
+<g id="failed_advice-edge3" class="edge">
+<title>C&#45;&gt;D</title>
+<path fill="none" stroke="#527565" d="M515.96,-33.84C521.36,-33.84 526.81,-33.84 532.23,-33.84"/>
+<polygon fill="#527565" stroke="#527565" points="532.12,-36.12 538.62,-33.84 532.12,-31.57 532.12,-36.12"/>
+</g>
+<!-- E -->
+<g id="failed_advice-node5" class="node">
+<title>E</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M862.13,-59.28C862.13,-59.28 731.46,-59.28 731.46,-59.28 725.46,-59.28 719.46,-53.28 719.46,-47.28 719.46,-47.28 719.46,-20.4 719.46,-20.4 719.46,-14.4 725.46,-8.4 731.46,-8.4 731.46,-8.4 862.13,-8.4 862.13,-8.4 868.13,-8.4 874.13,-14.4 874.13,-20.4 874.13,-20.4 874.13,-47.28 874.13,-47.28 874.13,-53.28 868.13,-59.28 862.13,-59.28"/>
+<text xml:space="preserve" text-anchor="middle" x="796.79" y="-38.04" font-family="Arial" font-size="14.00" fill="#172622">Case status shown in</text>
+<text xml:space="preserve" text-anchor="middle" x="796.79" y="-21.24" font-family="Arial" font-size="14.00" fill="#172622">farmer view</text>
+</g>
+<!-- D&#45;&gt;E -->
+<g id="failed_advice-edge4" class="edge">
+<title>D&#45;&gt;E</title>
+<path fill="none" stroke="#527565" d="M694.72,-33.84C700.15,-33.84 705.63,-33.84 711.1,-33.84"/>
+<polygon fill="#527565" stroke="#527565" points="711.07,-36.12 717.57,-33.84 711.07,-31.57 711.07,-36.12"/>
+</g>
+<!-- F -->
+<g id="failed_advice-node6" class="node">
+<title>F</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M1034.01,-59.28C1034.01,-59.28 911.13,-59.28 911.13,-59.28 905.13,-59.28 899.13,-53.28 899.13,-47.28 899.13,-47.28 899.13,-20.4 899.13,-20.4 899.13,-14.4 905.13,-8.4 911.13,-8.4 911.13,-8.4 1034.01,-8.4 1034.01,-8.4 1040.01,-8.4 1046.01,-14.4 1046.01,-20.4 1046.01,-20.4 1046.01,-47.28 1046.01,-47.28 1046.01,-53.28 1040.01,-59.28 1034.01,-59.28"/>
+<text xml:space="preserve" text-anchor="middle" x="972.57" y="-38.04" font-family="Arial" font-size="14.00" fill="#172622">Fixed template only,</text>
+<text xml:space="preserve" text-anchor="middle" x="972.57" y="-21.24" font-family="Arial" font-size="14.00" fill="#172622">never new advice</text>
+</g>
+<!-- E&#45;&gt;F -->
+<g id="failed_advice-edge5" class="edge">
+<title>E&#45;&gt;F</title>
+<path fill="none" stroke="#527565" d="M874.52,-33.84C879.96,-33.84 885.45,-33.84 890.91,-33.84"/>
+<polygon fill="#527565" stroke="#527565" points="890.85,-36.12 897.35,-33.84 890.85,-31.57 890.85,-36.12"/>
+</g>
+</g>
+</svg>
+</div>
+<p class="diagram-caption">Claude-authored workflow · proposed feature · locally rendered SVG</p>
+<p class="compact"><strong>Minimum demo.</strong> Tap a synthetic “did not improve” answer. Open one linked case. Change its status in a simulated reviewer view. Show the status on the farmer screen.</p>
+<details class="implementation"><summary>Inputs, implementation workflow, AWS mapping, and acceptance</summary>
+<p class="compact"><strong>Source scope.</strong> Exploratory: response write-back and negative-outcome follow-up. Visible case status is a proposal.</p>
+<p class="compact"><strong>Inputs.</strong> A validated tap answer, its survey, source insight IDs, and agreed negative-outcome codes.</p>
+<h4>Implementation workflow</h4><ol class="compact"><li>Tag negative outcome option IDs deterministically at generation time; do not let Bedrock decide which answers count as failure</li><li>On POST /responses, validate with Pydantic, write the response linked to the survey and insight, and have a rule create one case {case_id, status: open, source_insight_ids}</li><li>Add a reviewer view listing open cases with insight context; the reviewer sets status (reviewed, referred, closed). No LLM call on this path</li><li>Render the case status to the farmer from fixed, pre-approved templates, and add a test asserting the farmer-facing text contains no agronomic instructions</li></ol>
+<p class="compact"><strong>UI and backend integration with AWS.</strong> The Python response handler validates the answer. A rule creates a case. Store cases in local demo state, or an approved DynamoDB table with a conditional create. The browser shows the case queue and status. No new Bedrock call is needed on this path.</p>
+<p class="compact"><strong>Dependencies and one-day tradeoff.</strong> Needs response write-back and one agreed status list. Use neutral status text. Do not claim a real expert was contacted. This extends the source’s exploratory negative-outcome journey.</p>
+<p class="compact"><strong>Completion and demo acceptance.</strong> One negative answer creates one case. A retry creates no duplicate. Positive answers create none. Status messages contain no new agronomic advice.</p>
+<p class="note-line">The Claude outline above is a proposal. The Codex notes govern the suggested demo slice. No application feature has been implemented or tested as part of this briefing.</p>
+<details><summary>Original Claude Mermaid source</summary><pre class="raw">flowchart LR
+  A[&quot;Negative tap: did not work or crop damaged&quot;] --&gt; B[&quot;Response linked to survey and source insight&quot;]
+  B --&gt; C[&quot;Rule creates simulated follow-up case&quot;]
+  C --&gt; D[&quot;Human review queue&quot;]
+  D --&gt; E[&quot;Case status shown in farmer view&quot;]
+  E --&gt; F[&quot;Fixed template only, never new advice&quot;]</pre></details>
+</details></article>
+<article class="enhancement" data-enhancement="season_timeline">
+<div class="option-heading"><div><p class="kicker">Option 02</p><h3>Season-aware timeline</h3></div><label class="pick-label"><input type="checkbox" data-pick="season_timeline"> Shortlist</label></div>
+<p class="fit">Small added view over the required scheduler</p>
+<div class="diagram-scroll" tabindex="0" aria-label="Scrollable workflow for Season-aware timeline"><svg role="img" aria-labelledby="season_timeline-svg-title season_timeline-svg-desc" width="1022pt" height="60pt"
+ viewBox="0.00 0.00 1022.00 60.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title id="season_timeline-svg-title">Season-aware timeline proposed workflow</title><desc id="season_timeline-svg-desc">Claude-authored workflow:
+  A[&quot;Insight: action window and crop stage&quot;] --&gt; B[&quot;Deterministic send window rule&quot;]
+  B --&gt; C[&quot;Simulated clock Nov to Mar&quot;]
+  C --&gt; D[&quot;Frequency cap and grouping&quot;]
+  D --&gt; E[&quot;Due survey to broadcaster stub&quot;]
+  E --&gt; F[&quot;Timeline of scheduled, deferred, delivered&quot;]</desc>
+<g id="season_timeline-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4.32 55.2)">
+<title>G</title>
+<!-- A -->
+<g id="season_timeline-node1" class="node">
+<title>A</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M146.56,-50.88C146.56,-50.88 12,-50.88 12,-50.88 6,-50.88 0,-44.88 0,-38.88 0,-38.88 0,-12 0,-12 0,-6 6,0 12,0 12,0 146.56,0 146.56,0 152.56,0 158.56,-6 158.56,-12 158.56,-12 158.56,-38.88 158.56,-38.88 158.56,-44.88 152.56,-50.88 146.56,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="79.28" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Insight: action window</text>
+<text xml:space="preserve" text-anchor="middle" x="79.28" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">and crop stage</text>
+</g>
+<!-- B -->
+<g id="season_timeline-node2" class="node">
+<title>B</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M308.32,-50.88C308.32,-50.88 195.56,-50.88 195.56,-50.88 189.56,-50.88 183.56,-44.88 183.56,-38.88 183.56,-38.88 183.56,-12 183.56,-12 183.56,-6 189.56,0 195.56,0 195.56,0 308.32,0 308.32,0 314.32,0 320.32,-6 320.32,-12 320.32,-12 320.32,-38.88 320.32,-38.88 320.32,-44.88 314.32,-50.88 308.32,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="251.94" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Deterministic send</text>
+<text xml:space="preserve" text-anchor="middle" x="251.94" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">window rule</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="season_timeline-edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#527565" d="M158.62,-25.44C164.28,-25.44 169.99,-25.44 175.63,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="175.27,-27.72 181.77,-25.44 175.27,-23.17 175.27,-27.72"/>
+</g>
+<!-- C -->
+<g id="season_timeline-node3" class="node">
+<title>C</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M497.31,-50.88C497.31,-50.88 357.32,-50.88 357.32,-50.88 351.32,-50.88 345.32,-44.88 345.32,-38.88 345.32,-38.88 345.32,-12 345.32,-12 345.32,-6 351.32,0 357.32,0 357.32,0 497.31,0 497.31,0 503.31,0 509.31,-6 509.31,-12 509.31,-12 509.31,-38.88 509.31,-38.88 509.31,-44.88 503.31,-50.88 497.31,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="427.31" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Simulated clock Nov to</text>
+<text xml:space="preserve" text-anchor="middle" x="427.31" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">Mar</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="season_timeline-edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="#527565" d="M320.47,-25.44C325.96,-25.44 331.56,-25.44 337.17,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="336.81,-27.72 343.31,-25.44 336.81,-23.17 336.81,-27.72"/>
+</g>
+<!-- D -->
+<g id="season_timeline-node4" class="node">
+<title>D</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M663.76,-50.88C663.76,-50.88 546.31,-50.88 546.31,-50.88 540.31,-50.88 534.31,-44.88 534.31,-38.88 534.31,-38.88 534.31,-12 534.31,-12 534.31,-6 540.31,0 546.31,0 546.31,0 663.76,0 663.76,0 669.76,0 675.76,-6 675.76,-12 675.76,-12 675.76,-38.88 675.76,-38.88 675.76,-44.88 669.76,-50.88 663.76,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="605.04" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Frequency cap and</text>
+<text xml:space="preserve" text-anchor="middle" x="605.04" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">grouping</text>
+</g>
+<!-- C&#45;&gt;D -->
+<g id="season_timeline-edge3" class="edge">
+<title>C&#45;&gt;D</title>
+<path fill="none" stroke="#527565" d="M509.74,-25.44C515.17,-25.44 520.63,-25.44 526.05,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="525.91,-27.72 532.41,-25.44 525.91,-23.17 525.91,-27.72"/>
+</g>
+<!-- E -->
+<g id="season_timeline-node5" class="node">
+<title>E</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M814.65,-50.88C814.65,-50.88 712.76,-50.88 712.76,-50.88 706.76,-50.88 700.76,-44.88 700.76,-38.88 700.76,-38.88 700.76,-12 700.76,-12 700.76,-6 706.76,0 712.76,0 712.76,0 814.65,0 814.65,0 820.65,0 826.65,-6 826.65,-12 826.65,-12 826.65,-38.88 826.65,-38.88 826.65,-44.88 820.65,-50.88 814.65,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="763.7" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Due survey to</text>
+<text xml:space="preserve" text-anchor="middle" x="763.7" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">broadcaster stub</text>
+</g>
+<!-- D&#45;&gt;E -->
+<g id="season_timeline-edge4" class="edge">
+<title>D&#45;&gt;E</title>
+<path fill="none" stroke="#527565" d="M676.12,-25.44C681.6,-25.44 687.12,-25.44 692.6,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="692.55,-27.72 699.05,-25.44 692.55,-23.17 692.55,-27.72"/>
+</g>
+<!-- F -->
+<g id="season_timeline-node6" class="node">
+<title>F</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M1001.32,-50.88C1001.32,-50.88 863.65,-50.88 863.65,-50.88 857.65,-50.88 851.65,-44.88 851.65,-38.88 851.65,-38.88 851.65,-12 851.65,-12 851.65,-6 857.65,0 863.65,0 863.65,0 1001.32,0 1001.32,0 1007.32,0 1013.32,-6 1013.32,-12 1013.32,-12 1013.32,-38.88 1013.32,-38.88 1013.32,-44.88 1007.32,-50.88 1001.32,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="932.48" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Timeline of scheduled,</text>
+<text xml:space="preserve" text-anchor="middle" x="932.48" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">deferred, delivered</text>
+</g>
+<!-- E&#45;&gt;F -->
+<g id="season_timeline-edge5" class="edge">
+<title>E&#45;&gt;F</title>
+<path fill="none" stroke="#527565" d="M826.81,-25.44C832.28,-25.44 837.89,-25.44 843.52,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="843.2,-27.72 849.7,-25.44 843.2,-23.17 843.2,-27.72"/>
+</g>
+</g>
+</svg>
+</div>
+<p class="diagram-caption">Claude-authored workflow · proposed feature · locally rendered SVG</p>
+<p class="compact"><strong>Minimum demo.</strong> Move the shared simulated clock. Show a survey become due. Show another deferred by the cap and another expire. Explain each outcome.</p>
+<details class="implementation"><summary>Inputs, implementation workflow, AWS mapping, and acceptance</summary>
+<p class="compact"><strong>Source scope.</strong> Must Have scheduler and frequency cap; Should Have broadcaster/app. Timeline and grouping policy are proposals.</p>
+<p class="compact"><strong>Inputs.</strong> Synthetic insight time, crop stage, action window, crop calendar, approved survey window, and agreed cap.</p>
+<h4>Implementation workflow</h4><ol class="compact"><li>Compute send_window with rules keyed on resolution_type, action_window_days and the crop calendar stage, then record a reason string</li><li>Implement a shared simulated clock with advance and jump endpoints, plus a manual trigger for each scheduled step</li><li>Apply a per-farmer rolling cap. Defer overflow surveys with a reason code, or group overlapping windows (grouping is a proposed rule)</li><li>Render a per-farmer season timeline showing scheduled, deferred, delivered and skipped items with their reasons</li></ol>
+<p class="compact"><strong>UI and backend integration with AWS.</strong> Python calculates windows and cap decisions. The browser timeline reads the same clock and state. Bedrock supplies survey text through the shared baseline. Optional DynamoDB conditional writes can prevent duplicate delivery records; cap logic still needs correct application rules.</p>
+<p class="compact"><strong>Dependencies and one-day tradeoff.</strong> Scheduling is baseline work. The timeline is the new view. Grouping is an open decision; omit it if source linkage or cap behavior is not stable. Never defer past the final send date.</p>
+<p class="compact"><strong>Completion and demo acceptance.</strong> No simulated delivery falls outside its window or exceeds the agreed cap. Replay is repeatable. Every skip or deferral has a reason.</p>
+<p class="note-line">The Claude outline above is a proposal. The Codex notes govern the suggested demo slice. No application feature has been implemented or tested as part of this briefing.</p>
+<details><summary>Original Claude Mermaid source</summary><pre class="raw">flowchart LR
+  A[&quot;Insight: action window and crop stage&quot;] --&gt; B[&quot;Deterministic send window rule&quot;]
+  B --&gt; C[&quot;Simulated clock Nov to Mar&quot;]
+  C --&gt; D[&quot;Frequency cap and grouping&quot;]
+  D --&gt; E[&quot;Due survey to broadcaster stub&quot;]
+  E --&gt; F[&quot;Timeline of scheduled, deferred, delivered&quot;]</pre></details>
+</details></article>
+<article class="enhancement" data-enhancement="adaptive_survey">
+<div class="option-heading"><div><p class="kicker">Option 03</p><h3>Adaptive tap survey</h3></div><label class="pick-label"><input type="checkbox" data-pick="adaptive_survey"> Shortlist</label></div>
+<p class="fit">Useful branch logic · highest contract risk</p>
+<div class="diagram-scroll" tabindex="0" aria-label="Scrollable workflow for Adaptive tap survey"><svg role="img" aria-labelledby="adaptive_survey-svg-title adaptive_survey-svg-desc" width="668pt" height="133pt"
+ viewBox="0.00 0.00 668.00 133.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title id="adaptive_survey-svg-title">Adaptive tap survey proposed workflow</title><desc id="adaptive_survey-svg-desc">Claude-authored workflow:
+  A[&quot;Adoption tap: did you try it&quot;] --&gt; B{&quot;Tried?&quot;}
+  B --&gt; C[&quot;Yes: fixed outcome options&quot;]
+  B --&gt; D[&quot;No: fixed barrier options&quot;]
+  C --&gt; E[&quot;Linked response record&quot;]
+  D --&gt; E</desc>
+<g id="adaptive_survey-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4.32 128.2)">
+<title>G</title>
+<!-- A -->
+<g id="adaptive_survey-node1" class="node">
+<title>A</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M141.14,-86.88C141.14,-86.88 12,-86.88 12,-86.88 6,-86.88 0,-80.88 0,-74.88 0,-74.88 0,-48 0,-48 0,-42 6,-36 12,-36 12,-36 141.14,-36 141.14,-36 147.14,-36 153.14,-42 153.14,-48 153.14,-48 153.14,-74.88 153.14,-74.88 153.14,-80.88 147.14,-86.88 141.14,-86.88"/>
+<text xml:space="preserve" text-anchor="middle" x="76.57" y="-65.64" font-family="Arial" font-size="14.00" fill="#172622">Adoption tap: did you</text>
+<text xml:space="preserve" text-anchor="middle" x="76.57" y="-48.84" font-family="Arial" font-size="14.00" fill="#172622">try it</text>
+</g>
+<!-- B -->
+<g id="adaptive_survey-node2" class="node">
+<title>B</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M228.94,-89.69C228.94,-89.69 188.63,-67.27 188.63,-67.27 183.39,-64.36 183.39,-58.52 188.63,-55.61 188.63,-55.61 228.94,-33.19 228.94,-33.19 234.18,-30.28 244.67,-30.28 249.91,-33.19 249.91,-33.19 290.22,-55.61 290.22,-55.61 295.47,-58.52 295.47,-64.36 290.22,-67.27 290.22,-67.27 249.91,-89.69 249.91,-89.69 244.67,-92.6 234.18,-92.6 228.94,-89.69"/>
+<text xml:space="preserve" text-anchor="middle" x="239.43" y="-57.24" font-family="Arial" font-size="14.00" fill="#172622">Tried?</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="adaptive_survey-edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#527565" d="M153.29,-61.44C158.65,-61.44 164.05,-61.44 169.37,-61.44"/>
+<polygon fill="#527565" stroke="#527565" points="169.1,-63.72 175.6,-61.44 169.1,-59.17 169.1,-63.72"/>
+</g>
+<!-- C -->
+<g id="adaptive_survey-node3" class="node">
+<title>C</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M454.37,-123.88C454.37,-123.88 337.71,-123.88 337.71,-123.88 331.71,-123.88 325.71,-117.88 325.71,-111.88 325.71,-111.88 325.71,-85 325.71,-85 325.71,-79 331.71,-73 337.71,-73 337.71,-73 454.37,-73 454.37,-73 460.37,-73 466.37,-79 466.37,-85 466.37,-85 466.37,-111.88 466.37,-111.88 466.37,-117.88 460.37,-123.88 454.37,-123.88"/>
+<text xml:space="preserve" text-anchor="middle" x="396.04" y="-102.64" font-family="Arial" font-size="14.00" fill="#172622">Yes: fixed outcome</text>
+<text xml:space="preserve" text-anchor="middle" x="396.04" y="-85.84" font-family="Arial" font-size="14.00" fill="#172622">options</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="adaptive_survey-edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="#527565" d="M283.08,-71.65C293.79,-74.21 305.61,-77.04 317.44,-79.87"/>
+<polygon fill="#527565" stroke="#527565" points="316.89,-82.08 323.74,-81.38 317.95,-77.65 316.89,-82.08"/>
+</g>
+<!-- D -->
+<g id="adaptive_survey-node4" class="node">
+<title>D</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M444.64,-50.88C444.64,-50.88 347.44,-50.88 347.44,-50.88 341.44,-50.88 335.44,-44.88 335.44,-38.88 335.44,-38.88 335.44,-12 335.44,-12 335.44,-6 341.44,0 347.44,0 347.44,0 444.64,0 444.64,0 450.64,0 456.64,-6 456.64,-12 456.64,-12 456.64,-38.88 456.64,-38.88 456.64,-44.88 450.64,-50.88 444.64,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="396.04" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">No: fixed barrier</text>
+<text xml:space="preserve" text-anchor="middle" x="396.04" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">options</text>
+</g>
+<!-- B&#45;&gt;D -->
+<g id="adaptive_survey-edge3" class="edge">
+<title>B&#45;&gt;D</title>
+<path fill="none" stroke="#527565" d="M283.5,-51.41C297.12,-48.24 312.51,-44.66 327.42,-41.18"/>
+<polygon fill="#527565" stroke="#527565" points="327.87,-43.42 333.69,-39.73 326.84,-38.98 327.87,-43.42"/>
+</g>
+<!-- E -->
+<g id="adaptive_survey-node5" class="node">
+<title>E</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M647.28,-79.44C647.28,-79.44 503.37,-79.44 503.37,-79.44 497.37,-79.44 491.37,-73.44 491.37,-67.44 491.37,-67.44 491.37,-55.44 491.37,-55.44 491.37,-49.44 497.37,-43.44 503.37,-43.44 503.37,-43.44 647.28,-43.44 647.28,-43.44 653.28,-43.44 659.28,-49.44 659.28,-55.44 659.28,-55.44 659.28,-67.44 659.28,-67.44 659.28,-73.44 653.28,-79.44 647.28,-79.44"/>
+<text xml:space="preserve" text-anchor="middle" x="575.33" y="-57.24" font-family="Arial" font-size="14.00" fill="#172622">Linked response record</text>
+</g>
+<!-- C&#45;&gt;E -->
+<g id="adaptive_survey-edge4" class="edge">
+<title>C&#45;&gt;E</title>
+<path fill="none" stroke="#527565" d="M466.85,-83.87C472.32,-82.73 477.88,-81.57 483.45,-80.41"/>
+<polygon fill="#527565" stroke="#527565" points="483.67,-82.68 489.57,-79.13 482.74,-78.23 483.67,-82.68"/>
+</g>
+<!-- D&#45;&gt;E -->
+<g id="adaptive_survey-edge5" class="edge">
+<title>D&#45;&gt;E</title>
+<path fill="none" stroke="#527565" d="M457.06,-37.63C465.53,-39.35 474.39,-41.15 483.28,-42.95"/>
+<polygon fill="#527565" stroke="#527565" points="482.79,-45.17 489.61,-44.24 483.69,-40.71 482.79,-45.17"/>
+</g>
+</g>
+</svg>
+</div>
+<p class="diagram-caption">Claude-authored workflow · proposed feature · locally rendered SVG</p>
+<p class="compact"><strong>Minimum demo.</strong> Tap “tried” to see an outcome question. Restart and tap “not tried” to see a barrier question. Save only the questions that were shown.</p>
+<details class="implementation"><summary>Inputs, implementation workflow, AWS mapping, and acceptance</summary>
+<p class="compact"><strong>Source scope.</strong> Exploratory branch extension over the Must Have survey contract and Should Have tap app.</p>
+<p class="compact"><strong>Inputs.</strong> The source advice, stable item/option IDs, adoption choices, fixed barrier/outcome codes, and an agreed branch rule.</p>
+<h4>Implementation workflow</h4><ol class="compact"><li>Define the branching skeleton deterministically per resolution_type. Bedrock writes only the adoption prompt grounded in advice_summary, and option sets stay fixed</li><li>Add an optional show_if field to the item schema, and keep a flat fallback where all items render, so the baseline contract remains valid</li><li>Make the simulated app reveal the outcome or barrier item based on the first tap, and store answers with the path taken</li><li>Extend self-eval to check that all options come from the fixed sets, the path is at most 3 taps, and no item contains advice</li></ol>
+<p class="compact"><strong>UI and backend integration with AWS.</strong> Bedrock writes grounded question text. Python validates the fixed branch structure. The browser applies the branch rule. Save the path and answers in demo state or optional DynamoDB. Do not ask a model to improvise the next branch at each tap.</p>
+<p class="compact"><strong>Dependencies and one-day tradeoff.</strong> Conditional fields are absent from the draft JSON. Agree an extension before use. If it is not agreed, use a flat survey or separate demo-only branch metadata. Do not claim an unrecognized field validates under the agreed schema.</p>
+<p class="compact"><strong>Completion and demo acceptance.</strong> All paths terminate. Hidden answers are cleared when adoption changes. Each saved answer belongs to a shown item. Fixed option IDs and source ownership remain valid.</p>
+<p class="note-line">The Claude outline above is a proposal. The Codex notes govern the suggested demo slice. No application feature has been implemented or tested as part of this briefing.</p>
+<details><summary>Original Claude Mermaid source</summary><pre class="raw">flowchart LR
+  A[&quot;Adoption tap: did you try it&quot;] --&gt; B{&quot;Tried?&quot;}
+  B --&gt; C[&quot;Yes: fixed outcome options&quot;]
+  B --&gt; D[&quot;No: fixed barrier options&quot;]
+  C --&gt; E[&quot;Linked response record&quot;]
+  D --&gt; E</pre></details>
+</details></article>
+<article class="enhancement" data-enhancement="bilingual_views">
+<div class="option-heading"><div><p class="kicker">Option 04</p><h3>Hindi farmer and English MEL views</h3></div><label class="pick-label"><input type="checkbox" data-pick="bilingual_views"> Shortlist</label></div>
+<p class="fit">Builds on expected Hindi output · needs human review</p>
+<div class="diagram-scroll" tabindex="0" aria-label="Scrollable workflow for Hindi farmer and English MEL views"><svg role="img" aria-labelledby="bilingual_views-svg-title bilingual_views-svg-desc" width="870pt" height="111pt"
+ viewBox="0.00 0.00 870.00 111.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title id="bilingual_views-svg-title">Hindi farmer and English MEL views proposed workflow</title><desc id="bilingual_views-svg-desc">Claude-authored workflow:
+  A[&quot;Survey with stable item and option IDs&quot;] --&gt; B[&quot;Bedrock renders hi-IN labels&quot;]
+  A --&gt; C[&quot;English en-IN labels&quot;]
+  B --&gt; D[&quot;Hindi farmer tap view&quot;]
+  D --&gt; E[&quot;Responses stored by option ID&quot;]
+  C --&gt; F[&quot;English MEL view&quot;]
+  E --&gt; F</desc>
+<g id="bilingual_views-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4.32 106.76)">
+<title>G</title>
+<!-- A -->
+<g id="bilingual_views-node1" class="node">
+<title>A</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M153.54,-72.44C153.54,-72.44 12,-72.44 12,-72.44 6,-72.44 0,-66.44 0,-60.44 0,-60.44 0,-33.56 0,-33.56 0,-27.56 6,-21.56 12,-21.56 12,-21.56 153.54,-21.56 153.54,-21.56 159.54,-21.56 165.54,-27.56 165.54,-33.56 165.54,-33.56 165.54,-60.44 165.54,-60.44 165.54,-66.44 159.54,-72.44 153.54,-72.44"/>
+<text xml:space="preserve" text-anchor="middle" x="82.77" y="-51.2" font-family="Arial" font-size="14.00" fill="#172622">Survey with stable item</text>
+<text xml:space="preserve" text-anchor="middle" x="82.77" y="-34.4" font-family="Arial" font-size="14.00" fill="#172622">and option IDs</text>
+</g>
+<!-- B -->
+<g id="bilingual_views-node2" class="node">
+<title>B</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M336.31,-102.44C336.31,-102.44 202.54,-102.44 202.54,-102.44 196.54,-102.44 190.54,-96.44 190.54,-90.44 190.54,-90.44 190.54,-63.56 190.54,-63.56 190.54,-57.56 196.54,-51.56 202.54,-51.56 202.54,-51.56 336.31,-51.56 336.31,-51.56 342.31,-51.56 348.31,-57.56 348.31,-63.56 348.31,-63.56 348.31,-90.44 348.31,-90.44 348.31,-96.44 342.31,-102.44 336.31,-102.44"/>
+<text xml:space="preserve" text-anchor="middle" x="269.43" y="-81.2" font-family="Arial" font-size="14.00" fill="#172622">Bedrock renders hi&#45;IN</text>
+<text xml:space="preserve" text-anchor="middle" x="269.43" y="-64.4" font-family="Arial" font-size="14.00" fill="#172622">labels</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="bilingual_views-edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#527565" d="M165.84,-60.33C171.4,-61.24 177.02,-62.15 182.6,-63.06"/>
+<polygon fill="#527565" stroke="#527565" points="181.9,-65.25 188.69,-64.04 182.63,-60.76 181.9,-65.25"/>
+</g>
+<!-- C -->
+<g id="bilingual_views-node3" class="node">
+<title>C</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M510.91,-36C510.91,-36 388.8,-36 388.8,-36 382.8,-36 376.8,-30 376.8,-24 376.8,-24 376.8,-12 376.8,-12 376.8,-6 382.8,0 388.8,0 388.8,0 510.91,0 510.91,0 516.91,0 522.91,-6 522.91,-12 522.91,-12 522.91,-24 522.91,-24 522.91,-30 516.91,-36 510.91,-36"/>
+<text xml:space="preserve" text-anchor="middle" x="449.85" y="-13.8" font-family="Arial" font-size="14.00" fill="#172622">English en&#45;IN labels</text>
+</g>
+<!-- A&#45;&gt;C -->
+<g id="bilingual_views-edge2" class="edge">
+<title>A&#45;&gt;C</title>
+<path fill="none" stroke="#527565" d="M165.7,-40.49C226.26,-35.68 308.31,-29.16 368.49,-24.38"/>
+<polygon fill="#527565" stroke="#527565" points="368.66,-26.65 374.96,-23.87 368.3,-22.12 368.66,-26.65"/>
+</g>
+<!-- D -->
+<g id="bilingual_views-node4" class="node">
+<title>D</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M514.4,-95C514.4,-95 385.31,-95 385.31,-95 379.31,-95 373.31,-89 373.31,-83 373.31,-83 373.31,-71 373.31,-71 373.31,-65 379.31,-59 385.31,-59 385.31,-59 514.4,-59 514.4,-59 520.4,-59 526.4,-65 526.4,-71 526.4,-71 526.4,-83 526.4,-83 526.4,-89 520.4,-95 514.4,-95"/>
+<text xml:space="preserve" text-anchor="middle" x="449.85" y="-72.8" font-family="Arial" font-size="14.00" fill="#172622">Hindi farmer tap view</text>
+</g>
+<!-- B&#45;&gt;D -->
+<g id="bilingual_views-edge3" class="edge">
+<title>B&#45;&gt;D</title>
+<path fill="none" stroke="#527565" d="M348.69,-77C354.1,-77 359.56,-77 365,-77"/>
+<polygon fill="#527565" stroke="#527565" points="364.93,-79.28 371.43,-77 364.93,-74.73 364.93,-79.28"/>
+</g>
+<!-- F -->
+<g id="bilingual_views-node6" class="node">
+<title>F</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M849.6,-65C849.6,-65 741.52,-65 741.52,-65 735.52,-65 729.52,-59 729.52,-53 729.52,-53 729.52,-41 729.52,-41 729.52,-35 735.52,-29 741.52,-29 741.52,-29 849.6,-29 849.6,-29 855.6,-29 861.6,-35 861.6,-41 861.6,-41 861.6,-53 861.6,-53 861.6,-59 855.6,-65 849.6,-65"/>
+<text xml:space="preserve" text-anchor="middle" x="795.56" y="-42.8" font-family="Arial" font-size="14.00" fill="#172622">English MEL view</text>
+</g>
+<!-- C&#45;&gt;F -->
+<g id="bilingual_views-edge5" class="edge">
+<title>C&#45;&gt;F</title>
+<path fill="none" stroke="#527565" d="M523.33,-24.11C581.57,-29.03 663.02,-35.9 721.43,-40.83"/>
+<polygon fill="#527565" stroke="#527565" points="720.98,-43.07 727.65,-41.35 721.36,-38.54 720.98,-43.07"/>
+</g>
+<!-- E -->
+<g id="bilingual_views-node5" class="node">
+<title>E</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M692.52,-102.44C692.52,-102.44 563.4,-102.44 563.4,-102.44 557.4,-102.44 551.4,-96.44 551.4,-90.44 551.4,-90.44 551.4,-63.56 551.4,-63.56 551.4,-57.56 557.4,-51.56 563.4,-51.56 563.4,-51.56 692.52,-51.56 692.52,-51.56 698.52,-51.56 704.52,-57.56 704.52,-63.56 704.52,-63.56 704.52,-90.44 704.52,-90.44 704.52,-96.44 698.52,-102.44 692.52,-102.44"/>
+<text xml:space="preserve" text-anchor="middle" x="627.96" y="-81.2" font-family="Arial" font-size="14.00" fill="#172622">Responses stored by</text>
+<text xml:space="preserve" text-anchor="middle" x="627.96" y="-64.4" font-family="Arial" font-size="14.00" fill="#172622">option ID</text>
+</g>
+<!-- D&#45;&gt;E -->
+<g id="bilingual_views-edge4" class="edge">
+<title>D&#45;&gt;E</title>
+<path fill="none" stroke="#527565" d="M526.82,-77C532.19,-77 537.63,-77 543.05,-77"/>
+<polygon fill="#527565" stroke="#527565" points="542.96,-79.28 549.46,-77 542.96,-74.73 542.96,-79.28"/>
+</g>
+<!-- E&#45;&gt;F -->
+<g id="bilingual_views-edge6" class="edge">
+<title>E&#45;&gt;F</title>
+<path fill="none" stroke="#527565" d="M704.97,-63.23C710.4,-62.25 715.87,-61.26 721.28,-60.28"/>
+<polygon fill="#527565" stroke="#527565" points="721.68,-62.52 727.67,-59.12 720.86,-58.04 721.68,-62.52"/>
+</g>
+</g>
+</svg>
+</div>
+<p class="diagram-caption">Claude-authored workflow · proposed feature · locally rendered SVG</p>
+<p class="compact"><strong>Minimum demo.</strong> Answer in the Hindi farmer view. Show the same answer under the correct English label in the MEL view. Keep both views tied to the same source insight.</p>
+<details class="implementation"><summary>Inputs, implementation workflow, AWS mapping, and acceptance</summary>
+<p class="compact"><strong>Source scope.</strong> Hindi is Should Have and also appears in success criteria. Paired views and equivalence checks are proposals.</p>
+<p class="compact"><strong>Inputs.</strong> One logical survey, English and Hindi text variants, stable item/option IDs, locale/version metadata, and a Hindi-speaking reviewer.</p>
+<h4>Implementation workflow</h4><ol class="compact"><li>Generate the canonical en-IN survey first, then request a hi-IN variant from Bedrock that must reuse identical item and option IDs and change only labels</li><li>Keep the contract unchanged by emitting two survey objects that share IDs and differ in language, rather than adding new multi-label fields</li><li>Add an equivalence check: deterministic ID-set match plus an LLM-judge or back-translation comparison per option, with low scores flagged for Hindi review</li><li>Render the Hindi tap view for the farmer and the English view for MEL staff. Both read the same response records through option IDs</li></ol>
+<p class="compact"><strong>UI and backend integration with AWS.</strong> Use the enabled Bedrock model to generate the requested language. Python checks matching item/option ID sets. The browser selects labels by locale. Store one logical response, not one copy per language. Voice remains a later stretch; no speech service is needed.</p>
+<p class="compact"><strong>Dependencies and one-day tradeoff.</strong> Matching IDs do not prove translation quality. Review meaning with a Hindi speaker. Distinguish the logical survey ID from locale/version keys to avoid overwriting a variant. Do not change the integration schema without agreement.</p>
+<p class="compact"><strong>Completion and demo acceptance.</strong> A Hindi option maps to the same meaning in English. Locale changes do not duplicate answers. Both views share the same source lineage. Review the Hindi sample.</p>
+<p class="note-line">The Claude outline above is a proposal. The Codex notes govern the suggested demo slice. No application feature has been implemented or tested as part of this briefing.</p>
+<details><summary>Original Claude Mermaid source</summary><pre class="raw">flowchart LR
+  A[&quot;Survey with stable item and option IDs&quot;] --&gt; B[&quot;Bedrock renders hi-IN labels&quot;]
+  A --&gt; C[&quot;English en-IN labels&quot;]
+  B --&gt; D[&quot;Hindi farmer tap view&quot;]
+  D --&gt; E[&quot;Responses stored by option ID&quot;]
+  C --&gt; F[&quot;English MEL view&quot;]
+  E --&gt; F</pre></details>
+</details></article>
+<article class="enhancement" data-enhancement="mel_insights">
+<div class="option-heading"><div><p class="kicker">Option 05</p><h3>Actionable MEL learning</h3></div><label class="pick-label"><input type="checkbox" data-pick="mel_insights"> Shortlist</label></div>
+<p class="fit">Useful business view · keep it small and descriptive</p>
+<div class="diagram-scroll" tabindex="0" aria-label="Scrollable workflow for Actionable MEL learning"><svg role="img" aria-labelledby="mel_insights-svg-title mel_insights-svg-desc" width="1027pt" height="60pt"
+ viewBox="0.00 0.00 1027.00 60.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title id="mel_insights-svg-title">Actionable MEL learning proposed workflow</title><desc id="mel_insights-svg-desc">Claude-authored workflow:
+  A[&quot;Linked self-reported responses&quot;] --&gt; B[&quot;Aggregate by crop, topic, resolution type&quot;]
+  B --&gt; C[&quot;Adoption, barrier, failure rates&quot;]
+  C --&gt; D[&quot;Drilldown to survey and insight&quot;]
+  D --&gt; E[&quot;Follow-up priorities for MEL team&quot;]
+  E --&gt; F[&quot;Descriptive, not causal proof&quot;]</desc>
+<g id="mel_insights-graph0" class="graph" transform="scale(1 1) rotate(0) translate(4.32 55.2)">
+<title>G</title>
+<!-- A -->
+<g id="mel_insights-node1" class="node">
+<title>A</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M133.34,-50.88C133.34,-50.88 12,-50.88 12,-50.88 6,-50.88 0,-44.88 0,-38.88 0,-38.88 0,-12 0,-12 0,-6 6,0 12,0 12,0 133.34,0 133.34,0 139.34,0 145.34,-6 145.34,-12 145.34,-12 145.34,-38.88 145.34,-38.88 145.34,-44.88 139.34,-50.88 133.34,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="72.67" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Linked self&#45;reported</text>
+<text xml:space="preserve" text-anchor="middle" x="72.67" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">responses</text>
+</g>
+<!-- B -->
+<g id="mel_insights-node2" class="node">
+<title>B</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M308.34,-50.88C308.34,-50.88 182.34,-50.88 182.34,-50.88 176.34,-50.88 170.34,-44.88 170.34,-38.88 170.34,-38.88 170.34,-12 170.34,-12 170.34,-6 176.34,0 182.34,0 182.34,0 308.34,0 308.34,0 314.34,0 320.34,-6 320.34,-12 320.34,-12 320.34,-38.88 320.34,-38.88 320.34,-44.88 314.34,-50.88 308.34,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="245.34" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Aggregate by crop,</text>
+<text xml:space="preserve" text-anchor="middle" x="245.34" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">topic, resolution type</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="mel_insights-edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#527565" d="M145.55,-25.44C151.13,-25.44 156.78,-25.44 162.41,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="162.06,-27.72 168.56,-25.44 162.06,-23.17 162.06,-27.72"/>
+</g>
+<!-- C -->
+<g id="mel_insights-node3" class="node">
+<title>C</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M462.34,-50.88C462.34,-50.88 357.34,-50.88 357.34,-50.88 351.34,-50.88 345.34,-44.88 345.34,-38.88 345.34,-38.88 345.34,-12 345.34,-12 345.34,-6 351.34,0 357.34,0 357.34,0 462.34,0 462.34,0 468.34,0 474.34,-6 474.34,-12 474.34,-12 474.34,-38.88 474.34,-38.88 474.34,-44.88 468.34,-50.88 462.34,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="409.84" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Adoption, barrier,</text>
+<text xml:space="preserve" text-anchor="middle" x="409.84" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">failure rates</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="mel_insights-edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="#527565" d="M320.46,-25.44C325.97,-25.44 331.52,-25.44 337.02,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="337.01,-27.72 343.51,-25.44 337.01,-23.17 337.01,-27.72"/>
+</g>
+<!-- D -->
+<g id="mel_insights-node4" class="node">
+<title>D</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M654.45,-50.88C654.45,-50.88 511.34,-50.88 511.34,-50.88 505.34,-50.88 499.34,-44.88 499.34,-38.88 499.34,-38.88 499.34,-12 499.34,-12 499.34,-6 505.34,0 511.34,0 511.34,0 654.45,0 654.45,0 660.45,0 666.45,-6 666.45,-12 666.45,-12 666.45,-38.88 666.45,-38.88 666.45,-44.88 660.45,-50.88 654.45,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="582.89" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Drilldown to survey and</text>
+<text xml:space="preserve" text-anchor="middle" x="582.89" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">insight</text>
+</g>
+<!-- C&#45;&gt;D -->
+<g id="mel_insights-edge3" class="edge">
+<title>C&#45;&gt;D</title>
+<path fill="none" stroke="#527565" d="M474.53,-25.44C480.02,-25.44 485.63,-25.44 491.28,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="490.97,-27.72 497.47,-25.44 490.97,-23.17 490.97,-27.72"/>
+</g>
+<!-- E -->
+<g id="mel_insights-node5" class="node">
+<title>E</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M818.53,-50.88C818.53,-50.88 703.45,-50.88 703.45,-50.88 697.45,-50.88 691.45,-44.88 691.45,-38.88 691.45,-38.88 691.45,-12 691.45,-12 691.45,-6 697.45,0 703.45,0 703.45,0 818.53,0 818.53,0 824.53,0 830.53,-6 830.53,-12 830.53,-12 830.53,-38.88 830.53,-38.88 830.53,-44.88 824.53,-50.88 818.53,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="760.99" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Follow&#45;up priorities</text>
+<text xml:space="preserve" text-anchor="middle" x="760.99" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">for MEL team</text>
+</g>
+<!-- D&#45;&gt;E -->
+<g id="mel_insights-edge4" class="edge">
+<title>D&#45;&gt;E</title>
+<path fill="none" stroke="#527565" d="M666.78,-25.44C672.24,-25.44 677.72,-25.44 683.14,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="683.02,-27.72 689.52,-25.44 683.02,-23.17 683.02,-27.72"/>
+</g>
+<!-- F -->
+<g id="mel_insights-node6" class="node">
+<title>F</title>
+<path fill="#edf7f2" stroke="#99bdae" d="M1005.97,-50.88C1005.97,-50.88 867.53,-50.88 867.53,-50.88 861.53,-50.88 855.53,-44.88 855.53,-38.88 855.53,-38.88 855.53,-12 855.53,-12 855.53,-6 861.53,0 867.53,0 867.53,0 1005.97,0 1005.97,0 1011.97,0 1017.97,-6 1017.97,-12 1017.97,-12 1017.97,-38.88 1017.97,-38.88 1017.97,-44.88 1011.97,-50.88 1005.97,-50.88"/>
+<text xml:space="preserve" text-anchor="middle" x="936.75" y="-29.64" font-family="Arial" font-size="14.00" fill="#172622">Descriptive, not causal</text>
+<text xml:space="preserve" text-anchor="middle" x="936.75" y="-12.84" font-family="Arial" font-size="14.00" fill="#172622">proof</text>
+</g>
+<!-- E&#45;&gt;F -->
+<g id="mel_insights-edge5" class="edge">
+<title>E&#45;&gt;F</title>
+<path fill="none" stroke="#527565" d="M830.66,-25.44C836.21,-25.44 841.85,-25.44 847.51,-25.44"/>
+<polygon fill="#527565" stroke="#527565" points="847.2,-27.72 853.7,-25.44 847.2,-23.17 847.2,-27.72"/>
+</g>
+</g>
+</svg>
+</div>
+<p class="diagram-caption">Claude-authored workflow · proposed feature · locally rendered SVG</p>
+<p class="compact"><strong>Minimum demo.</strong> Filter a small table by crop or topic. Open a reported barrier or failure. Drill down to its answer, survey, advice, and follow-up case.</p>
+<details class="implementation"><summary>Inputs, implementation workflow, AWS mapping, and acceptance</summary>
+<p class="compact"><strong>Source scope.</strong> Exploratory: response write-back and adoption/outcome measurement. The table and drilldown are proposals.</p>
+<p class="compact"><strong>Inputs.</strong> Clearly labeled simulated answers, linked surveys/insights, agreed adoption/barrier/outcome codes, and optional follow-up cases.</p>
+<h4>Implementation workflow</h4><ol class="compact"><li>Generate a synthetic response set with documented distributions, and label it as simulated in the data and the UI</li><li>Compute adoption, barrier and failure rates deterministically with Python grouping, showing counts and denominators beside every rate</li><li>Add drilldown from any aggregate cell to the underlying surveys, insights and cases</li><li>Optionally use Bedrock to write a short narrative summary grounded only in the computed numbers, with a fixed non-causal disclaimer</li></ol>
+<p class="compact"><strong>UI and backend integration with AWS.</strong> Python computes counts and denominators from response records. The browser shows a simple table and drilldown. Read optional DynamoDB state or local fixtures. Optional S3 stores run artifacts. Bedrock prose summaries are unnecessary for the one-day slice.</p>
+<p class="compact"><strong>Dependencies and one-day tradeoff.</strong> The supplied dataset has insights, not actual farmer responses. Label every invented demo answer as simulated. No fabricated rates, yield gains, causal claims, or RCT replacement claims.</p>
+<p class="compact"><strong>Completion and demo acceptance.</strong> Every aggregate reconciles with its underlying records. Any rate shows its numerator and denominator. Drilldown reaches the source insight. Show nonresponse separately.</p>
+<p class="note-line">The Claude outline above is a proposal. The Codex notes govern the suggested demo slice. No application feature has been implemented or tested as part of this briefing.</p>
+<details><summary>Original Claude Mermaid source</summary><pre class="raw">flowchart LR
+  A[&quot;Linked self-reported responses&quot;] --&gt; B[&quot;Aggregate by crop, topic, resolution type&quot;]
+  B --&gt; C[&quot;Adoption, barrier, failure rates&quot;]
+  C --&gt; D[&quot;Drilldown to survey and insight&quot;]
+  D --&gt; E[&quot;Follow-up priorities for MEL team&quot;]
+  E --&gt; F[&quot;Descriptive, not causal proof&quot;]</pre></details>
+</details></article>
+<aside class="tension"><p><strong>Suggested combination for discussion: 1 + 2.</strong> A failed-advice case gives the demo a clear trust benefit. The season timeline makes the required scheduler visible. Keep Hindi support to the required/expected minimum. Add the adaptive branch only if the schema is agreed early. Keep the MEL insight view to a small drilldown if time remains.</p><p><strong>One-day limit.</strong> These slices assume the shared survey loop can run. If the baseline does not exist, finish the six Must Haves first and add one small extension. Do not attempt all five. No selection or application build is authorized by using this page.</p></aside></div>
+<div id="aws-map">
+<h3 class="subhead">A lean AWS service map</h3>
+<p class="compact"><strong>Required by the Technical plan: Amazon Bedrock.</strong> Use an enabled model through the Bedrock Runtime Converse API. Keep the model ID and region configurable. Validate the returned survey with Python. Model support and options differ; do not assume every model supports Converse or enforces the same output schema. <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html">AWS Converse documentation</a>.</p>
+<p class="compact"><strong>Shared demo path:</strong> local browser or Streamlit UI → Python service with the Workshop role/session → Bedrock → Python quality gate and scheduler → simulated tap UI. Keep credentials in the backend. The simulated clock is application state; it does not need a cloud scheduling service.</p>
+<div class="table-scroll"><table><caption class="small muted" style="text-align:left;padding-bottom:8px">AWS capabilities checked 4 November 2026. Account availability and permissions have not been tested.</caption><thead><tr><th scope="col">Service</th><th scope="col">Use only when needed</th><th scope="col">One-day fallback</th></tr></thead><tbody>
+<tr><td>Bedrock · required</td><td>Survey text, language variants, rubric-based judging. Features 1, 2, and 5 can use deterministic code after generation.</td><td>Ask event staff for an enabled model/region. Use labeled saved outputs only for demo continuity; they do not satisfy live Bedrock acceptance.</td></tr>
+<tr><td>DynamoDB · optional</td><td>Response, case, schedule state. Conditional writes can prevent overwriting a keyed record. Cap logic is still application code. <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html">AWS conditional writes</a>.</td><td>Local JSON/SQLite for a single-user simulation. This is a proposed hackathon shortcut. The Technical plan prefers RDS/Aurora PostgreSQL if a database is used; reuse an existing PostgreSQL instance if available and agree any alternative.</td></tr>
+<tr><td>S3 · optional</td><td>Private synthetic input packs and frozen evaluation/run artifacts. It is object storage, not a queue or case database. <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingObjects.html">AWS S3 objects</a>.</td><td>Versioned local files. Do not add hosting or uploads just to increase the service count.</td></tr>
+<tr><td>Lambda · optional hosting</td><td>A small backend only if the team already has this route. An IAM-authenticated function URL needs signed requests and invocation permissions. <a href="https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html">AWS URL access control</a> · <a href="https://docs.aws.amazon.com/lambda/latest/dg/urls-invocation.html">Invocation</a>.</td><td>Run Python on existing Workshop compute or the local machine with approved AWS access. Do not expose an unauthenticated endpoint to avoid setup work.</td></tr>
+</tbody></table></div>
+<p class="compact" style="margin-top:14px"><strong>Check access first.</strong> Confirm the Workshop region, model support, invocation permissions, and quotas. Marketplace-backed models can need one-time enablement. Anthropic models can need a first-time-use form. Availability is account-specific. Do not subscribe or change accounts without the event’s approval. <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html">AWS model access</a> · <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/inference-prereq.html">Inference permissions</a>.</p>
+<p class="note-line">Only Bedrock is a source requirement. All other services above are optional design choices. No AWS resource was created, deployed, or invoked for this briefing. Antigravity and Claude were review tools, not the proposed application runtime.</p>
+</div>
+  <aside class="repo-note" id="repo-provenance"><h3>Document-linked repository; current target remains unresolved</h3><p>The Technical DOCX contains an explicit hyperlink to <a href="https://github.com/digitalgreenorg/DG_Open">digitalgreenorg/DG_Open</a>. This is a verified document link, not a user-confirmed current application repository. Inspected snapshot: <a href="https://github.com/digitalgreenorg/DG_Open/commit/5064d65700e03d413cd283dbafc12386f6b92f75"><code>5064d65700e03d413cd283dbafc12386f6b92f75</code></a> · commit dated 23 November 2025 · reviewed 4 November 2026.</p><p><strong>Provenance:</strong> the URL appears in the Technical document’s main relationships and footnote relationships. The Vision document has no external links. The <a href="https://github.com/12turnbullb/us-breaking-barriers-2026">public AWS Breaking Barriers scoping repository</a> lists this exact FarmerChat project and both plan documents. It is a scoping wiki, not the FarmerChat application source.</p><div id="repo-findings"><ul><li>The public API takes email/query input and returns chat answers and follow-up questions, not the draft MEL object. <a href="https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/api/views.py#L47-L85">API fields</a>.</li><li>The inspected generation path calls OpenAI directly, and the models preserve conversation, language and follow-up identifiers. Reuse these patterns; build the Bedrock MEL path separately. <a href="https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/rag_service/openai_service.py#L20-L49">Inference</a> · <a href="https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/database/models.py#L60-L65">Language codes</a>.</li><li>The reference UI hardcodes a hosted backend and uses <code>innerHTML</code>. Build a safe synthetic tap renderer instead of reusing it directly. <a href="https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/index.html#L293-L305">Endpoint</a> · <a href="https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/index.html#L512-L538">Rendering</a>.</li><li>No MEL scheduler or golden-data harness was found in the inspected FarmerChat subtree. Its API test file is a placeholder. This was static inspection, not a runtime audit. <a href="https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/api/tests.py#L1-L3">Tests</a> · <a href="https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/LICENSE#L1-L17">Component license</a>.</li></ul></div><p class="small"><strong>Recommendation:</strong> build a separate MEL slice behind the draft contract. Treat the public API as a reference for advice history and identifiers; it is not proof that the newer ADK production harness is publicly available. The inspected FarmerChat component carries GPL v3 licensing; review license obligations before copying code.</p></aside>
+  <div class="build-tabs" role="tablist" aria-label="Hackathon plan areas"><button type="button" id="build-tab-0" data-build="0" role="tab" aria-selected="true" aria-controls="build-frontend" tabindex="0">Frontend</button><button type="button" id="build-tab-1" data-build="1" role="tab" aria-selected="false" aria-controls="build-backend" tabindex="-1">Backend</button><button type="button" id="build-tab-2" data-build="2" role="tab" aria-selected="false" aria-controls="build-evals" tabindex="-1">Evals</button><button type="button" id="build-tab-3" data-build="3" role="tab" aria-selected="false" aria-controls="build-demo" tabindex="-1">Build order & demo</button></div>
+  <article id="build-frontend" class="build-panel" role="tabpanel" aria-labelledby="build-tab-0">
+    <h3>Show the farmer view beside the evidence</h3>
+    <ol class="build-steps">
+      <li><h4><span class="tag">MVP</span> One farmer, one trace</h4><p>Select a synthetic farmer and show the actual advice, crop stage, source insight IDs, generated questions, and schedule rationale. A simple Streamlit inspector is enough. Keep the farmer’s tap screen free of evaluation jargon.</p></li>
+      <li><h4><span class="tag">MVP</span> A real JSON-to-tap renderer</h4><p>Render fixed options from the returned JSON in English and Hindi. Provide readable Devanagari, large tap targets, a skip choice if agreed, and a clear synthetic-demo label. Record the simulated answer against its item and survey IDs. Show a missing/invalid survey state as clearly as a successful one.</p></li>
+      <li><h4><span class="tag">MVP</span> Move the season with one clock</h4><p>A manual “advance time” control should reveal scheduled, due, capped, rejected, and expired surveys. Pick a farmer with overlapping advice to show that frequency limits actually suppress or defer delivery.</p></li>
+      <li><h4><span class="tag decision">Stretch</span> Make the quality comparison inspectable</h4><p>Switch between baseline and revised outputs for the same held-out case, with reasons for changed scores. Add a negative-answer follow-up queue before attempting voice. That extension closes the trust story using the existing tap flow.</p></li>
+    </ol>
+    <p class="note-line">Demo acceptance: each rendered question traces to the selected farmer’s advice; taps use stable option IDs; invalid or rejected objects never appear as deliverable surveys. These are proposed tests, not verified application behavior.</p>
+  </article>
+  <article id="build-backend" class="build-panel" role="tabpanel" aria-labelledby="build-tab-1">
+    <h3>Keep the model inside a deterministic workflow</h3>
+    <ol class="build-steps">
+      <li><h4><span class="tag">MVP</span> Freeze the contract and refusal state first</h4><p>Agree Pydantic/JSON schemas for insight, survey, response, and an explicit “no survey” result with a reason. Validate farmer/source ownership, fixed option IDs, language, item limits, and ordered send windows. Do not force the model to invent missing context.</p></li>
+      <li><h4><span class="tag">MVP</span> One Bedrock adapter, one orchestration path</h4><p>Use Python 3.12+, a swappable Bedrock Converse adapter, and ADK if the team already knows it; Strands or a plain service is acceptable. A proposed FastAPI surface is <code>POST /surveys/generate</code>, <code>POST /simulation/advance</code>, <code>POST /responses</code>, and <code>GET /runs/{id}</code>. These endpoint names are recommendations, not an existing Digital Green API.</p></li>
+      <li><h4><span class="tag">MVP</span> Enforce timing and scheduling in code</h4><p>Use a shared simulated clock, explicit timezone/date rules, an agreed frequency cap, expiry handling, and deduplication by source/context version. Recheck the window and cap when delivering. Weather-dependent advice with insufficient synthetic context should produce a review/refusal reason; do not add live weather integration.</p></li>
+      <li><h4><span class="tag">MVP</span> Store an auditable run record</h4><p>Log dataset/prompt/model versions, source IDs, gate results, reject reasons, timings, token usage, and estimated cost assumptions. Treat insights and model text as untrusted data; validate JSON and render text safely. Bound retries and batch concurrency. Keep credentials server-side and farmer data synthetic.</p></li>
+      <li><h4><span class="tag decision">Stretch</span> Package the proven path</h4><p>Containerize the service for a Workshop account after local end-to-end tests pass. Consider AgentCore if familiar and enabled; avoid EKS operations during the core build. Add a simulated follow-up queue without generating new agronomic advice.</p></li>
+    </ol>
+    <p class="note-line">Demo acceptance: rerunning a request cannot duplicate a scheduled survey; failed gates, expired windows, cap violations, and provider errors have observable outcomes. No production service or real messaging is needed.</p>
+  </article>
+  <article id="build-evals" class="build-panel" role="tabpanel" aria-labelledby="build-tab-2">
+    <h3>Show improvement that survives inspection</h3>
+    <ol class="build-steps">
+      <li><h4><span class="tag">MVP</span> Agree the reference data and rubric early</h4><p>Confirm Digital Green’s golden-set format, size, and scoring rubric. Create a development split and a final held-out split grouped by farmer/related advice to reduce leakage. If the official set is late, use a clearly labeled synthetic smoke set; do not relabel it as the golden set.</p></li>
+      <li><h4><span class="tag">MVP</span> Save a baseline before tuning</h4><p>Compare a simple advice-aware template baseline with the Bedrock generator, then a documented prompt/logic revision on the same case set. Freeze prompt, model, data, and scorer versions. Show per-case wins, regressions, abstentions, and denominators rather than only an average.</p></li>
+      <li><h4><span class="tag">MVP</span> Separate hard gates from judgment</h4><p>Deterministically test schema, source references, item/option limits, allowed language, date ordering, window fit, frequency caps, and zero scheduled failures. Use a rubric-grounded judge for relevance: correct farmer/context, faithful advice reference, answerability, and absence of new advice. Calibrate with MEL reviewers; do not let the generator’s self-score be the sole evaluator.</p></li>
+      <li><h4><span class="tag">MVP</span> Report quality, coverage, safety, and speed together</h4><p>Show valid JSON / all generated; accepted surveys / eligible cases; expected no-survey decisions handled correctly; timing/cap violations; new-advice or personal-information failures; relevance rubric scores and human agreement; per-survey and batch time; tokens and estimated cost. Define eligibility and thresholds with Digital Green before presenting any acceptance rate as a pass.</p></li>
+      <li><h4><span class="tag decision">Stretch</span> Test the awkward cases</h4><p>Include insufficient context, duplicated insights, conflicting crop dates, wait-and-watch advice, weather conditions, malformed JSON, prompt injection in insight text, wrong-farmer references, provider failure, and Hindi semantic drift. Hindi-speaking participants should inspect meaning and tap options. Add repeated runs if time allows to expose stochastic regressions.</p></li>
+    </ol>
+    <p class="note-line">Evidence to show: one reproducible command, an untouched final evaluation split, baseline/revision outputs, per-case scores and rejection traces, at least one improvement iteration, and an honest account of remaining failures. No synthetic result proves yield impact.</p>
+  </article>
+  <article id="build-demo" class="build-panel" role="tabpanel" aria-labelledby="build-tab-3">
+    <h3>A proposed one-day sequence</h3>
+    <ol class="build-steps">
+      <li><h4>Start · agree the finish line</h4><p>Confirm data, schema, model access/region, relevance cutoff, item limit, cap, and Hindi/demo expectations with event staff and Digital Green. Read the actual judging rubric if available. Create the fixture set, baseline, and contract tests before building the UI.</p></li>
+      <li><h4>First working slice · one shared survey loop</h4><p>Implement ingestion → eligibility → Bedrock survey → validation → simulated schedule → tap answer. Preserve the six Must Haves. Keep storage and hosting simple; never make cloud setup the critical path for the quality demo.</p></li>
+      <li><h4>Then · preserve the required evaluation evidence</h4><p>Run the complete provided dataset, record timings/tokens, inspect failures, tune one clear issue, and rerun. Capture the eval comparison and schedule-blocking evidence. Add Hindi review and the simulated app early because success criteria call for them.</p></li>
+      <li><h4>Finish · rehearse, package, and freeze</h4><p>Publish code, IaC, evaluation harness, and README as required. Rehearse the same synthetic scenario with a saved run available if Bedrock is unavailable; label saved results clearly. Add only your chosen feature slice after the shared loop is stable. Do not attempt all five enhancements.</p></li>
+    </ol>
+    <details><summary>A suggested four-minute demo narrative</summary><ol class="compact"><li><strong>The problem:</strong> a broadcast questionnaire cannot tell whether this farmer used this advice.</li><li><strong>The trace:</strong> show the synthetic mustard insight, the grounded Hindi/English tap survey, and the timing rationale.</li><li><strong>The refusal:</strong> show sparse or unsafe context being rejected and a crowded schedule respecting the cap.</li><li><strong>The evidence:</strong> show baseline versus revision on the same evaluation set, with failures and cost/time visible.</li><li><strong>The next step:</strong> explain contract integration and the safeguards still needed before any real pilot.</li></ol></details>
+    <p class="note-line">Four minutes is a rehearsal suggestion; the event’s presentation duration and scoring weights are unconfirmed.</p>
+  </article>
+</section>
+<section id="review" aria-labelledby="review-heading">
+  <div class="section-head"><span class="section-number" aria-hidden="true">02</span><h2 id="review-heading">What the plans support</h2></div>
+  <div id="codex-assessment">
+    <p class="kicker">Codex assessment</p>
+    <p class="takeaway">The MVP is focused enough for a hackathon. Its hardest unfinished work is defining what counts as a good survey and proving that bad ones never reach the queue.</p>
+    <p class="reading">MEL means Monitoring, Evaluation and Learning. Digital Green wants advice-specific follow-ups for farmers, usable evidence for its MEL team, a clean integration for its product team, and an auditable collection method for external evaluators. The plans describe a synthetic Bihar rabi-season exercise, followed by a possible pilot if quality holds. <span class="source-ref"><a href="#source-vision">[V: Executive Summary; Target Users]</a></span></p>
+    <div class="findings">
+      <article class="finding"><h3>Keep the contract small</h3><p>Python 3.12+, Bedrock, and a REST/JSON boundary are the firm technical requirements. ADK, Strands, AgentCore, containers, and the demo UI are flexible choices. A single process is explicitly acceptable.</p><p class="source-ref"><a href="#source-technical">[T: Hackathon Approach; Languages; Models]</a></p></article>
+      <article class="finding"><h3>Reconcile the finish line</h3><p>Hindi, the broadcaster/app demo, and telemetry are “Should Have” features, yet parts of them appear in the success criteria. Agree which evidence is required before dividing the work.</p><p class="source-ref"><a href="#source-vision">[V: MVP Success Criteria; Features In Scope]</a></p></article>
+      <article class="finding"><h3>Do not overclaim outcomes</h3><p>Golden-set scores test agreement with reference expectations. Survey answers are self-reports. Neither establishes causal impact or real farmer acceptance; RCTs remain the verifier.</p><p class="source-ref"><a href="#source-vision">[V: Business Drivers; Out of Scope]</a> · Codex interpretation</p></article>
+    </div>
+  </div>
+  <div class="attribution"><span><strong>Claude summary</strong> · completed using the installed CLI</span><span>Full original response available below</span></div>
+  <details id="claude-summary"><summary>Read Claude’s separate summary of both documents</summary><p class="small muted">Actual CLI output, preserved verbatim. Claude received the complete extracted text of both plans, with tools disabled. It did not see the embedded architecture image or the later repository research. Its review observations are Claude’s, not source requirements.</p><pre id="claude-output" class="raw" tabindex="0"># FarmerChat Contextual MEL Survey Agent (MVP): Source Review
+
+## Overall intent
+
+Both documents describe a hackathon MVP. The MVP is a MEL (Monitoring, Evaluation and Learning) agent. It reads insights that FarmerChat already extracts from farmer conversations and turns them into short, personalized, tap-based follow-up surveys. Each survey is timed to the crop calendar and the advice&#x27;s action window, then handed to a scheduler and broadcaster [Vision — Executive Summary].
+
+The stated priority is survey quality, demonstrated through evaluation. Infrastructure and scale are secondary [Technical — Hackathon Approach and Expectations]. The work uses fully synthetic data only. There is no FarmerChat access, no Digital Green AWS access and no real farmer data [Technical — Hackathon Approach and Expectations; Vision — Business Constraints].
+
+## Vision document
+
+**Problem.** Today, evidence that farmers adopt the advice comes from field surveys and RCTs on small samples. These are expensive and cannot cover about 2.2M farmers. Earlier digital surveys were broadcast: every farmer got the same questions regardless of context, which yields little information and erodes trust [Vision — Problem Statement].
+
+**Users** [Vision — Target Users and Stakeholders]:
+- **Small-scale farmers in Bihar** need a few quick, relevant taps at a sensible time.
+- **The MEL team** needs adoption and outcome data per recommendation.
+- **Product and AI teams** need a clean contract into the broadcaster and app.
+- **An external evaluation agency** needs a consistent, auditable collection method.
+
+**Roadmap context.** The MEL Agent is the hackathon focus. NightSync, SeasonPlanner and FarmWatch are future phases [Vision — The Background Agent Vision].
+
+**Design principles** [Vision — Design Principles]:
+- One farmer, one context.
+- Short and tappable.
+- Ask at the right time.
+- Quality before volume: no survey is better than an irrelevant one.
+- Evaluate before scheduling.
+- Contract over framework.
+- Language passed as a BCP 47 parameter.
+
+**Safety** [Vision — Safety Tenet]:
+- Surveys must never collect personal information.
+- Surveys must not give new advice or contradict the advice already given.
+- Negative-outcome responses should be routed back for follow-up.
+
+**Evidence status.** Surveys capture self-reported adoption and outcomes. They do not prove causal impact. The source says RCTs &quot;stay as the verifier&quot;, and replacing RCTs is explicitly out of scope [Vision — Business Drivers; Vision — Features Explicitly Out of Scope].
+
+## Technical document
+
+**Stack** [Technical — Programming Languages; Technical — Frameworks and Libraries]:
+- Python 3.12+ is required. SQL/PostgreSQL is permitted.
+- Google ADK (Digital Green&#x27;s production framework) is preferred. Strands or another framework is acceptable if the REST/JSON contract is met.
+- Suggested libraries: Boto3 with the Bedrock Converse API, Pydantic or JSON Schema, FastAPI, Streamlit, and CDK or Terraform.
+
+**Models.** Amazon Bedrock is required, with the model behind an abstraction so it can be swapped. Tiering (a small model for checks, a larger one for generation) is suggested for exploration. Tokens, estimated cost and time should be logged per survey and per batch. Which models are enabled is still to be confirmed [Technical — Models and AI Services].
+
+**Hosting.** Either AgentCore Runtime or containers (portable to Digital Green&#x27;s EKS). If a database is used, it should be RDS or Aurora PostgreSQL. No real messages may be sent [Technical — Infrastructure Preferences].
+
+**Architecture.** A reference architecture figure exists, but only its placeholder appears in the supplied text. I have not inspected the figure. The text allows simplification, for example a single process with a loop standing in for the scheduler [Technical — Reference Architecture].
+
+**Data** [Technical — Provided Datasets; Technical — Core Data Contracts; Technical — Simulated Clock]:
+- **Insights:** about 5,000–10,000 rows for 200–500 synthetic Bihar farmers in the rabi season (Nov–Mar). Conversations are in Hindi; insights are in English.
+- **Golden dataset:** format and size to be confirmed.
+- **Crop calendar:** source to be confirmed.
+- **Contracts:** draft insight, survey and response JSON contracts, including `send_window`, `source_insight_ids`, `rationale` and `self_eval`.
+- **Clock:** a shared simulated clock, with a manual trigger for every scheduled step.
+
+**Evaluation** [Technical — Evaluation and Quality Measurement]:
+- **Method:** hill-climbing against the golden dataset.
+- **Dimensions:** relevance, timeliness, format, safety and speed.
+- **Checks:** deterministic checks for format and timing; LLM-as-judge for relevance. Whether an MEL rubric exists is unconfirmed.
+- **Language:** English is the evaluation baseline. Hindi is human-reviewed.
+
+## Proposed end-to-end workflow
+
+1. Ingest synthetic insights and query them by farmer, crop, topic and date [Vision — Features In Scope].
+2. Decide whether an insight is eligible, then generate a survey per insight or group of insights in the requested language.
+3. Self-evaluate (schema plus relevance). Failing surveys are not scheduled.
+4. The scheduler assigns a send window from the crop calendar and action window, then applies a per-farmer frequency cap.
+5. A broadcaster stub on the simulated clock delivers due surveys to a simulated app, which renders tap items and records answers.
+6. The evaluation harness scores the outputs and the team iterates [Vision — MVP User Journeys].
+
+Journey 1 is a mustard aphid case: a two-day action window, a three-item Hindi survey, and a send window 5–7 days after the advice. The draft contract&#x27;s example dates are consistent with this [Technical — Core Data Contracts]. Journey 3 (negative-answer follow-up) is a stretch.
+
+## MVP scope and success criteria
+
+**Must Have** [Vision — Features In Scope]:
+- Insight ingestion
+- Survey generation agent
+- Survey JSON contract
+- Self-evaluation step
+- Evaluation harness
+- Survey scheduler
+
+**Should Have:**
+- Broadcaster stub and simulated app
+- Hindi surveys
+- Latency and cost telemetry
+
+**Exploratory:**
+- Response write-back
+- Negative-outcome follow-up
+- Alternative channels such as voice or chat
+
+**Success criteria** [Vision — MVP Success Criteria]:
+- Ingest the full dataset.
+- Produce valid, advice-specific JSON with consistent send windows.
+- Report golden-dataset scores for relevance, timeliness and format.
+- Measure generation time.
+- Run the scheduler with a frequency cap, plus the broadcaster stub and simulated app.
+- Block failing surveys from scheduling.
+- Run English end to end and produce Hindi when passed `hi-IN`.
+
+**Definition of Done** adds: at least one improvement iteration, verification that invalid or low-scoring surveys are not scheduled, and publication of code, IaC, harness and README as open source [Vision — MVP Definition of Done].
+
+**Pilot vs. hackathon.** The hackathon cohort is 200–500 *synthetic* farmers. A ~10,000-farmer real pilot is only *intended* by Digital Green &quot;if quality holds&quot; [Vision — Executive Summary]. No pilot has been authorized or run, and the sources report no implementation progress or results.
+
+## Dependencies and open decisions
+
+**Items to confirm** [Technical — Models and AI Services; Technical — Evaluation and Quality Measurement; Technical — Provided Datasets; Vision — Key Risks]:
+- Bedrock models and region
+- Golden dataset format and size
+- Whether an MEL rubric exists
+- Crop calendar source
+- Agreement on the survey JSON with Digital Green&#x27;s agent-to-UI format before the event
+
+**Explicit open questions** [Vision — Open Questions]:
+- How many items per survey, and which question types work best?
+- Which insights deserve a survey, and should several be combined?
+- How should send windows be derived for weather-dependent advice?
+- Which automatic checks best predict acceptance by the golden dataset and MEL reviewers?
+- How should generation be batched or parallelized?
+- (Stretch) How should answers become adoption and outcome measures comparable with RCTs?
+
+**Key risks:**
+- Data arriving late (high impact); the mitigation is to generate a sample from the schema.
+- Hindi quality being hard to judge.
+- A schema mismatch with the agent-to-UI format (high impact) [Vision — Key Risks].
+
+## Tensions and gaps to resolve
+
+*All points below are my review observations, not source statements.*
+
+**Contradictions between the success criteria and the priority table:**
+- The success criteria require broadcaster delivery to a simulated app, but that feature is **Should Have**.
+- The success criteria require Hindi output for `hi-IN`, but Hindi is **Should Have**.
+- Generation time must be &quot;measured&quot; (and reported, per the DoD), but latency/cost telemetry is **Should Have**. The Technical doc also states token and cost logging without qualification.
+- The DoD requires only Must Haves, so a team could meet the DoD while missing stated success criteria.
+
+**Safety:**
+- The Safety Tenet says negative-outcome responses *should be routed back*, but that feature is **Exploratory**.
+- Safety is an evaluation dimension in the Technical doc but is absent from the scored success criteria (relevance, timeliness, format only).
+
+**Self-evaluation scope.** The design principle lists schema, relevance *and language*. The feature table lists only schema and relevance.
+
+**Undefined thresholds.** None of the following are defined in either source, and none should be assumed:
+- the &quot;low-scoring&quot; cutoff
+- the relevance threshold
+- the frequency-cap value (Journey 1&#x27;s &quot;that week&quot; implies weekly but is not specified)
+- the item-count limit (format checks reference &quot;limits&quot;, yet item count is an open question)
+- &quot;eligible&quot; insight criteria
+
+**Granularity.** The success criteria say &quot;for each eligible insight&quot;, while the feature table allows a group of insights. The open question on combining insights is unresolved.
+
+**Response handling overlap.** The simulated app &quot;records answers&quot; (Should Have), but response write-back is Exploratory, and the draft contract already defines a response object.
+
+**Evaluation validity.** Both datasets are synthetic, so golden-dataset scores show agreement with Digital Green&#x27;s expectations, not real farmer acceptance or adoption.
+
+`★ Insight ─────────────────────────────────────`
+- The priority table and the success criteria were evidently written separately. Before the event, reconcile them by either promoting the broadcaster/app, Hindi and timing to Must Have, or relaxing the criteria.
+- Agreeing on gating thresholds and the frequency cap with the MEL team early matters as much as the schema. Without them, &quot;not scheduled if low-scoring&quot; cannot be tested.
+`─────────────────────────────────────────────────`
+</pre></details>
+</section>
+<section id="workflow" aria-labelledby="workflow-heading">
+  <div class="section-head"><span class="section-number" aria-hidden="true">03</span><h2 id="workflow-heading">Follow one survey through the system</h2></div>
+  <p class="reading">The reference flow uses synthetic insights, a Bihar crop calendar, Bedrock generation, a quality gate, and simulated delivery. The golden-set evaluation harness measures the outputs across repeated runs. Select a stage to separate the plan from the proposed implementation checks.</p>
+  <div class="workflow">
+    <div class="stages" role="tablist" aria-label="Survey workflow stages">
+      <button type="button" id="stage-0" data-stage="0" role="tab" aria-selected="true" aria-controls="stage-detail" tabindex="0"><span>01</span>Read synthetic<br>insights</button>
+      <button type="button" id="stage-1" data-stage="1" role="tab" aria-selected="false" aria-controls="stage-detail" tabindex="-1"><span>02</span>Select useful<br>context</button>
+      <button type="button" id="stage-2" data-stage="2" role="tab" aria-selected="false" aria-controls="stage-detail" tabindex="-1"><span>03</span>Generate survey<br>and window</button>
+      <button type="button" id="stage-3" data-stage="3" role="tab" aria-selected="false" aria-controls="stage-detail" tabindex="-1"><span>04</span>Check before<br>scheduling</button>
+      <button type="button" id="stage-4" data-stage="4" role="tab" aria-selected="false" aria-controls="stage-detail" tabindex="-1"><span>05</span>Schedule and<br>simulate taps</button>
+      <button type="button" id="stage-5" data-stage="5" role="tab" aria-selected="false" aria-controls="stage-detail" tabindex="-1"><span>06</span>Evaluate and<br>improve</button>
+    </div>
+    <div id="stage-detail" class="stage-detail" role="tabpanel" aria-labelledby="stage-0" tabindex="0"></div>
+    <div class="stage-static" id="print-workflow"></div>
+  </div>
+  <h3 class="subhead">Scope as written in the vision</h3>
+  <div class="toolbar"><label for="scope-filter">Show priority<select id="scope-filter"><option value="all">All priorities</option><option value="must">Must Have</option><option value="should">Should Have</option><option value="exploratory">Exploratory</option><option value="out">Out of scope</option></select></label><output id="scope-count" aria-live="polite"></output></div>
+  <div class="table-scroll"><table><caption class="small muted" style="text-align:left;padding-bottom:10px">Priority labels are source facts; they do not indicate implementation status. <a href="#source-vision">[V: MVP Scope]</a></caption><thead><tr><th scope="col">Priority</th><th scope="col">Capability</th><th scope="col">What the plan calls for</th></tr></thead><tbody>
+    <tr data-scope="must"><td>Must Have</td><td>Insight ingestion</td><td>Load and query synthetic insights by farmer, crop, topic, and date.</td></tr>
+    <tr data-scope="must"><td>Must Have</td><td>Survey generation</td><td>Contextual tap questions per eligible insight or group of insights.</td></tr>
+    <tr data-scope="must"><td>Must Have</td><td>Survey JSON contract</td><td>Items, fixed options, language, send window, and source insight references.</td></tr>
+    <tr data-scope="must"><td>Must Have</td><td>Self-evaluation</td><td>Schema validation and relevance checks before scheduling.</td></tr>
+    <tr data-scope="must"><td>Must Have</td><td>Evaluation harness</td><td>Golden-set scoring, repeated runs, and evidence of improvement.</td></tr>
+    <tr data-scope="must"><td>Must Have</td><td>Survey scheduler</td><td>Crop/action-window timing and a per-farmer frequency cap.</td></tr>
+    <tr data-scope="should"><td>Should Have</td><td>Broadcaster + simulated app</td><td>Read due surveys on a simulated clock, render taps, record answers.</td></tr>
+    <tr data-scope="should"><td>Should Have</td><td>Hindi output</td><td>The same agent accepts <code>hi-IN</code>; English is the evaluation baseline.</td></tr>
+    <tr data-scope="should"><td>Should Have</td><td>Telemetry</td><td>Latency, tokens, estimated cost per survey and batch.</td></tr>
+    <tr data-scope="exploratory"><td>Exploratory</td><td>Response write-back</td><td>Store adoption/outcome answers against farmer and source insight.</td></tr>
+    <tr data-scope="exploratory"><td>Exploratory</td><td>Negative-outcome follow-up</td><td>Route “did not work” or crop damage to a follow-up path.</td></tr>
+    <tr data-scope="exploratory"><td>Exploratory</td><td>Alternative channels</td><td>Voice or chat using the same survey contract.</td></tr>
+    <tr data-scope="out"><td>Out of scope</td><td>Other background agents</td><td>NightSync, SeasonPlanner, and FarmWatch belong to later phases.</td></tr>
+    <tr data-scope="out"><td>Out of scope</td><td>Production integration</td><td>No connection to FarmerChat, its broadcaster, or the mobile app.</td></tr>
+    <tr data-scope="out"><td>Out of scope</td><td>Real farmer delivery</td><td>Deliver only to a simulated app.</td></tr>
+    <tr data-scope="out"><td>Out of scope</td><td>Live external data</td><td>No AgMCP servers or live weather feeds for the MVP.</td></tr>
+    <tr data-scope="out"><td>Out of scope</td><td>More regions/languages</td><td>Bihar only; English and Hindi only.</td></tr>
+    <tr data-scope="out"><td>Out of scope</td><td>Replacing RCTs</td><td>Randomized controlled trials remain the verification method.</td></tr>
+    <tr data-scope="out"><td>Out of scope</td><td>Large-scale delivery</td><td>Do not attempt to prove broadcasting to 100,000 users.</td></tr>
+  </tbody></table></div>
+  <aside class="tension"><p><strong>Resolve the priority mismatch.</strong> Success criteria require English end to end, Hindi generation, simulated tap delivery, and measured generation time. The feature table places parts of these under Should Have. The Definition of Done requires all Must Haves plus specific evaluation, timing, schema, and publication evidence.</p><p><strong>Keep safety visible.</strong> Negative-outcome routing is exploratory in the MVP, while the standing safety tenet expects follow-up. Demonstrate a simulated queue if time permits; a real pilot needs an agreed owner and response process.</p></aside>
+</section>
+<section id="acceptance" aria-labelledby="acceptance-heading">
+  <div class="section-head"><span class="section-number" aria-hidden="true">04</span><h2 id="acceptance-heading">Decisions before a credible finish</h2></div>
+  <ol class="decisions compact">
+    <li><strong>What can be scheduled?</strong> Confirm insight eligibility/grouping, item limits, relevance and safety thresholds, refusal reasons, and the final survey schema. An example <code>self_eval.relevance_score: 0.86</code> is not an agreed cutoff. <a href="#source-technical">[T: Core Data Contracts]</a></li>
+    <li><strong>Who owns time?</strong> Agree which component computes the final window, cap value, timezone and expiry rules, and behavior for conditional advice. Journey 1’s 5–7 day follow-up and “no other survey that week” are examples, not universal rules. <a href="#source-vision">[V: Journey 1; Open Questions]</a></li>
+    <li><strong>What evidence counts as passing?</strong> Obtain the golden dataset, MEL rubric, crop calendar, and enabled Bedrock models/region. Agree how the Should Have features affect the success criteria and how Hindi is reviewed. <a href="#source-technical">[T: Evaluation; Data; Models]</a></li>
+    <li><strong>What changes before a pilot?</strong> Set ownership for adverse answers, consent/contact rules, data protection, and human follow-up. These are Codex pilot-readiness recommendations; production design and real farmer delivery remain outside this hackathon briefing.</li>
+  </ol>
+  <h3 class="subhead">MVP acceptance review checklist</h3>
+  <p class="small muted">Based on the Vision Definition of Done. This is a working review checklist only. Checks live in this page session and are not proof of implementation or MVP completion. No application evidence was audited for this briefing.</p>
+  <div class="check-head"><output id="acceptance-count" aria-live="polite">0 of 7 review items marked</output><button type="button" id="reset-checklist">Reset checklist</button></div>
+  <ul id="acceptance-list" class="checklist">
+    <li><label><input type="checkbox"><span>All six Must Have features implemented and tested.<small>Ingestion, generation, survey contract, self-evaluation, evaluation harness, scheduler.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Agent runs over the full supplied synthetic insights dataset.</span></label></li>
+    <li><label><input type="checkbox"><span>Golden-dataset scores reported, with at least one improvement iteration.<small>Retain run versions, outputs, and scoring evidence.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Per-survey and full-batch generation times reported.</span></label></li>
+    <li><label><input type="checkbox"><span>Invalid and low-scoring surveys verified not to be scheduled.<small>The agreed cutoff must exist before this can be tested.</small></span></label></li>
+    <li><label><input type="checkbox"><span>Survey JSON validates against the agreed Digital Green schema.</span></label></li>
+    <li><label><input type="checkbox"><span>Code, IaC, evaluation harness, and README published to the open-source repository.</span></label></li>
+  </ul>
+  <p class="note-line">Also reconcile the success criteria for simulated delivery, English end to end, Hindi generation, and timing before the team calls the MVP finished. This page does not publish or implement any of these items.</p>
+</section>
+<section id="sources" aria-labelledby="sources-heading">
+  <div class="section-head"><span class="section-number" aria-hidden="true">05</span><h2 id="sources-heading">Sources and independent contributions</h2></div>
+  <ul class="source-list">
+    <li id="source-vision"><h3>[V] Vision document</h3><p><a href="../Digital%20Green%20Foundation/Vision%20Document_%20Digital%20Green%20FarmerChat%20Contextual%20MEL%20Survey%20Agent%20(MVP).docx">Open the original Vision plan</a></p><p>Primary source for users, scope priorities, journeys, success criteria, Definition of Done, safety tenet, and open questions. Source reports about 2.2 million FarmerChat users and an intended ~10,000-farmer pilot if quality holds; neither is independently verified here.</p></li>
+    <li id="source-technical"><h3>[T] Technical environment document</h3><p><a href="../Digital%20Green%20Foundation/Technical%20Document_%20Digital%20Green%20FarmerChat%20Contextual%20MEL%20Survey%20Agent%20(MVP).docx">Open the original Technical plan</a></p><p>Primary source for Python 3.12+, Bedrock, draft JSON, synthetic cohort (5,000–10,000 insights; 200–500 farmers), model/region dependencies, evaluation approach, and the shared simulated clock.</p></li>
+  </ul>
+  <details class="source-excerpts"><summary>Key source wording and reading limits</summary><h4>Vision · Design Principles</h4><blockquote>“If an insight does not support a meaningful question, generate nothing.”</blockquote><h4>Vision · MVP Definition of Done</h4><blockquote>“Invalid or low-scoring surveys are verified not to be scheduled.”</blockquote><h4>Technical · Hackathon Approach and Expectations</h4><blockquote>“Quality is the goal.” “There is no access to FarmerChat, Digital Green’s AWS accounts, or real farmer data.”</blockquote><p>Both complete document bodies were extracted with macOS textutil. Lock files were ignored. No tracked changes or substantive comments were present in the inspected DOCX XML. Codex also inspected the technical document’s embedded reference architecture image: passing self-evaluation leads to REST/JSON and storage; failures are logged without scheduling; the diagram includes a shared simulated clock and an evaluation harness. Page numbers are not claimed. The existing local architecture HTML was not treated as evidence of implemented application behavior.</p></details>
+  <div id="model-contributions">
+    <h3 class="subhead">Which tools actually contributed</h3>
+    <div class="contributions"><article><h3>Claude CLI · completed</h3><p>Installed Claude Code 2.1.316 returned the original summary above with exit code 0. Both source texts were explicitly supplied. Safe mode, empty tools, strict MCP configuration, and no session persistence were requested. The configured default model was not independently identified.</p></article><article><h3>Codex · completed</h3><p>Read both plans, the reference image, and DOCX hyperlinks. Inspected the document-linked public code. Reconciled requirements and authored this assessment and proposed plan. Functional verification and a scoped security review were assigned to separate Codex agents.</p></article><article id="gemini-status"><h3>Antigravity / Gemini · completed</h3><p>Antigravity returned SUCCESS with exit code 0. The requested model was gemini-4-argon-high. It received both plans and selected public-code excerpts after explicit sharing approval. It did not independently browse the repository. Its full response is preserved below.</p></article></div>
+    <details id="gemini-review"><summary>Read the separate Gemini review</summary><p class="small muted">Actual Antigravity output. It received the supplied plans and selected code evidence. It did not implement or test the application. Codex does not adopt all its claims: adaptive branching is a proposal, not a source Must Have; the event judging rubric was not supplied; and its suggested combination is too broad for a one-day first build. A timed sample does not satisfy the stated full-dataset criterion unless Digital Green agrees.</p><pre id="gemini-output" class="raw" tabindex="0"># FarmerChat Contextual MEL Survey Agent — One-Day Hackathon Decision Briefing
+
+*Review conducted using Gemini 4 Argon. Based strictly on the supplied Vision, Technical, and Public Repo Evidence documents. No code executed, no external sources queried, and no hackathon outcomes guaranteed.*
+
+---
+
+## 1. Baseline Scope vs. Enhancements
+
+### Source Facts (`Vision` &amp; `Technical`)
+* **Must Have (Table Stakes):**
+  1. **Insight Ingestion:** Load/query the synthetic dataset (5,000–10,000 English insights across 200–500 Bihar farmers, Nov–Mar rabi season).
+  2. **Survey Generation Agent:** Generate short, contextual, tap-based surveys per eligible insight (or group of insights), parameterized by BCP 47 language code (`en-IN`, `hi-IN`). If an insight does not support a meaningful question, generate nothing.
+  3. **Survey JSON Contract:** Emit valid Agent-to-UI JSON (`survey_id`, `farmer_id`, `source_insight_ids`, `language`, `send_window`, `items`, `rationale`, `self_eval`).
+  4. **Self-Evaluation Gate:** Validate JSON schema, safety (no new agronomic advice, no PII), and relevance before scheduling; block failing surveys.
+  5. **Survey Scheduler:** Derive `[not_before, not_after]` send windows from crop calendar + `action_window_days` and enforce a per-farmer frequency cap.
+  6. **Evaluation Harness:** Score generated English baseline surveys against Digital Green’s golden dataset (relevance, timeliness, format, safety, speed) and demonstrate at least one hill-climbing improvement iteration.
+* **Should Have:** Broadcaster stub + simulated tap UI on a shared simulated clock (with manual triggers); Hindi (`hi-IN`) survey generation; latency/token/cost telemetry per survey and batch.
+* **Exploratory / Stretch:** Response write-back to insights; negative-outcome follow-up routing (Stretch Journey 3); alternative channels (voice/chat).
+* **Explicitly Out of Scope:** NightSync/SeasonPlanner/FarmWatch agents, live FarmerChat/AgMCP integration, real message delivery, scale testing (100k users), languages beyond English/Hindi, and replacing RCTs.
+
+---
+
+## 2. Public-Code Compatibility vs. Production Claims
+
+### Source Facts
+* **Production Claims (`Vision` &amp; `Technical`):** State that production FarmerChat on AWS uses Python 3.12+, Google ADK, ~20 MCP servers (including AgMCP), three agents (Alignment, Main, Insight Extractor), REST agent-to-agent calls, Agent-to-UI JSON, Amazon RDS for PostgreSQL, and is moving to Amazon EKS.
+* **Public Code (`Public repo evidence` — [`DG_Open`](https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/api/urls.py#L7-L13) at commit `5064d657`):**
+  * Exposes a Django REST endpoint [`ChatAPIViewSet.get_answer_for_text_query`](https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/api/views.py#L44-L86) with `authentication_classes = []`.
+  * Calls OpenAI directly via `AsyncOpenAI` in [`make_openai_request`](https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/rag_service/openai_service.py#L20-L49) and records prompt/completion tokens and timestamps in [`generate_response.py`](https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/generation/generate_response.py#L59-L79).
+  * Defines relational models in [`models.py`](https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/database/models.py#L60-L341) including `Language` (`bcp_code`), `Messages`, and `FollowUpQuestion` (`ref_id`, `message`, `follow_up_question_type` as nudge/message, `sequence`).
+  * Renders responses via `innerHTML` in [`index.html`](https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/index.html#L532-L538), has an empty [`tests.py`](https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/api/tests.py#L1-L3), and is licensed under GPL v3 in [`LICENSE`](https://github.com/digitalgreenorg/DG_Open/blob/5064d65700e03d413cd283dbafc12386f6b92f75/farmer-chat/LICENSE#L1-L6).
+
+### Review Observations
+* **Do not import or extend `farmer-chat/`:** The inspected public subtree represents an older OpenAI-based RAG monolith, not the Google ADK / Bedrock / 3-agent production architecture described in the `Vision` and `Technical` docs. It contains no MEL agent, scheduler, or evaluation harness.
+* **Contract-first greenfield build:** Align strictly to the JSON data contracts in the `Technical` doc (`insight`, `survey`, `response`), which only conceptually share `bcp_code` and token/latency logging with the public repo. Avoid copying `farmer-chat/` code to prevent inheriting `innerHTML` XSS sinks, unauthenticated view patterns, or unintended GPL v3 viral licensing constraints.
+
+---
+
+## 3. Comparison of the Five Proposed Enhancements
+
+| Feature Choice | Scope Tier (Source Fact) | Smallest 1-Day Demo (Observation) | Dependencies | Key Risks |
+| :--- | :--- | :--- | :--- | :--- |
+| **(1) Failed-advice follow-up** (simulated human-review case/status, no new advice) | **Exploratory** (Stretch Journey 3) + **Safety Tenet** | Deterministic rule on response write-back: if `adoption in {yes, partly}` and `outcome == negative`, create a local case object (`status: &quot;pending_agronomist_review&quot;`) shown as a badge. | Response capture, stable option IDs (3 &amp; 4). | Generating remedial LLM advice violates the Safety Tenet; building a complex ticketing workflow wastes time. |
+| **(2) Season-aware timeline &amp; simulated clock** (windows, frequency caps, grouping) | **Must Have** (Scheduler) + **Should Have** (Simulated Clock/Broadcaster) | Streamlit date stepper (Nov–Mar) + manual trigger showing insight grouping, `[not_before, not_after]` calculation, frequency-cap suppression, and due surveys. | Insight ingestion, crop calendar lookup, `send_window` schema. | Over-building real cron/queue infrastructure when a single-process loop/state filter suffices. |
+| **(3) Adaptive short fixed-option survey** (branching on adoption to outcome vs. barriers) | **Must Have** (Survey Generation &amp; JSON Contract refinement) | 3-item JSON survey: `q1` (adoption: `yes`/`partly`/`no`), `q2_outcome` (shown if `yes`/`partly`), `q3_barrier` (shown if `no`). | Optional `show_if` property on `survey.items` (or UI-level conditional rendering). | Breaking strict Golden Dataset schema checks if extra fields are disallowed—keep `show_if` optional or standard. |
+| **(4) Hindi farmer tap view + English MEL view** (stable IDs; voice stretch only) | **Must Have** (BCP 47 + Contract) + **Should Have** (`hi-IN` + UI) + **Exploratory** (Voice) | Dual-pane Streamlit view: Hindi (`hi-IN`) tap buttons for farmer paired with English (`en-IN`) MEL view linked by invariant `survey_id`, `item_id`, and `option.id`. **Drop voice.** | Language-invariant IDs (`yes`/`no`/`partly`) separated from localized `label`/`prompt`. | LLM translating `option.id` into Hindi breaks aggregation; touching voice in 1 day derails core delivery. |
+| **(5) Actionable MEL insight drilldown** (linked self-reported answers, no causal claims) | **Exploratory** (Response write-back) + **MEL Stakeholder Need** | Read-only summary table grouping responses by `crop`/`topic`/`resolution_type` (adoption rate, top barrier, flagged failures) with drilldown to `insight_id`. Label as *observational/non-causal*. | Response write-back, invariant option IDs from (3) and (4). | Over-claiming RCT-level causality (violates Vision doc) or spending hours on complex BI charting. |
+
+---
+
+## 4. Recommended One-Day Combination &amp; What to Omit
+
+### Recommended Cohesive Combination (Observations)
+Build the **Must Have Evaluation &amp; Generation Core first (Morning)**, then layer a **tight, unified 4-part contract loop (Afternoon)** combining **(2) + (4, text-only) + (3) + lightweight (1 &amp; 5)**:
+1. **Core + (2) Season-Aware Scheduler &amp; Clock:** Directly proves Must Have scheduling criteria (crop calendar + `action_window_days`, per-farmer frequency cap, insight grouping, and blocked low-score surveys) via an interactive Nov–Mar simulated clock.
+2. **(4) Bilingual Stable-ID Contract (`en-IN` + `hi-IN`, No Voice):** Generate English surveys for the Golden Dataset evaluation harness and Hindi labels (`hi-IN`) for the simulated farmer tap UI, sharing invariant IDs (`item_id: &quot;q1&quot;`, `option.id: &quot;yes&quot; | &quot;no&quot; | &quot;partly&quot;`).
+3. **(3) Standardized 3-Item Tap Pattern (Adoption $\rightarrow$ Outcome / Barrier):** Standardize generated surveys into 3 fixed-option items (`q1` Adoption, `q2` Input/Barrier, `q3` Outcome) matching Journey 1. Render conditionally in the tap UI based on `q1`.
+4. **Rule-Based (1) &amp; (5) Write-Back Table (60-minute cap):** When a farmer taps answers in the simulated UI, write back the response JSON. If `q1 != &quot;no&quot;` and `q3 == &quot;not_reduced&quot;`, flag a static `pending_agronomist_review` status row (Feature 1, zero LLM calls, zero agronomic advice) inside a simple observational MEL summary table linked to `insight_id` (Feature 5).
+
+### What to Omit Completely in a One-Day Hackathon
+* **Voice / Audio / Chat channels (Stretch in 4):** High integration friction, zero impact on Golden Dataset scores.
+* **External Databases &amp; Container Orchestration:** Skip RDS/PostgreSQL setup and EKS/Docker deployment unless trivial; use in-memory/JSON/SQLite state behind a clean Python interface and FastAPI + Streamlit in a single process.
+* **Multi-agent frameworks if unfamiliar:** If the team does not already know Google ADK or Strands Agents SDK, use plain Python 3.12 + `boto3` Bedrock Converse API + Pydantic + FastAPI. The `Technical` doc explicitly permits any internal structure that meets the REST and JSON contract.
+
+---
+
+## 5. Evaluation Baseline (Mandatory Table Stakes)
+
+### Source Facts (`Vision` &amp; `Technical`)
+Evaluation is the primary judging criterion. Your harness must run across the synthetic dataset, compare against the golden dataset in **English (`en-IN`)**, and report at least **one hill-climb iteration** (Baseline Run $\rightarrow$ Prompt/Gate Change $\rightarrow$ Improved Run) across five dimensions:
+1. **Format (Deterministic):** Pydantic/JSON Schema validation, tap-only item types (`single_choice`), item count within bounds, valid BCP 47 language code, and presence of `source_insight_ids` and `send_window`.
+2. **Timeliness (Deterministic):** Verify `send_window.not_before` and `not_after` align with `insight.created_at` + `action_window_days` and crop calendar stage, and verify per-farmer frequency cap compliance.
+3. **Safety (Deterministic + Judge):** Verify no PII is requested and no new or contradictory agronomic advice is given.
+4. **Relevance (LLM-as-Judge):** Rubric-scored check that `items` specifically address the farmer&#x27;s `crop`, `topic`, `advice_summary`, and `resolution_type` (and verify non-eligible insights produce no survey).
+5. **Speed &amp; Cost Telemetry (Deterministic):** Log wall-clock latency (per survey and full batch), prompt/completion tokens, and estimated cost; verify surveys failing `self_eval` are blocked from scheduling.
+
+---
+
+## 6. AWS Implementation Guidance
+
+### Source Facts &amp; Verification Guardrails
+* **Mandatory Service:** **Amazon Bedrock** accessed via `boto3` **Bedrock Runtime Converse API** behind a model-abstraction wrapper so model IDs can be swapped without code changes.
+* **Model Tiering (Suggested in `Technical`):** Use a smaller/faster Bedrock model for insight eligibility filtering and pre-schedule self-evaluation checks, and a larger Bedrock model for survey generation and LLM-as-judge scoring.
+* **Optional Services (Must Independently Verify in Workshop Studio Account):**
+  * *Bedrock Model IDs &amp; Regional Quotas:* Confirm with event staff which region and specific models are enabled and check rate limits before batching 5,000–10,000 insights.
+  * *Amazon Bedrock AgentCore Runtime / RDS for PostgreSQL / AWS CDK or Terraform:* Mentioned as acceptable/optional in `Technical`, but verify Workshop Studio IAM permissions before provisioning; a local/single-instance FastAPI + Streamlit app with IaC templates in the repo satisfies the MVP contract with far lower day-one deployment risk.
+
+---
+
+## 7. Unresolved Decisions to Confirm Immediately with Organizers
+
+1. **Exact Schemas &amp; Golden Dataset Format:** What is the exact JSON schema of the provided Golden Dataset and Crop Calendar, and does the schema validator allow an optional `show_if` field on `survey.items` for branching (Feature 3)?
+2. **MEL Judge Rubric:** Does Digital Green provide an existing LLM-as-judge prompt/rubric for Relevance, or must the team author it?
+3. **Eligibility &amp; Grouping Rules:** Which `resolution_type` values (e.g., `wait_and_watch`) or topics should be skipped (&quot;generate nothing&quot;), and what is the exact time window and per-farmer frequency cap for combining multiple insights into one survey?
+4. **Weather-Dependent Send Windows:** Since live weather/AgMCP is out of scope, what deterministic offset rule should the scheduler use when `advice_summary` is conditional on weather (e.g., *&quot;spray within 2 days if no rain&quot;*)?
+5. **Batch Execution Requirement:** For the 5,000–10,000 insight run, is evaluating on the Golden Dataset subset plus a timed/extrapolated batch sample acceptable if Workshop Studio Bedrock throttling limits full-dataset generation?
+</pre></details>
+  </div>
+  <p class="note-line">Public-code findings link to an immutable commit. The public snapshot and the plans describe different architectures. The intended current application repository remains unconfirmed. Confirm the target with Digital Green before reusing code. All recommendations, proposed endpoints, test cases, and demo sequencing are review judgments. No application performance, pilot result, or implementation completion is claimed.</p>
+</section>
+<noscript><p class="noscript">JavaScript is off. All source and review text remains readable below. Workflow selection, scope filtering, and checklist counts need JavaScript.</p></noscript>
+
+
+
+
+
+</main>
+<footer class="footer wrap">Prepared for Team 41 · Plain technical English; formal ASD-STE100 compliance not certified · Self-contained offline briefing · No runtime network requests · Checklist state resets on reload</footer>
+<script>
+(() => {
+  'use strict';
+  const stages = [
+    ['Read synthetic insights', 'Digital Green supplies fully synthetic insights and a golden evaluation set. The expected cohort is 200–500 farmers and 5,000–10,000 insights in Bihar, November–March.', 'Validate input schemas, stable farmer/source IDs, and dataset versions. Missing data should produce an explicit reason, not invented context.', 'T: Data and Simulated Environment'],
+    ['Select context worth asking about', 'A survey concerns advice resolved for this farmer. The plan allows no survey, or grouping several insights, and leaves eligibility/grouping rules open.', 'Keep eligibility outcomes auditable. Test sparse context, duplicates, conflicting advice, and direct/indirect/wait-and-watch resolutions. Agree grouping before measuring coverage.', 'V: Design Principles; Features In Scope; Open Questions'],
+    ['Generate survey and a proposed window', 'Use Bedrock to produce short, tap-answerable survey JSON in the requested language, referencing source insights. Timing depends on crop calendar and action window.', 'Use one documented timing policy. Keep prompts grounded in prior advice; do not generate new agronomic instructions or collect personal information. Treat the example dates as an illustration.', 'T: Models; Core Data Contracts · V: Safety Tenet'],
+    ['Reject failures before scheduling', 'Schema and quality checks precede scheduling. The design principles mention relevance and language. Invalid or low-scoring surveys must not be scheduled.', 'Agree pass thresholds with MEL reviewers. Check ownership, options, language, timing, and prohibited content in code; use a calibrated independent judge for relevance. Do not trust a self-score alone.', 'V: Design Principles; Definition of Done · T: Evaluation'],
+    ['Schedule and simulate delivery', 'A scheduler applies a per-farmer frequency cap. The broadcaster stub uses a shared simulated clock and a simulated tap app; every scheduled step has a manual trigger.', 'Recheck expiry and caps at send time; deduplicate retries. Keep the demo isolated from real delivery. A skipped or failed send should have a visible reason.', 'V: MVP Success Criteria · T: Simulated Clock; Infrastructure'],
+    ['Evaluate the batch and improve', 'Run against the golden dataset, report relevance/timeliness/format scores and generation time, and show at least one improvement iteration. English is the baseline; Hindi is human-reviewed.', 'Preserve a final held-out split and baseline. Show denominators, rejection coverage, safety failures, cost assumptions, and regressions. Synthetic agreement is not evidence of farmer impact.', 'V: Definition of Done · T: Evaluation and Quality Measurement']
+  ];
+  const byId = id => document.getElementById(id);
+  function textElement(tag, text, className) { const el = document.createElement(tag); el.textContent = text; if (className) el.className = className; return el; }
+  function stageBody(index, printable = false) {
+    const [title, fact, observation, source] = stages[index];
+    const box = document.createElement('article');
+    box.append(textElement('h3', (printable ? `${index + 1}. ` : '') + title));
+    const pair = document.createElement('div'); pair.className = 'paired';
+    [[fact,'From the plans','tag'],[observation,'Codex implementation check','tag decision']].forEach(([copy,label,cls]) => {
+      const side = document.createElement('div'); side.append(textElement('span',label,cls),textElement('p',copy)); pair.append(side);
+    });
+    box.append(pair,textElement('p',source,'source-ref')); return box;
+  }
+  const stageButtons = [...document.querySelectorAll('button[data-stage]')];
+  function showStage(index) {
+    stageButtons.forEach((button,i) => { button.setAttribute('aria-selected',String(i===index));button.tabIndex=i===index?0:-1; });
+    byId('stage-detail').replaceChildren(stageBody(index)); byId('stage-detail').setAttribute('aria-labelledby',stageButtons[index].id);
+  }
+  function wireTabs(buttons, activate) {
+    buttons.forEach((button,index) => {
+      button.addEventListener('click',() => activate(index));
+      button.addEventListener('keydown',event => {
+        if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+        event.preventDefault();
+        const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:(index+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;
+        activate(next);buttons[next].focus();
+      });
+    });
+  }
+  wireTabs(stageButtons,showStage);showStage(0);
+  stages.forEach((_,i) => byId('print-workflow').append(stageBody(i,true)));
+  const filter=byId('scope-filter'), rows=[...document.querySelectorAll('tr[data-scope]')];
+  function filterScope(){rows.forEach(row => row.hidden=filter.value!=='all'&&row.dataset.scope!==filter.value);byId('scope-count').textContent=`${rows.filter(row=>!row.hidden).length} of ${rows.length} capabilities shown`;}
+  filter.addEventListener('change',filterScope);filterScope();
+  const buildButtons=[...document.querySelectorAll('button[data-build]')],buildPanels=[...document.querySelectorAll('.build-panel')];
+  function showBuild(index){buildButtons.forEach((button,i)=>{button.setAttribute('aria-selected',String(i===index));button.tabIndex=i===index?0:-1;buildPanels[i].hidden=i!==index;});}
+  wireTabs(buildButtons,showBuild);showBuild(0);
+  const checks=[...byId('acceptance-list').querySelectorAll('input[type=checkbox]')];
+  function updateChecklist(){byId('acceptance-count').textContent=`${checks.filter(check=>check.checked).length} of ${checks.length} review items marked`;}
+  checks.forEach(check=>check.addEventListener('change',updateChecklist));
+  byId('reset-checklist').addEventListener('click',()=>{checks.forEach(check=>check.checked=false);updateChecklist();});updateChecklist();
+
+  const picks=[...document.querySelectorAll('input[data-pick]')];
+  function updateShortlist(){
+    const selected=picks.filter(pick=>pick.checked).map(pick=>pick.closest('[data-enhancement]').querySelector('h3').textContent);
+    byId('selection-summary').textContent=selected.length ? `Discussion shortlist: ${selected.join(' + ')}. Dependencies: shared survey loop and answer IDs. Tradeoff: ${selected.length>2?'more than two choices may exceed one day; reduce scope':'reuse the shared loop and confirm each schema extension'}. This is not implementation approval.` : 'No options shortlisted. This is a discussion shortlist, not implementation approval.';
+  }
+  picks.forEach(pick=>pick.addEventListener('change',updateShortlist));
+  byId('reset-selection').addEventListener('click',()=>{picks.forEach(pick=>pick.checked=false);updateShortlist();});updateShortlist();
+
+  let detailState=null;
+  function openForPrint(){if(detailState)return;detailState=[...document.querySelectorAll('details')].map(detail=>[detail,detail.open]);detailState.forEach(([detail])=>detail.open=true);}
+  function restoreAfterPrint(){if(!detailState)return;detailState.forEach(([detail,open])=>detail.open=open);detailState=null;}
+  byId('print-button').addEventListener('click',()=>{openForPrint();window.print();});
+  window.addEventListener('beforeprint',openForPrint);window.addEventListener('afterprint',restoreAfterPrint);
+})();
+</script>
+</body>
+</html>

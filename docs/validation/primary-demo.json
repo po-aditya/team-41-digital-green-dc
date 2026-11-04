@@ -1,0 +1,296 @@
+{
+  "clock_end": "2026-12-30T19:15:00+05:30",
+  "cases": {
+    "1_valid_eligible": {
+      "decision": "survey",
+      "rule": "R8",
+      "generation": {
+        "status": "scheduled",
+        "survey_id": "S-000138",
+        "handoff_id": "H-000138"
+      },
+      "survey_schema_valid": true,
+      "survey_language": "hi-IN",
+      "items": 3,
+      "handoff_state": "scheduled",
+      "passed": true,
+      "insight_id": "I-000138"
+    },
+    "2_junk_suppressed": {
+      "decision": "junk_insight",
+      "rule": "R1",
+      "no_survey": {
+        "insight_id": "I-000011",
+        "farmer_id": "F-000241",
+        "decision": "no_survey",
+        "reason_code": "generic_information",
+        "reason": "[junk_insight] No agricultural question or advice was recorded (greeting, thanks, off-topic or unreadable message), so there is nothing to follow up."
+      },
+      "no_survey_schema_valid": true,
+      "survey_exists": false,
+      "passed": true,
+      "insight_id": "I-000011"
+    },
+    "3_invalid_quarantined": {
+      "quarantine_reason": "schema_invalid",
+      "decision": "quarantined",
+      "rule": "R0",
+      "survey_exists": false,
+      "passed": true,
+      "insight_id": "I-000021"
+    },
+    "4_critical_human": {
+      "decision": "critical_needs_human_call",
+      "rule": "R2",
+      "needs_human": true,
+      "external_reason_code": "needs_more_context",
+      "no_survey_schema_valid": true,
+      "in_human_queue": true,
+      "passed": true,
+      "insight_id": "I-000512"
+    },
+    "5_temporal_rejected": {
+      "decision": "window_after_season",
+      "rule": "R6",
+      "details": {
+        "would_start": "2027-04-12",
+        "season_end": "2027-03-31",
+        "needs_human": false,
+        "send_window": null
+      },
+      "passed": true,
+      "insight_id": "I-006851"
+    },
+    "6_end_to_end_delivery": {
+      "handoff_id": "H-002560",
+      "priority": "high",
+      "channel_order": [
+        "voice",
+        "whatsapp"
+      ],
+      "handoff_schema_valid": true,
+      "bottom_sheet_schema_valid": true,
+      "attempts": [
+        {
+          "channel": "voice",
+          "delivery_attempt": 1,
+          "state": "failed",
+          "outcome_status": "delivery_failed",
+          "failure_code": "voice_busy"
+        },
+        {
+          "channel": "voice",
+          "delivery_attempt": 1,
+          "state": "superseded",
+          "outcome_status": null,
+          "failure_code": null
+        },
+        {
+          "channel": "voice",
+          "delivery_attempt": 2,
+          "state": "answered",
+          "outcome_status": "completed",
+          "failure_code": null
+        }
+      ],
+      "responses": [
+        {
+          "response_key": "rk-S-002560-voice-1-voice_busy",
+          "channel": "voice",
+          "status": "delivery_failed",
+          "failure_code": "voice_busy",
+          "counts_toward_cap": 0
+        },
+        {
+          "response_key": "rk-S-002560-voice-2-completed",
+          "channel": "voice",
+          "status": "completed",
+          "failure_code": null,
+          "counts_toward_cap": 1
+        }
+      ],
+      "all_response_records_schema_valid": true,
+      "final_state": "answered",
+      "broadcast_totals": {
+        "sent": 2,
+        "answered": 1,
+        "failed": 1,
+        "moved_on": 0,
+        "expired": 1,
+        "cap_deferred_ticks": 0,
+        "cap_suppressed": 0,
+        "opt_out_suppressed": 0,
+        "blocked_unsafe": 0,
+        "claims_lost": 0,
+        "duplicates_ignored": 0,
+        "schema_invalid_records": 0
+      },
+      "passed": true,
+      "insight_id": "I-002560"
+    },
+    "7_idempotency": {
+      "reprocess_status": "already_scheduled",
+      "reprocess_status_case1": "already_scheduled",
+      "tick_changes": {},
+      "second_tick_changes": {},
+      "counts_before": {
+        "surveys": {
+          "validated": 2
+        },
+        "handoffs": {
+          "answered": 1,
+          "expired_unsent": 1
+        },
+        "responses": {
+          "by_status": {
+            "completed": 1,
+            "delivery_failed": 1
+          },
+          "needs_follow_up": 0
+        },
+        "attempts": {
+          "answered": 1,
+          "failed": 1,
+          "superseded": 1
+        }
+      },
+      "counts_after": {
+        "surveys": {
+          "validated": 2
+        },
+        "handoffs": {
+          "answered": 1,
+          "expired_unsent": 1
+        },
+        "responses": {
+          "by_status": {
+            "completed": 1,
+            "delivery_failed": 1
+          },
+          "needs_follow_up": 0
+        },
+        "attempts": {
+          "answered": 1,
+          "failed": 1,
+          "superseded": 1
+        }
+      },
+      "passed": true
+    },
+    "8_budget_cutoff": {
+      "steps": [
+        {
+          "call": 1,
+          "settled_usd": 80.0,
+          "committed_after": 80.0
+        },
+        {
+          "call": 2,
+          "settled_usd": 80.0,
+          "committed_after": 160.0
+        }
+      ],
+      "refused": {
+        "call": 3,
+        "error": "budget cutoff reached: committed $160.000000 + estimate $100.000000 would exceed the $225.000000 automatic cutoff (ceiling $250.000000)",
+        "committed_usd": 160.0
+      },
+      "ledger_status": {
+        "cutoff_usd": 225.0,
+        "ceiling_usd": 250.0,
+        "settled_usd": 160.0,
+        "open_reserved_usd": 0.0,
+        "unresolved_usd": 0.0,
+        "committed_usd": 160.0,
+        "remaining_to_cutoff_usd": 65.0,
+        "state": "ok",
+        "calls_settled": 2,
+        "calls_refused": 1,
+        "unresolved_count": 0,
+        "paid_inference_enabled": true
+      },
+      "default_settings_block": "paid inference is disabled (set MEL_ALLOW_PAID_INFERENCE=true to enable)",
+      "passed": true
+    }
+  },
+  "summary": {
+    "ingestion": {
+      "status": "complete",
+      "content_fingerprint": "5628b1d32c93b9aa",
+      "crop_calendar_rejected": 0,
+      "crop_calendar_rows": 86,
+      "csv_reconciliation": {
+        "csv_ids_missing_in_jsonl": 0,
+        "csv_rows": 6999,
+        "jsonl_ids_missing_in_csv": 0,
+        "jsonl_objects": 6999,
+        "malformed_rows": 0,
+        "mismatched_fields": {},
+        "status": "ok"
+      },
+      "csv_rows": 6999,
+      "duplicates": 0,
+      "farmer_rows_rejected": 0,
+      "farmers": 300,
+      "golden_cases": 150,
+      "golden_missing_from_dataset": 0,
+      "insights_lines": 6999,
+      "insights_quarantined": 50,
+      "insights_stored_valid": 6949,
+      "quality_flag_counts": {
+        "clean": 6276,
+        "junk": 723
+      },
+      "quarantine_by_reason": {
+        "schema_invalid": 50
+      },
+      "schema_valid_by_quality_flag": {
+        "clean": 6276,
+        "junk": 673
+      },
+      "unknown_farmers": 0
+    },
+    "decisions": {
+      "by_decision": {
+        "no_survey": 3,
+        "quarantined": 1,
+        "survey": 2
+      },
+      "by_rule": {
+        "R0": 1,
+        "R1": 1,
+        "R2": 1,
+        "R6": 1,
+        "R8": 2
+      },
+      "by_internal_reason": {
+        "critical_needs_human_call": 1,
+        "junk_insight": 1,
+        "schema_invalid": 1,
+        "survey": 2,
+        "window_after_season": 1
+      }
+    },
+    "surveys": {
+      "validated": 2
+    },
+    "handoffs": {
+      "answered": 1,
+      "expired_unsent": 1
+    },
+    "delivery_attempts": {
+      "answered": 1,
+      "failed": 1,
+      "superseded": 1
+    },
+    "responses": {
+      "by_status": {
+        "completed": 1,
+        "delivery_failed": 1
+      },
+      "needs_follow_up": 0
+    },
+    "clock": "2026-12-30T19:15:00+05:30"
+  },
+  "all_passed": true
+}
