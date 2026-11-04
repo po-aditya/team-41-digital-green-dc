@@ -25,12 +25,13 @@ Rule precedence (derived from the golden set):
 
 NOTE on R7 (crop_already_harvested): the golden set contains exactly one R7
 case (G-0136) which is NOT distinguishable from legitimate R8 post-harvest
-surveys by any structured field - post_harvest/harvest/dormant stages and
-stored-produce queries all appear in genuine R8 surveys. R7 depends on whether
-the SPECIFIC advice is still verifiable, which needs semantics this
-deterministic gate does not have. We therefore do NOT implement a structural
-R7 rejection (it would wrongly reject ~9 valid R8 surveys to catch 1 R7). This
-is a documented limitation; see docs/DECISIONS.md.
+surveys by a documented structural rejection rule. Harvest/post-harvest stages
+and stored-produce queries also appear in genuine R8 surveys. The disputed
+insight has a null growth stage and actionable storage advice. The pack does
+not explain why that specific advice is unverifiable; semantic review and
+clarification of the reference label are still needed. A blanket harvest/storage
+rejection would also block legitimate follow-ups. We do not implement that
+rejection; see docs/DECISIONS.md.
 """
 
 from __future__ import annotations

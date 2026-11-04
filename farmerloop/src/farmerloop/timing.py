@@ -76,8 +76,9 @@ def compute_window(
 ) -> Window | None:
     """Compute the send window per the documented rules.
 
-    Returns None when the input date cannot be parsed. The window may legally
-    fall after the season end; callers (eligibility R6) decide what that means.
+    Returns None when the input date cannot be parsed or no window of the
+    required minimum width fits before season end. Eligibility alone does not
+    guarantee that a feasible window exists.
     """
     advice_day = parse_ist_date(created_at)
     if advice_day is None:

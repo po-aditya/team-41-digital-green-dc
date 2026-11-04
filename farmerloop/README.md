@@ -1,13 +1,16 @@
 # FarmerLoop Intelligence: Milestone 1
 
+Next work: [development, demo and adoption plan](docs/DEVELOPMENT_PLAN.md), with
+checkpoint scope, acceptance checks, dependencies and remaining requirements.
+
 Regional Learning Radar extension: **Checkpoints 1–3 are implemented** as an offline,
 synthetic two-district scenario using the existing pipeline. Run
 `python -m farmerloop.radar_demo` with the installed environment; add `--json`
 for all source records. See [checkpoint status, commands, and limitations](docs/RADAR_CHECKPOINTS.md).
 Add `--analyze` for computed regional metrics and detection signals, or
 `--analyze --json` for the analysis contract. Add `--findings` for evidence-backed observations and human-review suggestions;
-`--findings --json` includes the full source archive for drill-down. The Radar UI
-is not implemented yet.
+`--findings --json` includes the full source archive for drill-down. A temporary
+Streamlit viewer is available below.
 
 Deterministic foundation for a multilingual MEL survey agent for Digital Green's FarmerChat. It reads farmer insights, decides whether each one gets a follow-up survey, computes a send window, writes a short tap-answer survey (Hindi or English), and builds a scheduler hand-off. All emitted artifacts are checked against the supplied JSON Schemas.
 
@@ -20,6 +23,15 @@ Run `python -m farmerloop.evaluate_quality` for before/after screening results,
 or add `--practice --json` for the full practice-run summary and reference pairs.
 See [quality checks, measured results and limitations](docs/SURVEY_QUALITY.md).
 These checks do not certify semantic relevance or agricultural safety.
+
+## Eligibility and timing update
+
+Eligibility/timing checkpoint: scheduling now rechecks input eligibility and
+the computed window, and rejects handoffs after the send window closes.
+Run `python -m farmerloop.evaluate_timing` to distinguish written-rule compliance
+from golden-reference agreement. All five worked windows match exactly;
+G-0136 remains an explicitly documented eligibility disagreement.
+See [policy, fixes, reference conflicts and results](docs/DECISIONS.md).
 
 ## Setup (Python 3.12+)
 
@@ -41,6 +53,28 @@ export FARMERLOOP_PACK=/path/to/participant-pack
 ```
 
 ## Run
+
+### Temporary browser demo (offline)
+
+From `farmerloop/`:
+
+```bash
+uv pip install --python .venv/bin/python -e ".[ui]"
+.venv/bin/python -m streamlit run streamlit_app.py --server.address 127.0.0.1 --browser.gatherUsageStats false
+```
+
+Open `http://localhost:8501`, select English or Hindi, and click **Run demo**.
+The single page shows computed district counts, the two Radar findings, and
+expandable source evidence. All farmers and responses are simulated. It uses
+the existing scenario, analysis and evidence resolver; no AWS or messaging
+services are called. Results live only in the browser session. The interface
+is English; the language selector controls the survey questions.
+
+In this Codex workspace, use `/workspace/scratch/farmerloop-venv/bin/python`
+instead of `.venv/bin/python`. Remote workspaces may require port forwarding
+for port 8501 to view the page from your own computer.
+
+### Command-line demos
 
 ```bash
 .venv/bin/python scripts/smoke_load.py      # load counts + golden eligibility evaluation

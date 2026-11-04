@@ -13,8 +13,10 @@ from typing import Any
 
 from . import ids
 from .config import IST_OFFSET
+from .decide import decide
 from .models import Insight, Survey
-from .timing import NOT_AFTER_TIME, SEASON_END, Window
+from .timing import NOT_AFTER_TIME, SEASON_END, Window, compute_window
+from .validate import validate
 
 # India Standard Time (UTC+05:30); India has no DST.
 _IST = timezone(timedelta(hours=5, minutes=30))
@@ -104,7 +106,11 @@ def _format_ist(dt: datetime) -> str:
     """
     if dt.tzinfo is not None:
         dt = dt.astimezone(_IST)
-    return dt.strftime("%Y-%m-%dT%H:%M:%S") + IST_OFFSET
+    else:
+        dt = dt.replace(tzinfo=_IST)
+    # Preserve fractional seconds so a just-closed window cannot be reopened
+    # by rounding the handoff creation timestamp down to the boundary.
+    return dt.isoformat()
 
 
 def build_handoff(
@@ -118,10 +124,27 @@ def build_handoff(
 
     ``created_at`` is the REAL handoff creation time (production: a tz-aware
     "now"; tests/demo: an explicit reference). A handoff created AT OR AFTER its
-    expiry is rejected. Creation during an otherwise-valid send window is
-    allowed - the rules only forbid SENDING outside the window, not creating
-    the handoff then.
+    expiry, or after its send window closes, is rejected. Creation before or
+    during an otherwise-valid send window is allowed; sending must occur
+    inside the window.
     """
+    # Do not trust a caller to have run the input and eligibility gates.
+    # exclude_unset preserves omission of the optional practice quality_flag;
+    # required nullable fields must still be present in the source model.
+    errors = validate("insight", insight.model_dump(mode="json", exclude_unset=True))
+    if errors:
+        raise ValueError("Invalid insight for scheduling: " + "; ".join(errors[:3]))
+    decision = decide(insight)
+    if not decision.survey:
+        raise ValueError("Insight is not eligible: " + decision.internal_reason_code)
+    expected_window = compute_window(
+        insight.created_at, insight.verification.timing, insight.action_window_days
+    )
+    if expected_window is None:
+        raise ValueError("No feasible send window under the documented timing rules")
+    if window != expected_window:
+        raise ValueError("Supplied window differs from the insight's computed send window")
+
     # Validate at the handoff boundary, including callers that bypass generators.
     from .quality import require_quality
     require_quality(insight, survey)
@@ -131,9 +154,13 @@ def build_handoff(
     sid = survey.survey_id
     cap_exempt = priority == "high"
 
-    created_str = (
-        created_at if isinstance(created_at, str) else _format_ist(created_at)
-    )
+    if isinstance(created_at, str):
+        created_dt = datetime.fromisoformat(created_at)
+        if created_dt.tzinfo is None:
+            raise ValueError("String created_at must include a timezone offset")
+    else:
+        created_dt = created_at
+    created_str = _format_ist(created_dt)
     expires_str = _expiry_iso(window)
 
     # Chronology guard: never create a handoff that is already expired.
@@ -141,8 +168,10 @@ def build_handoff(
         raise ValueError(
             f"handoff created_at {created_str} is at/after expires_at {expires_str}"
         )
+    if datetime.fromisoformat(created_str) > datetime.fromisoformat(window.not_after_iso()):
+        raise ValueError("Cannot schedule a survey after its send window has closed")
 
-    return {
+    handoff = {
         "handoff_id": ids.handoff_id(sid),
         "created_at": created_str,
         "survey": survey.dump(),
@@ -165,3 +194,7 @@ def build_handoff(
             "flow_id": ids.flow_id(sid),
         },
     }
+    errors = validate("schedule_handoff", handoff)
+    if errors:
+        raise ValueError("Invalid schedule handoff: " + "; ".join(errors[:3]))
+    return handoff

@@ -4,13 +4,16 @@
 
 Checkpoints 0–3 (baseline, synthetic scenario, analysis and evidence-backed findings)
 are complete. The user authorized Checkpoints 1–3 and subsequently an offline survey-quality
-checkpoint, documented in [SURVEY_QUALITY.md](SURVEY_QUALITY.md). Checkpoints 4–5 require
-approval before implementation. No commits, pushes, merges, PRs, teammate-file
-edits, official-pack edits, credentials, or paid AWS calls are authorized.
+checkpoint, documented in [SURVEY_QUALITY.md](SURVEY_QUALITY.md). The user has now
+approved a basic, temporary Checkpoint 4 browser view. Checkpoint 5 remains
+pending. Teammate-file edits, official-pack edits, credential changes, merges,
+and paid AWS calls remain outside this scope.
 
 Starting branch: `feature/jeremiah-farmerloop`.
 Starting commit: `cd30a6e61c3d645e3d1dc7730ee0f949b635fd0c`.
-Implementation is currently uncommitted in this checkout.
+Checkpoints 1–3 and the quality increment were committed and pushed with user
+approval as `7de9d2b7a256e16626127eefc08a1dc9a778c343`. The temporary UI is a
+subsequent local change.
 
 The broader product context remains in [REGIONAL_LEARNING_RADAR_IDEAS.md](REGIONAL_LEARNING_RADAR_IDEAS.md).
 Official schemas and rules remain authoritative in `../../data/participant-pack`.
@@ -292,11 +295,22 @@ files unless the caller explicitly redirects stdout.
 Following the requirements review, survey quality was prioritized before UI
 work. That offline increment is documented in SURVEY_QUALITY.md. Remaining core
 requirements include semantic evaluation, calendar checks and cap enforcement.
-Checkpoint 4 still requires approval: a browser demonstration with district comparison,
-computed metrics, two readable findings, and working evidence drill-down using
-the report's resolver/archive. Prefer an isolated FarmerLoop view unless a
-teammate UI integration is explicitly approved. Checkpoint 5 packages and
-rehearses the end-to-end presentation.
+The subsequent eligibility/timing investigation is documented in
+[DECISIONS.md](DECISIONS.md), including stricter scheduling-boundary checks and
+a separate audit of contradictory reference windows. G-0136 remains unresolved.
+The user subsequently approved a very simple, temporary browser demo. That
+limited Checkpoint 4 view is implemented in `farmerloop/streamlit_app.py`:
+one run button, English/Hindi survey selection, computed district comparison,
+two readable findings, and evidence drill-down using the existing resolver.
+It uses only the base synthetic scenario and keeps the existing backend intact.
+Streamlit is an optional `ui` dependency. Launch instructions are in the README.
+This does not include a production UI or teammate-app integration.
+Verification on 2026-11-04: Streamlit's AppTest exercised the initial state,
+run button, computed district counts, both findings, farmer evidence selection,
+and a Hindi rerun. All checks passed; the existing suite passed 430 tests.
+The running server returned HTTP 200 for the page and health endpoint. This is
+functional verification, not a manual visual review in a browser.
+Checkpoint 5 packages and rehearses the end-to-end presentation.
 
 Known limits: scripted observations, fictional districts, no causal inference,
 no production messaging or persistent history, no full cross-question semantic
