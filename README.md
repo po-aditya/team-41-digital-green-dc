@@ -6,8 +6,8 @@ language, hands them to a scheduler, and simulates delivery and farmer answers.
 Runtime LLM inference uses Amazon Bedrock behind a hard spending control; the
 whole pipeline also runs fully offline with a deterministic template provider.
 
-**Workspace status:** The phased MVP is the primary application in this review
-branch. Kevin's model-based prototype and phone mockup are preserved separately in
+**Workspace status:** The phased MVP is the primary application in this
+workspace. Kevin's model-based prototype and phone mockup are preserved separately in
 `prototypes/kevin/`; Jeremiah's FarmerLoop and response-conformance work are in
 `farmerloop/`. All three use the unchanged synthetic pack at `data/participant-pack/`.
 They have separate runtimes and stores; their APIs and evaluation scores are not
@@ -19,9 +19,22 @@ The uploaded vision and technical Word documents remain in
 The [interactive briefing](docs/farmerchat-briefing/index.html) and
 [architecture diagram](docs/dynamichtml-diagram.html) are also retained.
 
-This is a local review branch. Main and GitHub have not been changed by this
-consolidation. Independent validation results are recorded in
+Independent application validation results are recorded in
 [the validation report](docs/CONSOLIDATION_VALIDATION.md).
+
+## AWS deployment
+
+The [Terraform deployment guide](Terraform/README.md) describes deployment from
+another computer into an explicitly selected AWS account. The package provides
+an internet-facing Application Load Balancer in `us-east-1` and persistent storage
+for the current SQLite sandbox. Initial HTTP access uses the load balancer's AWS
+hostname for the synthetic demo; operator APIs remain accessible through Systems
+Manager tunnels. It preserves the alternate prototypes as separate runtimes.
+Terraform prints the application URL after deployment. Optional authenticated
+HTTPS access requires a domain and DNS configuration.
+
+The infrastructure has not been deployed. Read the guide's validation evidence,
+target-account checks, secret setup, and sandbox limitations before applying it.
 
 ## What it does
 
@@ -329,13 +342,14 @@ independent review, including process-level concurrency and crash-recovery tests
 docker compose up --build
 ```
 
-**The image has not been built or run**: Docker is not available on the
-development machine. The Python 3.12 environment it describes has been tested
-directly (full suite on CPython 3.12.16 from the lockfiles).
+The root Compose image and its volume wiring have not been exercised in this
+validation. The separate deployment images under `Terraform/images/` have been
+built and smoke-tested; see [infrastructure validation](Terraform/VALIDATION.md).
+The application suite also passed directly on CPython 3.12.16.
 
 ## Known limitations
 
-- Streamlit demo not included (the brief accepts a CLI); bottom sheets render via the API/CLI.
+- The primary runtime renders bottom-sheet JSON through its API/CLI; Kevin's separate prototype supplies the Streamlit demo.
 - Hindi templates unreviewed; Bedrock output unevaluated (no paid calls were authorised).
 - Content policy is deterministic (closed catalogue plus allow-lists and lexicons for English and Hindi), not a judgement of meaning.
 - Eligibility's readability floor is script-neutral but lexical only; fluent nonsense in any script passes it (see `docs/CONTRACT_QUESTIONS.md` §6).
