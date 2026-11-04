@@ -13,9 +13,31 @@ from pathlib import Path
 # Repo root = two levels up from this file (src/farmerloop/config.py -> repo).
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-# Default: participant-pack sits next to the project under /workshop.
-_DEFAULT_PACK = REPO_ROOT.parent / "participant-pack"
-PARTICIPANT_PACK = Path(os.environ.get("FARMERLOOP_PACK", _DEFAULT_PACK)).resolve()
+# Candidate pack locations, checked in order:
+#   1. ../participant-pack        (standalone workshop layout)
+#   2. ../data/participant-pack   (team repository layout)
+_PACK_CANDIDATES = (
+    REPO_ROOT.parent / "participant-pack",
+    REPO_ROOT.parent / "data" / "participant-pack",
+)
+
+
+def _resolve_pack() -> Path:
+    """FARMERLOOP_PACK wins if set; otherwise the first candidate that exists.
+
+    If none exist we return the first candidate so the error message names a
+    concrete path rather than silently picking an unrelated directory.
+    """
+    env = os.environ.get("FARMERLOOP_PACK")
+    if env:
+        return Path(env).resolve()
+    for candidate in _PACK_CANDIDATES:
+        if (candidate / "json" / "schemas").is_dir():
+            return candidate.resolve()
+    return _PACK_CANDIDATES[0].resolve()
+
+
+PARTICIPANT_PACK = _resolve_pack()
 
 # Data files (read-only).
 DATA_DIR = PARTICIPANT_PACK / "data"
