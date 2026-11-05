@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-DA77Zxcs+Bzg2TGLQVDVhvpB3DseyudxDxHF5aLvCPs='; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-WzKJm7fwr++gQTc4/JR5uZ09gavXF5m9u8if3gTxauI='; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <title>FarmerChat MEL Agent — Team 41</title>
 <style>
@@ -63,7 +63,7 @@ h2 em{font-style:italic;color:var(--leaf)}
 .tag.warn{background:var(--mustard-soft);color:#6b4a06}
 .mono{font-family:var(--mono)}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--card)}
-.seg button{border:0;background:none;padding:7px 16px;border-radius:999px;font-size:15px;color:var(--muted)}
+.seg button{border:0;background:none;padding:7px 14px;white-space:nowrap;border-radius:999px;font-size:15px;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 
 /* ---------- 1 · problem ---------- */
@@ -206,20 +206,23 @@ h2 em{font-style:italic;color:var(--leaf)}
 .opts button:hover{border-color:var(--leaf-2);background:#f6faef}
 .opts button.picked{border-color:var(--leaf);background:var(--sprout)}
 .opts button.picked.fu{border-color:var(--rust);background:var(--rust-soft)}
-.thanks{text-align:center;padding:18px 6px}
-.thanks .big{font:500 30px var(--serif);color:var(--leaf)}
-.thanks button{margin-top:12px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px}
-.phonectl{display:flex;justify-content:center;margin-top:12px}
-.record{padding:16px 18px}
+.thanks{text-align:center;padding:18px 6px;font-size:16px;color:var(--leaf);font-weight:600}
+.stitle{font-size:12.5px;font-weight:700;color:var(--leaf);margin-bottom:8px}
+.rhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.rhead h4{margin:0!important}
+.replay{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 12px;font-size:13px}
+.rnote{margin:0 0 8px;font-size:13px;color:var(--muted)}
+.phonectl{display:flex;justify-content:center;align-items:center;margin-top:12px}
+.record{padding:14px 18px}
 .record h4{margin:0 0 6px;font:500 21px var(--serif)}
-.record pre{margin:0;font:13.5px/1.5 var(--mono);background:var(--night);color:#d9e8cc;border-radius:10px;padding:12px 14px;min-height:190px;white-space:pre-wrap;overflow-wrap:anywhere}
+.record pre{margin:0;font:12.5px/1.42 var(--mono);background:var(--night);color:#d9e8cc;border-radius:10px;padding:10px 12px;min-height:0;white-space:pre-wrap;overflow-wrap:anywhere}
 .record pre .k{color:#f2cf73}
-.alert{margin-top:10px;padding:10px 12px;border-radius:10px;font-size:15px;background:#eef3e4;transition:background .3s}
+.alert{margin-top:8px;padding:8px 12px;border-radius:10px;font-size:14px;background:#eef3e4;transition:background .3s}
 .alert.on{background:var(--rust-soft);color:#6d2412}
 .checks{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.run{margin-top:14px;padding:12px 16px;font-size:14px}
+.run{margin-top:12px;padding:10px 16px;font-size:14px}
 .run code{display:block;font:13.5px var(--mono);background:#efe7d2;border-radius:8px;padding:8px 10px;margin-top:6px}
-.cases{display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;margin-top:8px;font-size:13.5px}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:1px 12px;margin-top:6px;font-size:12.5px}
 .cases span::before{content:"✓ ";color:var(--leaf);font-weight:800}
 
 /* ---------- 5 · impact ---------- */
@@ -290,19 +293,19 @@ h2 em{font-style:italic;color:var(--leaf)}
           </div>
         </header>
         <div class="farmer"><div class="av" aria-hidden="true">🌼</div><div>
-          <div class="who"><b>Mustard grower, Samastipur</b> · asked about black and orange bugs on young plants</div>
-          <div class="bubble"><span class="q" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you follow FarmerChat's advice about the pest or disease problem on your mustard?"></span></div>
+          <div class="who"><b>Mustard grower, Samastipur</b> · I-000138 · reported black and orange bugs on young plants</div>
+          <div class="bubble"><span class="q" data-insight="I-000138" data-intent="did_action" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you follow FarmerChat's advice about the pest or disease problem on your mustard?"></span></div>
         </div></div>
         <div class="farmer"><div class="av" aria-hidden="true">🌾</div><div>
-          <div class="who"><b>Wheat grower</b> · asked why leaves are turning yellow</div>
-          <div class="bubble"><span class="q" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you follow FarmerChat's advice about the nutrient problem on your wheat?"></span></div>
+          <div class="who"><b>Wheat grower, Darbhanga</b> · I-002107 · reported older leaves turning yellow</div>
+          <div class="bubble"><span class="q" data-insight="I-002107" data-intent="did_action" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you follow FarmerChat's advice about the nutrient problem on your wheat?"></span></div>
         </div></div>
         <div class="farmer"><div class="av" aria-hidden="true">🐐</div><div>
-          <div class="who"><b>Goat keeper</b> · was referred to a vet for a sick goat</div>
-          <div class="bubble"><span class="q" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you reach the veterinary doctor about your goat?"></span></div>
+          <div class="who"><b>Goat keeper, Katihar</b> · I-001916 · advised to call a vet about a shivering goat</div>
+          <div class="bubble"><span class="q" data-insight="I-001916" data-intent="reached_expert" data-b="How satisfied are you with FarmerChat? Rate 1–5." data-c="Did you reach the veterinary doctor about your goat?"></span></div>
         </div></div>
         <div id="verdict" style="margin-top:12px"></div>
-        <p class="illus">Contextual wording is the agent's real catalogue text. Farmer profiles are synthetic.</p>
+        <p class="illus">Farmers are real records from the synthetic dataset. Contextual questions are the agent's catalogue rendering of each insight. The broadcast question is an illustrative example we wrote, not a Digital Green survey.</p>
       </div>
     </div>
   </section>
@@ -398,7 +401,7 @@ h2 em{font-style:italic;color:var(--leaf)}
             <text class="nt" x="814" y="238">Secrets Manager</text><text class="ns" x="814" y="256">operator tokens at boot</text></g>
           <g class="node c-sec" data-aws="iam" data-t="deploy paid" tabindex="0" role="button" aria-label="IAM instance profile">
             <rect class="box" x="800" y="288" width="190" height="56" rx="9"/><rect class="cat" x="800" y="288" width="5" height="56" rx="2"/>
-            <text class="nt" x="814" y="312">IAM instance role</text><text class="ns" x="814" y="330">least privilege</text></g>
+            <text class="nt" x="814" y="312">IAM instance role</text><text class="ns" x="814" y="330">SSM · ECR pull · one secret</text></g>
           <g class="node opt c-ai" data-aws="bedrock" data-t="paid" tabindex="0" role="button" aria-label="Amazon Bedrock">
             <rect class="box" x="800" y="470" width="190" height="60" rx="9"/><rect class="cat" x="800" y="470" width="5" height="60" rx="2"/>
             <text class="nt" x="814" y="496">Amazon Bedrock</text><text class="ns" x="814" y="514">gated · off by default</text></g>
@@ -457,7 +460,7 @@ h2 em{font-style:italic;color:var(--leaf)}
 
   <!-- ================= 4 · DEMO ================= -->
   <section class="slide" data-slide="demo" aria-label="Demo">
-    <p class="eyebrow rise"><span>04</span>Demo · real output from our run</p>
+    <p class="eyebrow rise"><span>04</span>Demo · real insight and survey · taps simulated here</p>
     <h2 class="rise" style="--d:1">Bugs on mustard today, <em>three taps</em> four days later.</h2>
     <div class="d-grid">
       <div>
@@ -491,23 +494,23 @@ h2 em{font-style:italic;color:var(--leaf)}
           <div class="notch"></div>
           <div class="apphead"><div class="logo">F</div><div><b>FarmerChat</b><small>Survey S-000138 · app bottom sheet</small></div></div>
           <div class="chat">
-            <div class="msg" id="chatMsg"></div>
             <div class="sheet" id="sheet"></div>
           </div>
         </div></div>
         <div class="phonectl"><div class="seg" role="group" aria-label="Survey language">
-          <button type="button" data-lang="hi" aria-pressed="true">हिन्दी (hi-IN)</button>
-          <button type="button" data-lang="en" aria-pressed="false">English (en-IN)</button>
+          <button type="button" data-lang="hi" aria-pressed="true">हिन्दी · hi-IN</button>
+          <button type="button" data-lang="en" aria-pressed="false">English · en-IN</button>
         </div></div>
       </div>
       <div class="rise" style="--d:4">
         <div class="card record">
-          <h4>④ What the agent records</h4>
+          <div class="rhead"><h4>④ The answer record</h4><button type="button" class="replay" id="replay">↺ Replay</button></div>
+          <p class="rnote">Excerpt: 11 of the 23 required fields in <span class="mono">response.schema.json</span>. status and sheet_outcome are set when the sheet closes.</p>
           <pre id="record" aria-live="polite"></pre>
           <div class="alert" id="alert">Tap an answer on the phone. Try “Worse”.</div>
           <div class="checks">
-            <span class="tag good">schema valid</span><span class="tag good">catalogue text only</span>
-            <span class="tag good">no personal data</span><span class="tag good">no new advice</span>
+            <span class="tag good">catalogue questions</span><span class="tag good">app labels from bottom_sheet.py</span>
+            <span class="tag good">no personal-data asks</span><span class="tag good">no new advice</span>
           </div>
         </div>
         <div class="card run">
@@ -566,7 +569,7 @@ h2 em{font-style:italic;color:var(--leaf)}
         </div>
         <div class="impact rise" style="--d:5">
           <h3>The impact</h3>
-          <p>Every resolved conversation becomes a measurable adoption outcome, not a small sample. Failed advice gets a follow-up instead of silence. The agent is ready for Digital Green's ~10,000-farmer pilot in Bihar, with RCTs as the verifier.</p>
+          <p>Every insight is triaged, and the ones worth verifying become a measurable adoption outcome: <span data-metric="surveys" data-count="2628">2,628</span> of <span data-metric="insights" data-count="6999">6,999</span> in the simulated season. Negative answers are flagged for follow-up instead of being lost. If quality holds, Digital Green plans a ~10,000-farmer pilot, with RCTs as the verifier.</p>
         </div>
       </div>
     </div>
@@ -765,7 +768,7 @@ h2 em{font-style:italic;color:var(--leaf)}
       "Survives host replacement. prevent_destroy blocks accidental teardown.",
       "Unknown disk signatures are refused. Only an empty disk is initialised."] },
     ecr: { t: "Elastic Container Registry", c: "--compute", k: "Deploy", b: [
-      "Three repositories: api, prototype, farmerloop.",
+      "Three repositories: api, kevin (the prototype UI) and farmerloop.",
       "Tags are immutable and the host pulls by sha256 digest, so a release can't drift."] },
     secrets: { t: "Secrets Manager", c: "--security", k: "Security", b: [
       "Operator tokens are created outside Terraform. Only the ARN is passed in.",
@@ -850,7 +853,7 @@ h2 em{font-style:italic;color:var(--leaf)}
       p: "The send window comes from the crop calendar plus the advice's action window, inside 07:00–19:00. Channels go preferred → method → WhatsApp → voice. Hand-offs expire 2 days after the window.",
       g: "<b>Guardrail:</b> at most 1 survey per farmer per 7 days (high priority is exempt). The cap held back 571 sends." },
     { n: "Broadcast", s: "simulated clock · atomic",
-      h: "Deliver exactly once, even with many workers",
+      h: "One claim per attempt, even with many workers",
       p: "On each tick the broadcaster re-reads state, counts the cap, and claims the attempt in a single transaction. Retries and channel fallback are written atomically with the outcome.",
       g: "<b>Guardrail:</b> content policy re-runs before every send. 0 surveys were blocked as unsafe." },
     { n: "Follow up", s: "answers → MEL data",
@@ -933,9 +936,14 @@ h2 em{font-style:italic;color:var(--leaf)}
   enterHooks.flow = fillFunnel;
 
   /* ---------- 4 · demo phone ---------- */
+  // Questions and options: catalogue renderings stored for S-000138 (generation/catalog.py).
+  // Sheet chrome: the product's own labels (delivery/bottom_sheet.py _LABELS). No deck-authored phone text.
+  var SHEET = {
+    hi: { title: "आपकी हाल की सलाह पर एक छोटा सवाल", thank_you: "धन्यवाद। आपके जवाब FarmerChat को बेहतर सलाह देने में मदद करते हैं।", step: "{total} में {n}" },
+    en: { title: "A quick question about your recent advice", thank_you: "Thank you. Your answers help FarmerChat give better advice.", step: "{n} of {total}" }
+  };
   var SURVEY = {
-    id: "S-000138",
-    intro: { hi: "आपकी सरसों पर कीड़ों के बारे में FarmerChat की सलाह", en: "About FarmerChat's advice on bugs on your mustard" },
+    id: "S-000138", farmer: "F-000238", insight: "I-000138",
     items: [
       { id: "q1", hi: "क्या आपने अपनी सरसों पर कीट या रोग की समस्या के बारे में FarmerChat की सलाह पर काम किया?",
         en: "Did you follow FarmerChat's advice about the pest or disease problem on your mustard?",
@@ -950,58 +958,58 @@ h2 em{font-style:italic;color:var(--leaf)}
                { v: "no_time", hi: "समय नहीं था", en: "No time" }, { v: "unclear", hi: "समझ नहीं आया", en: "Did not understand" }] }
     ]
   };
+  // Only field names defined in response.schema.json (checked by tests/test_pitch_deck.py).
+  var RECORD_FIELDS = ["survey_id", "farmer_id", "source_insight_ids", "channel", "language", "status",
+                       "answers", "complete", "sheet_outcome", "needs_follow_up", "follow_up_reasons"];
+  var STATUS_DONE = "completed", STATUS_NEGATIVE = "negative_outcome", SHEET_FINISHED = "finished";
   var lang = "hi", qi = 0, answers = [];
   var sheet = document.getElementById("sheet");
-  var chatMsg = document.getElementById("chatMsg");
   var record = document.getElementById("record");
   var alertBox = document.getElementById("alert");
 
-  function line(parent, key, value, last) {
-    parent.appendChild(document.createTextNode("  "));
-    parent.appendChild(el("span", "k", JSON.stringify(key)));
-    parent.appendChild(document.createTextNode(": " + JSON.stringify(value) + (last ? "\n" : ",\n")));
+  function buildRecord() {
+    var map = {}, reasons = [];
+    answers.forEach(function (a) {
+      map[a.item_id] = a.value;
+      if (a.follow_up && reasons.indexOf(a.follow_up) < 0) reasons.push(a.follow_up);
+    });
+    var done = qi >= SURVEY.items.length;
+    var r = {
+      survey_id: SURVEY.id, farmer_id: SURVEY.farmer, source_insight_ids: [SURVEY.insight], channel: "app",
+      language: lang === "hi" ? "hi-IN" : "en-IN", answers: map, complete: done,
+      needs_follow_up: reasons.length > 0, follow_up_reasons: reasons
+    };
+    if (done) { r.status = reasons.length ? STATUS_NEGATIVE : STATUS_DONE; r.sheet_outcome = SHEET_FINISHED; }
+    return r;
   }
   function renderRecord() {
+    var r = buildRecord();
+    var keys = RECORD_FIELDS.filter(function (k) { return Object.prototype.hasOwnProperty.call(r, k); });
     record.textContent = "";
-    var fu = answers.filter(function (a) { return a.follow_up; });
     record.appendChild(document.createTextNode("{\n"));
-    line(record, "survey_id", SURVEY.id);
-    line(record, "insight_id", "I-000138");
-    line(record, "language", lang === "hi" ? "hi-IN" : "en-IN");
-    line(record, "status", qi >= SURVEY.items.length ? (fu.length ? "negative_outcome" : "completed") : (answers.length ? "partial" : "delivered"));
-    record.appendChild(document.createTextNode("  "));
-    record.appendChild(el("span", "k", "\"answers\""));
-    record.appendChild(document.createTextNode(": [" + (answers.length ? "\n" : "],\n")));
-    answers.forEach(function (a, i) {
-      var parts = ["\"item_id\": " + JSON.stringify(a.item_id), "\"value\": " + JSON.stringify(a.value)];
-      if (a.follow_up) parts.push("\n      \"follow_up\": " + JSON.stringify(a.follow_up));
-      record.appendChild(document.createTextNode("    { " + parts.join(", ") + " }" + (i < answers.length - 1 ? ",\n" : "\n")));
+    keys.forEach(function (k, i) {
+      record.appendChild(document.createTextNode("  "));
+      record.appendChild(el("span", "k", JSON.stringify(k)));
+      record.appendChild(document.createTextNode(": " + JSON.stringify(r[k]).replace(/,"/g, ", \"").replace(/":/g, "\": ") +
+        (i < keys.length - 1 ? ",\n" : "\n")));
     });
-    if (answers.length) record.appendChild(document.createTextNode("  ],\n"));
-    line(record, "needs_follow_up", fu.length > 0, true);
     record.appendChild(document.createTextNode("}"));
-    alertBox.classList.toggle("on", fu.length > 0);
-    alertBox.textContent = fu.length
-      ? "⚑ Routed to the follow-up queue: " + fu.map(function (a) { return a.follow_up; }).join(", ")
+    alertBox.classList.toggle("on", r.needs_follow_up);
+    alertBox.textContent = r.needs_follow_up
+      ? "⚑ needs_follow_up: routed to the follow-up queue (" + r.follow_up_reasons.join(", ") + ")"
       : (answers.length ? "No follow-up needed so far. Try “Worse” or “Not available”." : "Tap an answer on the phone. Try “Worse”.");
   }
   function renderSheet() {
-    chatMsg.textContent = SURVEY.intro[lang];
+    var L = SHEET[lang];
     sheet.textContent = "";
+    sheet.appendChild(el("div", "stitle", L.title));
     if (qi >= SURVEY.items.length) {
-      var th = el("div", "thanks");
-      th.appendChild(el("div", "big", lang === "hi" ? "धन्यवाद!" : "Thank you!"));
-      th.appendChild(el("div", null, lang === "hi" ? "3 / 3" : "3 of 3 answered"));
-      var again = el("button", null, "↺ Replay");
-      again.type = "button";
-      again.addEventListener("click", function () { qi = 0; answers = []; renderSheet(); renderRecord(); });
-      th.appendChild(again);
-      sheet.appendChild(th);
+      sheet.appendChild(el("div", "thanks", L.thank_you));
       return;
     }
     var item = SURVEY.items[qi];
     var prog = el("div", "prog");
-    prog.appendChild(el("span", null, (qi + 1) + " / " + SURVEY.items.length));
+    prog.appendChild(el("span", null, L.step.replace("{n}", String(qi + 1)).replace("{total}", String(SURVEY.items.length))));
     var pd = el("span", "pd");
     SURVEY.items.forEach(function (_, k) { pd.appendChild(el("i", k <= qi ? "on" : "")); });
     prog.appendChild(pd);
@@ -1022,6 +1030,7 @@ h2 em{font-style:italic;color:var(--leaf)}
     });
     sheet.appendChild(opts);
   }
+  document.getElementById("replay").addEventListener("click", function () { qi = 0; answers = []; renderSheet(); renderRecord(); });
   document.querySelectorAll("[data-lang]").forEach(function (b) {
     b.addEventListener("click", function () {
       lang = b.getAttribute("data-lang");

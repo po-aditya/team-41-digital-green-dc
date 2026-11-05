@@ -41,9 +41,12 @@ class _DeckParser(HTMLParser):
         self.external_links: list[str] = []
         self.event_handlers: list[tuple[str, str]] = []
         self.js_urls: list[str] = []
+        self.questions: list[dict[str, str]] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         a = {k: (v or "") for k, v in attrs}
+        if "data-insight" in a:
+            self.questions.append(a)
         if tag == "section" and "slide" in a.get("class", "").split():
             self.slides.append(a.get("data-slide", ""))
         if "data-metric" in a:
@@ -151,3 +154,111 @@ def test_csp_hash_matches_inline_script() -> None:
     digest = base64.b64encode(hashlib.sha256(scripts[0].encode("utf-8")).digest()).decode()
     assert f"'sha256-{digest}'" in html, "CSP script hash is stale; recompute it"
     assert "'unsafe-inline'" not in re.search(r"script-src ([^;]+)", html).group(1)
+
+
+# ---------------------------------------------------------------------------
+# Fact-check regressions: every claim below was CONTRADICTED or UNVERIFIABLE in the
+# first version of the deck. These tests tie the corrected text to its source.
+# ---------------------------------------------------------------------------
+
+PACK = ROOT / "data" / "participant-pack"
+RESPONSE_SCHEMA = PACK / "json" / "schemas" / "response.schema.json"
+
+
+def _insights(ids: set[str]) -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    with (PACK / "data" / "insights.jsonl").open(encoding="utf-8") as fh:
+        for line in fh:
+            if line.strip():
+                row = json.loads(line)
+                if row.get("insight_id") in ids:
+                    out[row["insight_id"]] = row
+    return out
+
+
+def _html() -> str:
+    return DECK.read_text(encoding="utf-8")
+
+
+def _script() -> str:
+    return re.findall(r"<script>(.*?)</script>", _html(), re.S)[0]
+
+
+def test_slide1_farmers_are_real_insights_and_questions_are_catalogue_renderings(deck: _DeckParser) -> None:
+    from mel_agent.generation.catalog import allowed_intents, render_item, slots_for
+
+    assert len(deck.questions) == 3
+    rows = _insights({q["data-insight"] for q in deck.questions})
+    html = _html()
+    for q in deck.questions:
+        ins = rows.get(q["data-insight"])
+        assert ins is not None, f"{q['data-insight']} not in the participant pack"
+        assert ins["quality_flag"] == "clean"
+        assert q["data-intent"] in allowed_intents(ins["resolution_type"], ins["concern"])
+        rendered = render_item("q1", q["data-intent"], "en-IN", slots_for(ins, "en-IN"))["prompt"]
+        assert q["data-c"] == rendered
+        assert ins["location"]["district"] in html
+
+
+def test_broadcast_question_is_labelled_illustrative() -> None:
+    assert "illustrative example we wrote, not a Digital Green survey" in _html()
+
+
+def test_demo_questions_and_options_are_catalogue_text() -> None:
+    from mel_agent.generation.catalog import render_item, slots_for
+
+    ins = _insights({"I-000138"})["I-000138"]
+    script = _script()
+    assert '"F-000238"' in script and ins["farmer_id"] == "F-000238"
+    for lang in ("hi-IN", "en-IN"):
+        slots = slots_for(ins, lang)
+        for intent in ("did_action", "state_now", "barrier"):
+            item = render_item("q1", intent, lang, slots)
+            assert json.dumps(item["prompt"], ensure_ascii=False) in script, (lang, intent)
+            for opt in item["options"]:
+                assert json.dumps(opt["label"], ensure_ascii=False) in script, (lang, opt["value"])
+                if "follow_up" in opt:
+                    assert f'f: "{opt["follow_up"]}"' in script
+
+
+def test_phone_chrome_uses_product_bottom_sheet_labels() -> None:
+    from mel_agent.delivery.bottom_sheet import _LABELS
+
+    script = _script()
+    for lang in ("hi-IN", "en-IN"):
+        for key in ("title", "thank_you", "step"):
+            assert json.dumps(_LABELS[lang][key], ensure_ascii=False) in script, (lang, key)
+
+
+def test_record_excerpt_uses_only_response_schema_fields_and_values() -> None:
+    from mel_agent.generation.catalog import FOLLOW_UP_REASONS
+
+    schema = json.loads(RESPONSE_SCHEMA.read_text(encoding="utf-8"))
+    props = schema["properties"]
+    script = _script()
+    fields = re.findall(r'"([a-z_]+)"', re.search(r"RECORD_FIELDS = \[(.*?)\];", script, re.S).group(1))
+    assert fields and set(fields) <= set(schema["required"]), set(fields) - set(schema["required"])
+    status = dict(re.findall(r'(STATUS_DONE|STATUS_NEGATIVE) = "([a-z_]+)"', script))
+    assert set(status.values()) <= set(props["status"]["enum"]) and len(status) == 2
+    assert re.search(r'SHEET_FINISHED = "([a-z_]+)"', script).group(1) in props["sheet_outcome"]["enum"]
+    assert set(re.findall(r'f: "([a-z_]+)"', script)) <= set(FOLLOW_UP_REASONS)
+    assert "insight_id:" not in script  # not a response field; the schema uses source_insight_ids
+    m = re.search(r"Excerpt: (\d+) of the (\d+) required fields", _html())
+    assert m and int(m.group(1)) == len(fields) and int(m.group(2)) == len(schema["required"])
+
+
+def test_ecr_repository_names_match_terraform() -> None:
+    tf = (ROOT / "Terraform" / "main.tf").read_text(encoding="utf-8")
+    names = re.findall(r'"([a-z]+)"', re.search(r"image_names\s*=\s*toset\(\[(.*?)\]\)", tf).group(1))
+    assert len(names) == 3
+    line = next(l for l in _script().splitlines() if "Three repositories" in l)
+    for name in names:
+        assert re.search(rf"\b{name}\b", line), name
+
+
+def test_contradicted_claims_stay_removed() -> None:
+    html = _html()
+    for phrase in ("exactly once", "least privilege", "real output from our run", "ready for Digital Green",
+                   "Every resolved conversation", "api, prototype, farmerloop", ">schema valid<",
+                   "कीड़ों के बारे में", "about FarmerChat's advice on bugs"):
+        assert phrase.lower() not in html.lower(), phrase
